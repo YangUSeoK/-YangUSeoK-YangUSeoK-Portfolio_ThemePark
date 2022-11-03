@@ -12,7 +12,7 @@ public class LoadScene : MonoBehaviour {
 
         private IEnumerator _Start(){
    
-                async = Application.LoadLevelAsync( levelName );
+                //async = Application.LoadLevelAsync( levelName );
                 while( !async.isDone ){
 
                         yield return null;

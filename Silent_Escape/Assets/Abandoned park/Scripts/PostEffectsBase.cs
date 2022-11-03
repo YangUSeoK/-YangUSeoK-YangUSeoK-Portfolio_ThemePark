@@ -92,11 +92,11 @@ using UnityEngine;
             supportHDRTextures = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf);
             supportDX11 = SystemInfo.graphicsShaderLevel >= 50 && SystemInfo.supportsComputeShaders;
 
-            if (!SystemInfo.supportsImageEffects || !SystemInfo.supportsRenderTextures)
-			{
-                NotSupported ();
-                return false;
-            }
+   //         if (!SystemInfo.supportsImageEffects || !SystemInfo.supportsRenderTextures)
+			//{
+   //             NotSupported ();
+   //             return false;
+   //         }
 
             if (needDepth && !SystemInfo.SupportsRenderTextureFormat (RenderTextureFormat.Depth))
 			{
