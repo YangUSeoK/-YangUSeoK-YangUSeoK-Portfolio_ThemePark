@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class FlagManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField]
+    private Flag[] mFlags = null;
+    public Flag[] Flags
     {
-        
+        get
+        {
+            return mFlags;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        mFlags = GetComponentsInChildren<Flag>();
     }
 }
