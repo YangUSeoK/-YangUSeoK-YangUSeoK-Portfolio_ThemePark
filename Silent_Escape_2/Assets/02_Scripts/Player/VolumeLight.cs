@@ -60,18 +60,18 @@ public class VolumeLight : MonoBehaviour
             float angle = transform.eulerAngles.y - (m_Light.spotAngle / 2) + (stepAngleSize * i);
 
             // 디버그용 DrawLine
-            Debug.DrawLine(transform.position, transform.position + (m_FovMaker.DirFromAngle(angle, transform.eulerAngles.x, true) * m_Light.range), Color.green);
-
+            //Debug.DrawLine(transform.position, transform.position + (m_FovMaker.DirFromAngle(angle, transform.eulerAngles.x, true) * m_Light.range), Color.green);
 
             lightPointList.Add(m_FovMaker.SetRaycastInfo(angle, m_LightRange, true).pointPos);
         }
 
-        // 수직 레이쏘기
-        //for(int i = 0; i <= stepCnt; ++i)
-        //{
-        //    float angle = transform.eulerAngles.x - (m_Light.spotAngle / 2) + (stepAngleSize * i) + 90;
-        //    lightPointList.Add(m_FovMaker.SetRaycastInfo(angle, m_LightRange,false).pointPos);
-        //}
+        lightPointList.Add(m_FovMaker.GetZeroPos().pointPos);
+        // 수직 레이쏘기 20221108 양우석
+        for (int i = 0; i <= stepCnt; ++i)
+        {
+            float angle = transform.eulerAngles.x - (m_Light.spotAngle / 2) + (stepAngleSize * i) + 90;
+            lightPointList.Add(m_FovMaker.SetRaycastInfo(angle, m_LightRange, false).pointPos);
+        }
 
         // 20221106 양우석 : 메쉬 만드는 함수는 따로 쪼갤 것
         // +1 해주는 이유 : 맨 처음 시작점 개수를 추가해줘야 한다.

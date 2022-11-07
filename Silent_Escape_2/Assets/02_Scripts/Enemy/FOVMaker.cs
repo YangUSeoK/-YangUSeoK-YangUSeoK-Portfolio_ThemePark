@@ -48,8 +48,12 @@ public class FOVMaker : MonoBehaviour
         }
     }
 
+    public RaycastInfo GetZeroPos()
+    {
+        return new RaycastInfo(false, transform.position, 0f, 0f, null);
+    }
+
     // 수평 각도를 수치로 입력받으면 내 현재 각도에서 그만큼 회전한 방향의 방향벡터를 반환한다.
-    // 
     public Vector3 DirFromAngle(float _angleDegree, float _verticalAngleDegree, bool _angleIsGlobal)
     {
         if (!_angleIsGlobal)
@@ -58,14 +62,14 @@ public class FOVMaker : MonoBehaviour
             _verticalAngleDegree += transform.eulerAngles.x;
         }
 
-        // 원 좌표 (수평, 각도조절 이상함)
-        //return new Vector3(Mathf.Cos((-_angleDegree + 90f) * Mathf.Deg2Rad),
-        //    2f * Mathf.Sin(-_verticalAngleDegree * Mathf.Deg2Rad),
-        //    Mathf.Sin((-_angleDegree + 90f) * Mathf.Deg2Rad));
+        // 원 좌표 (수평, 세로 각도조절 이상함)
+        return new Vector3(Mathf.Cos((-_angleDegree + 90f) * Mathf.Deg2Rad),
+            2f * Mathf.Sin(-_verticalAngleDegree * Mathf.Deg2Rad),
+            Mathf.Sin((-_angleDegree + 90f) * Mathf.Deg2Rad));
 
         // 20221107 양우석
-        // 구 좌표 (각도가 0일 경우 레이가 하나만 발사되서 메쉬를 생성할 수 없음)
-        // x = cos(가로)sin(세로)     y = sin(가로)sin(세로)      z = 코사인(세로)
+        // 구 좌표(각도가 0일 경우 레이가 하나만 발사되서 메쉬를 생성할 수 없음)
+        // x = cos(가로)sin(세로)     y = sin(가로)sin(세로)      z = cos(세로)
         return new Vector3(Mathf.Cos((-_angleDegree + 90f) * Mathf.Deg2Rad) * Mathf.Sin((-_verticalAngleDegree) * Mathf.Deg2Rad),
             Mathf.Sin((-_angleDegree + 90f) * Mathf.Deg2Rad) * Mathf.Sin((-_verticalAngleDegree) * Mathf.Deg2Rad),
             Mathf.Cos((-_verticalAngleDegree) * Mathf.Deg2Rad));
@@ -74,12 +78,10 @@ public class FOVMaker : MonoBehaviour
 
     public Vector3 DirFromAngleByVertical(float _verticalAngleDegree)
     {
-        Debug.Log("dirFromAngleByVertical");
-        _verticalAngleDegree += transform.eulerAngles.x;
+        _verticalAngleDegree -= transform.eulerAngles.x;
 
         return new Vector3(0f,
             Mathf.Sin((_verticalAngleDegree - 90f) * Mathf.Deg2Rad),
             Mathf.Cos((_verticalAngleDegree - 90f) * Mathf.Deg2Rad));
     }
-    
 }

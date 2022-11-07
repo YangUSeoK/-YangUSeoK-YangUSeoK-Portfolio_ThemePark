@@ -55,6 +55,7 @@ public class EnemyAI_SightMan : EnemyAI
                     if (m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER")))                        
                     {
                         mState = EState.Trace;
+                        mbIsAlert = false;
                         mbIsTrace = true;
                     }
 
@@ -78,7 +79,7 @@ public class EnemyAI_SightMan : EnemyAI
                             }
                         }
 
-                        // 경계상태라면
+                        // 경계상태라면 (mbIsAlert = true)
                         else
                         {
                             // 시야에서 빛이 5초간 사라진다면
@@ -90,7 +91,6 @@ public class EnemyAI_SightMan : EnemyAI
                                 }
                                 mCoroutine = CountTimeAndToggleBoolCoroutine(mbIsAlert);
                                 StartCoroutine(mCoroutine);
-
                             }
 
                             if (!mbIsAlert)
@@ -100,6 +100,7 @@ public class EnemyAI_SightMan : EnemyAI
                         }
                     }
                 }
+                //(mbIsTrace = true)
                 else
                 {
                     // if(시야에서 적이 5초간 사라진다면)
@@ -126,12 +127,14 @@ public class EnemyAI_SightMan : EnemyAI
 
     private IEnumerator CountTimeAndToggleBoolCoroutine(bool _state)
     {
+        Debug.Log("코루틴");
         float i = 0;
         i += Time.deltaTime;
 
         if (i >= 5f)
         {
-            _state = !_state;
+            _state = false;
+            yield break;
         }
 
         yield return null;

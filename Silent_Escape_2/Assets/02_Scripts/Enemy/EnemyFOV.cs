@@ -46,7 +46,7 @@ public class EnemyFOV : MonoBehaviour
         Collider[] colls = Physics.OverlapSphere(transform.position, _detectRange, 1 << _layer);
         viewRange = _detectRange;
 
-        if (colls.Length == 1)
+        if (colls.Length >= 1)
         {
             Vector3 dir = (_targetTr.position - transform.position).normalized;
 
