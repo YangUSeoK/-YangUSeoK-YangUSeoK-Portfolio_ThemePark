@@ -30,7 +30,7 @@ public abstract class EnemyAI : MonoBehaviour
     // 20221104 양우석 델리게이트로 연결해야 함.
     [SerializeField] protected Transform m_PlayerTr = null;
 
-    protected Enemy m_Enemy = null;
+    protected Enemy_SightMan m_Enemy = null;
 
 
     protected EnemyFOV m_EnemyFOV = null;
@@ -44,11 +44,13 @@ public abstract class EnemyAI : MonoBehaviour
     protected Vector3 oriPos = Vector3.zero;
     protected WaitForSeconds ws = new WaitForSeconds(0.1f);
 
-    protected bool mbIsTrace = false;
+    // 디버그용
+    [SerializeField] protected bool mbIsTrace = false;
+    [SerializeField] protected bool mbIsAlert = false;
 
     protected virtual void Awake()
     {
-        m_Enemy = GetComponent<Enemy>();
+        m_Enemy = GetComponent<Enemy_SightMan>();
         m_EnemyFOV = GetComponent<EnemyFOV>();
         m_MoveAgent = GetComponent<EnemyMove>();
     }
