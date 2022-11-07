@@ -46,7 +46,7 @@ public abstract class EnemyAI : MonoBehaviour
 
     protected bool mbIsTrace = false;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         m_Enemy = GetComponent<Enemy>();
         m_EnemyFOV = GetComponent<EnemyFOV>();

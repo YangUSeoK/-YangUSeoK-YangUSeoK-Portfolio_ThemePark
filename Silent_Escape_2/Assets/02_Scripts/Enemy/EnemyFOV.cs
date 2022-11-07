@@ -31,21 +31,10 @@ public class EnemyFOV : MonoBehaviour
     // 감지범위, 감지할놈 transform, 레이어 LayerMask.NameToLayer(" ")
     public bool IsInFOV(float _detectRange, Transform _targetTr, int _layer)
     {
-        bool isPlayerInFOV = false;
+        bool isTargetInFOV = false;
 
         Collider[] colls = Physics.OverlapSphere(transform.position, _detectRange, 1 << _layer);
         viewRange = _detectRange;
-
-        // 20221104 양우석 : 부딪힌 놈이 light면 그 위치를 저장해두기. 그래야 IsLookTarget에서 그 빛의 위치를 따라 갈 수 있다.
-        // 함수 쪼개는것도 생각해볼 것. 한번에 쓰고싶은데 잘 안된다.
-        if(_layer == LayerMask.NameToLayer("LIGHT"))
-        {
-
-        }
-        else
-        {
-
-        }
 
         if (colls.Length == 1)
         {
@@ -54,11 +43,11 @@ public class EnemyFOV : MonoBehaviour
             //                                          -60 ~ 60 해서 120도
             if (Vector3.Angle(transform.forward, dir) < viewAngle * 0.5f)
             {
-                Debug.Log("원뿔 안에 검출됨");
-                isPlayerInFOV = true;
+                Debug.Log($"원뿔 안에 {_targetTr.name} 검출됨");
+                isTargetInFOV = true;
             }
         }
-        return isPlayerInFOV;
+        return isTargetInFOV;
     }
 
 
@@ -80,10 +69,6 @@ public class EnemyFOV : MonoBehaviour
 
         return isLook;
     }
-
-
-  
-
 
     public Vector3 CirclePoint(float angle)
     {

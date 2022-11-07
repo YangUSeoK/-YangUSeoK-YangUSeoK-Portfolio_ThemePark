@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemyAI_SightMan : EnemyAI
 {
-    private float m_LookLightRange = 0;
-    // 
-    private Transform m_LightTr = null;
+    // 빛의 트랜스폼 값 받아올 방업 생각해봐야 함
+    [SerializeField] private Transform m_LightTr = null;
     private Enemy_SightMan m_SightMan = null;
 
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         m_SightMan = GetComponent<Enemy_SightMan>();
@@ -21,7 +20,9 @@ public class EnemyAI_SightMan : EnemyAI
     {
         while (true)
         {
-            Debug.Log("Action");
+
+
+
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -38,6 +39,7 @@ public class EnemyAI_SightMan : EnemyAI
                 //부채꼴 범위에 있으면 공격한다
                 {
                     mState = EState.Attack;
+                    yield break;
                 }
             }
 
@@ -46,14 +48,14 @@ public class EnemyAI_SightMan : EnemyAI
             {
                 if (!mbIsTrace)
                 {
-                    // 원뿔안에 들어온 상태면 (= 눈에 보이면) 
+                    // 플레이어를 본다면 (= 눈에 보이면) 
                     if (m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER"))
                         && m_EnemyFOV.IsLookTarget(m_Enemy.LookPlayerRange, m_PlayerTr))
                     {
                         mState = EState.Trace;
                     }
                     // 빛을 본다면 
-                    // 20221104 양우석 : 빛의 Transform을 받아올 방법을 생각해야함.
+                    // 20221107 양우석 : 빛의 Transform을 받아올 방법을 생각해야함. 지금은 인스팩터
                     else if (m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT"))
                         && m_EnemyFOV.IsLookTarget(m_SightMan.LookLightRange, m_LightTr))
                     {
@@ -65,54 +67,14 @@ public class EnemyAI_SightMan : EnemyAI
                         mState = EState.Patrol;
                     }
                 }
-
-
-
+                else
+                {
+                    // if(시야에서 적이 5초간 사라진다면)
+                    // mState = EState.Alert;
+                    // mbIsTrace = false;
+                }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //        //// (들을 수 있는 범위 + 발소리 크기)보다 가까이 있으면 || 조명을 본다면      추가해야함 20221026
-            //        //else if (dist <= mSoundDetectRange + m_PlayerTr.GetComponent<PlayerMove>().GetNoise())
-            //        //{
-            //        //    mState = EState.Tracer;
-            //        //    mbIsTracer = true;
-            //        //}
-
-            //        //else// 아무것도 아니면 Default로 돌아간다.
-            //        //{
-            //        //    if (!mbIsTracer)
-            //        //    {
-            //        //        // switch로 각 종류마다 default 설정
-            //        //        mState = EState.Patrol;
-            //        //    }
-            //        //}
-
-            //        // 0.1초마다 체크
-            //        yield return ws;
-            //    }
-
-
-
-
-
-
             yield return new WaitForSeconds(0.1f);
         }
-    }
-
-    public void SetLookLightRange(float _lookLightRange)
-    {
-        m_LookLightRange = _lookLightRange;
     }
 }
