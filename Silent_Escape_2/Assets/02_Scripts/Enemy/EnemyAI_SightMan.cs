@@ -9,6 +9,9 @@ public class EnemyAI_SightMan : EnemyAI
     private Enemy_SightMan m_SightMan = null;
 
 
+    // 코루틴 변수
+    IEnumerator mCoroutine = null;
+
     protected override void Awake()
     {
         base.Awake();
@@ -49,32 +52,96 @@ public class EnemyAI_SightMan : EnemyAI
                 if (!mbIsTrace)
                 {
                     // 플레이어를 본다면 (= 눈에 보이면) 
-                    if (m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER"))
-                        && m_EnemyFOV.IsLookTarget(m_Enemy.LookPlayerRange, m_PlayerTr))
+                    if (m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER")))                        
                     {
                         mState = EState.Trace;
+                        mbIsAlert = false;
+                        mbIsTrace = true;
                     }
-                    // 빛을 본다면 
-                    // 20221107 양우석 : 빛의 Transform을 받아올 방법을 생각해야함. 지금은 인스팩터
-                    else if (m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT"))
-                        && m_EnemyFOV.IsLookTarget(m_SightMan.LookLightRange, m_LightTr))
-                    {
-                        mState = EState.Alert;
-                    }
-                    // 아무것도 아니면
+
+                    // 플레이어를 못봤다면
                     else
                     {
-                        mState = EState.Patrol;
+                        if (!mbIsAlert)
+                        {
+                            // 빛을 본다면 
+                            // 20221107 양우석 : 빛의 Transform을 받아올 방법을 생각해야함. 지금은 인스팩터
+                            if (m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT")))
+                                
+                            {
+                                mState = EState.Alert;
+                                mbIsAlert = true;
+                            }
+                            // 빛을 못봤다면
+                            else
+                            {
+                                mState = EState.Patrol;
+                            }
+                        }
+
+                        // 경계상태라면 (mbIsAlert = true)
+                        else
+                        {
+                            // 시야에서 빛이 5초간 사라진다면
+                            if (!(m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT"))))
+                            {
+                                if (mCoroutine != null)
+                                {
+                                    Debug.Log("코루틴 정지");
+                                    StopCoroutine(mCoroutine);
+                                }
+                                Debug.Log("코루틴 시작");
+                                mCoroutine = CountTimeAndBoolOffCoroutine(mbIsAlert);
+                                StartCoroutine(mCoroutine);
+                            }
+
+                            if (!mbIsAlert)
+                            {
+                                mState = EState.Patrol;
+                            }
+                        }
                     }
                 }
+                //(mbIsTrace = true)
                 else
                 {
-                    // if(시야에서 적이 5초간 사라진다면)
-                    // mState = EState.Alert;
-                    // mbIsTrace = false;
+                    Debug.Log("is Trace!");
+                    // if(시야에서 플레이어가 5초간 사라진다면)
+                    if (!(m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER"))))
+                    {
+                        if (mCoroutine != null)
+                        {
+                            Debug.Log("코루틴 정지");
+                            StopCoroutine(mCoroutine);
+                        }
+                        Debug.Log("코루틴 시작");
+                        mCoroutine = CountTimeAndBoolOffCoroutine(mbIsTrace);
+                        StartCoroutine(mCoroutine);
+                    }
+
+                    if (!mbIsTrace)
+                    {
+                        mState = EState.Alert;
+                        mbIsAlert = true;
+                    }
                 }
             }
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private void InitializeCoroutine(IEnumerator _coroutine)
+    {
+
+    }
+
+    private IEnumerator CountTimeAndBoolOffCoroutine(bool _state)
+    {
+        yield return m_AggroTime;
+        
+                _state = false;
+          
+            yield return null;
+        
     }
 }
