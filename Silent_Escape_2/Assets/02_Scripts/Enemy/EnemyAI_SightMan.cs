@@ -87,9 +87,11 @@ public class EnemyAI_SightMan : EnemyAI
                             {
                                 if (mCoroutine != null)
                                 {
+                                    Debug.Log("코루틴 정지");
                                     StopCoroutine(mCoroutine);
                                 }
-                                mCoroutine = CountTimeAndToggleBoolCoroutine(mbIsAlert);
+                                Debug.Log("코루틴 시작");
+                                mCoroutine = CountTimeAndBoolOffCoroutine(mbIsAlert);
                                 StartCoroutine(mCoroutine);
                             }
 
@@ -103,10 +105,18 @@ public class EnemyAI_SightMan : EnemyAI
                 //(mbIsTrace = true)
                 else
                 {
-                    // if(시야에서 적이 5초간 사라진다면)
+                    Debug.Log("is Trace!");
+                    // if(시야에서 플레이어가 5초간 사라진다면)
                     if (!(m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER"))))
                     {
-                        // CountTimeAndToggleBool(mbIsTrace);
+                        if (mCoroutine != null)
+                        {
+                            Debug.Log("코루틴 정지");
+                            StopCoroutine(mCoroutine);
+                        }
+                        Debug.Log("코루틴 시작");
+                        mCoroutine = CountTimeAndBoolOffCoroutine(mbIsTrace);
+                        StartCoroutine(mCoroutine);
                     }
 
                     if (!mbIsTrace)
@@ -125,18 +135,13 @@ public class EnemyAI_SightMan : EnemyAI
 
     }
 
-    private IEnumerator CountTimeAndToggleBoolCoroutine(bool _state)
+    private IEnumerator CountTimeAndBoolOffCoroutine(bool _state)
     {
-        Debug.Log("코루틴");
-        float i = 0;
-        i += Time.deltaTime;
-
-        if (i >= 5f)
-        {
-            _state = false;
-            yield break;
-        }
-
-        yield return null;
+        yield return m_AggroTime;
+        
+                _state = false;
+          
+            yield return null;
+        
     }
 }

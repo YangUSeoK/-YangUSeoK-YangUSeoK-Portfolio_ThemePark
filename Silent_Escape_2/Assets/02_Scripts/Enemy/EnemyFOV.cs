@@ -9,8 +9,9 @@ using UnityEngine;
 public class EnemyFOV : MonoBehaviour
 {
     // 에디터용
-    [HideInInspector] public float viewAngle = 120f;
-    [HideInInspector] public float viewRange = 0f;
+    [HideInInspector] public float mViewAngle = 120f;
+    [HideInInspector] public float m_ViewLightRange = 0f;
+    [HideInInspector] public float m_ViewPlayerRange = 0f;
 
     private FOVMaker m_FovMaker = null;
     private float m_stepRate = 0.75f;
@@ -35,6 +36,8 @@ public class EnemyFOV : MonoBehaviour
         obstacleLayer = LayerMask.NameToLayer("OBSTACLE");
         lightLayer = LayerMask.NameToLayer("LIGHT");
         layerMask = (1 << playerLayer) | (1 << obstacleLayer) | (1 << lightLayer);
+        m_ViewLightRange = m_SightMan.LookLightRange;
+        m_ViewPlayerRange = m_SightMan.LookPlayerRange;
     }
 
 
@@ -44,14 +47,13 @@ public class EnemyFOV : MonoBehaviour
         bool isTargetInFOV = false;
 
         Collider[] colls = Physics.OverlapSphere(transform.position, _detectRange, 1 << _layer);
-        viewRange = _detectRange;
-
+        
         if (colls.Length >= 1)
         {
             Vector3 dir = (_targetTr.position - transform.position).normalized;
 
             //                                          -60 ~ 60 해서 120도
-            if (Vector3.Angle(transform.forward, dir) < viewAngle * 0.5f)
+            if (Vector3.Angle(transform.forward, dir) < mViewAngle * 0.5f)
             {
                 Debug.Log($"원뿔 안에 {_targetTr.name} 들어옴");
                 // 부채꼴로 레이 쏴서 검사하는 함수
@@ -68,19 +70,17 @@ public class EnemyFOV : MonoBehaviour
         bool isLook = false;
 
         // 각도 * 비율 반올림
-        int stepCnt = Mathf.RoundToInt(viewAngle * m_stepRate);
+        int stepCnt = Mathf.RoundToInt(mViewAngle * m_stepRate);
 
         // 다시 빛의 각도로 나눠서 쪼개지는 앵글의 각을 구함
-        float stepAngleSize = viewAngle / stepCnt;
+        float stepAngleSize = mViewAngle / stepCnt;
 
         List<Collider> rayPointList = new List<Collider>();
 
-
         Debug.Log("부채꼴 레이 발싸!");
-        // 부채꼴로 레이를 쏴서 구조체에 정보를 저장한다.
         for (int i = 0; i <= stepCnt; ++i)
         {
-            float angle = transform.eulerAngles.y - (viewAngle / 2) + (stepAngleSize * i);
+            float angle = transform.eulerAngles.y - (mViewAngle / 2) + (stepAngleSize * i);
 
             // 디버그용 DrawLine
             

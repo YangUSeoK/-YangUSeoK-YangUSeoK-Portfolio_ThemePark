@@ -330,8 +330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b268d77751c1e1429489094cb548b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 120
-  viewRange: 0
+  mViewAngle: 120
+  m_ViewLightRange: 0
+  m_ViewPlayerRange: 0
 --- !u!114 &747945429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +348,7 @@ MonoBehaviour:
   m_MyType: 0
   mState: 0
   m_PlayerTr: {fileID: 1623896463}
+  m_AggroTime: 0
   mbIsTrace: 0
   mbIsAlert: 0
   m_LightTr: {fileID: 6670460160906612613}
@@ -377,7 +379,7 @@ MonoBehaviour:
   m_NomalSpeed: 0
   m_SoundDetectRange: 0
   m_LookPlayerRange: 3
-  m_AttackRange: 0
+  m_AttackRange: 1
   m_LookLightRange: 5
 --- !u!1 &963194225
 GameObject:
@@ -487,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d0088a181722b4384ec95f29c284e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MeshRate: 0.7
+  m_SubDivision: 100
 --- !u!1 &1623896459
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623896459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7.52}
+  m_LocalPosition: {x: -0.65, y: 0, z: -6.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -819,7 +821,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670460160906612618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

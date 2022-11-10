@@ -42,7 +42,12 @@ public abstract class EnemyAI : MonoBehaviour
 
 
     protected Vector3 oriPos = Vector3.zero;
-    protected WaitForSeconds ws = new WaitForSeconds(0.1f);
+    protected WaitForSeconds m_CheckTime = new WaitForSeconds(0.1f);
+    protected WaitForSeconds m_AggroCheck;
+    [SerializeField] protected float m_AggroTime = 5f;
+    
+
+
 
     // 디버그용
     [SerializeField] protected bool mbIsTrace = false;
@@ -53,7 +58,8 @@ public abstract class EnemyAI : MonoBehaviour
         m_Enemy = GetComponent<Enemy_SightMan>();
         m_EnemyFOV = GetComponent<EnemyFOV>();
         m_MoveAgent = GetComponent<EnemyMove>();
-    }
+        m_AggroCheck = new WaitForSeconds(m_AggroTime);
+}
     
     protected void Start()
     {
