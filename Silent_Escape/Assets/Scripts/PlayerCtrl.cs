@@ -39,6 +39,9 @@ public class PlayerCtrl : MonoBehaviour
         Vector2 mov2d = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         v = mov2d.x;
         h = mov2d.y;
+        //컴퓨터 테스트 용이므로 VR테스트 시 해당 코드 주석 처리 ㄱ
+        h = Input.GetAxis("Horizontal");
+        v= Input.GetAxis("Vertical");
         Toggle();
         PlayerState();
         Move();
@@ -47,7 +50,7 @@ public class PlayerCtrl : MonoBehaviour
     }
     void Toggle()//앉기 토글 함수
     {
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick))
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick)||Input.GetKeyDown("e"))
         {                                         //만약 오큘러스에서 앉기 토글이 안되는 경우가 생긴다면 이거 조건 문제임
             if (mbIsSquat == false)
             {
