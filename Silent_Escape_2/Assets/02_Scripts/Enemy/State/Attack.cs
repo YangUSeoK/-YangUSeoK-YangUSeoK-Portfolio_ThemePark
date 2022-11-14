@@ -6,17 +6,21 @@ public class Attack : EnemyState
 {
     public override void EnterState(EnemyAI _enemyAI)
     {
+        Debug.Log("Attack ÀÔÀå!");
     }
 
     public override void ExitState(EnemyAI _enemyAI)
     {
+        Debug.Log("Attack ÅðÀå!");
     }
 
     public override void FixedUpdateLogic(EnemyAI _enemyAI)
     {
+        Debug.Log("Attack ¹°¸®¾÷µ«!");
     }
 
     public override void UpdateLogic(EnemyAI _enemyAI)
     {
+        Debug.Log("Attack ¾÷µ«!");
     }
 }

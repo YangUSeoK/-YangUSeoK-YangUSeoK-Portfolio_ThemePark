@@ -31,6 +31,8 @@ public abstract class EnemyAI : MonoBehaviour
     [SerializeField] protected Transform m_PlayerTr = null;
 
 
+
+    // AI¿ë
     protected Enemy m_Enemy = null;
     protected EnemyState[] mStates = null;
     protected EnemyState mCurState = null;
