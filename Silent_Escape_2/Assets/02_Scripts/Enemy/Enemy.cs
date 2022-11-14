@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     // 20221104 양우석 Range범위 생각해보고 추가할 것
@@ -48,17 +48,15 @@ public abstract class Enemy : MonoBehaviour
         {
             return mCurSpeed;
         }
+        set
+        {
+            mCurSpeed = value;
+        }
     }
     protected float mCurSpeed;
 
-
-
-   
-
-    public void SetSpeed(float _curSpeed)
-    {
-        mCurSpeed = _curSpeed;
-    }
+    // 20221110 양우석 : 애니메이션 추가해야함.
+      
 
     public void Attack()
     {
@@ -66,5 +64,4 @@ public abstract class Enemy : MonoBehaviour
         Debug.Log("GameOver");
     }
 
-    protected abstract void Action();
 }

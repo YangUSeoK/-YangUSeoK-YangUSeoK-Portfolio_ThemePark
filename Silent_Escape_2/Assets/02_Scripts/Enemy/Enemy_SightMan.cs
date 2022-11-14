@@ -12,10 +12,4 @@ public class Enemy_SightMan : Enemy
         }
     }
     [SerializeField] private float m_LookLightRange;
-
-
-    protected override void Action()
-    {
-        
-    }
 }
