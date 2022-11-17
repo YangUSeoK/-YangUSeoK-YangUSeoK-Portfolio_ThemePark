@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: d38a9db9d0a06944285356a2fc4da874
+timeCreated: 1479137484
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Buttom1
+    100002: Buttom10
+    100004: Buttom11
+    100006: Buttom12
+    100008: Buttom13
+    100010: Buttom14
+    100012: Buttom15
+    100014: Buttom2
+    100016: Buttom3
+    100018: Buttom4
+    100020: Buttom5
+    100022: Buttom6
+    100024: Buttom7
+    100026: Buttom8
+    100028: Buttom9
+    100030: Nokia
+    100032: //RootNode
+    400000: Buttom1
+    400002: Buttom10
+    400004: Buttom11
+    400006: Buttom12
+    400008: Buttom13
+    400010: Buttom14
+    400012: Buttom15
+    400014: Buttom2
+    400016: Buttom3
+    400018: Buttom4
+    400020: Buttom5
+    400022: Buttom6
+    400024: Buttom7
+    400026: Buttom8
+    400028: Buttom9
+    400030: Nokia
+    400032: //RootNode
+    2300000: Buttom1
+    2300002: Buttom10
+    2300004: Buttom11
+    2300006: Buttom12
+    2300008: Buttom13
+    2300010: Buttom14
+    2300012: Buttom15
+    2300014: Buttom2
+    2300016: Buttom3
+    2300018: Buttom4
+    2300020: Buttom5
+    2300022: Buttom6
+    2300024: Buttom7
+    2300026: Buttom8
+    2300028: Buttom9
+    2300030: Nokia
+    3300000: Buttom1
+    3300002: Buttom10
+    3300004: Buttom11
+    3300006: Buttom12
+    3300008: Buttom13
+    3300010: Buttom14
+    3300012: Buttom15
+    3300014: Buttom2
+    3300016: Buttom3
+    3300018: Buttom4
+    3300020: Buttom5
+    3300022: Buttom6
+    3300024: Buttom7
+    3300026: Buttom8
+    3300028: Buttom9
+    3300030: Nokia
+    4300000: Buttom1
+    4300002: Buttom10
+    4300004: Buttom11
+    4300006: Buttom12
+    4300008: Buttom13
+    4300010: Buttom14
+    4300012: Buttom15
+    4300014: Buttom2
+    4300016: Buttom3
+    4300018: Buttom4
+    4300020: Buttom5
+    4300022: Buttom6
+    4300024: Buttom7
+    4300026: Buttom8
+    4300028: Buttom9
+    4300030: Nokia
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
