@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyAI_SightMan : EnemyAI
 {
-    private float m_LookLightRange = 0;
-    // 
-    private Transform m_LightTr = null;
+    // 빛의 트랜스폼 값 받아올 방업 생각해봐야 함
+    [SerializeField] private Transform m_LightTr = null;
     private Enemy_SightMan m_SightMan = null;
 
 
-    private void Awake()
+    // 코루틴 변수
+    IEnumerator mCoroutine = null;
+
+    protected override void Awake()
     {
         base.Awake();
         m_SightMan = GetComponent<Enemy_SightMan>();
@@ -21,7 +23,9 @@ public class EnemyAI_SightMan : EnemyAI
     {
         while (true)
         {
-            Debug.Log("Action");
+
+
+
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -38,6 +42,7 @@ public class EnemyAI_SightMan : EnemyAI
                 //부채꼴 범위에 있으면 공격한다
                 {
                     mState = EState.Attack;
+                    yield break;
                 }
             }
 
@@ -46,73 +51,97 @@ public class EnemyAI_SightMan : EnemyAI
             {
                 if (!mbIsTrace)
                 {
-                    // 원뿔안에 들어온 상태면 (= 눈에 보이면) 
-                    if (m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER"))
-                        && m_EnemyFOV.IsLookTarget(m_Enemy.LookPlayerRange, m_PlayerTr))
+                    // 플레이어를 본다면 (= 눈에 보이면) 
+                    if (m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER")))                        
                     {
                         mState = EState.Trace;
+                        mbIsAlert = false;
+                        mbIsTrace = true;
                     }
-                    // 빛을 본다면 
-                    // 20221104 양우석 : 빛의 Transform을 받아올 방법을 생각해야함.
-                    else if (m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT"))
-                        && m_EnemyFOV.IsLookTarget(m_SightMan.LookLightRange, m_LightTr))
-                    {
-                        mState = EState.Alert;
-                    }
-                    // 아무것도 아니면
+
+                    // 플레이어를 못봤다면
                     else
                     {
-                        mState = EState.Patrol;
+                        if (!mbIsAlert)
+                        {
+                            // 빛을 본다면 
+                            // 20221107 양우석 : 빛의 Transform을 받아올 방법을 생각해야함. 지금은 인스팩터
+                            if (m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT")))
+                                
+                            {
+                                mState = EState.Alert;
+                                mbIsAlert = true;
+                            }
+                            // 빛을 못봤다면
+                            else
+                            {
+                                mState = EState.Patrol;
+                            }
+                        }
+
+                        // 경계상태라면 (mbIsAlert = true)
+                        else
+                        {
+                            // 시야에서 빛이 5초간 사라진다면
+                            if (!(m_EnemyFOV.IsInFOV(m_SightMan.LookLightRange, m_LightTr, LayerMask.NameToLayer("LIGHT"))))
+                            {
+                                if (mCoroutine != null)
+                                {
+                                    Debug.Log("코루틴 정지");
+                                    StopCoroutine(mCoroutine);
+                                }
+                                Debug.Log("코루틴 시작");
+                                mCoroutine = CountTimeAndBoolOffCoroutine(mbIsAlert);
+                                StartCoroutine(mCoroutine);
+                            }
+
+                            if (!mbIsAlert)
+                            {
+                                mState = EState.Patrol;
+                            }
+                        }
                     }
                 }
+                //(mbIsTrace = true)
+                else
+                {
+                    Debug.Log("is Trace!");
+                    // if(시야에서 플레이어가 5초간 사라진다면)
+                    if (!(m_EnemyFOV.IsInFOV(m_Enemy.LookPlayerRange, m_PlayerTr, LayerMask.NameToLayer("PLAYER"))))
+                    {
+                        if (mCoroutine != null)
+                        {
+                            Debug.Log("코루틴 정지");
+                            StopCoroutine(mCoroutine);
+                        }
+                        Debug.Log("코루틴 시작");
+                        mCoroutine = CountTimeAndBoolOffCoroutine(mbIsTrace);
+                        StartCoroutine(mCoroutine);
+                    }
 
-
-
+                    if (!mbIsTrace)
+                    {
+                        mState = EState.Alert;
+                        mbIsAlert = true;
+                    }
+                }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //        //// (들을 수 있는 범위 + 발소리 크기)보다 가까이 있으면 || 조명을 본다면      추가해야함 20221026
-            //        //else if (dist <= mSoundDetectRange + m_PlayerTr.GetComponent<PlayerMove>().GetNoise())
-            //        //{
-            //        //    mState = EState.Tracer;
-            //        //    mbIsTracer = true;
-            //        //}
-
-            //        //else// 아무것도 아니면 Default로 돌아간다.
-            //        //{
-            //        //    if (!mbIsTracer)
-            //        //    {
-            //        //        // switch로 각 종류마다 default 설정
-            //        //        mState = EState.Patrol;
-            //        //    }
-            //        //}
-
-            //        // 0.1초마다 체크
-            //        yield return ws;
-            //    }
-
-
-
-
-
-
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    public void SetLookLightRange(float _lookLightRange)
+    private void InitializeCoroutine(IEnumerator _coroutine)
     {
-        m_LookLightRange = _lookLightRange;
+
+    }
+
+    private IEnumerator CountTimeAndBoolOffCoroutine(bool _state)
+    {
+        yield return m_AggroTime;
+        
+                _state = false;
+          
+            yield return null;
+        
     }
 }

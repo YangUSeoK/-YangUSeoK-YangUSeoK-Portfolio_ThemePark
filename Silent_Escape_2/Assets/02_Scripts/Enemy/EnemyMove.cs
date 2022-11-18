@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
 {
     // 20221104 델리게이트로 연결해야 함
     [SerializeField] private FlagManager m_FlagManager = null;
-    private Enemy m_Enemy = null;
+    private Enemy_SightMan m_Enemy = null;
     private Flag[] m_Flags;
     public NavMeshAgent m_Agent = null;
 
@@ -17,7 +17,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Awake()
     {
-        m_Enemy = GetComponent<Enemy>();
+        m_Enemy = GetComponent<Enemy_SightMan>();
         m_Agent = GetComponent<NavMeshAgent>();
         m_Agent.autoBraking = false;
         m_Agent.speed = m_Enemy.CurSpeed;

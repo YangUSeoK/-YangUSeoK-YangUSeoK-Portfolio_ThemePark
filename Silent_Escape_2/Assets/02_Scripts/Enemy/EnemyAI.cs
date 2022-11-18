@@ -30,28 +30,40 @@ public abstract class EnemyAI : MonoBehaviour
     // 20221104 양우석 델리게이트로 연결해야 함.
     [SerializeField] protected Transform m_PlayerTr = null;
 
+
+
+    // AI용
     protected Enemy m_Enemy = null;
+    protected EnemyState[] mStates = null;
+    protected EnemyState mCurState = null;
 
 
     protected EnemyFOV m_EnemyFOV = null;
     protected EnemyMove m_MoveAgent = null;
 
-    //protected float m_PlayerLookRange = 0f;
-    //protected float m_SoundDetectRange = 0f;
-    //protected float m_AttackRange = 0f;
+   
 
 
     protected Vector3 oriPos = Vector3.zero;
-    protected WaitForSeconds ws = new WaitForSeconds(0.1f);
+    protected WaitForSeconds m_CheckTime = new WaitForSeconds(0.1f);
+    protected WaitForSeconds m_AggroCheck;
+    [SerializeField] protected float m_AggroTime = 5f;
+    
 
-    protected bool mbIsTrace = false;
 
-    protected void Awake()
+
+    // 디버그용
+    [SerializeField] protected bool mbIsTrace = false;
+    [SerializeField] protected bool mbIsAlert = false;
+
+    protected virtual void Awake()
     {
         m_Enemy = GetComponent<Enemy>();
+
         m_EnemyFOV = GetComponent<EnemyFOV>();
         m_MoveAgent = GetComponent<EnemyMove>();
-    }
+        m_AggroCheck = new WaitForSeconds(m_AggroTime);
+}
     
     protected void Start()
     {
@@ -62,13 +74,26 @@ public abstract class EnemyAI : MonoBehaviour
         StartCoroutine(ActionCoroutine());
     }
 
-    //public void SetRange(float _lookDetectRange, float _soundDetectRange, float _attackRange)
-    //{
-    //    m_PlayerLookRange = _lookDetectRange;
-    //    m_SoundDetectRange = _soundDetectRange;
-    //    m_AttackRange = _attackRange;
-    //}
 
+    protected void Update()
+    {
+        if (mCurState != null)
+        {
+            mCurState.UpdateLogic();
+        }
+    }
+
+    protected void SetUp()
+    {
+        mStates = new EnemyState[5];
+        mStates[(int)EState.Patrol] = new Patrol();
+        mCurState = mStates[(int)EState.Patrol];
+    }
+    
+    
+
+
+    
 
     protected abstract IEnumerator CheckStateCoroutine();
     //{
@@ -100,6 +125,7 @@ public abstract class EnemyAI : MonoBehaviour
     //            }
     //    
     //}
+
     protected abstract IEnumerator ActionCoroutine();
     //{
     //    while (true)
