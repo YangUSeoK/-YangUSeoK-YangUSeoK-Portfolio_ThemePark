@@ -12,7 +12,7 @@ public class Can : Item
         // 소리를 재생하거나, 이펙트를 실행하거나
         // 효과음의 볼륨을 속도(받은충격) 에 따라 변경해서 강하게 던졌을때와 약하게 던졌을때 소리가 다르게 나게 함
         m_ItemAudio[0].volume = m_Speed * 0.05f;
-        m_ItemAudio[0].Play();
+        m_ItemAudio[0].PlayOneShot(m_ItemAudio[0].clip);
     }
 
     // 충돌할시 소리를 재생하고, 위치를 알리고, 반사각으로 물체를 튕겨나게함

@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
-  - DontPass
+  - BUTTON
+  - TRIGGER
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - Listener
   - crash
   - Wall
-  - 
-  - 
+  - BUTTON
+  - FRAME
   - 
   - 
   - 

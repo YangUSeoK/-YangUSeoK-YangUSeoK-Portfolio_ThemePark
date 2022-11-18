@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    [SerializeField] float power = 10f;
-    void Start()
+    [SerializeField] float m_RestorDamping = 10f;
+    public bool mbIsPressed = false;
+    private Vector3 m_InitPos;
+    private bool mbIsPressing = false;
+
+    private void Start()
     {
-        
+        m_InitPos = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        MouseAction();
-    }
-
-    void MouseAction()
-    {
-        if (Input.GetMouseButtonDown(0))
+        if (transform.position.y < m_InitPos.y && mbIsPressing == false)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            Debug.DrawLine(ray.origin, ray.direction);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log(hit.transform.gameObject + "°¨Áö" );
-                if (hit.rigidbody != null)
-                    hit.rigidbody.AddForce((hit.transform.position - Input.mousePosition).normalized * power);
-            }
+            transform.position = Vector3.Lerp(transform.position, m_InitPos, m_RestorDamping * Time.deltaTime);
         }
+    }
+    private void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag != "BUTTON")
+            mbIsPressing = true;
+
+        if (coll.gameObject.tag == "TRIGGER")
+            mbIsPressed = !mbIsPressed;
+    }
+
+    private void OnCollisionExit(Collision coll)
+    {
+        if (coll.gameObject.tag != "BUTTON")
+            mbIsPressing = false;
     }
 }

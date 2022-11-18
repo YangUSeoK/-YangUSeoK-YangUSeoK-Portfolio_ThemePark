@@ -32,7 +32,7 @@ public class Flashlight : Item
         {
             mbIsOn = !mbIsOn;
 
-            m_ItemAudio[0].Play();
+            m_ItemAudio[0].PlayOneShot(m_ItemAudio[0].clip);
             if (mbIsOn)
             {
                 m_Light.SetActive(true);
@@ -50,6 +50,7 @@ public class Flashlight : Item
 
     private void OnCollisionEnter(Collision coll)
     {
-        m_ItemAudio[1].Play();
+        m_ItemAudio[1].PlayOneShot(m_ItemAudio[1].clip);
+        Debug.Log(m_ItemAudio[1].clip.loadState);
     }
 }

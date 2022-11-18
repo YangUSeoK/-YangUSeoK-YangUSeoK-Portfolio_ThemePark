@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    public float m_RotSpeed = 10f;
+    [SerializeField] float m_RotSpeed = 10f;
+    [SerializeField] Button m_Button;
 
     void Update()
     {
-        RotateWheel();
+        if (m_Button.mbIsPressed == true)
+            RotateWheel();
     }
 
     void RotateWheel()
-    {
+    {   
         transform.Rotate(Vector3.right * m_RotSpeed * Time.deltaTime);
     }
 }

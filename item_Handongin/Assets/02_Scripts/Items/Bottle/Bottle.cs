@@ -38,7 +38,7 @@ public class Bottle : Item
         if (m_Speed > 5f)
         {
             m_HitPos = coll.GetContact(0).point;
-            m_ItemAudio[0].Play();
+            m_ItemAudio[0].PlayOneShot(m_ItemAudio[0].clip);
             inform();
             Action();
         }
