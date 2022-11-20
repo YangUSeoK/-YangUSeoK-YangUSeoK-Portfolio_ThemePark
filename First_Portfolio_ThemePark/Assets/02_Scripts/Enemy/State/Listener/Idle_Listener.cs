@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Idle_Listener : EnemyState
 {
-    public Idle_Listener(Enemy _enemy) : base("Patrol", _enemy) { }
+    public Idle_Listener(Enemy _enemy) : base("Idle", _enemy) { }
  
     public override void EnterState()
     {
-        Debug.Log("Patrol ÀÔÀå!");
+        Debug.Log("Idle ÀÔÀå!");
     }
 
     public override void ExitState()
     {
-        Debug.Log("Patrol ÅðÀå!");
+        Debug.Log("Idle ÅðÀå!");
     }
 
     public override void Action()
     {
-        Debug.Log("Patrol ¹°¸®¾÷µ«!");
+        Debug.Log("Idle ¾×¼Ç!");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Patrol ¾÷µ«!");
+        Debug.Log("Idle ¾÷µ«!");
     }
 }
