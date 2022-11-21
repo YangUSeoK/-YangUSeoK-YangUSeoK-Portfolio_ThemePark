@@ -14,8 +14,13 @@ public class Enemy_Listener : Enemy
     {
         get { return m_TarcePlayer; }
     }
+<<<<<<< HEAD
     private Alert_Listener m_Alert;
     public Alert_Listener Alert
+=======
+    private Concentration_Listener m_Alert;
+    public Concentration_Listener Alert
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
     {
         get { return m_Alert; }
     }
@@ -31,7 +36,11 @@ public class Enemy_Listener : Enemy
         base.Awake();
         m_Idle = new Idle_Listener(this);
         m_TarcePlayer = new Trace_Listener(this);
+<<<<<<< HEAD
         m_Alert = new Alert_Listener(this);
+=======
+        m_Alert = new Concentration_Listener(this);
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
         m_Attack = new Attack(this);
     }
 
@@ -44,7 +53,11 @@ public class Enemy_Listener : Enemy
     {
     }
 
+<<<<<<< HEAD
     public override void SetAlert()
+=======
+    public override void SetConcentration()
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
     {
     }
 
