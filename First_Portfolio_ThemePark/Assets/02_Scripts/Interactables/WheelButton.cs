@@ -9,12 +9,12 @@ public class WheelButton : MonoBehaviour
     [SerializeField] float m_RestorDamping = 10f;
     private Vector3 m_InitPos;
     private bool mbIsPressing = false;
-    private AudioSource buttonAudio;
+    private AudioSource m_ButtonAudio;
 
     private void Start()
     {
         m_InitPos = transform.position;
-        buttonAudio = GetComponent<AudioSource>();
+        m_ButtonAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class WheelButton : MonoBehaviour
 
         if (coll.gameObject.tag == "TRIGGER")
         {
-            buttonAudio.PlayOneShot(buttonAudio.clip);
+            m_ButtonAudio.PlayOneShot(m_ButtonAudio.clip);
             mbIsPressed = !mbIsPressed;
         }
     }
