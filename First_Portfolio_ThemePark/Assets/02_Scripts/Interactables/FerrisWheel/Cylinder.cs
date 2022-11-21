@@ -5,24 +5,27 @@ using UnityEngine;
 public class Cylinder : MonoBehaviour
 {
     [SerializeField] Collider[] m_Colliders;
-    [SerializeField] Transform m_player;
-    Vector3 m_CenterPos;
+    [HideInInspector] public Transform Player;
+
     private void Awake()
     {
         m_Colliders = GetComponents<Collider>();
     }
 
-    private void Start()
-    {
-        m_CenterPos = transform.position + new Vector3(0f, 27f, 0f);
-    }
-
     private void Update()
     {
-        if (Vector3.Distance(transform.position, m_player.position) < 3f)
-            ActivateColl();
-        else
-            DeactivateColl();
+        TrunColl();
+    }
+
+    void TrunColl()
+    {
+        if (Player != null)
+        {
+            if (Vector3.Distance(transform.position, Player.position) < 3f)
+                ActivateColl();
+            else
+                DeactivateColl();
+        }
     }
 
     void ActivateColl()
