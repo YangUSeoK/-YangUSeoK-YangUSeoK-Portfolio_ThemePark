@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Concentration_Slaughter : EnemyState
 {
-    public Concentration_Slaughter(Enemy _enemy) : base("Alert", _enemy) { }
+    public Concentration_Slaughter(Enemy _enemy) : base("Concentration", _enemy) { }
 
     private Vector3 m_LightPos = Vector3.zero;
     private Transform m_FlashTr = null;
