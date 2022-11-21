@@ -26,10 +26,10 @@ public class Enemy_Slaughter : Enemy
     {
         get { return m_TracePlayer; }
     }
-    private Alert_Slaughter m_Alert = null;
-    public Alert_Slaughter Alert
+    private Concentration_Slaughter m_Concentration = null;
+    public Concentration_Slaughter Alert
     {
-        get { return m_Alert; }
+        get { return m_Concentration; }
     }
     private Attack m_Attack = null;
     public Attack Attack
@@ -57,7 +57,7 @@ public class Enemy_Slaughter : Enemy
         m_Patrol = new Patrol_Slaughter(this);
         m_TraceLight = new TraceLight_Slaughter(this);
         m_TracePlayer = new TracePlayer_Slaughter(this);
-        m_Alert = new Alert_Slaughter(this);
+        m_Concentration = new Concentration_Slaughter(this);
         m_Attack = new Attack(this);
 
         m_FOV = GetComponent<FOV>();
@@ -93,11 +93,11 @@ public class Enemy_Slaughter : Enemy
         m_TracePlayer.PlayerPos = m_PlayerTr.position;
     }
 
-    public override void SetAlert()
+    public override void SetConcentration()
     {
-        m_Alert.FOV = m_FOV;
-        m_Alert.Agent = m_Agent;
-        m_Alert.MoveSpeed = m_AlertSpeed;
+        m_Concentration.FOV = m_FOV;
+        m_Concentration.Agent = m_Agent;
+        m_Concentration.MoveSpeed = m_AlertSpeed;
     }
 
     public override void SetAttack()
