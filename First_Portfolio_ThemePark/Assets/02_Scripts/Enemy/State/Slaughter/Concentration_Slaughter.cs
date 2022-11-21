@@ -12,15 +12,15 @@ public class Concentration_Slaughter : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Alert ÀÔÀå!");
-        Debug.Log("Á»ºñ°¡ ÁÖÀ§¸¦ »ìÇÌ´Ï´Ù.");
+        Debug.Log("Alert ï¿½ï¿½ï¿½ï¿½!");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´Ï´ï¿½.");
         m_Enemy.SetConcentration();
         m_Timer = 0f;
     }
 
     public override void ExitState()
     {
-        Debug.Log("Alert ÅðÀå!");
+        Debug.Log("Alert ï¿½ï¿½ï¿½ï¿½!");
     }
 
     public override void Action()
@@ -32,22 +32,22 @@ public class Concentration_Slaughter : EnemyState
     {
         float dist = Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position);
 
-        // ÇÃ·¹ÀÌ¾î°¡ ¹üÀ§¾È¿¡ µé¾î¿ÔÀ¸¸é
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (m_FOV.IsInFOV(m_Enemy.AlertDetectRange, m_Enemy.AlertDetectAngle, LayerMask.NameToLayer("PLAYER"))
             && m_FOV.IsLookDirect(m_Enemy.PlayerTr, m_Enemy.PatrolPlayerDetectRange, LayerMask.NameToLayer("PLAYER")))
         {
-            Debug.Log("°Å±â ÀÖ¾ú±¸³ª!");
+            Debug.Log("ï¿½Å±ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½!");
 
             m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
             m_Timer = 0f;
             return;
         }
 
-        // ºûÀÌ ¹üÀ§¾È¿¡ µé¾î¿ÔÀ¸¸é
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (m_FOV.IsInFovWithRayCheckDirect(m_Enemy.AlertDetectRange, m_Enemy.AlertDetectAngle, 
             "LIGHT", m_FOV.mLayerMask, ref m_LightPos, ref m_FlashTr))
         {
-            Debug.Log("ºûÀ» µû¶ó°£´Ù..");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ó°£´ï¿½..");
             (m_Enemy as Enemy_Slaughter).SetToTraceLight(m_FlashTr, m_LightPos);
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).TraceLight);
             m_Timer = 0f;

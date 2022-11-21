@@ -1,11 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:First_Portfolio_ThemePark/Assets/04_Materials/Item/Bottle/Mesh/Bottle_Beer.fbx.meta
-guid: cda73b9132aaa4e4cb0dd2a88220e529
-ModelImporter:
-  serializedVersion: 21300
-  internalIDToNameTable: []
-========
-guid: 3eaff2a6627fdbc47a616339a04b17d6
+guid: f3ef915e8c2c586498b53ea8d534909e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -15,23 +9,18 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: mixamo.com
->>>>>>>> 351fdf92a0b8f7cb4c73bf856c6d3cdae009720a:First_Portfolio_ThemePark/Assets/05_Models/Zomb1/zombie-idle-animation/source/Idle@Zombie Biting.fbx.meta
   externalObjects: {}
   materials:
-    materialImportMode: 0
-    materialName: 0
+    materialImportMode: 1
+    materialName: 3
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-<<<<<<<< HEAD:First_Portfolio_ThemePark/Assets/04_Materials/Item/Bottle/Mesh/Bottle_Beer.fbx.meta
     removeConstantScaleCurves: 0
-========
-    removeConstantScaleCurves: 1
->>>>>>>> 351fdf92a0b8f7cb4c73bf856c6d3cdae009720a:First_Portfolio_ThemePark/Assets/05_Models/Zomb1/zombie-idle-animation/source/Idle@Zombie Biting.fbx.meta
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -57,17 +46,12 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
+    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
-<<<<<<<< HEAD:First_Portfolio_ThemePark/Assets/04_Materials/Item/Bottle/Mesh/Bottle_Beer.fbx.meta
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 0
     fileIdsGeneration: 1
-========
-    nodeNameCollisionStrategy: 1
-    fileIdsGeneration: 2
->>>>>>>> 351fdf92a0b8f7cb4c73bf856c6d3cdae009720a:First_Portfolio_ThemePark/Assets/05_Models/Zomb1/zombie-idle-animation/source/Idle@Zombie Biting.fbx.meta
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -80,7 +64,7 @@ ModelImporter:
     minBoneWeight: 0.001
     optimizeBones: 1
     meshOptimizationFlags: -1
-    indexFormat: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -92,9 +76,9 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
-    normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
@@ -117,16 +101,11 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 0
+  animationType: 1
   humanoidOversampling: 1
   avatarSetup: 0
-<<<<<<<< HEAD:First_Portfolio_ThemePark/Assets/04_Materials/Item/Bottle/Mesh/Bottle_Beer.fbx.meta
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   remapMaterialsIfMaterialImportModeIsNone: 1
-========
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
->>>>>>>> 351fdf92a0b8f7cb4c73bf856c6d3cdae009720a:First_Portfolio_ThemePark/Assets/05_Models/Zomb1/zombie-idle-animation/source/Idle@Zombie Biting.fbx.meta
   additionalBone: 0
   userData: 
   assetBundleName: 
