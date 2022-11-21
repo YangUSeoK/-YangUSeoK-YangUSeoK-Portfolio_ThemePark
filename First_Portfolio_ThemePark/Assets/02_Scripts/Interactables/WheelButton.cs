@@ -9,12 +9,28 @@ public class WheelButton : MonoBehaviour
     [SerializeField] float m_RestorDamping = 10f;
     private Vector3 m_InitPos;
     private bool mbIsPressing = false;
+<<<<<<< HEAD
     private AudioSource m_ButtonAudio;
+=======
+<<<<<<< HEAD
+    private AudioSource buttonAudio;
+=======
+    private AudioSource m_ButtonAudio;
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
 
     private void Start()
     {
         m_InitPos = transform.position;
+<<<<<<< HEAD
         m_ButtonAudio = GetComponent<AudioSource>();
+=======
+<<<<<<< HEAD
+        buttonAudio = GetComponent<AudioSource>();
+=======
+        m_ButtonAudio = GetComponent<AudioSource>();
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
     }
 
     private void Update()
@@ -34,7 +50,15 @@ public class WheelButton : MonoBehaviour
 
         if (coll.gameObject.tag == "TRIGGER")
         {
+<<<<<<< HEAD
             m_ButtonAudio.PlayOneShot(m_ButtonAudio.clip);
+=======
+<<<<<<< HEAD
+            buttonAudio.PlayOneShot(buttonAudio.clip);
+=======
+            m_ButtonAudio.PlayOneShot(m_ButtonAudio.clip);
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
             mbIsPressed = !mbIsPressed;
         }
     }

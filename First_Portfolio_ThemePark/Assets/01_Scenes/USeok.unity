@@ -38,7 +38,15 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+=======
+<<<<<<< HEAD
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +131,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
 --- !u!1001 &31122158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,6 +201,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3707ec11ea8bbbf45950d96b4c9c97a1, type: 3}
+<<<<<<< HEAD
+=======
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
 --- !u!1 &369007357
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +299,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
 --- !u!1001 &513283477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,6 +441,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0efe9963b09645f45a109300ee41e9e1, type: 3}
+<<<<<<< HEAD
+=======
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
 --- !u!1 &656937609
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +529,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &670651540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0efe9963b09645f45a109300ee41e9e1, type: 3}
@@ -528,6 +555,10 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
 --- !u!1001 &1125960364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -609,3 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de30046dad408e479986dd260b4bb9f, type: 3}
+<<<<<<< HEAD
+=======
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f

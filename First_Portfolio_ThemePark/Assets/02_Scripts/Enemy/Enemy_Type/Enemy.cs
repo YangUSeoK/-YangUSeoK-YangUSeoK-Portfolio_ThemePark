@@ -155,7 +155,15 @@ public abstract class Enemy : MonoBehaviour
 
     public abstract void SetPatrol();
     public abstract void SetTracePlayer();
+<<<<<<< HEAD
     public abstract void SetConcentration();
+=======
+<<<<<<< HEAD
+    public abstract void SetAlert();
+=======
+    public abstract void SetConcentration();
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
     public abstract void SetAttack();
 
 

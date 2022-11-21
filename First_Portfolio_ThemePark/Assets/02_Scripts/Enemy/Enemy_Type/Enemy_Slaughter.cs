@@ -26,8 +26,18 @@ public class Enemy_Slaughter : Enemy
     {
         get { return m_TracePlayer; }
     }
+<<<<<<< HEAD
     private Concentration_Slaughter m_Concentration = null;
     public Concentration_Slaughter Alert
+=======
+<<<<<<< HEAD
+    private Alert_Slaughter m_Alert = null;
+    public Alert_Slaughter Alert
+=======
+    private Concentration_Slaughter m_Alert = null;
+    public Concentration_Slaughter Alert
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
     {
         get { return m_Concentration; }
     }
@@ -57,7 +67,15 @@ public class Enemy_Slaughter : Enemy
         m_Patrol = new Patrol_Slaughter(this);
         m_TraceLight = new TraceLight_Slaughter(this);
         m_TracePlayer = new TracePlayer_Slaughter(this);
+<<<<<<< HEAD
         m_Concentration = new Concentration_Slaughter(this);
+=======
+<<<<<<< HEAD
+        m_Alert = new Alert_Slaughter(this);
+=======
+        m_Alert = new Concentration_Slaughter(this);
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
         m_Attack = new Attack(this);
 
         m_FOV = GetComponent<FOV>();
@@ -93,7 +111,15 @@ public class Enemy_Slaughter : Enemy
         m_TracePlayer.PlayerPos = m_PlayerTr.position;
     }
 
+<<<<<<< HEAD
     public override void SetConcentration()
+=======
+<<<<<<< HEAD
+    public override void SetAlert()
+=======
+    public override void SetConcentration()
+>>>>>>> 34d6d22bc61a5f9b25fd283e99d3e323aa7749ca
+>>>>>>> 816907dcb86a33c36b3874d1c706bfa6a6bc7f3f
     {
         m_Concentration.FOV = m_FOV;
         m_Concentration.Agent = m_Agent;
