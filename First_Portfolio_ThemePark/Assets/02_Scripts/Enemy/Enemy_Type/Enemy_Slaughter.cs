@@ -5,8 +5,17 @@ using UnityEngine;
 
 public class Enemy_Slaughter : Enemy
 {
-    // EnemyManager°¡ ¸Ô¿©Áà¾ß ÇÔ
-    [SerializeField] protected FlagManager m_FlagManager;
+
+    public delegate void VoidVoidDelegate(Enemy_Slaughter _caller);
+    VoidVoidDelegate callZombiesAroundDelegate = null;
+
+
+    // EnemyManager°¡ ¸Ô¿©Áà¾ß ÇÔ => 20221122 ¾ç¿ì¼® : ¿Ï
+    protected Flag[] m_Flags;
+    public Flag[] Flags
+    {
+        set { m_Flags = value; }
+    }
 
     // EnemyState, ÇÁ·ÎÆÛÆ¼
     #region EnemyState
@@ -73,7 +82,7 @@ public class Enemy_Slaughter : Enemy
         m_Patrol.FOV = m_FOV;
         m_Patrol.Agent = m_Agent;
         m_Patrol.MoveSpeed = m_PatrolSpeed;
-        m_Patrol.Flags = m_FlagManager.Flags;
+        m_Patrol.Flags = m_Flags;
     }
 
     public void SetTraceLight()
@@ -97,7 +106,7 @@ public class Enemy_Slaughter : Enemy
     {
         m_Concentration.FOV = m_FOV;
         m_Concentration.Agent = m_Agent;
-        m_Concentration.MoveSpeed = m_AlertSpeed;
+        m_Concentration.MoveSpeed = m_ConcentrationSpeed;
     }
 
     public override void SetAttack()
@@ -114,4 +123,21 @@ public class Enemy_Slaughter : Enemy
     {
     }
 
+    public void CallNearZombie()
+    {
+        float waitTime = 1f;
+        StartCoroutine(CallNearZombieWaitSecondCoroutine(waitTime));
+    }
+    
+    private IEnumerator CallNearZombieWaitSecondCoroutine(float _waitTime)
+    {
+        yield return new WaitForSeconds(_waitTime);
+        callZombiesAroundDelegate?.Invoke(this);
+    }
+
+    public void SetDelegate(VoidVoidDelegate _callZombiesAroundCallback)
+    {
+        //ZombieFactory.SetTracePlayer
+        callZombiesAroundDelegate = _callZombiesAroundCallback;
+    }
 }

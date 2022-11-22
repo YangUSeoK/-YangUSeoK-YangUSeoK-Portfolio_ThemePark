@@ -16,10 +16,10 @@ public abstract class Enemy : MonoBehaviour
         get { return m_PatrolSpeed; }
     }
 
-    [SerializeField] protected float m_AlertSpeed;
+    [SerializeField] protected float m_ConcentrationSpeed;
     public float AlertSpeed
     {
-        get { return m_AlertSpeed; }
+        get { return m_ConcentrationSpeed; }
     }
 
     [SerializeField] protected float m_TracePlayerSpeed;
@@ -83,10 +83,11 @@ public abstract class Enemy : MonoBehaviour
 
     [Space]
     [Header ("EX")]
-    [SerializeField] protected Transform m_PlayerTr = null; // EnemyManager가 생성할때 플레이어 먹이면 됨.
+    protected Transform m_PlayerTr = null; // EnemyManager가 생성할때 플레이어 먹이면 됨.  20221122 양우석 : 완
     public Transform PlayerTr
     {
         get { return m_PlayerTr; }
+        set { m_PlayerTr = value; }
     }
 
     protected NavMeshAgent m_Agent;
@@ -113,6 +114,10 @@ public abstract class Enemy : MonoBehaviour
 
 
     protected EnemyState m_CurState = null;
+    public EnemyState CurState
+    {
+        get { return m_CurState; }
+    }
     protected Animator m_Anim = null;
     public Animator Anim
     {

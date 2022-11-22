@@ -12,15 +12,16 @@ public class Concentration_Slaughter : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Alert 입장!");
+        Debug.Log("Concentration 입장!");
         Debug.Log("좀비가 주위를 살핍니다.");
         m_Enemy.SetConcentration();
         m_Timer = 0f;
+        m_Enemy.Anim.SetTrigger("IsConcentration");
     }
 
     public override void ExitState()
     {
-        Debug.Log("Alert 퇴장!");
+        Debug.Log("Concentration 퇴장!");
     }
 
     public override void Action()
@@ -64,6 +65,6 @@ public class Concentration_Slaughter : EnemyState
         {
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).Patrol);
         }
-        Debug.Log($"Alert : {m_Timer}");
+        Debug.Log($"Concentration : {m_Timer}");
     }
 }

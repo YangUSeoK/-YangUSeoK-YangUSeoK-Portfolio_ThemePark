@@ -8,21 +8,21 @@ public class Concentration_Listener : EnemyState
  
     public override void EnterState()
     {
-        Debug.Log("Alert ÀÔÀå!");
+        Debug.Log("Concentration ÀÔÀå!");
     }
 
     public override void ExitState()
     {
-        Debug.Log("Alert ÅðÀå!");
+        Debug.Log("Concentration ÅðÀå!");
     }
 
     public override void Action()
     {
-        Debug.Log("Alert ¹°¸®¾÷µ«!");
+        Debug.Log("Concentration ¾×¼Ç!");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Alert ¾÷µ«!");
+        Debug.Log("Concentration ¾÷µ«!");
     }
 }
