@@ -16,7 +16,6 @@ public class EnemyManager : MonoBehaviour
     {
         foreach(Enemy enemy in mEnemys)
         {
-            enemy.GetComponent<EnemyMove>().Agent.isStopped = true;
         }
     }
 }
