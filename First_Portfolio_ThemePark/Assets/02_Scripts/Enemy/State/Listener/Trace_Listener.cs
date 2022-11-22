@@ -9,12 +9,15 @@ public class Trace_Listener : EnemyState
     public override void EnterState()
     {
         Debug.Log("Trace 입장!");
+        // 소리지르기
+
         m_Enemy.Agent.destination = (m_Enemy as Enemy_Listener).SoundPos;
     }
 
     public override void ExitState()
     {
         Debug.Log("Trace 퇴장!");
+        // 소리지르고 주변 둘러보기 애니메이션
     }
 
     public override void Action()

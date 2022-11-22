@@ -162,8 +162,6 @@ public abstract class Enemy : MonoBehaviour
         m_CurState.EnterState();
     }
 
-    protected virtual EnemyState GetInitialState()
-    {
-        return null;
-    }
+    protected abstract EnemyState GetInitialState();
+    
 }
