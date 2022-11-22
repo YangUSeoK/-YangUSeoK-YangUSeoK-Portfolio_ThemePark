@@ -28,8 +28,9 @@ public class Patrol_Slaughter : EnemyState
         // 정찰루트가 없으면 설정해준다.
         if (m_Flags == null)
         {
-            m_Enemy.SetPatrol();
+            (m_Enemy as Enemy_Slaughter).SetPatrol();
         }
+        m_Enemy.Anim.SetTrigger("isPatrol");
     }
 
     public override void ExitState()
@@ -43,11 +44,7 @@ public class Patrol_Slaughter : EnemyState
         if (m_Agent.remainingDistance <= 0.5f)
         {
             // 인덱스가 끝번호까지 가면 다시 처음으로. %랑 같은거
-            ++mNextIdx;
-            if (mNextIdx >= m_Flags.Length)
-            {
-                mNextIdx -= m_Flags.Length;
-            }
+            mNextIdx = Random.Range(0,m_Flags.Length);
             PatrollFlags();
         }
     }

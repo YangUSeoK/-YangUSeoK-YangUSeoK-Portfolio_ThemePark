@@ -5,16 +5,11 @@ using UnityEngine;
 public class FlagManager : MonoBehaviour
 {
 
-    [SerializeField]
-    private Flag[] m_Flags = null;
+    [SerializeField] private Flag[] m_Flags = null;
     public Flag[] Flags
     {
-        get
-        {
-            return m_Flags;
-        }
+        get { return m_Flags; }
     }
-
 
     private void Awake()
     {

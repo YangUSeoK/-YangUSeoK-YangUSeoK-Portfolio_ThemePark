@@ -6,7 +6,9 @@ using UnityEngine;
 public class TracePlayer_Slaughter : EnemyState
 {
     public TracePlayer_Slaughter(Enemy _enemy) : base("TracePlayer", _enemy) { }
+
     
+
     private Vector3 m_PlayerPos = Vector3.zero;
     public Vector3 PlayerPos
     {
@@ -23,6 +25,9 @@ public class TracePlayer_Slaughter : EnemyState
         (m_Enemy as Enemy_Slaughter).SetTracePlayer();
         m_Agent.destination = m_PlayerPos;
         m_Timer = 0f;
+        m_Enemy.Anim.SetTrigger("IsTracePlayer");
+        // 주변 좀비 부르는 함수
+        (m_Enemy as Enemy_Slaughter).CallNearZombie();
     }
 
     public override void ExitState()
@@ -85,11 +90,5 @@ public class TracePlayer_Slaughter : EnemyState
                 m_Enemy.SetState((m_Enemy as Enemy_Slaughter).Alert);
             }
         }
-
-
-
-
     }
-
-
 }
