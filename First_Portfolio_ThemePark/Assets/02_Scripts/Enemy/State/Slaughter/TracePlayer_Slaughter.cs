@@ -87,7 +87,7 @@ public class TracePlayer_Slaughter : EnemyState
             if (m_Timer >= 5f)
             {
                 Debug.Log("¾îµð°¬Áö?");
-                m_Enemy.SetState((m_Enemy as Enemy_Slaughter).Alert);
+                m_Enemy.SetState((m_Enemy as Enemy_Slaughter).Concentration);
             }
         }
     }

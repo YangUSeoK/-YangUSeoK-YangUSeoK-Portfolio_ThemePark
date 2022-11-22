@@ -63,7 +63,7 @@ public class TraceLight_Slaughter : EnemyState
         if (Vector3.Distance(new Vector3(m_LightPos.x, m_Enemy.transform.position.y, m_LightPos.z), m_Enemy.transform.position) <= 0.3f)
         {
             Debug.Log("아무것도 없나?");
-            m_Enemy.SetState((m_Enemy as Enemy_Slaughter).Alert);
+            m_Enemy.SetState((m_Enemy as Enemy_Slaughter).Concentration);
         }
     }
 
