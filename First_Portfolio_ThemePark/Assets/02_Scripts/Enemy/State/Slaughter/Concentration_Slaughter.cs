@@ -14,7 +14,7 @@ public class Concentration_Slaughter : EnemyState
     {
         Debug.Log("Concentration 입장!");
         Debug.Log("좀비가 주위를 살핍니다.");
-        m_Enemy.SetConcentration();
+        (m_Enemy as Enemy_Slaughter).SetConcentration();
         m_Timer = 0f;
         m_Enemy.Anim.SetTrigger("IsConcentration");
     }

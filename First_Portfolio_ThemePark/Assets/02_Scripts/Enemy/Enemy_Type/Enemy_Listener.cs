@@ -50,26 +50,15 @@ public class Enemy_Listener : Enemy
         return m_Idle;
     }
 
-    public void SetIdle()
-    {
-
-    }
-
-    public void SetTraceTarget()
-    {
-    }
-
-    public void SetConcentration()
-    {
-    }
-
-    public void SetAttack()
-    {
-    }
-
-    public void Listen(Vector3 _soundPos)
+    public void Listen(Vector3 _soundPos, Transform _tr)
     {
         m_SoundPos = _soundPos;
+
+        if (_tr.CompareTag("PLAYER"))
+        {
+            m_PlayerTr = _tr;
+        }
+
         SetState(m_TraceTarget);
     }
 

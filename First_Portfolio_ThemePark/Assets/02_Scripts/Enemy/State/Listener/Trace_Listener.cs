@@ -22,13 +22,12 @@ public class Trace_Listener : EnemyState
 
     public override void Action()
     {
-        Debug.Log("Trace ¹°¸®¾÷µ«!");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Trace ¾÷µ«!");
-        if (Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position) <= m_Enemy.AttackRange)
+
+        if (m_Enemy.PlayerTr != null && Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position) <= m_Enemy.AttackRange)
         {
             m_Enemy.SetState((m_Enemy as Enemy_Listener).Attack);
         }

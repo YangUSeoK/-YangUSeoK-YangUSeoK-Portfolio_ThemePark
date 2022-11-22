@@ -6,28 +6,26 @@ public class SlaughterFactory : MonoBehaviour
 {
     // 게임매니저가 플레이어 먹여줘야함
     [SerializeField] private Transform m_PlayerTr = null;
-    [SerializeField] private List<Enemy_Slaughter> mEnemyList = null;  // 디버그용
+    private List<Enemy_Slaughter> mEnemyList = null;  
     private Flag[] m_Flags = null;
+    private SpawnPoint[] m_SpawnPoints = null;
     private bool mIsActive = false;
     
     [SerializeField] private Enemy_Slaughter m_Enemy = null;
-    [SerializeField] private int m_SpawnCnt = 3;
     [SerializeField] private float m_SpawnRange = 30f;
+    [SerializeField] private float m_UnspawnRange = 60f;
 
 
 
-    private void Awake()
-    {
-        
-        
-    }
     private void Start()
     {
+        mEnemyList = new List<Enemy_Slaughter>();
         m_Flags = GetComponentInChildren<FlagManager>().Flags;
-        Debug.Log(m_Flags.Length);
-        for (int i = 0; i < m_SpawnCnt; ++i)
+        m_SpawnPoints = GetComponentInChildren<SpawnPointManager>().SpawnPoints;
+        for (int i = 0; i < m_SpawnPoints.Length; ++i)
         {
-            InstantiateZombie(m_Flags[i].transform.position);
+            Debug.Log(i);
+            InstantiateZombie(m_SpawnPoints[i].transform.position);
         }
     }
 
@@ -42,6 +40,16 @@ public class SlaughterFactory : MonoBehaviour
                 mIsActive = true;
             }
         }
+
+        // 현재 스폰 되있는 상태고 플레이어가 일정 거리 이상으로 멀어지면 SetActive(false)
+        if(mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) >= m_UnspawnRange)
+        {
+            for(int i = 0; i < mEnemyList.Count; ++i)
+            {
+                mEnemyList[i].gameObject.SetActive(false);
+                mIsActive = false;
+            }
+        }
     }
 
     private void InstantiateZombie(Vector3 _spawnPoint)
@@ -51,7 +59,7 @@ public class SlaughterFactory : MonoBehaviour
         enemy.PlayerTr = m_PlayerTr;
         enemy.Flags = m_Flags;
         enemy.SetDelegate(SetTracePlayerNearZombie);
-        //enemy.gameObject.SetActive(false);
+        enemy.gameObject.SetActive(false);
     }
 
     private void SetTracePlayerNearZombie(Enemy_Slaughter _caller)

@@ -2241,7 +2241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PatrolSpeed: 2
-  m_AlertSpeed: 1
+  m_ConcentrationSpeed: 0
   m_TracePlayerSpeed: 3
   m_PatrolDetectRange: 20
   m_PatrolPlayerDetectRange: 10
@@ -2251,8 +2251,6 @@ MonoBehaviour:
   m_PatrolDetectAngle: 120
   m_AlertDetectAngle: 270
   m_TraceDetectAngle: 180
-  m_PlayerTr: {fileID: 0}
-  m_FlagManager: {fileID: 0}
 --- !u!195 &8915026554653739058
 NavMeshAgent:
   m_ObjectHideFlags: 0

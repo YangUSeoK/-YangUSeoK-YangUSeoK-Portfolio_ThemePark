@@ -9,7 +9,7 @@ public class Attack : EnemyState
     public override void EnterState()
     {
         Debug.Log("Attack ¿‘¿Â!");
-        m_Enemy.Anim.SetTrigger("IsAttack");
+        //m_Enemy.Anim.SetTrigger("IsAttack");
     }
 
     public override void ExitState()

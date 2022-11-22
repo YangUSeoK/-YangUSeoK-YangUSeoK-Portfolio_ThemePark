@@ -28,7 +28,7 @@ public class Patrol_Slaughter : EnemyState
         // 정찰루트가 없으면 설정해준다.
         if (m_Flags == null)
         {
-            m_Enemy.SetPatrol();
+            (m_Enemy as Enemy_Slaughter).SetPatrol();
         }
         m_Enemy.Anim.SetTrigger("isPatrol");
     }
