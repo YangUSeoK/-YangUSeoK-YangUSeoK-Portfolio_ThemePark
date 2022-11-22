@@ -6,8 +6,9 @@ TagManager:
   tags:
   - DOOR
   - BUTTON
-  - TRIGGER
   - PLAYER
+  - LIGHT
+  - FLASH
   layers:
   - Default
   - TransparentFX
@@ -16,10 +17,10 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
+  - PLAYER
+  - FLASH
+  - LIGHT
+  - OBSTACLE
   - 
   - 
   - 

@@ -113,11 +113,20 @@ public abstract class Enemy : MonoBehaviour
 
 
     protected EnemyState m_CurState = null;
+    protected Animator m_Anim = null;
+    public Animator Anim
+    {
+        get { return m_Anim; }
+    }
+
     #endregion
+
+
 
     protected virtual void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
+        m_Anim = GetComponent<Animator>();
     }
 
 

@@ -14,10 +14,10 @@ public class Enemy_Listener : Enemy
     {
         get { return m_TarcePlayer; }
     }
-    private Concentration_Listener m_Alert;
+    private Concentration_Listener m_Concentration;
     public Concentration_Listener Alert
     {
-        get { return m_Alert; }
+        get { return m_Concentration; }
     }
     private Attack m_Attack;
     public Attack Attack
@@ -31,7 +31,7 @@ public class Enemy_Listener : Enemy
         base.Awake();
         m_Idle = new Idle_Listener(this);
         m_TarcePlayer = new Trace_Listener(this);
-        m_Alert = new Concentration_Listener(this);
+        m_Concentration = new Concentration_Listener(this);
         m_Attack = new Attack(this);
     }
 

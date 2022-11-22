@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Concentration_Listener : EnemyState
 {
-    public Concentration_Listener(Enemy _enemy) : base("Alert", _enemy) { }
+    public Concentration_Listener(Enemy _enemy) : base("Concentration", _enemy) { }
  
     public override void EnterState()
     {
