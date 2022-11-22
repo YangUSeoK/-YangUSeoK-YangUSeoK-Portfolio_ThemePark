@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679833999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,7 +2599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,7 +2809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3229,7 +3229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834011
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,7 +3439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3649,7 +3649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3859,7 +3859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4069,7 +4069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &5905365271679834107
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,7 +4279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Colliders: []
-  m_player: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1 &6426468504797405887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4517,7 +4517,7 @@ GameObject:
   - component: {fileID: 4426294352502852610}
   - component: {fileID: 3857203217614994894}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ConnectedBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
