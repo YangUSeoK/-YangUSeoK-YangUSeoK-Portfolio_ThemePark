@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    // 20221114 ¾ç¿ì¼® : EnemyManager¿¡¼­ ¸Ô¿©¾ß ÇÔ
+    // 20221114 ï¿½ï¿½ì¼® : EnemyManagerï¿½ï¿½ï¿½ï¿½ ï¿½Ô¿ï¿½ï¿½ï¿½ ï¿½ï¿½
     [SerializeField] private FlagManager m_FlagManager = null;
     private Flag[] mFlags;
     private int mNextIdx = 0;
@@ -30,10 +30,10 @@ public class EnemyMove : MonoBehaviour
 
     private void Update()
     {
-        // ´ÙÀ½ °¥ °÷ °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (Agent.remainingDistance <= 0.5f)
         {
-            // ÀÎµ¦½º°¡ ³¡¹øÈ£±îÁö °¡¸é ´Ù½Ã Ã³À½À¸·Î. %¶û °°Àº°Å
+            // ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. %ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             ++mNextIdx;
             if (mNextIdx >= mFlags.Length)
             {
@@ -62,7 +62,7 @@ public class EnemyMove : MonoBehaviour
 
     public void patrollFlags()
     {
-        // °æ·Î °è»êÁßÀÏ ¶§´Â ¸®ÅÏ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Agent.isPathStale)
         {
             return;
