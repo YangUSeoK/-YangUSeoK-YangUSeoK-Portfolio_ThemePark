@@ -166,11 +166,4 @@ public abstract class Enemy : MonoBehaviour
     {
         return null;
     }
-
-    public abstract void SetPatrol();
-    public abstract void SetTracePlayer();
-    public abstract void SetConcentration();
-    public abstract void SetAttack();
-
-
 }

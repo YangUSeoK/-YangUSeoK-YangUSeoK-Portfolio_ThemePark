@@ -17,7 +17,7 @@ public class Enemy_Slaughter : Enemy
         set { m_Flags = value; }
     }
 
-    // EnemyState, 프로퍼티
+    // EnemyState 프로퍼티
     #region EnemyState
     private Patrol_Slaughter m_Patrol = null;
     public Patrol_Slaughter Patrol
@@ -77,7 +77,7 @@ public class Enemy_Slaughter : Enemy
         return m_Patrol;
     }
 
-    public override void SetPatrol()
+    public void SetPatrol()
     {
         m_Patrol.FOV = m_FOV;
         m_Patrol.Agent = m_Agent;
@@ -94,7 +94,7 @@ public class Enemy_Slaughter : Enemy
         m_TraceLight.FlashTr = m_FlashTr;
     }
 
-    public override void SetTracePlayer()
+    public void SetTracePlayer()
     {
         m_TracePlayer.FOV = m_FOV;
         m_TracePlayer.Agent = m_Agent;
@@ -102,14 +102,14 @@ public class Enemy_Slaughter : Enemy
         m_TracePlayer.PlayerPos = m_PlayerTr.position;
     }
 
-    public override void SetConcentration()
+    public void SetConcentration()
     {
         m_Concentration.FOV = m_FOV;
         m_Concentration.Agent = m_Agent;
         m_Concentration.MoveSpeed = m_ConcentrationSpeed;
     }
 
-    public override void SetAttack()
+    public void SetAttack()
     {
     }
 
