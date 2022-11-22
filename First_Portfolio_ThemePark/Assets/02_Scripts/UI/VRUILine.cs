@@ -21,31 +21,31 @@ public class VRUILine : MonoBehaviour
         lR.startWidth = 0.01f;
         lR.endWidth = 0.01f;
     }
-    void Update()//2022 11 15 ±èÁØ¿ì
+    void Update()//2022 11 15 ï¿½ï¿½ï¿½Ø¿ï¿½
     {
         ray = new Ray(Hand.position, Hand.rotation * Vector3.forward);
         //Debug.DrawRay(Hand.position, Hand.rotation * Vector3.forward * hitInfoDistance, Color.green);
-        DrawLineForward(Hand);//·¹ÀÌ·Î ¼± ±×¸®±â
+        DrawLineForward(Hand);//ï¿½ï¿½ï¿½Ì·ï¿½ ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
         if (Physics.Raycast(Hand.position, Hand.rotation * Vector3.forward, out hitInfo,hitInfoDistance))
         {
-            Debug.Log("Ã¹¹øÂ° Á¶°Ç(·¹ÀÌÄ³½ºÆ®) ÁøÀÔÇÔ");
-            if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//UI¿¡ È÷Æ®ÇÒ °æ¿ì
+            Debug.Log("Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//UIï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½
             {
-                Debug.Log("µÎ¹øÂ° Á¶°Ç(·¹ÀÌ¾î Á¶°Ç °Ë»ç) ÁøÀÔÇÔ");
+                Debug.Log("ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 lR.gameObject.SetActive(true);
                 MousePointer.gameObject.SetActive(true);
                 Button btn = hitInfo.transform.GetComponent<Button>();
                 MousePointer.position = btn.transform.position;
                 if (OVRInput.GetDown(OVRInput.Button.Any) && btn != null)
                 {
-                    Debug.Log("¼¼¹øÂ° Á¶°Ç(¶óÀÎ·£´õ·¯, ¹öÆ° ÀÔ·Â) ÁøÀÔÇÔ");
-                    Debug.Log("³×¹øÂ° Á¶°Ç(¹öÆ°ÀÌ nullÀÌ ¾Æ´Ò ¶§) ÁøÀÔÇÔ");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Æ° ï¿½Ô·ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                    Debug.Log("ï¿½×¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Æ°ï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     btn.onClick.Invoke();
                 }
             }
             else
             {
-                Debug.Log("µÎ¹øÂ° Á¶°ÇÀÇ else ÁøÀÔÇÔ");
+                Debug.Log("ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ else ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 MousePointer.transform.gameObject.SetActive(false);
             }
         }
