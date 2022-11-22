@@ -9,6 +9,7 @@ TagManager:
   - PLAYER
   - LIGHT
   - FLASH
+  - TRIGGER
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - FLASH
   - LIGHT
   - OBSTACLE
-  - 
-  - 
+  - DOOR
+  - FRAME
   - 
   - 
   - 
