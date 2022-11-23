@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Patrol_Slaughter : EnemyState
 {
-    // »ý¼ºÀÚ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public Patrol_Slaughter(Enemy _enemy) : base("Patrol", _enemy) { }
 
     
@@ -17,19 +17,19 @@ public class Patrol_Slaughter : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Patrol ÀÔÀå!");
+       // Debug.Log("Patrol ï¿½ï¿½ï¿½ï¿½!");
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
         m_Enemy.Anim.SetTrigger("IsPatrol");
     }
 
     public override void ExitState()
     {
-        Debug.Log("Patrol ÅðÀå!");
+       // Debug.Log("Patrol ï¿½ï¿½ï¿½ï¿½!");
     }
 
     public override void Action()
     {
-        // ´ÙÀ½ °¥ °÷ °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (m_Enemy.Agent.remainingDistance <= 0.5f)
         {
             mNextIdx = Random.Range(0,(m_Enemy as Enemy_Slaughter).Flags.Length);
@@ -41,23 +41,23 @@ public class Patrol_Slaughter : EnemyState
     {
         float dist = Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position);
 
-        // ÇÃ·¹ÀÌ¾î°¡ ¹üÀ§¾È¿¡ µé¾î¿ÔÀ¸¸é
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFOV((m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, (m_Enemy as Enemy_Slaughter).PatrolDetectAngle, LayerMask.NameToLayer("PLAYER"))
             && (m_Enemy as Enemy_Slaughter).FOV.IsLookDirect(m_Enemy.PlayerTr, (m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, LayerMask.NameToLayer("PLAYER")))
         {
-            Debug.Log("ÀÎ°£ÀÌ´Ù!!");
+           // Debug.Log("ï¿½Î°ï¿½ï¿½Ì´ï¿½!!");
             m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
             return;
         }
 
-        // ºûÀÌ ¹üÀ§¾È¿¡ µé¾î¿ÔÀ¸¸é
-        // ¾îÂ÷ÇÇ µÎ¹ø °Ë»çÇØ¾ßÇÏ´Â°Å´Ï±î else if ¾È½áµµ °°´Ù.
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ ï¿½Ë»ï¿½ï¿½Ø¾ï¿½ï¿½Ï´Â°Å´Ï±ï¿½ else if ï¿½È½áµµ ï¿½ï¿½ï¿½ï¿½.
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFovWithRayCheckDirect((m_Enemy as Enemy_Slaughter).PatrolDetectRange, (m_Enemy as Enemy_Slaughter).PatrolDetectAngle,
             "LIGHT", (m_Enemy as Enemy_Slaughter).FOV.mLayerMask, ref m_LightPos, ref m_FlashTr)) 
         {
-            Debug.Log("ºûÀÌ´Ù!! ´©°¡ ÀÖ³ª?");
+           // Debug.Log("ï¿½ï¿½ï¿½Ì´ï¿½!! ï¿½ï¿½ï¿½ï¿½ ï¿½Ö³ï¿½?");
 
-            // ¶óÀÌÆ®Æ÷Áî, ÇÃ·¡½ÃTrÀ» Enemy_Slaughter¿¡ ³Ñ°ÜÁÜ. TraceLight¿¡¼­ »ç¿ëÇÒ °Í
+            // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½, ï¿½Ã·ï¿½ï¿½ï¿½Trï¿½ï¿½ Enemy_Slaughterï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½. TraceLightï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             (m_Enemy as Enemy_Slaughter).LightPos = m_LightPos;
             (m_Enemy as Enemy_Slaughter).FlashTr = m_FlashTr;
             
@@ -68,7 +68,7 @@ public class Patrol_Slaughter : EnemyState
 
     public void PatrollFlags()
     {
-        // °æ·Î °è»êÁßÀÏ ¶§´Â ¸®ÅÏ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (m_Enemy.Agent.isPathStale)
         {
             return;
