@@ -9,33 +9,37 @@ public class FOV : MonoBehaviour
     public float m_Angle = 120f;
     public float m_Range = 10f;
 
-
-    protected Transform m_TargetTr = null;
     protected int m_PlayerLayer = 0;
     public int PlayerLayer
     {
         get { return m_PlayerLayer; }
     }
+
     protected int m_ObstacleLayer = 0;
     public int ObstacleLayer
     {
         get { return m_ObstacleLayer; }
     }
+
     protected int m_LightLayer = 0;
     public int LightLayer
     {
         get { return m_LightLayer; }
     }
+
     protected int m_FlashLayer = 0;
     public int FlashLayer
     {
         get { return m_FlashLayer; }
     }
+
     protected int m_LayerMask = 0;
     public int mLayerMask
     {
         get { return m_LayerMask; }
     }
+
+    protected Transform m_TargetTr = null;
 
     protected virtual void Start()
     {

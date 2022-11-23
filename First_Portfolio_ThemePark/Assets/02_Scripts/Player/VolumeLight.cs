@@ -5,23 +5,21 @@ using UnityEngine;
 
 public class VolumeLight : MonoBehaviour
 {
-
-    // Ray 관련
     private Light m_Light = null;
-   
+
     // 20221115 양우석 : 좀비가 벽에 부딪힌 위치를 알기위해 만듬
     private List<Vector3> m_WallPosList = null;
     public List<Vector3> WallPosList
     {
         get { return m_WallPosList; }
     }
+
     private List<Vector3> m_LightVertList = null;
 
     // 레이를 쪼개는 비율. 클수록 잘게 쪼갠다
     [SerializeField] private int m_SubDivision = 100;
 
-
-    // Mesh 생성관련. 20221106 양우석 : 나중에 클래스 쪼갤 수도 있음.
+    // Mesh 생성관련. 20221106 양우석 : 나중에 클래스 쪼갤 수도 있음.  => 함수만 쪼갰음
     private Mesh mLightMesh = null;
     private MeshCollider m_MeshCollider = null;
 
@@ -30,28 +28,28 @@ public class VolumeLight : MonoBehaviour
         mLightMesh = new Mesh();
         m_Light = GetComponent<Light>();
         mLightMesh.name = "LightMesh";
-        GetComponentInChildren<MeshFilter>().mesh = mLightMesh;
+        GetComponentInChildren<MeshFilter>().mesh = mLightMesh; // 동적할당한 매쉬를 매쉬필터에 붙인다.
         m_MeshCollider = GetComponentInChildren<MeshCollider>();
-        m_MeshCollider.sharedMesh = mLightMesh;
+        m_MeshCollider.sharedMesh = mLightMesh; // 매쉬콜라이더에 사용될 매쉬를 붙인다.
 
-        m_LightVertList = new List<Vector3>(3 * m_SubDivision);
-        m_WallPosList = new List<Vector3>(3 * m_SubDivision);
+        m_LightVertList = new List<Vector3>(3 * m_SubDivision); // 레이를 쏠 원의 개수는 정해져 있으므로, 그 크기만큼을 동적할당해둔다.(최적화)
+        m_WallPosList = new List<Vector3>(3 * m_SubDivision);   // Vector3 = float x 3 => int * 3 * 기준원의 점 개수
     }
 
     private void LateUpdate()
     {
         DrawCone();
+        BuildMesh(m_LightVertList);
     }
 
     private void DrawCone()
     {
-        float n = 1f / (m_SubDivision);
+        float n = 1f / (m_SubDivision); // 반복문에서 쓰일거라서 나눗셈을 미리 계산해둔다. (최적화)
         float radius = Mathf.Tan((m_Light.spotAngle * 0.5f) * Mathf.Deg2Rad);
         float length = m_Light.range / Mathf.Cos(m_Light.spotAngle * 0.5f * Mathf.Deg2Rad);
-        Vector3 origCircleVert;
-        Vector3 newCircleVert;
+        Vector3 origCircleVert = Vector3.zero;
+        Vector3 newCircleVert = Vector3.zero;
 
-        // Vector3 = float x 3 =>         int * 3 * 기준원의 점 개수
         m_LightVertList.Clear();
         m_WallPosList.Clear();
         for (int i = 0; i < m_SubDivision; ++i)
@@ -61,7 +59,7 @@ public class VolumeLight : MonoBehaviour
             float x = Mathf.Cos(theta) * radius;
             float y = Mathf.Sin(theta) * radius;
 
-            origCircleVert = new Vector3(x, y, 1); //>> z축 중심으로 만든 원의 좌표
+            origCircleVert = new Vector3(x, y, 1); //>> (0,0,1)을 중심으로 xy평면에 평행한 원의 좌표
 
             // 회전행렬을 통해 회전시킨다.
             Quaternion rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
@@ -73,21 +71,17 @@ public class VolumeLight : MonoBehaviour
             //Debug.DrawLine(transform.position, CirclePointPos * length, Color.green);
 
 
-            // 이제 각각의 점 위치를 향해 length 길이만큼 레이를 쏘면 된다. 
+            // 회전된 각각의 점 위치를 향해 length 길이만큼 레이를 쏜다. 
             Vector3 raycastPoint = SetRaycastPoint(newCircleVert, length);
 
             m_LightVertList.Add(raycastPoint);
         }
-
-        BuildMesh(m_LightVertList);
     }
 
 
     // Vertex 리스트를 받아서 메쉬를 만들어준다.
     private void BuildMesh(List<Vector3> _lightVertList)
     {
-
-        // 20221106 양우석 : 메쉬 만드는 함수는 따로 쪼갤 것
         // +1 해주는 이유 : 맨 처음 시작점 개수를 추가해줘야 한다.
         int vertexCnt = _lightVertList.Count + 1;
         Vector3[] vertices = new Vector3[vertexCnt];
@@ -102,10 +96,10 @@ public class VolumeLight : MonoBehaviour
 
         for (int i = 0; i < vertexCnt - 1; ++i)
         {
-            // InverseTransformPoint : 로컬좌표 위치 받아오기.
+            // InverseTransformPoint : 월드좌표 -> 로컬좌표 위치 받아오기.
             vertices[i + 1] = transform.InverseTransformPoint(_lightVertList[i]);
 
-            // 배열맵핑으로 수정
+            // 배열맵핑
             if (i < vertexCnt - 2)
             {
                 triangles[i * 3] = 0;
@@ -146,16 +140,13 @@ public class VolumeLight : MonoBehaviour
     }
 
     // 각도를 수치로 입력받으면 내 현재 각도에서 그만큼 회전한 방향의 방향벡터를 반환한다. : 기준벡터
-    private Vector3 DirFromAngle(float _angleDegree, float _verticalAngleDegree, bool _angleIsGlobal)
+    private Vector3 DirFromDegree(float _angleDegree, float _verticalAngleDegree)
     {
-        if (!_angleIsGlobal)
-        {
-            _angleDegree += transform.eulerAngles.y;
-            _verticalAngleDegree += transform.eulerAngles.x;
-        }
+        _angleDegree += transform.eulerAngles.y;
+        _verticalAngleDegree += transform.eulerAngles.x;
 
 
-        // 20221108 양우석 : 해결했음.
+        // 20221108 양우석 : 위아래까지 다 구할 수 있도록 수정
         return new Vector3(Mathf.Cos((-_angleDegree + 90f) * Mathf.Deg2Rad),
                             Mathf.Tan(-_verticalAngleDegree * Mathf.Deg2Rad),
                             Mathf.Sin((-_angleDegree + 90f) * Mathf.Deg2Rad)).normalized;

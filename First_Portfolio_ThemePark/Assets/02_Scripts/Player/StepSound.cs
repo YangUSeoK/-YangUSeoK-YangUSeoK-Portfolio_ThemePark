@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StepSound : MonoBehaviour
 {
-    private float stepSound = 10f;
+    [SerializeField] private float stepSound = 50f;
 
     private void Update()
     {

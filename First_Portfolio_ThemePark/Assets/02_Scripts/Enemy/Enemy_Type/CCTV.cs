@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CCTV : MonoBehaviour
 {
+
     private bool mbIsTurnOn = true; // 20221118 양우석 : 나중에 cctv매니저 만들면 false로 해야함. 
     public bool IsTurnOn
     {
         set { mbIsTurnOn = value; }
     }
+
+    private Transform m_TargetTr = null;
+    private Vector3 m_OriAngle = Vector3.zero;
     private bool mbIsDetect = false;
-    private Vector3 m_OriAngle;
-    private Transform m_TargetTr;
 
     // Ray 관련
     private Light m_Light = null;
@@ -20,7 +22,7 @@ public class CCTV : MonoBehaviour
     // 레이를 쪼개는 비율. 클수록 잘게 쪼갠다
     [SerializeField] private int m_SubDivision = 10;
 
-
+    // CCTV가 경보를 발령하는데 까지 걸리는 시간
     [SerializeField] private float m_WarningTimer = 3f;
     
 

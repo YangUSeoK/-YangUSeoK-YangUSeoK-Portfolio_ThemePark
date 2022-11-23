@@ -9,6 +9,8 @@ public class Idle_Listener : EnemyState
     public override void EnterState()
     {
         Debug.Log("Idle 입장!");
+        m_Enemy.Agent.speed = 0f;
+        m_Enemy.Anim.SetTrigger("IsIdle");
     }
 
     public override void ExitState()
@@ -18,11 +20,9 @@ public class Idle_Listener : EnemyState
 
     public override void Action()
     {
-        Debug.Log("Idle 액션!");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Idle 업뎃!");
     }
 }

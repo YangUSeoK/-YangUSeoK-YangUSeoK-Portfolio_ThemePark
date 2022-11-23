@@ -5,25 +5,16 @@ using UnityEngine;
 
 public class Enemy_Slaughter : Enemy
 {
-
     public delegate void VoidVoidDelegate(Enemy_Slaughter _caller);
     VoidVoidDelegate callZombiesAroundDelegate = null;
 
-
-    // EnemyManager가 먹여줘야 함 => 20221122 양우석 : 완
-    protected Flag[] m_Flags;
-    public Flag[] Flags
-    {
-        set { m_Flags = value; }
-    }
-
-    // EnemyState 프로퍼티
     #region EnemyState
     private Patrol_Slaughter m_Patrol = null;
     public Patrol_Slaughter Patrol
     {
         get { return m_Patrol; }
     }
+
     private TraceLight_Slaughter m_TraceLight = null;
     public TraceLight_Slaughter TraceLight
     {
@@ -35,17 +26,80 @@ public class Enemy_Slaughter : Enemy
     {
         get { return m_TracePlayer; }
     }
+
     private Concentration_Slaughter m_Concentration = null;
-    public Concentration_Slaughter Alert
+    public Concentration_Slaughter Concentration
     {
         get { return m_Concentration; }
     }
+
     private Attack m_Attack = null;
     public Attack Attack
     {
         get { return m_Attack; }
     }
     #endregion
+
+    #region Inspector
+    [Space]
+    [Header("Range")]
+    [SerializeField] protected float m_PatrolDetectRange = 20f;
+    public float PatrolDetectRange
+    {
+        get { return m_PatrolDetectRange; }
+    }
+
+    [SerializeField] protected float m_PatrolPlayerDetectRange = 10f;
+    public float PatrolPlayerDetectRange
+    {
+        get { return m_PatrolPlayerDetectRange; }
+    }
+
+    [SerializeField] protected float m_ConcentrationDetectRange = 15f;
+    public float ConcentrationDetectRange
+    {
+        get { return m_ConcentrationDetectRange; }
+    }
+
+    [SerializeField] protected float m_TraceDetectRange = 17f;
+    public float TraceDetectRange
+    {
+        get { return m_TraceDetectRange; }
+    }
+
+    [SerializeField] protected float m_AttackRange = 1f;
+    public float AttackRange
+    {
+        get { return m_AttackRange; }
+    }
+
+    [Space]
+    [Header("Detect Angle")]
+    [SerializeField] protected float m_PatrolDetectAngle = 120f;
+    public float PatrolDetectAngle
+    {
+        get { return m_PatrolDetectAngle; }
+    }
+
+    [SerializeField] protected float m_AlertDetectAngle = 270f;
+    public float AlertDetectAngle
+    {
+        get { return m_AlertDetectAngle; }
+    }
+
+    [SerializeField] protected float m_TraceDetectAngle = 180f;
+    public float TraceDetectAngle
+    {
+        get { return m_TraceDetectAngle; }
+    }
+    #endregion
+
+    #region Member_variable
+    private FOV m_FOV = null;
+    public FOV FOV
+    {
+        get { return m_FOV; }
+    }
 
     private Transform m_FlashTr = null;
     public Transform FlashTr
@@ -54,11 +108,20 @@ public class Enemy_Slaughter : Enemy
         set { m_FlashTr = value; }
     }
 
-    // FOV
-    private FOV m_FOV = null;
+    protected Flag[] m_Flags;
+    public Flag[] Flags
+    {
+        get { return m_Flags; }
+        set { m_Flags = value; }
+    }
+    
     private Vector3 m_LightPos = Vector3.zero;
-
-   
+    public Vector3 LightPos
+    {
+        get { return m_LightPos; }
+        set { m_LightPos = value; }
+    }
+    #endregion
 
     protected override void Awake()
     {
@@ -75,42 +138,6 @@ public class Enemy_Slaughter : Enemy
     protected override EnemyState GetInitialState()
     {
         return m_Patrol;
-    }
-
-    public void SetPatrol()
-    {
-        m_Patrol.FOV = m_FOV;
-        m_Patrol.Agent = m_Agent;
-        m_Patrol.MoveSpeed = m_PatrolSpeed;
-        m_Patrol.Flags = m_Flags;
-    }
-
-    public void SetTraceLight()
-    {
-        m_TraceLight.FOV = m_FOV;
-        m_TraceLight.Agent = m_Agent;
-        m_TraceLight.MoveSpeed = m_PatrolSpeed;
-        m_TraceLight.LightPos = m_LightPos;
-        m_TraceLight.FlashTr = m_FlashTr;
-    }
-
-    public void SetTracePlayer()
-    {
-        m_TracePlayer.FOV = m_FOV;
-        m_TracePlayer.Agent = m_Agent;
-        m_TracePlayer.MoveSpeed = m_TracePlayerSpeed;
-        m_TracePlayer.PlayerPos = m_PlayerTr.position;
-    }
-
-    public void SetConcentration()
-    {
-        m_Concentration.FOV = m_FOV;
-        m_Concentration.Agent = m_Agent;
-        m_Concentration.MoveSpeed = m_ConcentrationSpeed;
-    }
-
-    public void SetAttack()
-    {
     }
 
     public void SetToTraceLight(Transform _flashTr, Vector3 _lightPos)

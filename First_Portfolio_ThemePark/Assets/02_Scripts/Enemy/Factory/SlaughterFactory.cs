@@ -11,7 +11,7 @@ public class SlaughterFactory : MonoBehaviour
     private SpawnPoint[] m_SpawnPoints = null;
     private bool mIsActive = false;
     
-    [SerializeField] private Enemy_Slaughter m_Enemy = null;
+    [SerializeField] private Enemy_Slaughter m_Enemy = null;    // 소환할 프리팹
     [SerializeField] private float m_SpawnRange = 30f;
     [SerializeField] private float m_UnspawnRange = 60f;
 
@@ -22,6 +22,7 @@ public class SlaughterFactory : MonoBehaviour
         mEnemyList = new List<Enemy_Slaughter>();
         m_Flags = GetComponentInChildren<FlagManager>().Flags;
         m_SpawnPoints = GetComponentInChildren<SpawnPointManager>().SpawnPoints;
+
         for (int i = 0; i < m_SpawnPoints.Length; ++i)
         {
             Debug.Log(i);
@@ -56,31 +57,34 @@ public class SlaughterFactory : MonoBehaviour
     {
         Enemy_Slaughter enemy = Instantiate(m_Enemy, _spawnPoint, Quaternion.identity);
         mEnemyList.Add(enemy);
+
         enemy.PlayerTr = m_PlayerTr;
         enemy.Flags = m_Flags;
-        enemy.SetDelegate(SetTracePlayerNearZombie);
+        enemy.SetDelegate(SetTracePlayerToNearZombie);
         enemy.gameObject.SetActive(false);
     }
 
-    private void SetTracePlayerNearZombie(Enemy_Slaughter _caller)
+    private void SetTracePlayerToNearZombie(Enemy_Slaughter _caller)
     {
-        StartCoroutine(SetTracePlayerNearZombieCoroutine(_caller));
+        StartCoroutine(SetTracePlayerToNearZombieCoroutine(_caller));
     }
 
-    private IEnumerator SetTracePlayerNearZombieCoroutine(Enemy_Slaughter _caller)
+    private IEnumerator SetTracePlayerToNearZombieCoroutine(Enemy_Slaughter _caller)
     {
         List<Enemy_Slaughter> calledZombiesList = new List<Enemy_Slaughter>();
         for (int i = 0; i < mEnemyList.Count; ++i)
         {
-            // 부른놈이 아니고 추격중이 아닌놈
+            // 부른놈이 아니고 추격중이 아닌놈을 리스트에 추가한다.
             if (mEnemyList[i] != _caller && mEnemyList[i].CurState != mEnemyList[i].TracePlayer)
             {
                 calledZombiesList.Add(mEnemyList[i]);
             }
         }
 
+        // 부를 좀비가 0마리가 아니면
         if (calledZombiesList.Count != 0)
         {
+            // 좀비 리스트 중 제일 가까운 좀비를 구한다.
             Enemy_Slaughter nearZombie = calledZombiesList[0];
             for (int i = 0; i < calledZombiesList.Count - 1; ++i)
             {
@@ -90,6 +94,7 @@ public class SlaughterFactory : MonoBehaviour
                     nearZombie = calledZombiesList[i + 1];
                 }
             }
+            // 제일 가까운 좀비의 상태를 TracePlayer로 수정.
             nearZombie.SetState(nearZombie.TracePlayer);
         }
         yield return null;

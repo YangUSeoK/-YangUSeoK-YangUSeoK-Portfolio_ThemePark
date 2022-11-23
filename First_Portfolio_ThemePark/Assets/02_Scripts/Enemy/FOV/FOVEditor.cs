@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-
-
 [CustomEditor(typeof(FOV))]
 public class FOVEditor : Editor
 {
@@ -12,7 +10,6 @@ public class FOVEditor : Editor
     {
         // target은 EnemyFOV에서 콜백함수로 받아옴
         FOV fov = (FOV)target;
-
 
         // 하얀색 원을 그림.
         Handles.color = Color.white;
