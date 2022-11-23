@@ -21,31 +21,26 @@ public class VRUILine : MonoBehaviour
         lR.startWidth = 0.01f;
         lR.endWidth = 0.01f;
     }
-    void Update()//2022 11 15 ���ؿ�
+    void Update()//2022 11 15 김준우
     {
         ray = new Ray(Hand.position, Hand.rotation * Vector3.forward);
         //Debug.DrawRay(Hand.position, Hand.rotation * Vector3.forward * hitInfoDistance, Color.green);
-        DrawLineForward(Hand);//���̷� �� �׸���
         if (Physics.Raycast(Hand.position, Hand.rotation * Vector3.forward, out hitInfo,hitInfoDistance))
         {
-            Debug.Log("ù��° ����(����ĳ��Ʈ) ������");
-            if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//UI�� ��Ʈ�� ���
+            if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//
             {
-                Debug.Log("�ι�° ����(���̾� ���� �˻�) ������");
                 lR.gameObject.SetActive(true);
+                DrawLineForward(Hand);
                 MousePointer.gameObject.SetActive(true);
                 Button btn = hitInfo.transform.GetComponent<Button>();
                 MousePointer.position = btn.transform.position;
                 if (OVRInput.GetDown(OVRInput.Button.Any) && btn != null)
                 {
-                    Debug.Log("����° ����(���η�����, ��ư �Է�) ������");
-                    Debug.Log("�׹�° ����(��ư�� null�� �ƴ� ��) ������");
                     btn.onClick.Invoke();
                 }
             }
             else
             {
-                Debug.Log("�ι�° ������ else ������");
                 MousePointer.transform.gameObject.SetActive(false);
             }
         }
