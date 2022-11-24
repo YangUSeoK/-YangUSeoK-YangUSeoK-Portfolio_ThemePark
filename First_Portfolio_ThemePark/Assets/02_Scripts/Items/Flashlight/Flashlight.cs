@@ -28,13 +28,14 @@ public class Flashlight : Item
         //if (mbIsHanded == false)
         //    return;
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && mbIsHanded == true)
         {
             mbIsOn = !mbIsOn;
 
             m_ItemAudio[0].PlayOneShot(m_ItemAudio[0].clip);
             if (mbIsOn)
             {
+                m_Rigid.isKinematic = true;
                 m_Light.SetActive(true);
                 m_Lens[0].SetColor("_EmissionColor", Color.white);
                 m_Lens[1].SetColor("_EmissionColor", m_LensColor);

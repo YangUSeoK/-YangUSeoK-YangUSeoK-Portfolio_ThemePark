@@ -11,6 +11,7 @@ TagManager:
   - FLASH
   - TRIGGER
   - Flag
+  - HAND
   layers:
   - Default
   - TransparentFX

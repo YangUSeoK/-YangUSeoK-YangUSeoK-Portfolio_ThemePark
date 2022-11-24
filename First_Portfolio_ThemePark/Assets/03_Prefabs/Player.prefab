@@ -4563,9 +4563,11 @@ GameObject:
   - component: {fileID: 8021242312515035014}
   - component: {fileID: 8021242312515035008}
   - component: {fileID: 8021242312515035011}
-  m_Layer: 0
+  - component: {fileID: 1044351801}
+  - component: {fileID: 1044351802}
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: PLAYER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4632,6 +4634,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1044351801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021242312515035012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b828acb557fb49348aa8843ec0a80a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepSound: 50
+--- !u!114 &1044351802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021242312515035012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291a60200344cd14c8e835ff0298afa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lHand: {fileID: 8021242314183823343}
+  rHand: {fileID: 8021242313392612069}
+  grabbedLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  grabRange: 5
+  remoteGrabDistance: 25
+  throwPower: 1
+  rotPower: 1
 --- !u!1 &8021242312519814144
 GameObject:
   m_ObjectHideFlags: 0
@@ -5496,7 +5532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8021242312975578539}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5519,6 +5555,7 @@ MonoBehaviour:
   usePerEyeCameras: 0
   useFixedUpdateForTracking: 0
   disableEyeAnchorCameras: 0
+  player: {fileID: 8021242312515035009}
 --- !u!114 &8021242312981053519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6403,7 +6440,7 @@ GameObject:
   - component: {fileID: 8021242313402562891}
   m_Layer: 0
   m_Name: OVRControllerPrefab
-  m_TagString: Untagged
+  m_TagString: HAND
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6546,7 +6583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8021242313606774648
 Transform:
   m_ObjectHideFlags: 0
@@ -6969,7 +7006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8021242313839464302
 Transform:
   m_ObjectHideFlags: 0
@@ -9380,7 +9417,7 @@ GameObject:
   - component: {fileID: 8021242314194818113}
   m_Layer: 0
   m_Name: OVRControllerPrefab
-  m_TagString: Untagged
+  m_TagString: HAND
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

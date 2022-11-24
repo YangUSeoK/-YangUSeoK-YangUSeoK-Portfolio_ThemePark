@@ -14,7 +14,7 @@ public abstract class Item : MonoBehaviour, ICatch
     }   
     protected Rigidbody m_Rigid;
     protected AudioSource[] m_ItemAudio;
-    protected bool mbIsHanded = false;
+    [SerializeField] protected bool mbIsHanded = false;
     protected bool mbIsInPocket = false;
     protected bool mbIsClose = false;
     protected float m_Speed;
@@ -28,6 +28,8 @@ public abstract class Item : MonoBehaviour, ICatch
     void Update()
     {
         GetAcceleration();
+        //CheakHanded();
+        CheakPocket();
     }
 
     public void Action()
@@ -66,13 +68,19 @@ public abstract class Item : MonoBehaviour, ICatch
         m_Rigid.AddForce(refVector * m_Speed, ForceMode.Impulse);
     }
 
-    void CheakHanded()
-    {
-        if (transform.parent.tag == "Hand")
-            mbIsHanded = true;
-        else
-            mbIsHanded = false;
-    }
+    //void CheakHanded()
+    //{
+    //    if (transform.parent != null)
+    //    {
+    //        Debug.Log("부모있음");
+    //        mbIsHanded = true;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("부모없음");
+    //        mbIsHanded = false;
+    //    }
+    //}
 
     void CheakPocket()
     {
@@ -96,5 +104,15 @@ public abstract class Item : MonoBehaviour, ICatch
         {
             mbIsClose = false;
         }
+    }
+
+    public void SetGrabed()
+    {
+        mbIsHanded = true;
+    }
+
+    public void SetUnGrabed()
+    {
+        mbIsHanded = false;
     }
 }

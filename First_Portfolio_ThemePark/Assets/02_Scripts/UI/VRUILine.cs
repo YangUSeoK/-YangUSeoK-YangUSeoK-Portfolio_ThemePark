@@ -25,12 +25,12 @@ public class VRUILine : MonoBehaviour
     {
         ray = new Ray(Hand.position, Hand.rotation * Vector3.forward);
         //Debug.DrawRay(Hand.position, Hand.rotation * Vector3.forward * hitInfoDistance, Color.green);
+                DrawLineForward(Hand);
         if (Physics.Raycast(Hand.position, Hand.rotation * Vector3.forward, out hitInfo,hitInfoDistance))
         {
             if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//
             {
                 lR.gameObject.SetActive(true);
-                DrawLineForward(Hand);
                 MousePointer.gameObject.SetActive(true);
                 Button btn = hitInfo.transform.GetComponent<Button>();
                 MousePointer.position = btn.transform.position;

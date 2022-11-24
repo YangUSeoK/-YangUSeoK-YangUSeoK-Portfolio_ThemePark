@@ -49,7 +49,7 @@ public class Grab : MonoBehaviour
     {
         if(_isGrab==true)
         {
-            _isGrab = false;
+            //_isGrab = false;
             return;
         }
         //레이 쏘기
@@ -90,6 +90,9 @@ public class Grab : MonoBehaviour
             // 쥐고 나서 초기위치 설정
             prevPos = OVRInput.GetLocalControllerPosition(_controller);
             prevRot = _hand.rotation;
+
+            // 아이템 그랩 알려줌
+            grabbedObject.GetComponent<Item>().SetGrabed();
         }
     }
     private void TryUnGrab(OVRInput.Controller _controller, OVRInput.Button _button, Transform _hand,bool _isGrab)
