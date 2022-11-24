@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -15,21 +16,37 @@ public class EnemyManager : MonoBehaviour
         m_Listeners = GetComponentsInChildren<Enemy_Listener>();
         m_CCTVManager = GetComponentInChildren<CCTVManager>();
 
+        for (int i = 0; i < m_Factorys.Length; ++i)
+        {
+            m_Factorys[i].SetDelegate(GetSlaughterList);
+        }
         m_CCTVManager.SetDelegate(CCTVDetectCallback);
+
+
     }
 
     private void CCTVDetectCallback(Transform _targetTr)
     {
+        float callRange = 50f;
         for(int i = 0; i < m_SlaughterList.Count; ++i)
         {
-
+            if(Vector3.Distance(_targetTr.position, m_SlaughterList[i].transform.position) <= callRange)
+            {
+                m_SlaughterList[i].SetState(m_SlaughterList[i].TracePlayer);
+            }
         }
     }
 
-
+    private void GetSlaughterList(List<Enemy_Slaughter> _slaughterList)
+    {
+        m_SlaughterList = _slaughterList;
+    }
 
     public void GameOver()
     {
        
     }
+
+    
+
 }

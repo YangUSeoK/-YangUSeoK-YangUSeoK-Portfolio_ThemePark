@@ -40,6 +40,7 @@ public class Trace_Listener : EnemyState
         else if(m_Enemy.Agent.remainingDistance <= Mathf.Epsilon)
         {
             m_Enemy.SetState((m_Enemy as Enemy_Listener).Idle);
+            (m_Enemy as Enemy_Listener).CurVolumeLv = 0f;
             return;
         }
     }

@@ -60,7 +60,7 @@ public abstract class Enemy : MonoBehaviour
         m_Anim = GetComponent<Animator>();
     }
 
-    protected void Start()
+    protected void OnEnable()
     {
         m_CurState = GetInitialState();
         if (m_CurState != null)

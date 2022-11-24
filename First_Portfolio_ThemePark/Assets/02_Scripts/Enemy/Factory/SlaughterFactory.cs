@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class SlaughterFactory : MonoBehaviour
 {
+    public delegate void VoidSlaughterListDelegate(List<Enemy_Slaughter> _slaughterList);
+    private VoidSlaughterListDelegate initSlaughterListDelegate = null;
+
     // 게임매니저가 플레이어 먹여줘야함
-    private List<Enemy_Slaughter> mEnemyList = null;  
-    public List<Enemy_Slaughter> EnemyList
+    private List<Enemy_Slaughter> mSlaughterList = null;  
+    public List<Enemy_Slaughter> SlaughterList
     {
-        get { return mEnemyList; }
+        get { return mSlaughterList; }
     }
     private Flag[] m_Flags = null;
     private SpawnPoint[] m_SpawnPoints = null;
@@ -23,7 +26,7 @@ public class SlaughterFactory : MonoBehaviour
 
     private void Start()
     {
-        mEnemyList = new List<Enemy_Slaughter>();
+        mSlaughterList = new List<Enemy_Slaughter>();
         m_Flags = GetComponentInChildren<FlagManager>().Flags;
         m_SpawnPoints = GetComponentInChildren<SpawnPointManager>().SpawnPoints;
 
@@ -32,6 +35,7 @@ public class SlaughterFactory : MonoBehaviour
             Debug.Log(i);
             InstantiateZombie(m_SpawnPoints[i].transform.position);
         }
+        initSlaughterListDelegate?.Invoke(mSlaughterList);
     }
 
     private void Update()
@@ -39,9 +43,9 @@ public class SlaughterFactory : MonoBehaviour
         // 현재 스폰이 안 되있는 상태고 플레이어가 일정 거리안으로 들어오면 SetActive(true)
         if (!mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) <= m_SpawnRange)
         {
-            for (int i = 0; i < mEnemyList.Count; ++i)
+            for (int i = 0; i < mSlaughterList.Count; ++i)
             {
-                mEnemyList[i].gameObject.SetActive(true);
+                mSlaughterList[i].gameObject.SetActive(true);
                 mIsActive = true;
             }
         }
@@ -49,9 +53,9 @@ public class SlaughterFactory : MonoBehaviour
         // 현재 스폰 되있는 상태고 플레이어가 일정 거리 이상으로 멀어지면 SetActive(false)
         if(mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) >= m_UnspawnRange)
         {
-            for(int i = 0; i < mEnemyList.Count; ++i)
+            for(int i = 0; i < mSlaughterList.Count; ++i)
             {
-                mEnemyList[i].gameObject.SetActive(false);
+                mSlaughterList[i].gameObject.SetActive(false);
                 mIsActive = false;
             }
         }
@@ -60,7 +64,7 @@ public class SlaughterFactory : MonoBehaviour
     private void InstantiateZombie(Vector3 _spawnPoint)
     {
         Enemy_Slaughter enemy = Instantiate(m_Enemy, _spawnPoint, Quaternion.identity);
-        mEnemyList.Add(enemy);
+        mSlaughterList.Add(enemy);
 
         enemy.transform.SetParent(transform);
         enemy.PlayerTr = m_PlayerTr;
@@ -77,12 +81,12 @@ public class SlaughterFactory : MonoBehaviour
     private IEnumerator SetTracePlayerToNearZombieCoroutine(Enemy_Slaughter _caller)
     {
         List<Enemy_Slaughter> calledZombiesList = new List<Enemy_Slaughter>();
-        for (int i = 0; i < mEnemyList.Count; ++i)
+        for (int i = 0; i < mSlaughterList.Count; ++i)
         {
             // 부른놈이 아니고 추격중이 아닌놈을 리스트에 추가한다.
-            if (mEnemyList[i] != _caller && mEnemyList[i].CurState != mEnemyList[i].TracePlayer)
+            if (mSlaughterList[i] != _caller && mSlaughterList[i].CurState != mSlaughterList[i].TracePlayer)
             {
-                calledZombiesList.Add(mEnemyList[i]);
+                calledZombiesList.Add(mSlaughterList[i]);
             }
         }
 
@@ -104,4 +108,10 @@ public class SlaughterFactory : MonoBehaviour
         }
         yield return null;
     }
+
+    public void SetDelegate(VoidSlaughterListDelegate _initSlaughterListCallback)
+    {
+        initSlaughterListDelegate = _initSlaughterListCallback;
+    }
+
 }

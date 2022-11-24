@@ -47,6 +47,12 @@ public class Enemy_Listener : Enemy
         get { return m_SoundPos; }
         set { m_SoundPos = value; }
     }
+
+    private float m_CurVolumeLv = 0f;
+    public float CurVolumeLv
+    {
+        set { m_CurVolumeLv = value; }
+    }
     #endregion
 
 
@@ -64,16 +70,18 @@ public class Enemy_Listener : Enemy
         return m_Idle;
     }
 
-    public void Listen(Transform _targetTr, Vector3 _soundPos)
+    public void Listen(Transform _targetTr, Vector3 _soundPos, float _volumeLevel)
     {
-        m_SoundPos = _soundPos;
-
-        if (_targetTr.CompareTag("PLAYER"))
+        if (m_CurVolumeLv <= _volumeLevel)
         {
-            m_PlayerTr = _targetTr;
-        }
+            m_SoundPos = _soundPos;
 
-        SetState(m_TraceTarget);
+            if (_targetTr.CompareTag("PLAYER"))
+            {
+                m_PlayerTr = _targetTr;
+            }
+            SetState(m_TraceTarget);
+        }
     }
 
 

@@ -15,7 +15,6 @@ public class CCTV : MonoBehaviour
         set { mbIsTurnOn = value; }
     }
 
-    //디버그용
     [SerializeField] private bool mbIsDetect = false;
     public bool IsDetect
     {
@@ -23,7 +22,8 @@ public class CCTV : MonoBehaviour
     }
 
     private Vector3 m_OriAngle = Vector3.zero;
-    [SerializeField] private float m_SoundLevel = 50f;
+    [SerializeField] private float m_SoundRange = 50f;
+    private float m_VolumeLevel = 100;
 
     private GameObject m_RedLight = null;
     public GameObject RedLight
@@ -172,13 +172,13 @@ public class CCTV : MonoBehaviour
     // 플레이어 발견하면 오버랩스피어 쏴서 Listener 부름
     private void AlertSound(Transform _tr, Vector3 _soundPos)
     {
-        Collider[] listener = Physics.OverlapSphere(transform.position, m_SoundLevel, 1 << LayerMask.NameToLayer("LISTENER"));
+        Collider[] listener = Physics.OverlapSphere(transform.position, m_SoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
 
         if(listener.Length != 0)
         {
             for(int i = 0; i < listener.Length; ++i)
             {
-                listener[i].transform.GetComponent<Enemy_Listener>().Listen(_tr, _soundPos);
+                listener[i].transform.GetComponent<Enemy_Listener>().Listen(_tr, _soundPos, m_VolumeLevel);
             }
         }
     }
