@@ -12,8 +12,8 @@ public class Concentration_Slaughter : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Concentration ÀÔÀå!");
-        Debug.Log("Á»ºñ°¡ ÁÖÀ§¸¦ »ìÇÌ´Ï´Ù.");
+        Debug.Log("Concentration ï¿½ï¿½ï¿½ï¿½!");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´Ï´ï¿½.");
         m_Enemy.Agent.speed = m_Enemy.ConcentrationSpeed;
 
         m_Timer = 0f;
@@ -22,7 +22,7 @@ public class Concentration_Slaughter : EnemyState
 
     public override void ExitState()
     {
-        Debug.Log("Concentration ÅðÀå!");
+        Debug.Log("Concentration ï¿½ï¿½ï¿½ï¿½!");
     }
 
     public override void Action()
@@ -34,22 +34,22 @@ public class Concentration_Slaughter : EnemyState
     {
         float dist = Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position);
 
-        // ÇÃ·¹ÀÌ¾î°¡ ¹üÀ§¾È¿¡ µé¾î¿ÔÀ¸¸é
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFOV((m_Enemy as Enemy_Slaughter).ConcentrationDetectRange, (m_Enemy as Enemy_Slaughter).AlertDetectAngle, LayerMask.NameToLayer("PLAYER"))
             && (m_Enemy as Enemy_Slaughter).FOV.IsLookDirect(m_Enemy.PlayerTr, (m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, LayerMask.NameToLayer("PLAYER")))
         {
-            Debug.Log("°Å±â ÀÖ¾ú±¸³ª!");
+            Debug.Log("ï¿½Å±ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½!");
 
             m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
             m_Timer = 0f;
             return;
         }
 
-        // ºûÀÌ ¹üÀ§¾È¿¡ µé¾î¿ÔÀ¸¸é
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFovWithRayCheckDirect((m_Enemy as Enemy_Slaughter).ConcentrationDetectRange, (m_Enemy as Enemy_Slaughter).AlertDetectAngle, 
             "LIGHT", (m_Enemy as Enemy_Slaughter).FOV.mLayerMask, ref m_LightPos, ref m_FlashTr))
         {
-            Debug.Log("ºûÀ» µû¶ó°£´Ù..");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ó°£´ï¿½..");
             (m_Enemy as Enemy_Slaughter).SetToTraceLight(m_FlashTr, m_LightPos);
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).TraceLight);
             m_Timer = 0f;
