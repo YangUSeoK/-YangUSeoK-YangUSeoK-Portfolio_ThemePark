@@ -10,7 +10,7 @@ public class Bottle : Item
     [SerializeField] LayerMask m_ListenerLayer;
     private Vector3 m_HitPos;
 
-    protected override void ActionInterface()
+    public override void Action()
     {
         // 병이 충돌했을때 실행할 내용
         gameObject.GetComponent<Renderer>().enabled = false;

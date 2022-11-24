@@ -6,7 +6,7 @@ public class Can : Item
 {
     EItemType eItemtype = EItemType.Can;
     [SerializeField] LayerMask m_ListenerLayer;
-    protected override void ActionInterface()
+    public override void Action()
     {
         // 캔이 충돌했을때 실행할 함수내용
         // 소리를 재생하거나, 이펙트를 실행하거나
@@ -39,23 +39,4 @@ public class Can : Item
             listener.GetComponent<TraceTest>().onSound = true;
         }
     }
-
-    // 반사각 구하는 함수(가져온거라 이해후 보정필요)
-    //void HitObject(Collision coll)
-    //{
-    //    //Vector3 dir = transform.position - coll.transform.position;
-
-    //    Vector3 inVector = transform.position - coll.transform.position;
-    //    Vector3 collVector = coll.transform.position;
-
-    //    float collAngle = Mathf.Atan2(collVector.y, collVector.x);
-    //    float inAngle = Vector3.SignedAngle(collVector, inVector, -Vector3.forward);
-
-    //    float refAngle = inAngle - 180 + collAngle;
-    //    float refRadian = refAngle * Mathf.Rad2Deg;
-
-    //    Vector3 refVector = new Vector3(Mathf.Cos(refRadian), Mathf.Sin(refRadian));
-
-    //    mRigid.AddForce(refVector * speed, ForceMode.Impulse);
-    //}
 }

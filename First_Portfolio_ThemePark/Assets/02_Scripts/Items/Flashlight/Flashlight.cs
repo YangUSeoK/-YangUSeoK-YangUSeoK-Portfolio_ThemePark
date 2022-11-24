@@ -23,11 +23,8 @@ public class Flashlight : Item
         Action();
     }
 
-    protected override void ActionInterface()
+    public override void Action()
     {
-        //if (mbIsHanded == false)
-        //    return;
-
         if (Input.GetKeyDown(KeyCode.X) && mbIsHanded == true)
         {
             mbIsOn = !mbIsOn;
