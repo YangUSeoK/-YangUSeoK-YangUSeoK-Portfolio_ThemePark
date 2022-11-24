@@ -114,6 +114,10 @@ public class OVRCameraRig : MonoBehaviour
 	protected Camera _leftEyeCamera;
 	protected Camera _rightEyeCamera;
 
+	public Transform player = null;
+
+
+
 #region Unity Messages
 	protected virtual void Awake()
 	{
@@ -135,6 +139,7 @@ public class OVRCameraRig : MonoBehaviour
 
 	protected virtual void Update()
 	{
+		transform.position = player.position + Vector3.up;
 		_skipUpdate = false;
 
 		if (!useFixedUpdateForTracking)

@@ -34,7 +34,8 @@ public class PlayerCtrl : MonoBehaviour
     }
     void Update()
     {
-        Vector2 mov2d = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        //camera.transform.eulerAngles = Vector3.forward;
+        Vector3 mov2d = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         v = mov2d.x;
         h = mov2d.y;
         //컴퓨터 테스트 용이므로 VR테스트 시 해당 코드 주석 처리 ㄱ
@@ -70,17 +71,16 @@ public class PlayerCtrl : MonoBehaviour
     }
     void PlayerState()//2022 11 03 김준우
     {//2022 11 04 김준우
-        if(OVRInput.Get(OVRInput.Button.One)&&h>=0)//달리기 A버튼을 누르고 있는 중이라면
+        if(OVRInput.Get(OVRInput.Button.One) && h >= 0)//달리기 A버튼을 누르고 있는 중이라면
         {
+            playerIdle = PlayerIdle.Run;
+            mCurrSpeed = mRunSpeed;
             //Debug.Log("상태전환 진입");
             if (mbIsSquat == true)
             {
                 //Debug.Log("앉은 상태에서 달리기 돌입");
                 mbIsSquat = false;
             }
-            mCurrSpeed = mRunSpeed;
-            playerIdle = PlayerIdle.Run;
-            StartCoroutine(VibrateController(1f,0.3f,0.3f,OVRInput.Controller.All));
         }
         else if (mbIsSquat==true)//2022 11 03 김준우,, 달리기 중이 아니고, 앉은 상태가 true 일 때
         {

@@ -81,7 +81,11 @@ public class Grab : MonoBehaviour
         {
             grabbedObject = hitObjects[closest].gameObject;
             grabbedObject.transform.parent = _hand;
+            grabbedObject.transform.position = _hand.position;
+            grabbedObject.transform.rotation = _hand.rotation;
             //손에 쥐고 있을 때 물리기능 해제
+            grabbedObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            grabbedObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             // 쥐고 나서 초기위치 설정
             prevPos = OVRInput.GetLocalControllerPosition(_controller);
