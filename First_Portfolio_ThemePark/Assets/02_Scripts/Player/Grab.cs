@@ -36,11 +36,11 @@ public class Grab : MonoBehaviour
             Debug.Log("ππ¿”?");
             TryUnGrab(OVRInput.Controller.LTouch, OVRInput.Button.PrimaryHandTrigger, lHand, mbLeftIsGrabbing);
         }
-        if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger)||Input.GetKey("f"))
+        if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             TryGrab(OVRInput.Controller.RTouch, rHand, mbRightIsGrabbing);
         }
-        else if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger)||Input.GetKeyUp("f"))
+        else if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
             TryUnGrab(OVRInput.Controller.RTouch, OVRInput.Button.SecondaryHandTrigger, rHand,mbRightIsGrabbing);
         }

@@ -10,6 +10,7 @@ TagManager:
   - LIGHT
   - FLASH
   - TRIGGER
+  - Flag
   layers:
   - Default
   - TransparentFX
