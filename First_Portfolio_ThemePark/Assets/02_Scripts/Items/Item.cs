@@ -14,9 +14,8 @@ public abstract class Item : MonoBehaviour, ICatch
     }   
     protected Rigidbody m_Rigid;
     protected AudioSource[] m_ItemAudio;
-    [SerializeField] protected bool mbIsHanded = false;
+    protected bool mbIsHanded = false;
     protected bool mbIsInPocket = false;
-    protected bool mbIsClose = false;
     protected float m_Speed;
 
     void Awake()
@@ -28,20 +27,9 @@ public abstract class Item : MonoBehaviour, ICatch
     void Update()
     {
         GetAcceleration();
-        //CheakHanded();
-        CheakPocket();
     }
 
-    public void Action()
-    {
-        ActionInterface();
-    }
-
-    protected virtual void ActionInterface()
-    {
-        Debug.Log("Item Action");
-        return;
-    }
+    public abstract void Action();
 
     private void GetAcceleration()
     {
@@ -68,51 +56,13 @@ public abstract class Item : MonoBehaviour, ICatch
         m_Rigid.AddForce(refVector * m_Speed, ForceMode.Impulse);
     }
 
-    //void CheakHanded()
-    //{
-    //    if (transform.parent != null)
-    //    {
-    //        Debug.Log("부모있음");
-    //        mbIsHanded = true;
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("부모없음");
-    //        mbIsHanded = false;
-    //    }
-    //}
-
-    void CheakPocket()
+    public void SetIsGrabed(bool _isGrabed)
     {
-        if (transform.parent.tag == "POCKET")
-            mbIsInPocket = true;
-        else
-            mbIsInPocket = false;
+        mbIsHanded = _isGrabed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetIsInPocket(bool _isInPocket)
     {
-        if (other.tag == "HAND")
-        {
-            mbIsClose = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "HAND")
-        {
-            mbIsClose = false;
-        }
-    }
-
-    public void SetGrabed()
-    {
-        mbIsHanded = true;
-    }
-
-    public void SetUnGrabed()
-    {
-        mbIsHanded = false;
+        mbIsInPocket = _isInPocket;
     }
 }

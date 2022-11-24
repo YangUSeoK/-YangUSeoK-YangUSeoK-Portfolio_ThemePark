@@ -80,7 +80,7 @@ public class Grab : MonoBehaviour
         if (hitObjects.Length > 0)//쥐는게 결정되는 시점
         {
             grabbedObject = hitObjects[closest].gameObject;
-            grabbedObject.transform.parent = _hand;
+            grabbedObject.transform.SetParent(_hand.transform, false);
             grabbedObject.transform.position = _hand.position;
             grabbedObject.transform.rotation = _hand.rotation;
             //손에 쥐고 있을 때 물리기능 해제
@@ -92,7 +92,7 @@ public class Grab : MonoBehaviour
             prevRot = _hand.rotation;
 
             // 아이템 그랩 알려줌
-            grabbedObject.GetComponent<Item>().SetGrabed();
+            grabbedObject.GetComponent<Item>().SetIsGrabed(true);
         }
     }
     private void TryUnGrab(OVRInput.Controller _controller, OVRInput.Button _button, Transform _hand,bool _isGrab)

@@ -2204,7 +2204,7 @@ Animator:
   m_GameObject: {fileID: 8915026554512332559}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1d6774d46867be44c8985dcc98cfb482, type: 3}
-  m_Controller: {fileID: 9100000, guid: 072b3d0ed556ef94b9dda03c16398181, type: 2}
+  m_Controller: {fileID: 9100000, guid: f55597f33e43bc44a95f4eb82bf8665b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2242,10 +2242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PatrolSpeed: 2
   m_ConcentrationSpeed: 0
-  m_TracePlayerSpeed: 3
+  m_TraceSpeed: 8
   m_PatrolDetectRange: 20
   m_PatrolPlayerDetectRange: 10
-  m_AlertDetectRange: 15
+  m_ConcentrationDetectRange: 15
   m_TraceDetectRange: 17
   m_AttackRange: 1
   m_PatrolDetectAngle: 120
