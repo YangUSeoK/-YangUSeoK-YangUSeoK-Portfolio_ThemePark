@@ -25,6 +25,11 @@ public class CCTV : MonoBehaviour
     private Vector3 m_OriAngle = Vector3.zero;
     [SerializeField] private float m_SoundLevel = 50f;
 
+    private GameObject m_RedLight = null;
+    public GameObject RedLight
+    {
+        get { return m_RedLight; }
+    }
 
     // Ray 관련
     private Light m_Light = null;
@@ -41,6 +46,8 @@ public class CCTV : MonoBehaviour
     {
         m_Light = GetComponent<Light>();
         m_Light.intensity = 0f;
+        m_RedLight = GetComponentInChildren<RedLight>().gameObject;
+        m_RedLight.SetActive(false);
     }
 
     private void Start()
@@ -56,6 +63,7 @@ public class CCTV : MonoBehaviour
             RayCone();
         }
     }
+    
 
     // 플레이어 발견 -> 플레이어 바라봄 -> 플레이어위치로 레이 쏨 -> 장애물 뒤에 안숨으면 x초 후 경보발령
     private IEnumerator DetectPlayerCoroutine(Transform _targetTr)

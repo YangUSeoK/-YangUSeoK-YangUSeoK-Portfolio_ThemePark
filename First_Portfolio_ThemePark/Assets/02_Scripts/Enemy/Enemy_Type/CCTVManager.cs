@@ -46,6 +46,7 @@ public class CCTVManager : MonoBehaviour
     {
         // 현재 켜져있는 CCTV를 끔
         m_CCTVs[mTurnOnIdx].IsTurnOn = false;
+        m_CCTVs[mTurnOnIdx].RedLight.SetActive(false);
         Debug.Log($"꺼지는 CCTV : {mTurnOnIdx}");
         // 인덱스 1 증가. 만약 전체개수만큼 된다면 0으로 초기화
         ++mTurnOnIdx;
@@ -56,6 +57,7 @@ public class CCTVManager : MonoBehaviour
 
         // 다음 CCTV를 켬
         m_CCTVs[mTurnOnIdx].IsTurnOn = true;
+        m_CCTVs[mTurnOnIdx].RedLight.SetActive(true);
         Debug.Log($"켜지는 CCTV : {mTurnOnIdx}");
     }
 
