@@ -5,12 +5,16 @@ using UnityEngine;
 public class SlaughterFactory : MonoBehaviour
 {
     // 게임매니저가 플레이어 먹여줘야함
-    [SerializeField] private Transform m_PlayerTr = null;
     private List<Enemy_Slaughter> mEnemyList = null;  
+    public List<Enemy_Slaughter> EnemyList
+    {
+        get { return mEnemyList; }
+    }
     private Flag[] m_Flags = null;
     private SpawnPoint[] m_SpawnPoints = null;
     private bool mIsActive = false;
     
+    [SerializeField] private Transform m_PlayerTr = null;
     [SerializeField] private Enemy_Slaughter m_Enemy = null;    // 소환할 프리팹
     [SerializeField] private float m_SpawnRange = 30f;
     [SerializeField] private float m_UnspawnRange = 60f;
@@ -58,6 +62,7 @@ public class SlaughterFactory : MonoBehaviour
         Enemy_Slaughter enemy = Instantiate(m_Enemy, _spawnPoint, Quaternion.identity);
         mEnemyList.Add(enemy);
 
+        enemy.transform.SetParent(transform);
         enemy.PlayerTr = m_PlayerTr;
         enemy.Flags = m_Flags;
         enemy.SetDelegate(SetTracePlayerToNearZombie);

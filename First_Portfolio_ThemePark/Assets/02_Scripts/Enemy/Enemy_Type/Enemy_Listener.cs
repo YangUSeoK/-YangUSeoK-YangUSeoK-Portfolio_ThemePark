@@ -64,13 +64,13 @@ public class Enemy_Listener : Enemy
         return m_Idle;
     }
 
-    public void Listen(Vector3 _soundPos, Transform _tr)
+    public void Listen(Transform _targetTr, Vector3 _soundPos)
     {
         m_SoundPos = _soundPos;
 
-        if (_tr.CompareTag("PLAYER"))
+        if (_targetTr.CompareTag("PLAYER"))
         {
-            m_PlayerTr = _tr;
+            m_PlayerTr = _targetTr;
         }
 
         SetState(m_TraceTarget);
