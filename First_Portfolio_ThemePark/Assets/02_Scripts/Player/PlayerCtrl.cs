@@ -7,6 +7,7 @@ public class PlayerCtrl : MonoBehaviour
     //2022 11 03 김준우
     public enum PlayerIdle
     { 
+        NonMove,
         Squat,
         SlowWalk,
         Walk,
@@ -91,15 +92,20 @@ public class PlayerCtrl : MonoBehaviour
             mCurrSpeed = mNormalSpeed;
             playerIdle = PlayerIdle.Walk;
         }
-        else if (h < 0.95f&&h>0)//앞으로 Slow Walk
+        else if (h < 0.95f&&h>0.1f)//앞으로 Slow Walk
         {
             mCurrSpeed = mSlowSpeed;
             playerIdle=PlayerIdle.SlowWalk;
         }
-        else if (h<0)//뒤로 Slow Walk
+        else if (h<-0.1f)//뒤로 Slow Walk
         {
             mCurrSpeed = mSlowSpeed;
             playerIdle = PlayerIdle.SlowWalk;
+        }
+        else if(h<=0.1f&&h>=-0.1f)//20221124 김준우 멈춰있는 상태
+        {
+            mCurrSpeed = 0f;
+            playerIdle = PlayerIdle.NonMove;
         }
     }
     void Move()//실제 움직임 구현 함수

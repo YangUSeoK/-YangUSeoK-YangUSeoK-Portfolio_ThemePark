@@ -8,6 +8,8 @@ public class FOV : MonoBehaviour
     // 에디터용
     public float m_Angle = 120f;
     public float m_Range = 10f;
+    
+    private float m_height = 1.8f;
 
     protected int m_PlayerLayer = 0;
     public int PlayerLayer
@@ -63,7 +65,7 @@ public class FOV : MonoBehaviour
         if (colls.Length == 1)
         {
             // A - B 벡터 >> B에서 A를 바라보는 방향 + 정규화
-            Vector3 dir = (colls[0].transform.position - transform.position).normalized;
+            Vector3 dir = (colls[0].transform.position - transform.position ).normalized;
 
             // 내가 본 전방방향에서 방금 구한 dir방향의 각도가 120도 범위 안에 있으면
             if (Vector3.Angle(transform.forward, dir) < _angle * 0.5f)
@@ -82,7 +84,7 @@ public class FOV : MonoBehaviour
         Vector3 dir = (_targetTr.position - transform.position).normalized;
 
         // 20221114 양우석 : 레이쏘는 위치 좀비에따라 보정해야 함
-        if (Physics.Raycast(transform.position + transform.forward, dir, out hitInfo, _detectRange, m_LayerMask))
+        if (Physics.Raycast((transform.position + (Vector3.up * m_height)), dir, out hitInfo, _detectRange, m_LayerMask))
         {
             isLook = hitInfo.collider.tag == _targetTr.tag;
         }
@@ -101,11 +103,11 @@ public class FOV : MonoBehaviour
             float rayAngle = ((_angle / 2) + (stepAngleSize * i)) - _angle;
             Vector3 dir = DirFromAngle(rayAngle);
 
-            Debug.DrawLine(transform.position, transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * m_height), transform.position + (dir * _detectRange), Color.green);
 
 
             RaycastHit hitInfo;                     // 높이보정 offset
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), dir, out hitInfo, _detectRange, _layerMask))
+            if (Physics.Raycast(transform.position + (Vector3.up * m_height), dir, out hitInfo, _detectRange, _layerMask))
             {
                 isInDirectFOV = hitInfo.collider.CompareTag(_tag);
                 if (isInDirectFOV)
@@ -130,11 +132,11 @@ public class FOV : MonoBehaviour
             float rayAngle = ((_angle / 2) + (stepAngleSize * i)) - _angle;
             Vector3 dir = DirFromAngle(rayAngle);
 
-            Debug.DrawLine(transform.position, transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * m_height), transform.position + (dir * _detectRange), Color.green);
 
 
             RaycastHit hitInfo;                     // 높이보정 offset
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), dir, out hitInfo, _detectRange, _layerMask))
+            if (Physics.Raycast(transform.position + (Vector3.up * m_height), dir, out hitInfo, _detectRange, _layerMask))
             {
                 isInDirectFOV = hitInfo.collider.CompareTag(_tag);
                 if (isInDirectFOV)

@@ -131,7 +131,6 @@ public class Grab : MonoBehaviour
 
         float currentTime = 0f;
         float finishTime = 0.2f;
-
         float elapsedRate = currentTime / finishTime;
         while(elapsedRate<1)
         {
@@ -144,5 +143,6 @@ public class Grab : MonoBehaviour
         grabbedObject.transform.position = targetLocation;
         grabbedObject.transform.parent = _hand;
         grabbedObject.transform.localPosition += new Vector3(-1f, 2f, 0f);
+
     }
 }
