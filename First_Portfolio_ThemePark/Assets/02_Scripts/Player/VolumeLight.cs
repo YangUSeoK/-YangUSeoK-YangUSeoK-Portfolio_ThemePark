@@ -15,6 +15,7 @@ public class VolumeLight : MonoBehaviour
     }
 
     private List<Vector3> m_LightVertList = null;
+    private List<Vector3> m_SmallCircleVertList = null;
 
     // 레이를 쪼개는 비율. 클수록 잘게 쪼갠다
     [SerializeField] private int m_SubDivision = 100;
@@ -32,8 +33,9 @@ public class VolumeLight : MonoBehaviour
         m_MeshCollider = GetComponentInChildren<MeshCollider>();
         m_MeshCollider.sharedMesh = mLightMesh; // 매쉬콜라이더에 사용될 매쉬를 붙인다.
 
-        m_LightVertList = new List<Vector3>(3 * m_SubDivision); // 레이를 쏠 원의 개수는 정해져 있으므로, 그 크기만큼을 동적할당해둔다.(최적화)
-        m_WallPosList = new List<Vector3>(3 * m_SubDivision);   // Vector3 = float x 3 => int * 3 * 기준원의 점 개수
+        m_LightVertList = new List<Vector3>(3 * m_SubDivision * 2); // 레이를 쏠 원의 개수는 정해져 있으므로, 그 크기만큼을 동적할당해둔다.(최적화)
+        m_SmallCircleVertList = new List<Vector3>(3 * m_SubDivision);
+        m_WallPosList = new List<Vector3>(3 * m_SubDivision * 2);   // Vector3 = float x 3 => int * 3 * 기준원의 점 개수
     }
 
     private void LateUpdate()
@@ -47,10 +49,14 @@ public class VolumeLight : MonoBehaviour
         float n = 1f / (m_SubDivision); // 반복문에서 쓰일거라서 나눗셈을 미리 계산해둔다. (최적화)
         float radius = Mathf.Tan((m_Light.spotAngle * 0.5f) * Mathf.Deg2Rad);
         float length = m_Light.range / Mathf.Cos(m_Light.spotAngle * 0.5f * Mathf.Deg2Rad);
+        float smallLength = m_Light.range / Mathf.Cos(m_Light.spotAngle * 0.5f * 0.5f * Mathf.Deg2Rad);
         Vector3 origCircleVert = Vector3.zero;
+        Vector3 origSmallCircleVert = Vector3.zero;
         Vector3 newCircleVert = Vector3.zero;
+        Vector3 newSmallCircleVert = Vector3.zero;
 
         m_LightVertList.Clear();
+        m_SmallCircleVertList.Clear();
         m_WallPosList.Clear();
         for (int i = 0; i < m_SubDivision; ++i)
         {
@@ -60,12 +66,14 @@ public class VolumeLight : MonoBehaviour
             float y = Mathf.Sin(theta) * radius;
 
             origCircleVert = new Vector3(x, y, 1); //>> (0,0,1)을 중심으로 xy평면에 평행한 원의 좌표
+            origSmallCircleVert = new Vector3(x * 0.5f, y * 0.5f, 1);
 
             // 회전행렬을 통해 회전시킨다.
             Quaternion rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
             Matrix4x4 rotMatrix = Matrix4x4.Rotate(rotation);
 
             newCircleVert = rotMatrix.MultiplyPoint3x4(origCircleVert);
+            newSmallCircleVert = rotMatrix.MultiplyPoint3x4(origSmallCircleVert);
 
             //Debug.DrawLine(transform.position, newCircleVert, Color.green);
             //Debug.DrawLine(transform.position, CirclePointPos * length, Color.green);
@@ -73,9 +81,15 @@ public class VolumeLight : MonoBehaviour
 
             // 회전된 각각의 점 위치를 향해 length 길이만큼 레이를 쏜다. 
             Vector3 raycastPoint = SetRaycastPoint(newCircleVert, length);
-
             m_LightVertList.Add(raycastPoint);
+            Vector3 raycastSmallPoint = SetRaycastPoint(newSmallCircleVert, smallLength);
+            m_SmallCircleVertList.Add(raycastSmallPoint);
         }
+
+        m_LightVertList.Add(m_LightVertList[0]);    // 원래 원의 끝점
+        m_LightVertList.Add(transform.position);    // 작은 원의 시작점 = 플래시 위치
+        m_LightVertList.AddRange(m_SmallCircleVertList);    // 작은 원 추가
+        m_LightVertList.Add(m_SmallCircleVertList[0]);  // 작은원의 끝점
     }
 
 

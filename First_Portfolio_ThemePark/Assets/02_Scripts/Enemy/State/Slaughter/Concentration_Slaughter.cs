@@ -34,7 +34,7 @@ public class Concentration_Slaughter : EnemyState
     {
         float dist = Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position);
 
-        // �÷��̾ �����ȿ� ��������
+        // 플레이어를 발견하면
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFOV((m_Enemy as Enemy_Slaughter).ConcentrationDetectRange, (m_Enemy as Enemy_Slaughter).AlertDetectAngle, LayerMask.NameToLayer("PLAYER"))
             && (m_Enemy as Enemy_Slaughter).FOV.IsLookDirect(m_Enemy.PlayerTr, (m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, LayerMask.NameToLayer("PLAYER")))
         {
@@ -45,12 +45,13 @@ public class Concentration_Slaughter : EnemyState
             return;
         }
 
-        // ���� �����ȿ� ��������
+        // 빛을 발견하면
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFovWithRayCheckDirect((m_Enemy as Enemy_Slaughter).ConcentrationDetectRange, (m_Enemy as Enemy_Slaughter).AlertDetectAngle, 
             "LIGHT", (m_Enemy as Enemy_Slaughter).FOV.mLayerMask, ref m_LightPos, ref m_FlashTr))
         {
             Debug.Log("���� ���󰣴�..");
-            (m_Enemy as Enemy_Slaughter).SetToTraceLight(m_FlashTr, m_LightPos);
+            (m_Enemy as Enemy_Slaughter).LightPos = m_LightPos;
+            (m_Enemy as Enemy_Slaughter).FlashTr = m_FlashTr;
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).TraceLight);
             m_Timer = 0f;
             return;

@@ -42,7 +42,7 @@ public class CCTVManager : MonoBehaviour
         cctvDetectCallbackDelegate?.Invoke(_tr);
     }
 
-    private void NextCCTV()
+    private void TurnOnNextCCTV()
     {
         // 현재 켜져있는 CCTV를 끔
         m_CCTVs[mTurnOnIdx].IsTurnOn = false;
@@ -65,7 +65,7 @@ public class CCTVManager : MonoBehaviour
     {
         while (true)
         {
-            NextCCTV();
+            TurnOnNextCCTV();
             yield return mChangeTime;
 
             // 디텍트를 하면 다음으로 안넘어감. 
@@ -76,6 +76,7 @@ public class CCTVManager : MonoBehaviour
         }
     }
 
+    // CCTV.Detect => EnemyManager
     public void SetDelegate(VoidTransformDelegate _cctvDetectCallback)
     {
         cctvDetectCallbackDelegate = _cctvDetectCallback;

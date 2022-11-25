@@ -52,7 +52,7 @@ public class StepSound : MonoBehaviour
         Collider[] colls = Physics.OverlapSphere(transform.position, stepSound, 1 << LayerMask.NameToLayer("LISTENER"));
         for (int i = 0; i < colls.Length; ++i)
         {
-            colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position);
+            colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, stepSound);
         }
     }
 }

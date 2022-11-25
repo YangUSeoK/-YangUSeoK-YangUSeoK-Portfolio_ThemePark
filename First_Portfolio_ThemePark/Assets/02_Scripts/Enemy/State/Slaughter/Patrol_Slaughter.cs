@@ -17,19 +17,19 @@ public class Patrol_Slaughter : EnemyState
 
     public override void EnterState()
     {
-       // Debug.Log("Patrol ����!");
+       // Debug.Log("Patrol Enter!");
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
         m_Enemy.Anim.SetTrigger("IsPatrol");
     }
 
     public override void ExitState()
     {
-       // Debug.Log("Patrol ����!");
+       // Debug.Log("Patrol Exit!");
     }
 
     public override void Action()
     {
-        // ���� �� �� ���
+        // 플래그 순찰
         if (m_Enemy.Agent.remainingDistance <= 0.5f)
         {
             mNextIdx = Random.Range(0,(m_Enemy as Enemy_Slaughter).Flags.Length);

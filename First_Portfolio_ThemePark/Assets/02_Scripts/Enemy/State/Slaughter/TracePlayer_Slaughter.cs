@@ -18,7 +18,8 @@ public class TracePlayer_Slaughter : EnemyState
         Debug.Log("TracePlayer 입장!");
         Debug.Log("주변 좀비를 부릅니다!");
         m_Enemy.Agent.speed = m_Enemy.TraceSpeed;
-        m_Enemy.Agent.destination = m_Enemy.PlayerTr.position;
+        m_PlayerPos = m_Enemy.PlayerTr.position;
+        m_Enemy.Agent.destination = m_PlayerPos;
 
         m_Timer = 0f;
         m_Enemy.Anim.SetTrigger("IsTracePlayer");

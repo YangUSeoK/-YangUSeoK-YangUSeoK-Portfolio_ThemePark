@@ -9,7 +9,7 @@ public class FOV : MonoBehaviour
     public float m_Angle = 120f;
     public float m_Range = 10f;
     
-    private float m_height = 1.8f;
+    private float m_height = 3.5f;
 
     protected int m_PlayerLayer = 0;
     public int PlayerLayer

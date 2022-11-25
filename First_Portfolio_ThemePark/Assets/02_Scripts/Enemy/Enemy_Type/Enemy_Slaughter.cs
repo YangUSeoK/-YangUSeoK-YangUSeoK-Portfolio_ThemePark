@@ -140,15 +140,15 @@ public class Enemy_Slaughter : Enemy
         return m_Patrol;
     }
 
-    public void SetToTraceLight(Transform _flashTr, Vector3 _lightPos)
-    {
-        m_FlashTr = _flashTr;
-        m_LightPos = _lightPos;
-    }
+    //public void SetToTraceLight(Transform _flashTr, Vector3 _lightPos)
+    //{
+    //    m_FlashTr = _flashTr;
+    //    m_LightPos = _lightPos;
+    //}
     
-    public void SetTraceLightToTracePlayer(Vector3 _playerPos)
-    {
-    }
+    //public void SetTraceLightToTracePlayer(Vector3 _playerPos)
+    //{
+    //}
 
     public void CallNearZombie()
     {
