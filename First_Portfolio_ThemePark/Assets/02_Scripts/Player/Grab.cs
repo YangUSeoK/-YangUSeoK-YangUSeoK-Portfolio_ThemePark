@@ -11,11 +11,12 @@ public class Grab : MonoBehaviour
 
     bool mbLeftIsGrabbing = false;
     bool mbRightIsGrabbing = false;
+    bool mbISPulling = false;
     GameObject grabbedObject;
     public LayerMask grabbedLayer;
     public float grabRange = 5f;
 
-    public float remoteGrabDistance = 25;
+    public float remoteGrabDistance = 10f;
 
     [Header("던지기 관련")]
     Vector3 prevPos;

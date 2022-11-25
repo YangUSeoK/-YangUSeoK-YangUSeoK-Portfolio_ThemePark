@@ -50,8 +50,7 @@ public class Bottle : Item
         
         foreach(Collider listener in Listeners)
         {
-            listener.GetComponent<TraceTest>().targetPos = transform.position;
-            listener.GetComponent<TraceTest>().onSound = true;
+            listener.GetComponent<Enemy_Listener>().Listen(transform, transform.position);
         }
     }
 }
