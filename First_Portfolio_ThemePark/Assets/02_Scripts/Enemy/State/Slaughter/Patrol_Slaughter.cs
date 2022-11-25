@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Patrol_Slaughter : EnemyState
 {
-    // ������
+    // 생성자
     public Patrol_Slaughter(Enemy _enemy) : base("Patrol", _enemy) { }
 
     
@@ -41,23 +41,23 @@ public class Patrol_Slaughter : EnemyState
     {
         float dist = Vector3.Distance(m_Enemy.PlayerTr.position, m_Enemy.transform.position);
 
-        // �÷��̾ �����ȿ� ��������
+        // 플레이어가 FOV 안에 있고 가로막는게 없다면
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFOV((m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, (m_Enemy as Enemy_Slaughter).PatrolDetectAngle, LayerMask.NameToLayer("PLAYER"))
             && (m_Enemy as Enemy_Slaughter).FOV.IsLookDirect(m_Enemy.PlayerTr, (m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, LayerMask.NameToLayer("PLAYER")))
         {
-           // Debug.Log("�ΰ��̴�!!");
+           // Debug.Log("Slaughter : 인간이다!!");
             m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
             return;
         }
 
-        // ���� �����ȿ� ��������
-        // ������ �ι� �˻��ؾ��ϴ°Ŵϱ� else if �Ƚᵵ ����.
+        // 위에서 걸리면 return 이라서 if 써도됨
+        // 부채꼴로 레이를 쏴서 빛을 감지한다면
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFovWithRayCheckDirect((m_Enemy as Enemy_Slaughter).PatrolDetectRange, (m_Enemy as Enemy_Slaughter).PatrolDetectAngle,
             "LIGHT", (m_Enemy as Enemy_Slaughter).FOV.mLayerMask, ref m_LightPos, ref m_FlashTr)) 
         {
            // Debug.Log("���̴�!! ���� �ֳ�?");
 
-            // ����Ʈ����, �÷���Tr�� Enemy_Slaughter�� �Ѱ���. TraceLight���� ����� ��
+            // 빛을 본 정보를 m_Enemy에게 전달
             (m_Enemy as Enemy_Slaughter).LightPos = m_LightPos;
             (m_Enemy as Enemy_Slaughter).FlashTr = m_FlashTr;
             

@@ -12,8 +12,8 @@ public class Concentration_Slaughter : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Concentration ����!");
-        Debug.Log("���� ������ ���̴ϴ�.");
+        Debug.Log("Slaughter : Concentration Enter!");
+        Debug.Log("주위를 살펴본다.");
         m_Enemy.Agent.speed = m_Enemy.ConcentrationSpeed;
 
         m_Timer = 0f;
@@ -22,7 +22,7 @@ public class Concentration_Slaughter : EnemyState
 
     public override void ExitState()
     {
-        Debug.Log("Concentration ����!");
+        Debug.Log("Concentration Exit!");
     }
 
     public override void Action()
@@ -38,7 +38,7 @@ public class Concentration_Slaughter : EnemyState
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFOV((m_Enemy as Enemy_Slaughter).ConcentrationDetectRange, (m_Enemy as Enemy_Slaughter).AlertDetectAngle, LayerMask.NameToLayer("PLAYER"))
             && (m_Enemy as Enemy_Slaughter).FOV.IsLookDirect(m_Enemy.PlayerTr, (m_Enemy as Enemy_Slaughter).PatrolPlayerDetectRange, LayerMask.NameToLayer("PLAYER")))
         {
-            Debug.Log("�ű� �־�����!");
+            Debug.Log("Slaughter : 거기있었구나!");
 
             m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
             m_Timer = 0f;
@@ -49,7 +49,7 @@ public class Concentration_Slaughter : EnemyState
         if ((m_Enemy as Enemy_Slaughter).FOV.IsInFovWithRayCheckDirect((m_Enemy as Enemy_Slaughter).ConcentrationDetectRange, (m_Enemy as Enemy_Slaughter).AlertDetectAngle, 
             "LIGHT", (m_Enemy as Enemy_Slaughter).FOV.mLayerMask, ref m_LightPos, ref m_FlashTr))
         {
-            Debug.Log("���� ���󰣴�..");
+            Debug.Log("빛인가..");
             (m_Enemy as Enemy_Slaughter).LightPos = m_LightPos;
             (m_Enemy as Enemy_Slaughter).FlashTr = m_FlashTr;
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).TraceLight);

@@ -12,6 +12,7 @@ TagManager:
   - TRIGGER
   - Flag
   - HAND
+  - INVEN
   layers:
   - Default
   - TransparentFX
