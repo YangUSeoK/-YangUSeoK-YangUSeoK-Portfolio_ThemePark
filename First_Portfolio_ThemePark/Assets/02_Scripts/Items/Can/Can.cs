@@ -35,7 +35,7 @@ public class Can : Item
 
         foreach (Collider listener in Listeners)
         {
-            listener.GetComponent<Enemy_Listener>().Listen(transform, transform.position);
+            listener.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_ItemAudio[0].volume);
         }
     }
 }
