@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour
     #endregion
 
     #region Member_variable
-    protected Transform m_PlayerTr = null; 
+    protected Transform m_PlayerTr = null;
     public Transform PlayerTr
     {
         get { return m_PlayerTr; }
@@ -51,6 +51,12 @@ public abstract class Enemy : MonoBehaviour
     public Animator Anim
     {
         get { return m_Anim; }
+    }
+
+    protected AudioSource m_Audio = null;
+    public AudioSource Audio
+    {
+        get { return m_Audio; }
     }
     #endregion
 

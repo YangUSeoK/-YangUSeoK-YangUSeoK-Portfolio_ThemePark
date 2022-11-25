@@ -50,7 +50,8 @@ public class Concentration_Slaughter : EnemyState
             "LIGHT", (m_Enemy as Enemy_Slaughter).FOV.mLayerMask, ref m_LightPos, ref m_FlashTr))
         {
             Debug.Log("���� ���󰣴�..");
-            (m_Enemy as Enemy_Slaughter).SetToTraceLight(m_FlashTr, m_LightPos);
+            (m_Enemy as Enemy_Slaughter).LightPos = m_LightPos;
+            (m_Enemy as Enemy_Slaughter).FlashTr = m_FlashTr;
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).TraceLight);
             m_Timer = 0f;
             return;
