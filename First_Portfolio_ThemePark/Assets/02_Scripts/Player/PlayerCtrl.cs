@@ -110,9 +110,6 @@ public class PlayerCtrl : MonoBehaviour
     }
     void Move()//실제 움직임 구현 함수
     {
-        Debug.Log(camera.forward);
-        Debug.Log(transform.forward);
-
         Vector3 cameraForward = new Vector3(camera.forward.x, 0f, camera.forward.z).normalized;
         Vector3 cameraRight = Vector3.Cross(Vector3.up, cameraForward).normalized;
         Vector3 moveDir = ((cameraForward * h) + (cameraRight * v)).normalized;
