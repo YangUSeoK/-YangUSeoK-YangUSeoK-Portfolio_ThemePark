@@ -81,7 +81,7 @@ public abstract class Enemy : MonoBehaviour
         m_CurState.Action();
     }
 
-    // State¿ë
+    // Stateï¿½ï¿½
     public void SetState(EnemyState _state)
     {
         if (m_CurState != null)
