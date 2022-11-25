@@ -6,7 +6,6 @@ public class CameraTest : MonoBehaviour
 {
     void Start()
     {
-        
     }
 
     void Update()
