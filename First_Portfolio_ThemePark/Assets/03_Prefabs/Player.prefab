@@ -4561,10 +4561,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8021242312515035009}
   - component: {fileID: 8021242312515035014}
-  - component: {fileID: 8021242312515035008}
   - component: {fileID: 8021242312515035011}
   - component: {fileID: 1044351801}
   - component: {fileID: 1044351802}
+  - component: {fileID: 7380065124432128803}
   m_Layer: 7
   m_Name: Player
   m_TagString: PLAYER
@@ -4605,19 +4605,6 @@ MonoBehaviour:
   body: {fileID: 8021242312998688123}
   rb: {fileID: 0}
   mRotAngle: 30
---- !u!65 &8021242312515035008
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8021242312515035012}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8021242312515035011
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4668,6 +4655,20 @@ MonoBehaviour:
   remoteGrabDistance: 25
   throwPower: 1
   rotPower: 1
+--- !u!136 &7380065124432128803
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021242312515035012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &8021242312519814144
 GameObject:
   m_ObjectHideFlags: 0
