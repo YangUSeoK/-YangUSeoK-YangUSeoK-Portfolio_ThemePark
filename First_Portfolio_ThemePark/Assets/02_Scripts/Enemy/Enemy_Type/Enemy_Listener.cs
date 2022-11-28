@@ -83,8 +83,4 @@ public class Enemy_Listener : Enemy
             SetState(m_TraceTarget);
         }
     }
-
-
-
-
 }
