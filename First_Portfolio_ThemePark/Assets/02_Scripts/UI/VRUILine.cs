@@ -25,13 +25,15 @@ public class VRUILine : MonoBehaviour
     {
         ray = new Ray(Hand.position, Hand.rotation * Vector3.forward);
         //Debug.DrawRay(Hand.position, Hand.rotation * Vector3.forward * hitInfoDistance, Color.green);
-                DrawLineForward(Hand);
+        DrawLineForward(Hand);
         if (Physics.Raycast(Hand.position, Hand.rotation * Vector3.forward, out hitInfo,hitInfoDistance))
         {
             if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//
             {
                 lR.gameObject.SetActive(true);
+                Debug.Log($"마우스포인터{MousePointer}");
                 MousePointer.gameObject.SetActive(true);
+                //버그 이유... vr기기가 유니티보다 먼저 내려가면 찾을 수 없다고 뜸
                 Button btn = hitInfo.transform.GetComponent<Button>();
                 MousePointer.position = btn.transform.position;
                 if (OVRInput.GetDown(OVRInput.Button.Any) && btn != null)
