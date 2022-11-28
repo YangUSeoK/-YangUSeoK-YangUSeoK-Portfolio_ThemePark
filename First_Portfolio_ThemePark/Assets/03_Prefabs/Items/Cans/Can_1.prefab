@@ -146,9 +146,10 @@ GameObject:
   - component: {fileID: 2745937220045690169}
   - component: {fileID: 2835082547654250588}
   - component: {fileID: 717081035}
-  m_Layer: 0
+  - component: {fileID: 787643907}
+  m_Layer: 14
   m_Name: Can_1
-  m_TagString: Untagged
+  m_TagString: ITEM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50b455dc999b54478ed7968cfb6d5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mbIsHanded: 0
   m_ListenerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -296,3 +298,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &787643907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035550517705497443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27, y: 0.36, z: 0.21}
+  m_Center: {x: 0, y: 0, z: 0}

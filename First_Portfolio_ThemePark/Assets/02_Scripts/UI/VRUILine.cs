@@ -41,7 +41,10 @@ public class VRUILine : MonoBehaviour
             }
             else
             {
-                MousePointer.transform.gameObject.SetActive(false);
+                if (MousePointer != null)
+                {
+                    MousePointer.gameObject.SetActive(false);
+                }
             }
         }
     }

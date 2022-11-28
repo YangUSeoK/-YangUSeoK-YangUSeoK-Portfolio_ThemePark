@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour, ICatch
+public abstract class Item : ICatch
 {
     [Flags]
     public enum EItemType
