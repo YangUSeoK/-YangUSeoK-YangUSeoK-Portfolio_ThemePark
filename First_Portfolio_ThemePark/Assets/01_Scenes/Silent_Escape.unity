@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d18d822e4d4c4d4dbc729ea6c4f0c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerTr: {fileID: 1095442284}
   m_Enemy: {fileID: 8915026554653739069, guid: 9db5acfb85f7bca4fbde7a0443332012, type: 3}
   m_SpawnRange: 50
   m_UnspawnRange: 70
@@ -778,7 +777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d18d822e4d4c4d4dbc729ea6c4f0c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerTr: {fileID: 1095442284}
   m_Enemy: {fileID: 8915026554653739069, guid: 9db5acfb85f7bca4fbde7a0443332012, type: 3}
   m_SpawnRange: 50
   m_UnspawnRange: 70
@@ -1258,6 +1256,7 @@ GameObject:
   - component: {fileID: 894820471}
   - component: {fileID: 894820470}
   - component: {fileID: 894820472}
+  - component: {fileID: 894820473}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1472,6 +1471,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &894820473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894820469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f145dc9f366d33749b5bf547f3dd6a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgSound: {fileID: 0}
+  bglist: []
 --- !u!1 &934055325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,6 +3374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2138391261}
+  - component: {fileID: 2138391262}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3386,6 +3400,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2138391262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138391260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92cf89069bb698f43822e962f1c7ea14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mbIsGameOver: 0
+  m_PlayerTr: {fileID: 0}
 --- !u!1001 &202583280767841646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3747,7 +3775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8021242312515035012, guid: 2e19e7aa503fc4d42a804f8383c0c52c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021242312975346059, guid: 2e19e7aa503fc4d42a804f8383c0c52c, type: 3}
       propertyPath: m_LocalPosition.y

@@ -22,7 +22,7 @@ public class SlaughterFactory : MonoBehaviour
     private SpawnPoint[] m_SpawnPoints = null;
     private bool mIsActive = false;
     
-    [SerializeField] private Transform m_PlayerTr = null;   // µð¹ö±×
+    private Transform m_PlayerTr = null;  
     public Transform PlayerTr
     {
         set { m_PlayerTr = value; }
