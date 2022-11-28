@@ -104,7 +104,7 @@ public class Enemy_Slaughter : Enemy
         get { return m_FOV; }
     }
 
-    private Transform m_FlashTr = null;
+    [SerializeField] private Transform m_FlashTr = null;
     public Transform FlashTr
     {
         get { return m_FlashTr; }
@@ -159,10 +159,12 @@ public class Enemy_Slaughter : Enemy
 
     public void EnterPatrolCallback()
     {
+        UnityEngine.Debug.Log("EnterPatrolCallback");
         enterPatrolDelegate?.Invoke();
     }
     public void EnterTracePlayerCallback()
     {
+        UnityEngine.Debug.Log("EnterTracePlayerCallback");
         enterTracePlayerDelegate?.Invoke();
     }
     public void ExitTracePlayerCallback()

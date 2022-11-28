@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    private static GameManager instance;
+    private static GameManager instance = null;
 
     public bool mbIsGameOver = false;
     private EnemyManager m_EnemyManager = null;
     private SoundManager m_SoundManager = null;
     private UIManager m_UIManager = null;
-    private Transform m_PlayerTr = null;
+    [SerializeField] private Transform m_PlayerTr = null;
 
 
     private void Awake()
@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-
         DontDestroyOnLoad(gameObject);
 
         m_EnemyManager = GetComponentInChildren<EnemyManager>();
@@ -39,13 +38,11 @@ public class GameManager : MonoBehaviour
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
 
-        
         m_EnemyManager.PlayerTr = m_PlayerTr;
         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
 
     }
-
-    
+   
 
     #region Enemy_State_Callback
     private void AllZombieEnterPatrolCallback()
@@ -54,6 +51,7 @@ public class GameManager : MonoBehaviour
     }
     private void EnterTracePlayerCallback()
     {
+        Debug.Log("4");
         m_SoundManager.SetTracePlayerBGM();
     }
     private void AllZombieExitTracePlayerCallback()

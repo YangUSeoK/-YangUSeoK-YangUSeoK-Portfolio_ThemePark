@@ -34,6 +34,8 @@ public class TracePlayer_Slaughter : EnemyState
     public override void ExitState()
     {
         Debug.Log("TracePlayer Επΐε!");
+
+       
     }
 
     public override void Action()

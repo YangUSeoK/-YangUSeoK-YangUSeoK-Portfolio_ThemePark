@@ -33,12 +33,8 @@ public class EnemyManager : MonoBehaviour
         m_CCTVManager = GetComponentInChildren<CCTVManager>();
 
 
-        // Factory에서 Slaughter 받아오는 델리게이트.
-        // 슬러터 생성 후에 리스트 받아와야해서 콜백으로 받아옴
-        for (int i = 0; i < m_Factorys.Length; ++i)
-        {
-            m_Factorys[i].SetDelegate(InitSlaughterListCallback, AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback);
-        }
+
+        SetFactorys();
 
         // CCTV가 플레이어 발견했을 때 콜백 설정
         m_CCTVManager.SetDelegate(CCTVDetectCallback);
@@ -50,6 +46,18 @@ public class EnemyManager : MonoBehaviour
             m_Enemys[i].SetDelegate(IsAttack);
         }
 
+    }
+
+    // Factory에서 Slaughter 받아오는 델리게이트.
+    // 슬러터 생성 후에 리스트 받아와야해서 콜백으로 받아옴
+    public void SetFactorys()
+    {
+        Debug.Log(m_PlayerTr.name);
+        for (int i = 0; i < m_Factorys.Length; ++i)
+        {
+            m_Factorys[i].PlayerTr = m_PlayerTr;
+            m_Factorys[i].SetDelegate(InitSlaughterListCallback, AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback);
+        }
     }
 
     public void IsGameOver()
@@ -92,12 +100,14 @@ public class EnemyManager : MonoBehaviour
 
     private void EnterTracePlayerCallback()
     {
+        Debug.Log("3");
         enterTracePlayerDelegate?.Invoke();
     }
 
     private void AllZombieExitTracePlayerCallback()
     {
-
+        Debug.Log("EnemyManager Callback");
+        allZombieExitTracePlayerDelegate?.Invoke();
     }
 
     private void IsAttack()

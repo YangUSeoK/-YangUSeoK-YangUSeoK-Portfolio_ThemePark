@@ -18,6 +18,9 @@ public class Concentration_Slaughter : EnemyState
 
         m_Timer = 0f;
         m_Enemy.Anim.SetTrigger("IsConcentration");
+
+        // BGM 바꾸기
+        (m_Enemy as Enemy_Slaughter).ExitTracePlayerCallback();
     }
 
     public override void ExitState()
