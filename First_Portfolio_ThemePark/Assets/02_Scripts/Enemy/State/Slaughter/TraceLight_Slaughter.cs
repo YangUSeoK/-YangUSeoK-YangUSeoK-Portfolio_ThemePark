@@ -51,6 +51,7 @@ public class TraceLight_Slaughter : EnemyState
             // 20221116 양우석:  플레이어랑 거리 실제로 맞춰보고 수정해야 함.
             // 20221128 양우석 : 빛을 본 좀비가 다른위치의 플레이어를 바로 쫓아오는거 수정해야 함
             if (hitInfo.collider.CompareTag("PLAYER"))
+
             {
                 Debug.Log("가로막는게 없어서 쩨꼈다!!");
                 m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);

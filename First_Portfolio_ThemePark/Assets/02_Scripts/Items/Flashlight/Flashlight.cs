@@ -25,7 +25,7 @@ public class Flashlight : Item
 
     public override void Action()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two)||Input.GetKeyDown(KeyCode.X) && mbIsHanded == true)
+        if ((OVRInput.GetDown(OVRInput.Button.Two)||Input.GetKeyDown(KeyCode.X)) && mbIsHanded == true)
         {
             mbIsOn = !mbIsOn;
 
