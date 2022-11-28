@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     }
     private static GameManager instance = null;
 
-    public bool mbIsGameOver = false;
+    private bool mbIsGameOver = false;
+    public bool IsGameOver
+    {
+        get { return mbIsGameOver; }
+    }
     private EnemyManager m_EnemyManager = null;
     private SoundManager m_SoundManager = null;
     private UIManager m_UIManager = null;
