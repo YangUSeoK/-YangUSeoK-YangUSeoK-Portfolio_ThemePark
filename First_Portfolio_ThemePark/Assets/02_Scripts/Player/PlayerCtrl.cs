@@ -21,10 +21,10 @@ public class PlayerCtrl : MonoBehaviour
 
     Vector3 mPlayerInitPos;
     float mCurrSpeed;
-    float mNormalSpeed = 4.2f;
-    float mRunSpeed = 12f;
-    float mSlowSpeed = 2.4f;
-    float mSquatSpeed = 1.3f;
+    float mNormalSpeed = 3f;
+    float mRunSpeed = 5f;
+    float mSlowSpeed = 2f;
+    float mSquatSpeed = 1f;
     public float mRotAngle = 30f;
     bool mbIsSquat = false;
     private bool mbIsGameOver = false;

@@ -47,8 +47,8 @@ public class TraceLight_Slaughter : EnemyState
         {
             // 가로막는게 없고 플레이어가 손전등을 들고있다면 => TracePlayer
             // 20221116 양우석:  플레이어랑 거리 실제로 맞춰보고 수정해야 함.
-            if (hitInfo.collider.CompareTag("PLAYER") ||
-                (hitInfo.collider.CompareTag("FLASH") && Vector3.Distance(m_Enemy.PlayerTr.position, m_FlashTr.position) <= 1.5f))
+            if (hitInfo.collider.CompareTag("PLAYER")) //||
+                //(hitInfo.collider.CompareTag("FLASH") && Vector3.Distance(m_Enemy.PlayerTr.position, m_FlashTr.position) <= 1.5f))
             {
                 Debug.Log("가로막는게 없어서 쩨꼈다!!");
                 m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
