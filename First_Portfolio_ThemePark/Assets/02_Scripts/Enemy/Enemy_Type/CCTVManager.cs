@@ -44,21 +44,21 @@ public class CCTVManager : MonoBehaviour
 
     private void TurnOnNextCCTV()
     {
-        // ÇöÀç ÄÑÁ®ÀÖ´Â CCTV¸¦ ²û
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ CCTVï¿½ï¿½ ï¿½ï¿½
         m_CCTVs[mTurnOnIdx].IsTurnOn = false;
         m_CCTVs[mTurnOnIdx].RedLight.SetActive(false);
-        Debug.Log($"²¨Áö´Â CCTV : {mTurnOnIdx}");
-        // ÀÎµ¦½º 1 Áõ°¡. ¸¸¾à ÀüÃ¼°³¼ö¸¸Å­ µÈ´Ù¸é 0À¸·Î ÃÊ±âÈ­
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ CCTV : {mTurnOnIdx}");
+        // ï¿½Îµï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½È´Ù¸ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         ++mTurnOnIdx;
         if (mTurnOnIdx == m_CCTVs.Length)
         {
             mTurnOnIdx = 0;
         }
 
-        // ´ÙÀ½ CCTV¸¦ ÄÔ
+        // ï¿½ï¿½ï¿½ï¿½ CCTVï¿½ï¿½ ï¿½ï¿½
         m_CCTVs[mTurnOnIdx].IsTurnOn = true;
         m_CCTVs[mTurnOnIdx].RedLight.SetActive(true);
-        Debug.Log($"ÄÑÁö´Â CCTV : {mTurnOnIdx}");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ CCTV : {mTurnOnIdx}");
     }
 
     private IEnumerator NextCCTVCoroutine()
@@ -68,7 +68,7 @@ public class CCTVManager : MonoBehaviour
             TurnOnNextCCTV();
             yield return mChangeTime;
 
-            // µðÅØÆ®¸¦ ÇÏ¸é ´ÙÀ½À¸·Î ¾È³Ñ¾î°¨. 
+            // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³Ñ¾î°¨. 
             while (m_CCTVs[mTurnOnIdx].IsDetect)
             {
                 yield return mDetectWait;
