@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: concrete_01_d
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_ValidKeywords:
+  m_Shader: {fileID: 4800000, guid: d12bf040c5878094a90fe8e1fc7b1c32, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _EMISSION
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

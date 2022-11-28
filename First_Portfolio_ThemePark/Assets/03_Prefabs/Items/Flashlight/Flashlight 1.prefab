@@ -63,7 +63,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404900055}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -193,7 +193,7 @@ MeshCollider:
   m_GameObject: {fileID: 1623780301798808981}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -277,14 +277,14 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.73
-  m_Range: 10.562777
-  m_SpotAngle: 52.436863
-  m_InnerSpotAngle: 20.319637
+  m_Intensity: 1
+  m_Range: 40
+  m_SpotAngle: 40
+  m_InnerSpotAngle: 4
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
+    m_Type: 1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 3475953917244334782}
   - component: {fileID: 4899624495914013271}
   - component: {fileID: 845253878}
+  - component: {fileID: 1007104755}
   m_Layer: 14
   m_Name: Flashlight 1
   m_TagString: Untagged
@@ -607,8 +608,22 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2782256744521351987}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.05, y: 0.05, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &1007104755
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782256744521351987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
