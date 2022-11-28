@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy_Listener : Enemy
 {
+   
     #region EnemyState
     private Idle_Listener m_Idle;
     public Idle_Listener Idle
     {
         get { return m_Idle; }
+        
     }
 
     private Trace_Listener m_TraceTarget;
@@ -82,9 +84,7 @@ public class Enemy_Listener : Enemy
             }
             SetState(m_TraceTarget);
         }
+
     }
-
-
-
-
+   
 }
