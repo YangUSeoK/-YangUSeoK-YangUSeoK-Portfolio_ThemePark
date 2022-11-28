@@ -199,8 +199,10 @@ public class CCTV : MonoBehaviour
         mbIsDetect = true;
     }
 
+    #region Delegate_Callback
     public void SetDelegate(VoidTransformDelegate _detectCallback)
     {
         detectDelegate = _detectCallback;
     }
+    #endregion
 }

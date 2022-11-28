@@ -142,7 +142,7 @@ public class FOV : MonoBehaviour
                 if (isInDirectFOV)
                 {
                     _collPos = hitInfo.point;
-                    _flash = hitInfo.transform;
+                    _flash = hitInfo.transform.parent;
                     break;
                 }
             }

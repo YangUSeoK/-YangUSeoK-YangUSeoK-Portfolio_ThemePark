@@ -6,6 +6,10 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public delegate void VoidVoidDelegate();
+    private VoidVoidDelegate attackDelegate = null;
+
+
     #region Inspector
     [Header("Speed")]
     [SerializeField] protected float m_PatrolSpeed = 5f;
@@ -28,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
     #endregion
 
     #region Member_variable
-    protected Transform m_PlayerTr = null;
+    [SerializeField] protected Transform m_PlayerTr = null;  //디버그
     public Transform PlayerTr
     {
         get { return m_PlayerTr; }
@@ -91,6 +95,18 @@ public abstract class Enemy : MonoBehaviour
         m_CurState = _state;
         m_CurState.EnterState();
     }
+
+    #region Delegate_Callback
+    public void IsAttack()
+    {
+        attackDelegate?.Invoke();
+    }
+
+    public void SetDelegate(VoidVoidDelegate _attackCallback)
+    {
+        attackDelegate = _attackCallback;
+    }
+    #endregion
 
     protected abstract EnemyState GetInitialState();
     

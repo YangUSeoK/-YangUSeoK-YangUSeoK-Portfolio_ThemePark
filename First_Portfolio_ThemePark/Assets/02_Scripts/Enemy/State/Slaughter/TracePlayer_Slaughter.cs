@@ -23,13 +23,19 @@ public class TracePlayer_Slaughter : EnemyState
 
         m_Timer = 0f;
         m_Enemy.Anim.SetTrigger("IsTracePlayer");
+
         // 주변 좀비 부르는 함수
         (m_Enemy as Enemy_Slaughter).CallNearZombie();
+
+        // BGM 바꾸기
+        (m_Enemy as Enemy_Slaughter).EnterTracePlayerCallback();
     }
 
     public override void ExitState()
     {
         Debug.Log("TracePlayer 퇴장!");
+
+       
     }
 
     public override void Action()

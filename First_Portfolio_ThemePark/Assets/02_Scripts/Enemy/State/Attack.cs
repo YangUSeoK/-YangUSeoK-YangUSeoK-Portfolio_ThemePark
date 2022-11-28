@@ -10,6 +10,9 @@ public class Attack : EnemyState
     {
         Debug.Log("Attack 입장!");
         m_Enemy.Anim.SetTrigger("IsAttack");
+
+        // 공격 델리게이트 호출
+        m_Enemy.IsAttack();
     }
 
     public override void ExitState()

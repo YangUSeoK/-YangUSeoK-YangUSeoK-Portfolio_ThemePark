@@ -20,6 +20,7 @@ public class Patrol_Slaughter : EnemyState
        // Debug.Log("Patrol Enter!");
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
         m_Enemy.Anim.SetTrigger("IsPatrol");
+        (m_Enemy as Enemy_Slaughter).EnterPatrolCallback();
     }
 
     public override void ExitState()
@@ -68,7 +69,7 @@ public class Patrol_Slaughter : EnemyState
 
     public void PatrollFlags()
     {
-        // ��� ������� ���� ����
+        // 위치 정한대로 순찰
         if (m_Enemy.Agent.isPathStale)
         {
             return;

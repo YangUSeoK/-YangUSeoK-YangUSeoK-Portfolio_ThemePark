@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Enemy_Slaughter : Enemy
 {
-    public delegate void VoidVoidDelegate(Enemy_Slaughter _caller);
-    VoidVoidDelegate callZombiesAroundDelegate = null;
+    public delegate void VoidEnemy_SlaughterDelegate(Enemy_Slaughter _caller);
+    VoidEnemy_SlaughterDelegate callZombiesAroundDelegate = null;
+    VoidVoidDelegate enterPatrolDelegate = null;
+    VoidVoidDelegate enterTracePlayerDelegate = null;
+    VoidVoidDelegate exitTracePlayerDelegate = null;
 
     #region EnemyState
     private Patrol_Slaughter m_Patrol = null;
@@ -101,7 +104,7 @@ public class Enemy_Slaughter : Enemy
         get { return m_FOV; }
     }
 
-    private Transform m_FlashTr = null;
+    [SerializeField] private Transform m_FlashTr = null;
     public Transform FlashTr
     {
         get { return m_FlashTr; }
@@ -140,31 +143,44 @@ public class Enemy_Slaughter : Enemy
         return m_Patrol;
     }
 
-    //public void SetToTraceLight(Transform _flashTr, Vector3 _lightPos)
-    //{
-    //    m_FlashTr = _flashTr;
-    //    m_LightPos = _lightPos;
-    //}
-    
-    //public void SetTraceLightToTracePlayer(Vector3 _playerPos)
-    //{
-    //}
-
     public void CallNearZombie()
     {
         float waitTime = 1f;
         StartCoroutine(CallNearZombieWaitSecondCoroutine(waitTime));
     }
-    
+
+
+    #region Delegate_Callback
     private IEnumerator CallNearZombieWaitSecondCoroutine(float _waitTime)
     {
         yield return new WaitForSeconds(_waitTime);
         callZombiesAroundDelegate?.Invoke(this);
     }
 
-    public void SetDelegate(VoidVoidDelegate _callZombiesAroundCallback)
+    public void EnterPatrolCallback()
     {
+        UnityEngine.Debug.Log("EnterPatrolCallback");
+        enterPatrolDelegate?.Invoke();
+    }
+    public void EnterTracePlayerCallback()
+    {
+        UnityEngine.Debug.Log("EnterTracePlayerCallback");
+        enterTracePlayerDelegate?.Invoke();
+    }
+    public void ExitTracePlayerCallback()
+    {
+        exitTracePlayerDelegate?.Invoke();
+    }
+
+    public void SetDelegate(VoidVoidDelegate _enterPatrolCallback, VoidEnemy_SlaughterDelegate _callZombiesAroundCallback, 
+                            VoidVoidDelegate _enterTracePlayerCallback, VoidVoidDelegate _exitTracePlayerCallback)
+    {
+        enterPatrolDelegate = _enterPatrolCallback;
+
         //ZombieFactory.SetTracePlayer
         callZombiesAroundDelegate = _callZombiesAroundCallback;
+        enterTracePlayerDelegate = _enterTracePlayerCallback;
+        exitTracePlayerDelegate = _exitTracePlayerCallback;
     }
+    #endregion
 }

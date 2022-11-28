@@ -76,6 +76,21 @@ public class CCTVManager : MonoBehaviour
         }
     }
 
+    public void IsGameOver()
+    {
+        // 코루틴 정지 
+        StopCoroutine(NextCCTVCoroutine());
+        
+        // 모든 CCTV TurnOff
+        for(int i = 0; i <  
+            m_CCTVs.Length; ++i)
+        {
+            m_CCTVs[i].IsTurnOn = false;
+        }
+
+    }
+    
+
     // CCTV.Detect => EnemyManager
     public void SetDelegate(VoidTransformDelegate _cctvDetectCallback)
     {

@@ -14,7 +14,7 @@ public abstract class Item : MonoBehaviour, ICatch
     }   
     protected Rigidbody m_Rigid;
     protected AudioSource[] m_ItemAudio;
-    protected bool mbIsHanded = false;
+    [SerializeField] protected bool mbIsHanded = false;
     protected bool mbIsInPocket = false;
     protected float m_Speed;
 
