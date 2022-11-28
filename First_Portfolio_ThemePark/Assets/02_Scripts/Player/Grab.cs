@@ -6,6 +6,13 @@ using UnityEngine;
 //2022 11 08 김준우
 public class Grab : MonoBehaviour
 {
+    public struct SInventory//인벤토리 구조체
+    {
+        public GameObject Inven;
+        public int currItemIndex;
+        public bool isGetItem;
+    }
+
     public Transform lHand;
     public Transform rHand;
 
@@ -17,13 +24,12 @@ public class Grab : MonoBehaviour
     public LayerMask grabbedLayer;
     public float grabRange = 0.5f;
     Item.EItemType eItemType;
-
     
     public float remoteGrabDistance = 25;
     [Header("아이템인덱스")]
     public GameObject[] ItemIndex;
+    public GameObject[] goLRInven;
     int currItemIndex;
-
 
     [Header("던지기 관련")]
     Vector3 prevPos;
@@ -31,6 +37,13 @@ public class Grab : MonoBehaviour
     Quaternion prevRot;
     public float rotPower = 1f;
 
+    SInventory[] msLRInven;
+    private void Start()
+    {
+        msLRInven = new SInventory[2];
+        msLRInven[0].isGetItem = false;//이하 왼손
+        msLRInven[1].isGetItem = false;//이하 오른손
+    }
     void Update()
     {
         if (mbOnColl == false)
@@ -73,6 +86,7 @@ public class Grab : MonoBehaviour
             grabbedObject = hitInfo.transform.gameObject;
             //물체가 끌려오는 코루틴 함수 호출
             StartCoroutine(GrabbingAnimation(_controller, _hand));
+            
         }
     }
     private void TryGrab(OVRInput.Controller _controller, Transform _hand, bool _isGrab)//잡기
@@ -106,13 +120,14 @@ public class Grab : MonoBehaviour
 
             grabbedObject = hitObjects[closest].gameObject;
             grabbedObject.transform.SetParent(_hand.transform, false);
-            grabbedObject.transform.position = _hand.position;
+            grabbedObject.transform.position = _hand.position;//위치 설정
+            grabbedObject.transform.localPosition += new Vector3(0f, 0f, 0.5f);
             grabbedObject.transform.rotation = _hand.rotation;
-            // 쥐고 나서 초기위치 설정
+            //던지기 위해 쥐고 나서 현재위치 설정
             prevPos = OVRInput.GetLocalControllerPosition(_controller);
             prevRot = _hand.rotation;
 
-            // 아이템 그랩 알려줌
+            //아이템 그랩 여부 알려줌
             _isGrab = true;
             grabbedObject.GetComponent<Item>().SetIsGrabed(true);
             transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -171,60 +186,69 @@ public class Grab : MonoBehaviour
             }
             grabbedObject.transform.position = targetLocation;
             grabbedObject.transform.parent = _hand;
-            grabbedObject.transform.localPosition += new Vector3(-1f, 2f, 0f);
+            grabbedObject.transform.localPosition += new Vector3(0f, 0f, 0.5f);
             isDoingGrabbingAnimation = false;
         }
     }
-    //void InvenSave(bool _isGrab)//2022 11 25 김준우
-    //{
-    //    //여기에 인벤토리에 아이템 인덱스 넣고 디스트로이
-    //    switch (eItemType)
-    //    {
-    //        case Item.EItemType.Flashlight:
-    //            currItemIndex = 0;
-    //            break;
-    //        case Item.EItemType.Bottle:
-    //            currItemIndex = 1;
-    //            break;
-    //        case Item.EItemType.Can:
-    //            currItemIndex = 2;
-    //            break;
-    //    }
-    //    grabbedObject = null;
-    //    Destroy(grabbedObject);
-    //    _isGrab = false;
-    //}
-    //void GetInvenItem(Transform _hand)
-    //{
-    //    //여기에 넣은 아이템 인덱스로 인스턴시에이트 하는 기능
-    //    grabbedObject = Instantiate(ItemIndex[currItemIndex], _hand);
-    //}
-    //private void OnTriggerStay(Collider other)//인벤토리
-    //{
-    //    if (other.CompareTag("INVEN")/*||grabbedObject.CompareTag("ITEM")*/)
-    //    {
-    //        mbOnColl = true;
-    //        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && mbLeftIsGrabbing == false)
-    //        {//왼손 트리거를 당기고 인벤토리 콜라이더랑 겹쳤을 때
-    //            GetInvenItem(lHand);
-    //        }
-    //        else if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
-    //        {   //왼손 트리거를 떼고 무언가를 들고 있고, 인벤토리 콜라이더랑 겹쳤을 때
-    //            InvenSave(mbLeftIsGrabbing);
-    //        }
-    //        if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//오른손 트리거
-    //        {
-    //            GetInvenItem(rHand);
-    //        }
-    //        else if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))//오른손 인벤에서 가져오기
-    //        {
-    //            InvenSave(mbRightIsGrabbing);
-    //        }
-    //    }
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("INVEN"))
-    //        mbOnColl = false;
-    //}
+    void InvenSave(SInventory _LRInven,bool _isGrab)//2022 11 25 김준우
+    {
+        //여기에 인벤토리에 아이템 인덱스 넣고 디스트로이
+        if (grabbedObject.GetComponent<Item>() != null)//22 11 28 김준우
+        {//그랩 오브젝트에 아이템컴포넌트가 있는지 검사
+            if (grabbedObject.Equals(Item.EItemType.Flashlight))//아이템 컴포넌트의 EItemType으로 분류
+            {
+                _LRInven.currItemIndex = 0;
+            }
+            else if (grabbedObject.Equals(Item.EItemType.Bottle))
+            {
+                _LRInven.currItemIndex = 1;
+            }
+            else if (grabbedObject.Equals(Item.EItemType.Can))
+            {
+                _LRInven.currItemIndex = 2;
+            }
+            _LRInven.isGetItem = true;
+        }
+        else return;//아이템 컴포넌트가 없다면 그냥 종료
+        grabbedObject = null;
+        Destroy(grabbedObject);
+        _isGrab = true;
+    }
+    void GetInvenItem(SInventory _LRInven,Transform _hand, bool _isGrab)
+    {
+        if (_isGrab == false)
+        {
+            //여기에 넣은 아이템 인덱스로 인스턴시에이트 하는 기능
+            grabbedObject = Instantiate(ItemIndex[currItemIndex], _hand);
+            _isGrab = true;
+        }
+    }
+    private void OnTriggerStay(Collider other)//인벤토리
+    {
+        if (other.CompareTag("INVEN")/*||grabbedObject.CompareTag("ITEM")*/)
+        {
+            mbOnColl = true;
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && mbLeftIsGrabbing == false)
+            {//왼손 트리거를 당기고 인벤토리 콜라이더랑 겹쳤을 때
+                GetInvenItem(msLRInven[0],lHand,mbLeftIsGrabbing);
+            }
+            else if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
+            {   //왼손 트리거를 떼고 무언가를 들고 있고, 인벤토리 콜라이더랑 겹쳤을 때
+                InvenSave(msLRInven[0],mbLeftIsGrabbing);
+            }
+            if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//오른손 트리거
+            {
+                GetInvenItem(msLRInven[1],rHand,mbRightIsGrabbing);
+            }
+            else if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))//오른손 인벤에서 가져오기
+            {
+                InvenSave(msLRInven[1],mbRightIsGrabbing);
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("INVEN"))
+            mbOnColl = false;
+    }
 }
