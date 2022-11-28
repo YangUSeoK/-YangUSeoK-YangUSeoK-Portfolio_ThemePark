@@ -6,6 +6,10 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public delegate void VoidVoidDelegate();
+    private VoidVoidDelegate attackDelegate = null;
+
+
     #region Inspector
     [Header("Speed")]
     [SerializeField] protected float m_PatrolSpeed = 5f;
@@ -90,6 +94,11 @@ public abstract class Enemy : MonoBehaviour
         }
         m_CurState = _state;
         m_CurState.EnterState();
+    }
+
+    public void SetDelegate(VoidVoidDelegate _attackCallback)
+    {
+        attackDelegate = _attackCallback;
     }
 
     protected abstract EnemyState GetInitialState();

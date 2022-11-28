@@ -11,9 +11,10 @@ public class SoundManager : MonoBehaviour
         bgm.Play();   
     }
 
-    
-    void Update()
+ 
+    // 게임오버 시 호출됨
+    public void IsGameOver()
     {
-        
+        bgm.Stop();
     }
 }
