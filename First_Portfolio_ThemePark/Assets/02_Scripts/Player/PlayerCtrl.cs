@@ -27,26 +27,30 @@ public class PlayerCtrl : MonoBehaviour
     float mSquatSpeed = 1.3f;
     public float mRotAngle = 30f;
     bool mbIsSquat = false;
+    private bool mbIsGameOver = false;
     float h;
     float v;
 
     private void FixedUpdate()
     {
-        Move();
+        if (mbIsGameOver == false) Move();
     }
     void Update()
     {
-        Vector2 mov2d = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-        v = mov2d.x;
-        h = mov2d.y;
-        //컴퓨터 테스트 용이므로 VR테스트 시 해당 코드 주석 처리 ㄱ
-        //h = Input.GetAxis("Horizontal");
-        //v= Input.GetAxis("Vertical");
-        ToggleSit();
-        PlayerState();
-        //Move();
-        PlayerAndCameraRelationRotate();//카메라의 시각으로 플레이어 회전
-        PlayerTrRotate();//플레이어의 시각을 회전
+        if (mbIsGameOver == false)
+        {
+            Vector2 mov2d = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+            v = mov2d.x;
+            h = mov2d.y;
+            //컴퓨터 테스트 용이므로 VR테스트 시 해당 코드 주석 처리 ㄱ
+            //h = Input.GetAxis("Horizontal");
+            //v= Input.GetAxis("Vertical");
+            ToggleSit();
+            PlayerState();
+            //Move();
+            PlayerAndCameraRelationRotate();//카메라의 시각으로 플레이어 회전
+            PlayerTrRotate();//플레이어의 시각을 회전
+        }
     }
     void ToggleSit()//앉기 토글 함수
     {
@@ -149,5 +153,9 @@ public class PlayerCtrl : MonoBehaviour
         OVRInput.SetControllerVibration(_vibTime, _vibPower, _controller);
         yield return new WaitForSeconds(_waitTime);
         OVRInput.SetControllerVibration(0f, 0f, _controller);
+    }
+    public void IsGameOver()
+    {
+        mbIsGameOver = true;
     }
 }
