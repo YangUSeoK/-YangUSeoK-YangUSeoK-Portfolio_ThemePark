@@ -102,7 +102,7 @@ public class Grab : MonoBehaviour
             //손에 쥐고 있을 때 물리기능 해제
             grabbedObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             grabbedObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+            grabbedObject.GetComponent<BoxCollider>().enabled = false;
 
             grabbedObject = hitObjects[closest].gameObject;
             grabbedObject.transform.SetParent(_hand.transform, false);
@@ -115,7 +115,7 @@ public class Grab : MonoBehaviour
             // 아이템 그랩 알려줌
             _isGrab = true;
             grabbedObject.GetComponent<Item>().SetIsGrabed(true);
-            Debug.Log("rrrr");
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
     private void TryUnGrab(OVRInput.Controller _controller, OVRInput.Button _button, Transform _hand, bool _isGrab)
@@ -128,7 +128,7 @@ public class Grab : MonoBehaviour
         //Inverse 오큘러스 퀘스트 컨트롤러가 돌아간 각도를 계산하는거
         prevRot = _hand.rotation;
 
-        grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+        grabbedObject.GetComponent<BoxCollider>().enabled = true;
         grabbedObject.transform.parent = null;
         grabbedObject.GetComponent<Rigidbody>().velocity = throwDirection * throwPower;
 

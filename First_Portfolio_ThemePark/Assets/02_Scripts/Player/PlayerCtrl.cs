@@ -54,7 +54,7 @@ public class PlayerCtrl : MonoBehaviour
         {                                         //만약 오큘러스에서 앉기 토글이 안되는 경우가 생긴다면 이거 조건 문제임
             if (mbIsSquat == false)//221123 김준우 이거 +1-1반복하다보면 소수점 오차 생김 이건 나중에 처리
             {
-                mPlayerInitPos.y = 1;
+                mPlayerInitPos.y = 0.3f;
                 Debug.Log("앉기 진입");
                 mbIsSquat = true;
                 playerTr.position = playerTr.position - mPlayerInitPos;
