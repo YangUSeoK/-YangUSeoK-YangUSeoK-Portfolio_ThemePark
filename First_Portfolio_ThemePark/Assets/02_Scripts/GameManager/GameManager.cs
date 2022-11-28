@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // 싱글턴
     public static GameManager Instance
     {
         get
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     }
     private static GameManager instance;
 
+    public bool mbIsGameOver = false;
     private EnemyManager m_EnemyManager = null;
     private SoundManager m_SoundManager = null;
     private UIManager m_UIManager = null;
@@ -33,17 +35,31 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         m_EnemyManager = GetComponentInChildren<EnemyManager>();
-        m_EnemyManager.PlayerTr = m_PlayerTr;
-
         m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
 
+        
+        m_EnemyManager.PlayerTr = m_PlayerTr;
+        m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
 
     }
 
-    public bool mbIsGameOver = false;
+    
 
+    #region Enemy_State_Callback
+    private void AllZombieEnterPatrolCallback()
+    {
+        m_SoundManager.SetPatrolBGM();
+    }
+    private void EnterTracePlayerCallback()
+    {
+        m_SoundManager.SetTracePlayerBGM();
+    }
+    private void AllZombieExitTracePlayerCallback()
+    {
+        m_SoundManager.FadeOutTracePlayerBGM();
+    }
     private void GameOver()
     {
         mbIsGameOver = true;
@@ -54,5 +70,17 @@ public class GameManager : MonoBehaviour
 
         // 씬전환 -> 메인타이틀로
     }
+    #endregion
 
+    #region UI
+    private void OpenInventory()
+    {
+        m_UIManager.OpenInventory();
+    }
+
+    private void CloseInventory()
+    {
+        m_UIManager.CloseInventory();
+    }
+    #endregion
 }

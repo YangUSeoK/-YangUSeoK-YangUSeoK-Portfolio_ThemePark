@@ -96,10 +96,17 @@ public abstract class Enemy : MonoBehaviour
         m_CurState.EnterState();
     }
 
+    #region Delegate_Callback
+    public void IsAttack()
+    {
+        attackDelegate?.Invoke();
+    }
+
     public void SetDelegate(VoidVoidDelegate _attackCallback)
     {
         attackDelegate = _attackCallback;
     }
+    #endregion
 
     protected abstract EnemyState GetInitialState();
     

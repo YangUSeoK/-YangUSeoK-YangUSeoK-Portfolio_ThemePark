@@ -23,6 +23,7 @@ public class TraceLight_Slaughter : EnemyState
         }
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
         m_Enemy.Agent.destination = (m_Enemy as Enemy_Slaughter).LightPos;
+        (m_Enemy as Enemy_Slaughter).EnterTracePlayerCallback();    // µ®∏Æ∞‘¿Ã∆Æ
     }
 
     public override void Action()
@@ -71,5 +72,6 @@ public class TraceLight_Slaughter : EnemyState
     public override void ExitState()
     {
         Debug.Log("TraceLight ≈¿Â!");
+        (m_Enemy as Enemy_Slaughter).ExitTracePlayerCallback(); //µ®∏Æ∞‘¿Ã∆Æ
     }
 }
