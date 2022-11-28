@@ -11,7 +11,7 @@ public class VRUILine : MonoBehaviour
     public RectTransform MousePointer = null;
     Ray ray;
     RaycastHit hitInfo;
-    float hitInfoDistance = 100f;
+    float hitInfoDistance = 10f;
 
     private void Start()
     {
@@ -25,12 +25,11 @@ public class VRUILine : MonoBehaviour
     {
         ray = new Ray(Hand.position, Hand.rotation * Vector3.forward);
         //Debug.DrawRay(Hand.position, Hand.rotation * Vector3.forward * hitInfoDistance, Color.green);
-                DrawLineForward(Hand);
+        DrawLineForward(Hand);
         if (Physics.Raycast(Hand.position, Hand.rotation * Vector3.forward, out hitInfo,hitInfoDistance))
         {
             if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//
             {
-                lR.gameObject.SetActive(true);
                 MousePointer.gameObject.SetActive(true);
                 Button btn = hitInfo.transform.GetComponent<Button>();
                 MousePointer.position = btn.transform.position;
@@ -41,7 +40,7 @@ public class VRUILine : MonoBehaviour
             }
             else
             {
-                MousePointer.transform.gameObject.SetActive(false);
+                MousePointer.gameObject.SetActive(false);
             }
         }
     }
