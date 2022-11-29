@@ -86,8 +86,4 @@ public class Enemy_Listener : Enemy
         }
 
     }
-<<<<<<< HEAD
-   
-=======
->>>>>>> Main
 }
