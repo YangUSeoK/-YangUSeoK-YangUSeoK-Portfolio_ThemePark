@@ -16,8 +16,7 @@ public class PlayerCtrl : MonoBehaviour
     public Transform playerTr;
     public Transform camera;
     public Transform body;
-    public Rigidbody rb;
-    PlayerIdle playerIdle;
+    public PlayerIdle playerIdle;
 
     Vector3 mPlayerInitPos;
     float mCurrSpeed;

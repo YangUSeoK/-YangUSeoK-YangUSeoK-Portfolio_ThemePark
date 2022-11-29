@@ -13,7 +13,7 @@ public class OnClickButton : MonoBehaviour
         mMenu.SetActive(false);
         SceneManager.LoadSceneAsync("Silent_Escape");
     }
-    public void Options()
+    public void GoToOptions()
     {
         mOptionBtn.SetActive(true);
         mMenu.SetActive(false);
