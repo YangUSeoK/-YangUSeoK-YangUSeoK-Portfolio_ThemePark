@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Attack : EnemyState
+{
+    public Attack(Enemy _enemy) : base("Attack", _enemy) { }
+
+    public override void EnterState()
+    {
+        Debug.Log("Attack ÀÔÀå!");
+        m_Enemy.Anim.SetTrigger("IsAttack");
+
+        // °ø°Ý µ¨¸®°ÔÀÌÆ® È£Ãâ
+        m_Enemy.IsAttack();
+    }
+
+    public override void ExitState()
+    {
+        Debug.Log("Attack ÅðÀå!");
+    }
+
+    public override void Action()
+    {
+        Debug.Log("Attack ¹°¸®¾÷µ«!");
+    }
+
+    public override void CheckState()
+    {
+        Debug.Log("Attack ¾÷µ«!");
+    }
+}

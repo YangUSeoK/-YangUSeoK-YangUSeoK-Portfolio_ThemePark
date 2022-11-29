@@ -1,0 +1,10 @@
+diff a/First_Portfolio_ThemePark/Assets/02_Scripts/Enemy/State/Slaughter/TracePlayer_Slaughter.cs b/First_Portfolio_ThemePark/Assets/02_Scripts/Enemy/State/Slaughter/TracePlayer_Slaughter.cs	(rejected hunks)
+@@ -34,6 +34,8 @@
+     public override void ExitState()
+     {
+         Debug.Log("TracePlayer ����!");
++
++       
+     }
+ 
+     public override void Action()
