@@ -11,7 +11,7 @@ public class VRUILine : MonoBehaviour
     public RectTransform MousePointer = null;
     Ray ray;
     RaycastHit hitInfo;
-    float hitInfoDistance = 100f;
+    float hitInfoDistance = 1f;
 
     private void Start()
     {
@@ -20,6 +20,7 @@ public class VRUILine : MonoBehaviour
         lR.endColor = Color.blue;
         lR.startWidth = 0.01f;
         lR.endWidth = 0.01f;
+        MousePointer.gameObject.SetActive(false);
     }
     void Update()//2022 11 15 김준우
     {
@@ -28,24 +29,31 @@ public class VRUILine : MonoBehaviour
         DrawLineForward(Hand);
         if (Physics.Raycast(Hand.position, Hand.rotation * Vector3.forward, out hitInfo,hitInfoDistance))
         {
-            if (hitInfo.transform.gameObject.CompareTag("BUTTON"))//
+            string tag = hitInfo.collider.tag;
+            //Debug.Log($"hitInfo.{tag}");
+            if (tag.Equals("BUTTON"))//hitInfo 콜라이더의 태그값으로 비교
             {
                 lR.gameObject.SetActive(true);
-                Debug.Log($"마우스포인터{MousePointer}");
-                MousePointer.gameObject.SetActive(true);
-                //버그 이유... vr기기가 유니티보다 먼저 내려가면 찾을 수 없다고 뜸
-                Button btn = hitInfo.transform.GetComponent<Button>();
-                MousePointer.position = btn.transform.position;
-                if (OVRInput.GetDown(OVRInput.Button.Any) && btn != null)
+                MousePointer.gameObject.SetActive(true);//마우스 포인터 활성화
+                MousePointer.GetComponent<Image>().enabled = true;
+                //Debug.Log($"MousePointer{MousePointer}");
+
+                //Debug.DrawRay(Hand.position, Hand.rotation*Vector3.forward);
+                //Button btn = hitInfo.GetComponent<Button>();
+                Button btn = hitInfo.collider.GetComponent<Button>();
+                //Debug.Log($"Btnpos:{btn.transform.position}");
+                MousePointer.transform.position = btn.transform.position;
+                if (OVRInput.GetDown(OVRInput.Button.Any) && btn != null)//버튼 실행
                 {
                     btn.onClick.Invoke();
                 }
             }
             else
             {
+                MousePointer.GetComponent<Image>().enabled = false;
                 if (MousePointer != null)
                 {
-                    MousePointer.gameObject.SetActive(false);
+                    Debug.Log("마우스포인터 인식 못함");
                 }
             }
         }
@@ -57,9 +65,5 @@ public class VRUILine : MonoBehaviour
         endPos += ray.direction*hitInfoDistance;
         lR.SetPosition(0, startPos);
         lR.SetPosition(1, endPos);
-    }
-    IEnumerator DeleteUI()
-    {
-        yield return new WaitForSeconds(3f);
     }
 }
