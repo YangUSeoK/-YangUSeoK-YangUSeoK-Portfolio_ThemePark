@@ -13,6 +13,9 @@ TagManager:
   - Flag
   - HAND
   - INVEN
+  - ITEM
+  - LHAND
+  - RHAND
   layers:
   - Default
   - TransparentFX
