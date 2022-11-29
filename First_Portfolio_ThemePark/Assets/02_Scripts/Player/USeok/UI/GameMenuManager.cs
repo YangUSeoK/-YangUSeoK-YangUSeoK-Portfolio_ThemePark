@@ -8,7 +8,7 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private GameObject menu = null;
     [SerializeField] private InputActionProperty showButton;
     [SerializeField] private Transform head = null;
-    private float spawnDistance = 2f;
+    private float spawnDistance = 3f;
 
     private void Update()
     {
