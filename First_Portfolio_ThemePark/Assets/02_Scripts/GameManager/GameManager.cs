@@ -41,12 +41,18 @@ public class GameManager : MonoBehaviour
         m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
-
-        m_EnemyManager.PlayerTr = m_PlayerTr;
+        SetEnemyManager();
+        
         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
 
     }
-   
+   private void SetEnemyManager()
+    {
+        m_EnemyManager.PlayerTr = m_PlayerTr;
+        m_EnemyManager.SetFactorys();
+    }
+    
+
 
     #region Enemy_State_Callback
     private void AllZombieEnterPatrolCallback()

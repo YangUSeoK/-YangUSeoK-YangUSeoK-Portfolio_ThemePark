@@ -61,14 +61,16 @@ public class PlayerCtrl : MonoBehaviour
                 mPlayerInitPos.y = 0.3f;
                 Debug.Log("앉기 진입");
                 mbIsSquat = true;
-                playerTr.position = playerTr.position - mPlayerInitPos;
+                //playerTr.position = playerTr.position - mPlayerInitPos;
+                playerTr.GetComponent<CapsuleCollider>().height = 0.8f;
                 playerIdle = PlayerIdle.Squat;
             }
             else
             {
                 Debug.Log("서기 진입");
                 mbIsSquat = false;
-                playerTr.position = playerTr.position + mPlayerInitPos;
+                //playerTr.position = playerTr.position + mPlayerInitPos;
+                playerTr.GetComponent<CapsuleCollider>().height = 2.3f;
                 playerIdle = PlayerIdle.Walk;
             }
         }

@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     private VoidVoidDelegate allZombieExitTracePlayerDelegate = null;
     private VoidVoidDelegate attackDelegate = null;
 
-    private Transform m_PlayerTr = null;
+    [SerializeField] private Transform m_PlayerTr = null;  // 디버그
     public Transform PlayerTr
     {
         get { return m_PlayerTr; }
@@ -33,9 +33,6 @@ public class EnemyManager : MonoBehaviour
         m_CCTVManager = GetComponentInChildren<CCTVManager>();
 
 
-
-        SetFactorys();
-
         // CCTV가 플레이어 발견했을 때 콜백 설정
         m_CCTVManager.SetDelegate(CCTVDetectCallback);
 
@@ -52,7 +49,7 @@ public class EnemyManager : MonoBehaviour
     // 슬러터 생성 후에 리스트 받아와야해서 콜백으로 받아옴
     public void SetFactorys()
     {
-        Debug.Log(m_PlayerTr.name);
+        Debug.Log(PlayerTr.name);
         for (int i = 0; i < m_Factorys.Length; ++i)
         {
             m_Factorys[i].PlayerTr = m_PlayerTr;
@@ -100,13 +97,11 @@ public class EnemyManager : MonoBehaviour
 
     private void EnterTracePlayerCallback()
     {
-        Debug.Log("3");
         enterTracePlayerDelegate?.Invoke();
     }
 
     private void AllZombieExitTracePlayerCallback()
     {
-        Debug.Log("EnemyManager Callback");
         allZombieExitTracePlayerDelegate?.Invoke();
     }
 

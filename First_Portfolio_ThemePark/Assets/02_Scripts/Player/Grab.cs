@@ -15,11 +15,13 @@ public class Grab : MonoBehaviour
     public Transform lHand;
     public Transform rHand;
 
-    bool mbLeftIsGrabbing = false;
-    bool mbRightIsGrabbing = false;
+    [SerializeField] bool mbLeftIsGrabbing = false;     // 디버그
+    [SerializeField] bool mbRightIsGrabbing = false;    
     bool mbOnColl=false;
     bool isDoingGrabbingAnimation = false;
-    GameObject grabbedObject;
+    GameObject m_GrabbedObject = null;
+    [SerializeField] GameObject m_RightGrabbedObject = null;    // 디버그
+    [SerializeField] GameObject m_LeftGrabbedObject = null;
     public LayerMask grabbedLayer;
     public float grabRange = 0.5f;
     Item.EItemType eItemType;
@@ -55,7 +57,7 @@ public class Grab : MonoBehaviour
             {
                 TryGrab(OVRInput.Controller.LTouch, lHand, mbLeftIsGrabbing);
             }
-            else if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
+            else if (!mbOnColl && OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
             {   //왼손 트리거를 떼고 무언가를 들고 있을 때
                 //던지거나 집는 과정에서 뭔 이상한 버그 생기면 여기서 예외조건 달아야 할 듯?
                 TryUnGrab(OVRInput.Controller.LTouch, OVRInput.Button.PrimaryHandTrigger, lHand, mbLeftIsGrabbing);
@@ -68,7 +70,7 @@ public class Grab : MonoBehaviour
             {
                 TryGrab(OVRInput.Controller.RTouch, rHand, mbRightIsGrabbing);
             }
-            else if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
+            else if (!mbOnColl && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
             {
                 TryUnGrab(OVRInput.Controller.RTouch, OVRInput.Button.SecondaryHandTrigger, rHand, mbRightIsGrabbing);
             }
@@ -80,7 +82,14 @@ public class Grab : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.SphereCast(ray, 0.5f/*(구체 반경)*/, out hitInfo, remoteGrabDistance, grabbedLayer))
         {
-            grabbedObject = hitInfo.transform.gameObject;
+            if (_hand == lHand)
+            {
+                m_LeftGrabbedObject = hitInfo.transform.gameObject;
+            }
+            else
+            {
+                m_RightGrabbedObject = hitInfo.transform.gameObject;
+            }
             //물체가 끌려오는 코루틴 함수 호출
             StartCoroutine(GrabbingAnimation(_controller, _hand));
             
@@ -111,30 +120,39 @@ public class Grab : MonoBehaviour
         if (hitObjects.Length > 0)//쥐는게 결정되는 시점
         {
             //손에 쥐고 있을 때 물리기능 해제
-            grabbedObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            grabbedObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-            grabbedObject.GetComponent<BoxCollider>().enabled = false;
+            _hand.GetComponentInChildren<ICatch>().gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            _hand.GetComponentInChildren<ICatch>().gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            _hand.GetComponentInChildren<ICatch>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            _hand.GetComponentInChildren<ICatch>().gameObject.GetComponent<BoxCollider>().enabled = false;
 
 
-            grabbedObject = hitObjects[closest].gameObject;
-            grabbedObject.transform.SetParent(_hand.transform, false);
-            grabbedObject.transform.position = _hand.position;//위치 설정
+            //_hand.GetComponentInChildren<ICatch>().gameObject = hitObjects[closest].gameObject;
+            _hand.GetComponentInChildren<ICatch>().gameObject.transform.SetParent(_hand.transform, false);
+            _hand.GetComponentInChildren<ICatch>().gameObject.transform.position = _hand.position;//위치 설정
             //grabbedObject.transform.localPosition += new Vector3(0f, 0f, 0.5f);
-            grabbedObject.transform.rotation = _hand.rotation;
+            _hand.GetComponentInChildren<ICatch>().gameObject.transform.rotation = _hand.rotation;
             //던지기 위해 쥐고 나서 현재위치 설정
             prevPos = OVRInput.GetLocalControllerPosition(_controller);
             prevRot = _hand.rotation;
 
             //아이템 그랩 여부 알려줌
-            _isGrab = true;
-            grabbedObject.GetComponent<Item>().SetIsGrabed(true);
-            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            _hand.GetComponentInChildren<ICatch>().gameObject.GetComponent<Item>().SetIsGrabed(true);
+            _hand.GetComponentInChildren<ICatch>().transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            if(_hand == lHand)
+            {
+                mbLeftIsGrabbing = true;
+            }
+            else
+            {
+                mbRightIsGrabbing = true;
+            }
         }
     }
     private void TryUnGrab(OVRInput.Controller _controller, OVRInput.Button _button, Transform _hand, bool _isGrab)
     {
-        Debug.Log("그랩이 안먹는거 같은데?");
+        
+
         //던질 방향(위치 - 위치 = 던지는 방향)
         Vector3 throwDirection = _hand.position - prevPos;
         prevPos = _hand.position;
@@ -143,21 +161,30 @@ public class Grab : MonoBehaviour
         //Inverse 오큘러스 퀘스트 컨트롤러가 돌아간 각도를 계산하는거
         prevRot = _hand.rotation;
 
-        grabbedObject.GetComponent<BoxCollider>().enabled = true;
-        grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-        grabbedObject.transform.parent = null;
-        grabbedObject.GetComponent<Rigidbody>().velocity = throwDirection * throwPower;
+        _hand.GetComponentInChildren<ICatch>().GetComponent<BoxCollider>().enabled = true;
+        _hand.GetComponentInChildren<ICatch>().GetComponent<Rigidbody>().isKinematic = false;
+        _hand.GetComponentInChildren<ICatch>().transform.parent = null;
+        _hand.GetComponentInChildren<ICatch>().GetComponent<Rigidbody>().velocity = throwDirection * throwPower;
 
         //각 속도 = (1/dt)* dCeta(특정 축 기준 변위 각도=변경된 각도)
         float angle;
         Vector3 axis;
         deltaRotation.ToAngleAxis(out angle, out axis);
         Vector3 angularVelocity = (1f / Time.deltaTime) * angle * axis;
-        grabbedObject.GetComponent<Rigidbody>().angularVelocity = angularVelocity * rotPower;
+        _hand.GetComponentInChildren<ICatch>().GetComponent<Rigidbody>().angularVelocity = angularVelocity * rotPower;
 
-        grabbedObject.GetComponent<Item>().SetIsGrabed(false);
-        grabbedObject = null;
-        _isGrab = false;
+        _hand.GetComponentInChildren<ICatch>().GetComponent<Item>().SetIsGrabed(false);
+
+        if (_hand == lHand)
+        {
+            mbLeftIsGrabbing = false;
+            m_LeftGrabbedObject = null;
+        }
+        else
+        {
+            mbRightIsGrabbing = false;
+            m_RightGrabbedObject = null;
+        }
     }
     IEnumerator GrabbingAnimation(OVRInput.Controller _controller, Transform _hand)//물체가 손으로 끌려옴
     {
@@ -167,11 +194,11 @@ public class Grab : MonoBehaviour
         }
         else
         {
-            grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+            m_GrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             prevPos = _hand.position;
             prevRot = _hand.rotation;
 
-            Vector3 startLocation = grabbedObject.transform.position;
+            Vector3 startLocation = m_GrabbedObject.transform.position;
             Vector3 targetLocation = prevPos + _hand.rotation * Vector3.forward * 0.1f;
 
             float currentTime = 0f;
@@ -181,70 +208,59 @@ public class Grab : MonoBehaviour
             {
                 currentTime += Time.deltaTime;
                 elapsedRate = currentTime / finishTime;
-                grabbedObject.transform.position = Vector3.Lerp(startLocation, targetLocation, elapsedRate);
+                m_GrabbedObject.transform.position = Vector3.Lerp(startLocation, targetLocation, elapsedRate);
 
                 yield return null;
             }
-            grabbedObject.transform.position = _hand.position;
-            grabbedObject.transform.parent = _hand;
+            m_GrabbedObject.transform.position = _hand.position;
+            m_GrabbedObject.transform.parent = _hand;
             //grabbedObject.transform.localPosition += new Vector3(0f, 0f, 0.5f);
             //grabbedObject.GetComponent<BoxCollider>().enabled = true;   // 손전등 손에 들고나면 콜라이더 켜야함.
             isDoingGrabbingAnimation = false;
         }
     }
-    void InvenSave(SInventory _LRInven, bool _isGrab)//2022 11 25 김준우
-    {
-        //여기에 인벤토리에 아이템 인덱스 넣고 디스트로이
-        if (grabbedObject.GetComponent<Item>() != null)//22 11 28 김준우
-        {//그랩 오브젝트에 아이템컴포넌트가 있는지 검사
-            if (grabbedObject.Equals(Item.EItemType.Flashlight))//아이템 컴포넌트의 EItemType으로 분류
-            {
-                _LRInven.currItemIndex = 0;
-            }
-            else if (grabbedObject.Equals(Item.EItemType.Bottle))
-            {
-                _LRInven.currItemIndex = 1;
-            }
-            else if (grabbedObject.Equals(Item.EItemType.Can))
-            {
-                _LRInven.currItemIndex = 2;
-            }
-            _LRInven.isGetItem = true;
-        }
-        else return;//아이템 컴포넌트가 없다면 그냥 종료
-        grabbedObject = null;
-        Destroy(grabbedObject);
-        _isGrab = true;
-    }
-    void GetInvenItem(SInventory _LRInven, Transform _hand, bool _isGrab)
-    {
-        if (_isGrab == false)
-        {
-            //여기에 넣은 아이템 인덱스로 인스턴시에이트 하는 기능
-            grabbedObject = Instantiate(ItemIndex[currItemIndex], _hand);
-            _isGrab = true;
-        }
-    }
+   
     private void OnTriggerStay(Collider other)//인벤토리
     {
         if (other.CompareTag("INVEN")/*||grabbedObject.CompareTag("ITEM")*/)
         {
             mbOnColl = true;
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) && mbLeftIsGrabbing == false)
+            if (mbLeftIsGrabbing == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
             {//왼손 트리거를 당기고 인벤토리 콜라이더랑 겹쳤을 때
-                GetInvenItem(msLRInven[0], lHand, mbLeftIsGrabbing);
+                Debug.Log("왼손 아이템 꺼내기");
+                m_LeftGrabbedObject = other.GetComponent<ItemSlot>().OutputItem(lHand).gameObject;
+                mbLeftIsGrabbing = true;
             }
-            else if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
+
+            if (mbLeftIsGrabbing && OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
             {   //왼손 트리거를 떼고 무언가를 들고 있고, 인벤토리 콜라이더랑 겹쳤을 때
-                InvenSave(msLRInven[0], mbLeftIsGrabbing);
+
+                Debug.Log("왼손 아이템 넣기");
+                if (m_LeftGrabbedObject.GetComponent<Item>())
+                {
+                    Debug.Log("넣을게");
+                    other.GetComponent<ItemSlot>().InSlotItem = m_LeftGrabbedObject;
+                    m_LeftGrabbedObject = null;
+                    mbLeftIsGrabbing = false;
+                }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))//오른손 트리거
+            
+            if (mbRightIsGrabbing == false && OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))//오른손 트리거
             {
-                GetInvenItem(msLRInven[1], rHand, mbRightIsGrabbing);
+                Debug.Log("오른손 아이템 꺼내기");
+                m_RightGrabbedObject = other.GetComponent<ItemSlot>().OutputItem(rHand);
+                mbRightIsGrabbing = true;
             }
-            else if (OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))//오른손 인벤에서 가져오기
+
+            if (mbRightIsGrabbing && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))//오른손 인벤에서 가져오기
             {
-                InvenSave(msLRInven[1], mbRightIsGrabbing);
+                if (m_RightGrabbedObject.GetComponent<Item>())
+                {
+                    Debug.Log("넣을게2");
+                    other.GetComponent<ItemSlot>().InSlotItem = m_RightGrabbedObject;
+                    m_RightGrabbedObject = null;
+                    mbRightIsGrabbing = false;
+                }
             }
         }
     }
