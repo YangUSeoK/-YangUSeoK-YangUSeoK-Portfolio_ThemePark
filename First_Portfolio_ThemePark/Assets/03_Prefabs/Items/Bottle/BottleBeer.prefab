@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9099844042806380105}
   m_Layer: 0
   m_Name: BottleBeer
-  m_TagString: Untagged
+  m_TagString: ITEM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631d98a53c2b64a46843744da0699864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mbIsHanded: 0
   m_CrashBottlePrefab: {fileID: 5567446090321915811, guid: b47019e672aede744bf86b260cfe2cc1, type: 3}
   m_Power: 20
   m_ListenerLayer:
