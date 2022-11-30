@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_PatrolSpeed: 0
   m_ConcentrationSpeed: 0
   m_TraceSpeed: 8
+  m_PlayerTr: {fileID: 0}
   m_AttackRange: 1
 --- !u!54 &1528511146
 Rigidbody:
