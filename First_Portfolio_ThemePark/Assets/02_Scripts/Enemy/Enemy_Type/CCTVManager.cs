@@ -78,10 +78,10 @@ public class CCTVManager : MonoBehaviour
 
     public void IsGameOver()
     {
-        // ÄÚ·çÆ¾ Á¤Áö 
+        // ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½ 
         StopCoroutine(NextCCTVCoroutine());
         
-        // ¸ðµç CCTV TurnOff
+        // ï¿½ï¿½ï¿½ CCTV TurnOff
         for(int i = 0; i <  
             m_CCTVs.Length; ++i)
         {
