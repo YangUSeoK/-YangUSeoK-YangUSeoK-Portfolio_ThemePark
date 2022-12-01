@@ -16,6 +16,7 @@ TagManager:
   - ITEM
   - LHAND
   - RHAND
+  - RoomLight
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - FRAME
   - LISTENER
   - GRABBLE
-  - 
+  - MINIMAP
   - 
   - 
   - 

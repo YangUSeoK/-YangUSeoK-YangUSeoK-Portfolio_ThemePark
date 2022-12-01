@@ -6,20 +6,31 @@ using UnityEngine.UI;
 public class PlayerInteractionUI : MonoBehaviour
 {//22 11 29 김준우
     public Image mItemPos;
-    //GameObject mGrabbedItem;
+    private ICatch[] mGrabbableItem;
+
     void Start()
     {
         mItemPos.enabled = false;
-        //mGrabbedItem.GetComponent<ICatch>();
+        mGrabbableItem = FindObjectsOfType<ICatch>();
     }
 
     void Update()
     {
-        mItemPos.transform.position = FindObjectOfType<ICatch>().transform.position + Vector3.up;
-        mItemPos.enabled = true;
-        //if(mGrabbedItem.mbIsHanded==true)//아아템 그랩 여부 어떻게 판단할것인지 고민 좀 하셈
-        //{
-        //    mItemPos.enabled = false;
-        //}
+        for(int mCnt=0; mCnt<mGrabbableItem.Length; mCnt++)//221130 김준우
+        {
+            if(mGrabbableItem[mCnt].GetComponent<Item>().mbUICatch==false)
+            {
+                Instantiate(mItemPos);
+                mItemPos.transform.SetParent(mGrabbableItem[mCnt].transform);
+                mItemPos.transform.position = mGrabbableItem[mCnt].transform.position + Vector3.up;
+                mItemPos.enabled = true;//이거 필요한가?
+                mGrabbableItem[mCnt].GetComponent<Item>().mbUICatch = true;
+            }
+            //if(mGrabbableItem[mCnt].GetComponent<Item>().mbIsHanded == true ||
+            //    mGrabbableItem[mCnt].GetComponent<Item>().mbIsInPocket == true)//쥐고 있거나 인벤토리에 있을경우
+            //{
+            //    this.mItemPos.enabled= false;
+            //}
+        }
     }
 }

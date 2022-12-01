@@ -17,6 +17,7 @@ public abstract class Item : ICatch
     [SerializeField] protected bool mbIsHanded = false;
     protected bool mbIsInPocket = false;
     protected float m_Speed;
+    [HideInInspector]public bool mbUICatch=false;
 
     void Awake()
     {
