@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 2835082547654250588}
   - component: {fileID: 717081035}
   - component: {fileID: 787643907}
+  - component: {fileID: 274445268098558961}
   m_Layer: 14
   m_Name: Can_1
   m_TagString: ITEM
@@ -199,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mbIsHanded: 0
+  mbUICatch: 0
   m_ListenerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -311,3 +313,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.27, y: 0.36, z: 0.21}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &274445268098558961
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035550517705497443}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

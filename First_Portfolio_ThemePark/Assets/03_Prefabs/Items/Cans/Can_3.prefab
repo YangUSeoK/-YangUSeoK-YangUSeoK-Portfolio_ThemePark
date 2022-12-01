@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3764179816511224561}
   - component: {fileID: 4111384297017484920}
   - component: {fileID: 4914199959965569023}
+  - component: {fileID: 2216734739973535451}
   m_Layer: 0
   m_Name: Can_3
   m_TagString: ITEM
@@ -198,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mbIsHanded: 0
+  mbUICatch: 0
   m_ListenerLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -297,3 +299,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &2216734739973535451
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155181875244335518}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
