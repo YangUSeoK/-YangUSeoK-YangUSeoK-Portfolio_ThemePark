@@ -78,6 +78,12 @@ public class GameManager : MonoBehaviour
 
         // 씬전환 -> 메인타이틀로
     }
+
+    private void GameClear()//221201 김준우
+    {
+        //조건식
+
+    }
     #endregion
 
     #region UI

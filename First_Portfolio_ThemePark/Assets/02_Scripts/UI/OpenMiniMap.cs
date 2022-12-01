@@ -7,6 +7,11 @@ public class OpenMiniMap : MonoBehaviour
     public Camera MainCamera;
     public Camera MiniMapCam;
     bool mbIsMiniMapCam = false;
+
+    private void Start()
+    {
+        MiniMapCam.enabled = false;
+    }
     void Update()
     {
         //ø©±‚º≠ ¿Œ«≤

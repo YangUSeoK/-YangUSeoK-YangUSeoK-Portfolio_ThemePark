@@ -7,6 +7,8 @@ public class OnClickButton : MonoBehaviour
 {
     public GameObject mMenu;
     public GameObject mOptionBtn;
+    public GameObject mGameOver;
+    public GameObject mGameClear;
     
     public void StartGame()
     {
@@ -26,6 +28,8 @@ public class OnClickButton : MonoBehaviour
     public void GetOutGameScene()
     {
         mMenu.SetActive(false);
+        mGameOver.SetActive(false);
+        mGameClear.SetActive(false);
         SceneManager.LoadSceneAsync("MainOpen");
     }
     public void ExitGame()
