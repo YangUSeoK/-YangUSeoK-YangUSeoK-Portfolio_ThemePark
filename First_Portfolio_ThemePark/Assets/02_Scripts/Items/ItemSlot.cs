@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ItemSlot : MonoBehaviour
 {
+    [SerializeField] private GameObject m_Player = null;
+   
+    
     [SerializeField]
     private GameObject m_Item = null; // 디버그용
     public GameObject Item
@@ -11,37 +15,96 @@ public class ItemSlot : MonoBehaviour
         get { return m_Item; }
         set { m_Item = value; }
     }
-    private bool m_IsTurnOn = false;
-    private bool m_HaveItem = false;
 
+    [SerializeField]
+    private GameObject m_HandItem = null; // 디버그용
+    public GameObject HandItem
+    {
+        get { return HandItem; }
+        set { m_HandItem = value; }
+    }
+
+    [SerializeField]
+    private GameObject m_Hand = null; // 디버그용
+
+    private void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnger : " + other.name);
+
+        if (other.CompareTag("ITEM"))
+        {
+            if (m_HandItem == null)
+            {
+                m_HandItem = other.gameObject;
+            }
+        }
+        if (other.CompareTag("HAND"))
+        {
+            if (m_Hand == null)
+            {
+                m_Hand = other.gameObject;
+            }
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("ITEM"))
+        {
+            if (m_HandItem != null)
+            {
+                m_HandItem = null;
+            }
+        }
+        else if (other.CompareTag("HAND"))
+        {
+            if(m_Hand != null)
+            {
+                m_Hand = null;
+            }
+        }
+
+
+
+    }
 
     public void PopItem()
     {
-        if (m_IsTurnOn)
-        {
-            m_Item.SetActive(true);
-            m_Item = null;
-        }
+        Debug.Log("PoP");
+        m_Item.SetActive(true);
+        m_Item.transform.position = m_Hand.transform.position;
+        m_Item.transform.SetParent(m_Hand.transform, false);
+        m_Item = null;
     }
 
     public void PushItem()
     {
-        if (m_IsTurnOn)
+        Debug.Log("Push");
+        if (m_Item == null)
         {
-            //m_Item = _item;
+            m_Item = m_HandItem;
+            m_Item.transform.SetParent(transform, false);
             m_Item.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("아이템이 다찼습니다.");
         }
     }
 
-    public void TurnOn()
+
+
+    public void Enter()
     {
-        m_IsTurnOn = true;
+        GetComponent<MeshRenderer>().material.color = Color.black;
     }
-
-    public void TurnOff()
+    public void Exit()
     {
-        m_IsTurnOn = false;
+        GetComponent<MeshRenderer>().material.color = Color.white;
     }
-
-
 }

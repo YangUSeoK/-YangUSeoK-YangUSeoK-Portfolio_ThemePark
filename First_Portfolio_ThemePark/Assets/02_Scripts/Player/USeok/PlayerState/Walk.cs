@@ -15,7 +15,9 @@ public class Walk : PlayerState
     {
         // Axis 0.95 юлго => SetState(SlowWalk)
         InputManager.Instance.LeftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 secondary2DAxisValue);
-        Debug.Log(secondary2DAxisValue);
+        
+        //Debug.Log(secondary2DAxisValue);
+        
         if(secondary2DAxisValue.y < 0.95f)
         {
             m_Player.SetState(m_Player.SlowWalk);
