@@ -57,8 +57,8 @@ public abstract class Enemy : MonoBehaviour
         get { return m_Anim; }
     }
 
-    protected AudioSource m_Audio = null;
-    public AudioSource Audio
+    protected AudioSource[] m_Audio = null;
+    public AudioSource[] Audio
     {
         get { return m_Audio; }
     }
@@ -68,6 +68,7 @@ public abstract class Enemy : MonoBehaviour
     {
         m_Agent = GetComponent<NavMeshAgent>();
         m_Anim = GetComponent<Animator>();
+        m_Audio = GetComponents<AudioSource>();
     }
 
     protected void OnEnable()

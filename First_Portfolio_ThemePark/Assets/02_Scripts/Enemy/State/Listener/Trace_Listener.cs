@@ -10,6 +10,7 @@ public class Trace_Listener : EnemyState
     {
         Debug.Log("Trace 입장!");
         // 소리지를 때 이동 멈춰있어야 함
+        m_Enemy.Audio[0].Play();
 
         m_Enemy.Agent.speed = m_Enemy.TraceSpeed;
         m_Enemy.Agent.destination = (m_Enemy as Enemy_Listener).SoundPos;
