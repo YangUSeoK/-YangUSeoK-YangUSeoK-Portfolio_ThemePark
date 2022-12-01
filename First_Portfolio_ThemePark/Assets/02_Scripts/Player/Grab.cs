@@ -220,50 +220,50 @@ public class Grab : MonoBehaviour
         }
     }
    
-    private void OnTriggerStay(Collider other)//인벤토리
-    {
-        if (other.CompareTag("INVEN")/*||grabbedObject.CompareTag("ITEM")*/)
-        {
-            mbOnColl = true;
-            if (mbLeftIsGrabbing == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
-            {//왼손 트리거를 당기고 인벤토리 콜라이더랑 겹쳤을 때
-                Debug.Log("왼손 아이템 꺼내기");
-                m_LeftGrabbedObject = other.GetComponent<ItemSlot>().OutputItem(lHand).gameObject;
-                mbLeftIsGrabbing = true;
-            }
+    //private void OnTriggerStay(Collider other)//인벤토리
+    //{
+    //    if (other.CompareTag("INVEN")/*||grabbedObject.CompareTag("ITEM")*/)
+    //    {
+    //        mbOnColl = true;
+    //        if (mbLeftIsGrabbing == false && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+    //        {//왼손 트리거를 당기고 인벤토리 콜라이더랑 겹쳤을 때
+    //            Debug.Log("왼손 아이템 꺼내기");
+    //            m_LeftGrabbedObject = other.GetComponent<ItemSlot>().OutputItem(lHand).gameObject;
+    //            mbLeftIsGrabbing = true;
+    //        }
 
-            if (mbLeftIsGrabbing && OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
-            {   //왼손 트리거를 떼고 무언가를 들고 있고, 인벤토리 콜라이더랑 겹쳤을 때
+    //        if (mbLeftIsGrabbing && OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger))
+    //        {   //왼손 트리거를 떼고 무언가를 들고 있고, 인벤토리 콜라이더랑 겹쳤을 때
 
-                Debug.Log("왼손 아이템 넣기");
-                if (m_LeftGrabbedObject.GetComponent<Item>())
-                {
-                    Debug.Log("넣을게");
-                    other.GetComponent<ItemSlot>().InSlotItem = m_LeftGrabbedObject;
-                    m_LeftGrabbedObject = null;
-                    mbLeftIsGrabbing = false;
-                }
-            }
+    //            Debug.Log("왼손 아이템 넣기");
+    //            if (m_LeftGrabbedObject.GetComponent<Item>())
+    //            {
+    //                Debug.Log("넣을게");
+    //                other.GetComponent<ItemSlot>().InSlotItem = m_LeftGrabbedObject;
+    //                m_LeftGrabbedObject = null;
+    //                mbLeftIsGrabbing = false;
+    //            }
+    //        }
             
-            if (mbRightIsGrabbing == false && OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))//오른손 트리거
-            {
-                Debug.Log("오른손 아이템 꺼내기");
-                m_RightGrabbedObject = other.GetComponent<ItemSlot>().OutputItem(rHand);
-                mbRightIsGrabbing = true;
-            }
+    //        if (mbRightIsGrabbing == false && OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))//오른손 트리거
+    //        {
+    //            Debug.Log("오른손 아이템 꺼내기");
+    //            m_RightGrabbedObject = other.GetComponent<ItemSlot>().OutputItem(rHand);
+    //            mbRightIsGrabbing = true;
+    //        }
 
-            if (mbRightIsGrabbing && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))//오른손 인벤에서 가져오기
-            {
-                if (m_RightGrabbedObject.GetComponent<Item>())
-                {
-                    Debug.Log("넣을게2");
-                    other.GetComponent<ItemSlot>().InSlotItem = m_RightGrabbedObject;
-                    m_RightGrabbedObject = null;
-                    mbRightIsGrabbing = false;
-                }
-            }
-        }
-    }
+    //        if (mbRightIsGrabbing && OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))//오른손 인벤에서 가져오기
+    //        {
+    //            if (m_RightGrabbedObject.GetComponent<Item>())
+    //            {
+    //                Debug.Log("넣을게2");
+    //                other.GetComponent<ItemSlot>().InSlotItem = m_RightGrabbedObject;
+    //                m_RightGrabbedObject = null;
+    //                mbRightIsGrabbing = false;
+    //            }
+    //        }
+    //    }
+    //}
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("INVEN"))

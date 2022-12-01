@@ -44,7 +44,22 @@ public class ActivateGrabRay : MonoBehaviour
         {
             rightGrabbedObject = null;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("INVEN"))
+        {
+            //other.GetComponent<ItemSlot>().
+        }
+    }
+    public void PopItem()
+    {
 
     }
 
+    public void PushItem()
+    {
+
+    }
 }
