@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5054337189695156901}
   m_Layer: 0
-  m_Name: CCTV_1
+  m_Name: CCTV_1 - Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
