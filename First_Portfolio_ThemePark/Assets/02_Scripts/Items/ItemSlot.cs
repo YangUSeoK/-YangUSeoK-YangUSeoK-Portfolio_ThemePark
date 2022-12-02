@@ -68,9 +68,6 @@ public class ItemSlot : MonoBehaviour
                 m_Hand = null;
             }
         }
-
-
-
     }
 
     public void PopItem()
@@ -78,7 +75,7 @@ public class ItemSlot : MonoBehaviour
         Debug.Log("PoP");
         m_Item.SetActive(true);
         m_Item.transform.position = m_Hand.transform.position;
-        m_Item.transform.SetParent(m_Hand.transform, false);
+        m_Item.transform.SetParent(null);
         m_Item = null;
     }
 

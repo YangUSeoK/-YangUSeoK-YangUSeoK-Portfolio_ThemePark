@@ -15,7 +15,6 @@ public class HandToInventory : MonoBehaviour
    
 
     [SerializeField] private InputActionProperty m_GribButton;
-    
     [SerializeField] private GameObject m_Inventory = null; // 디버그용
 
     private void Update()
@@ -26,7 +25,6 @@ public class HandToInventory : MonoBehaviour
             if (m_GrabbedObject != m_DirectGrab.interactablesSelected[0].transform.gameObject)
             {
                 m_GrabbedObject = m_DirectGrab.interactablesSelected[0].transform.gameObject;
-                m_GrabbedObject.transform.SetParent(transform,false);
             }
         }
         else
