@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     public AudioSource bgSound;
+    
     public AudioClip[] bglist;
 
     private void Awake()
@@ -52,29 +53,29 @@ public class SoundManager : MonoBehaviour
     #region Enemy_State_BGM
     public void SetPatrolBGM()
     {
-        // Æò»ó½Ã ºê±Ý
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         Debug.Log("PatrolBGM");
     }
 
     public void SetTracePlayerBGM()
     {
-        // if(TracePlayer ºê±ÝÀÌ ¾Æ´Ï¶ó¸é)
-        // TracePlayer »óÅÂ·Î ºê±Ý ¹Ù²ñ
+        // if(TracePlayer ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½)
+        // TracePlayer ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
         Debug.Log("SetTracePlayerBGM");
     }
 
     public void FadeOutTracePlayerBGM()
     {
-        // TracePlayer¿¡¼­ ³ª°¥¶§ º¼·ý ÆäÀÌµå¾Æ¿ô
+        // TracePlayerï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½Æ¿ï¿½
         Debug.Log("ExitTracePlayerBGM");
     }
 
-    // °ÔÀÓ¿À¹ö ½Ã È£ÃâµÊ
+    // ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½ï¿½
     public void IsGameOver()
     {
         //bgm.Stop();
 
-        // °ÔÀÓ¿À¹ö ºê±Ý Ãâ·Â
+        // ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         Debug.Log("GameOver");
     }
     #endregion
