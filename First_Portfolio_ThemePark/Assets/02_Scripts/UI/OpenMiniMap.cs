@@ -15,7 +15,7 @@ public class OpenMiniMap : MonoBehaviour
     void Update()
     {
         //여기서 인풋
-        if(Input.GetKeyDown("j"))
+        if(Input.GetKeyDown("j"))//이거 바꿀때 나중에 InvenUI조건도 같이 바꿔야됨
         {
             MapChange();
             mbIsMiniMapCam = !mbIsMiniMapCam;
