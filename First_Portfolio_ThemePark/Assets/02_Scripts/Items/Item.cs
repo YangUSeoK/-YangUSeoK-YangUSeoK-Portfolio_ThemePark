@@ -10,7 +10,8 @@ public abstract class Item : ICatch
     {
         Flashlight = 1,
         Bottle = 2,
-        Can = 4
+        Can = 4,
+        Rock = 8
     }   
     protected Rigidbody m_Rigid;
     protected AudioSource[] m_ItemAudio;
@@ -38,11 +39,9 @@ public abstract class Item : ICatch
             m_Speed = m_Rigid.velocity.magnitude;
     }
 
-    // 반사각 구하는 함수(가져온거라 이해후 보정필요)
+    // 반사각 구하는 함수
     protected void HitObject(Collision coll)
     {
-        //Vector3 dir = transform.position - coll.transform.position;
-
         Vector3 inVector = transform.position - coll.transform.position;
         Vector3 collVector = coll.transform.position;
 
