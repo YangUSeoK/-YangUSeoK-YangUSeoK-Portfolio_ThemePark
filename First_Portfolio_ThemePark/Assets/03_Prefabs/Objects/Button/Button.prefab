@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 307160550568817851}
   - component: {fileID: 307160550568817850}
   - component: {fileID: 307160550568817849}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ' Frame'
   m_TagString: BUTTON
   m_Icon: {fileID: 0}
@@ -189,9 +189,9 @@ GameObject:
   - component: {fileID: 307160550999929821}
   - component: {fileID: 307160550999929820}
   - component: {fileID: 307160550999929811}
-  - component: {fileID: 307160550999929823}
   - component: {fileID: 224363584}
-  m_Layer: 9
+  - component: {fileID: 1991145802043257476}
+  m_Layer: 11
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,20 +292,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 2
---- !u!114 &307160550999929823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307160550999929809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc753f7e669a27340b3d6b32438ef798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mbIsPressed: 0
-  m_RestorDamping: 10
 --- !u!82 &224363584
 AudioSource:
   m_ObjectHideFlags: 0
@@ -402,6 +388,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1991145802043257476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307160550999929809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d3e25ee47bfbb40afad8126ea1e3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mbIsPressed: 0
+  m_RestorDamping: 10
 --- !u!1 &307160551415564060
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 307160551415564056}
   - component: {fileID: 307160551415564063}
   - component: {fileID: 307160551415564062}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ' Pillar'
   m_TagString: BUTTON
   m_Icon: {fileID: 0}

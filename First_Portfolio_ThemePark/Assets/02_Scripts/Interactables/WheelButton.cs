@@ -36,6 +36,7 @@ public class WheelButton : MonoBehaviour
         {
             m_ButtonAudio.PlayOneShot(m_ButtonAudio.clip);
             mbIsPressed = !mbIsPressed;
+            Debug.Log("Button Pressed!");
         }
     }
 

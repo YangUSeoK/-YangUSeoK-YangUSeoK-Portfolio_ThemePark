@@ -6,6 +6,9 @@ public class PlayerTest : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] AudioSource[] playerAudio;
+    float h;
+    float v;
+    bool iswalking = false;
 
     void Start()
     {
@@ -16,12 +19,13 @@ public class PlayerTest : MonoBehaviour
     {
         Move();
         StepSound();
+        StopSound();
     }
 
     void Move()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+         h = Input.GetAxis("Horizontal");
+         v = Input.GetAxis("Vertical");
 
         Vector3 moveDir = new Vector3(h, 0f, v).normalized;
 
@@ -30,22 +34,32 @@ public class PlayerTest : MonoBehaviour
 
     void StepSound()
     {
-        Vector3 currPos = transform.position;
-        if (transform.position != currPos)
+        if (Input.anyKeyDown && iswalking == false)
         {
             StartCoroutine(SoundPlay());
+            iswalking = true;
         }
-        else
+    }
+
+    void StopSound()
+    {
+        if (Input.anyKey == false && iswalking == true)
         {
-            StopCoroutine(SoundPlay());
+            StopAllCoroutines();
+            iswalking = false;
         }
     }
 
     IEnumerator SoundPlay()
     {
-        playerAudio[0].Play();
-        yield return new WaitForSeconds(playerAudio[0].clip.length);
-        playerAudio[1].Play();
-        yield return new WaitForSeconds(playerAudio[1].clip.length);
+        while(true)
+        {
+            playerAudio[0].Play();
+            yield return new WaitForSeconds(playerAudio[0].clip.length);
+            playerAudio[1].Play();
+            yield return new WaitForSeconds(playerAudio[1].clip.length);
+        }
     }
+
+
 }
