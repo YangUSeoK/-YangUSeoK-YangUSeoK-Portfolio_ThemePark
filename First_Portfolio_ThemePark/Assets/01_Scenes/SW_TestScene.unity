@@ -12513,6 +12513,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 783484156421549455, guid: 378d62ae662f1c648b4c154486296c84, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.23735128
+      objectReference: {fileID: 0}
+    - target: {fileID: 783484156421549455, guid: 378d62ae662f1c648b4c154486296c84, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -5.1240993
+      objectReference: {fileID: 0}
+    - target: {fileID: 783484156421549455, guid: 378d62ae662f1c648b4c154486296c84, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0036782585
+      objectReference: {fileID: 0}
     - target: {fileID: 7528285248035600004, guid: 378d62ae662f1c648b4c154486296c84, type: 3}
       propertyPath: m_RootOrder
       value: 10
