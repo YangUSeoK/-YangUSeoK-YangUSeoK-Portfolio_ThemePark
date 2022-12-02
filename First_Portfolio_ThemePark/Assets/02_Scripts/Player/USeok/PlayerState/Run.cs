@@ -12,17 +12,21 @@ public class Run : PlayerState
 
     public override void CheckState()
     {
+        if (m_Player.RunButton.action.WasPressedThisFrame())
+        {
+            m_Player.SetState(m_Player.Walk);
+        }
+
         // ¾É±â => SetState(Squat)
         if (m_Player.GetComponent<CharacterController>().height <= m_Player.SitDownHeight)
         {
-            Debug.Log(m_Player.GetComponent<CharacterController>().height);
-            m_Player.SetState(m_Player.Squat);
+            //  m_Player.SetState(m_Player.Squat);
         }
     }
 
     public override void EnterState()
     {
-        Debug.Log("Walk Enter");
+        Debug.Log("Run Enter");
         m_Player.CurSpeed = m_Player.RunSpeed;
         m_Player.CurStepInterval = m_Player.RunStepInterval;
         m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);

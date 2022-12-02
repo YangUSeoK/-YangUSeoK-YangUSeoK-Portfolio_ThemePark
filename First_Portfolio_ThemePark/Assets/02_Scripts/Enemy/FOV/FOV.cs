@@ -84,7 +84,8 @@ public class FOV : MonoBehaviour
         Vector3 dir = (_targetTr.position - transform.position).normalized;
 
         // 20221114 양우석 : 레이쏘는 위치 좀비에따라 보정해야 함
-        if (Physics.Raycast((transform.position + (Vector3.up * mheight)), dir, out hitInfo, _detectRange, m_LayerMask))
+        // 20221202 양우석 : 직접보는 레이는 offset 없앴음
+        if (Physics.Raycast(transform.position, dir, out hitInfo, _detectRange, m_LayerMask))
         {
             isLook = hitInfo.collider.tag == _targetTr.tag;
         }
