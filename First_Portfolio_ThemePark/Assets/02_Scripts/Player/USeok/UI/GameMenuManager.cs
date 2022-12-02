@@ -15,6 +15,7 @@ public class GameMenuManager : MonoBehaviour
 
     [SerializeField] private Transform m_Head = null;
     [SerializeField] private Transform m_MenuPos = null;
+    [SerializeField] private Transform m_MiniMapPos = null;
 
     private float spawnDistance = 1f;
 
@@ -34,9 +35,9 @@ public class GameMenuManager : MonoBehaviour
         {
             m_MiniMap.SetActive(!m_MiniMap.activeSelf);
         }
-        m_MiniMap.transform.position = m_Head.position + (new Vector3(m_Head.forward.x, 0f, m_Head.forward.z).normalized * spawnDistance);
-        m_MiniMap.transform.LookAt(new Vector3(m_Head.position.x, m_Menu.transform.position.y, m_Head.position.z));
-        //m_MiniMap.transform.forward *= -1;
+        m_MiniMap.transform.position = m_MiniMapPos.position;
+        m_MiniMap.transform.LookAt(new Vector3(m_Head.position.x, m_Head.position.y, m_Head.position.z));
+        m_MiniMap.transform.forward *= -1;
     }
 
     
