@@ -9,17 +9,12 @@ public class SlowWalk : PlayerState
 
     public override void Action()
     {
-        Debug.Log("Slow Walk Action");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Slow Walk CheckState");
-        
         // °È±â
-        InputManager.Instance.LeftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 secondary2DAxisValue);
-        Debug.Log(secondary2DAxisValue);
-        if (secondary2DAxisValue.y >= 0.95f)
+        if (m_Player.MoveAxis.action.ReadValue<Vector2>().y >= 0.9f)
         {
             m_Player.SetState(m_Player.Walk);
         }
@@ -27,8 +22,7 @@ public class SlowWalk : PlayerState
         //¾É±â
         if (m_Player.GetComponent<CharacterController>().height <= m_Player.SitDownHeight)
         {
-            Debug.Log(m_Player.GetComponent<CharacterController>().height);
-            m_Player.SetState(m_Player.Squat);
+            //m_Player.SetState(m_Player.Squat);
         }
     }
 

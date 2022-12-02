@@ -14,20 +14,22 @@ public class Walk : PlayerState
     public override void CheckState()
     {
         // Axis 0.95 ÀÌÇÏ => SetState(SlowWalk)
-        InputManager.Instance.LeftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 secondary2DAxisValue);
-        
-        //Debug.Log(secondary2DAxisValue);
-        
-        if(secondary2DAxisValue.y < 0.95f)
+        Debug.Log(m_Player.MoveAxis.action.ReadValue<Vector2>());
+
+        if(m_Player.MoveAxis.action.ReadValue<Vector2>().y < 0.6f)
         {
             m_Player.SetState(m_Player.SlowWalk);
+        }
+
+        if (m_Player.RunButton.action.WasPressedThisFrame())
+        {
+            m_Player.SetState(m_Player.Run);
         }
 
         // ¾É±â => SetState(Squat)
         if (m_Player.GetComponent<CharacterController>().height <= m_Player.SitDownHeight)
         {
-            Debug.Log(m_Player.GetComponent<CharacterController>().height);
-            m_Player.SetState(m_Player.Squat);
+            //m_Player.SetState(m_Player.Squat);
         }
     }
 

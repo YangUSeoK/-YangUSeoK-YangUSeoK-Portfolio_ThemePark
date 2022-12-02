@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -157,6 +158,17 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Member_variable
+    [SerializeField] private InputActionProperty m_MoveAxis;
+    public InputActionProperty MoveAxis
+    {
+        get { return m_MoveAxis; }
+    }
+    [SerializeField] private InputActionProperty m_RunButton;
+    public InputActionProperty RunButton
+    {
+        get { return m_RunButton; }
+    }
+
     private bool mb_IsGameOver = false;
 
     private AudioSource m_Audio = null;
@@ -183,6 +195,8 @@ public class Player : MonoBehaviour
         get { return m_MoveProvider; }
     }
 
+    
+
     private WaitForSeconds m_CurStepIntervalWs;
     public WaitForSeconds CurStepIntervalWs
     {
@@ -200,6 +214,7 @@ public class Player : MonoBehaviour
     {
         get { return m_WakeUpHeight; }
     }
+
     
     #endregion
 
@@ -228,6 +243,7 @@ public class Player : MonoBehaviour
             m_CurState.CheckState();
             m_CurState.Action();
         }
+
     }
 
     public void SetState(PlayerState _state)

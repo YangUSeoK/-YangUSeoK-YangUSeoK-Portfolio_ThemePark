@@ -5,19 +5,40 @@ using UnityEngine.InputSystem;
 
 public class GameMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject menu = null;
-    [SerializeField] private InputActionProperty showButton;
-    [SerializeField] private Transform head = null;
+    [SerializeField] private GameObject m_Menu = null;
+    [SerializeField] private GameObject m_MiniMap = null;
+    
+    [SerializeField] private InputActionProperty m_ShowMenuButton;
+    [SerializeField] private InputActionProperty m_ShowMiniMapButton;
+
+
+
+    [SerializeField] private Transform m_Head = null;
+    [SerializeField] private Transform m_MenuPos = null;
+    [SerializeField] private Transform m_MiniMapPos = null;
+
     private float spawnDistance = 1f;
 
     private void Update()
     {
-        if (showButton.action.WasPressedThisFrame())
+        if (m_ShowMenuButton.action.WasPressedThisFrame())
         {
-            menu.SetActive(!menu.activeSelf); 
+            m_Menu.SetActive(!m_Menu.activeSelf); 
         }
-        menu.transform.position = head.position + (new Vector3(head.forward.x, 0f, head.forward.z).normalized * spawnDistance);
-        menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-        menu.transform.forward *= -1;
+        m_Menu.transform.position = m_MenuPos.position;
+        m_Menu.transform.LookAt(new Vector3(m_Head.position.x, m_Head.position.y, m_Head.position.z));
+        m_Menu.transform.forward *= -1;
+
+
+
+        if (m_ShowMiniMapButton.action.WasPressedThisFrame())
+        {
+            m_MiniMap.SetActive(!m_MiniMap.activeSelf);
+        }
+        m_MiniMap.transform.position = m_MiniMapPos.position;
+        m_MiniMap.transform.LookAt(new Vector3(m_Head.position.x, m_Head.position.y, m_Head.position.z));
+        m_MiniMap.transform.forward *= -1;
     }
+
+    
 }

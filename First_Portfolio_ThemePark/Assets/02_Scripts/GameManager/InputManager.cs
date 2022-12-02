@@ -46,11 +46,12 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        Invoke("GetHandDevice", 0.5f);
+        Invoke("GetHandDevice", 1f);
     }
 
     public void GetHandDevice()
     {
+        Debug.Log("장치 연동 시작");
 
         List<InputDevice> devices = new List<InputDevice>();
         InputDevices.GetDevices(devices);

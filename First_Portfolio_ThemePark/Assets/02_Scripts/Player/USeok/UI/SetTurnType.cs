@@ -17,8 +17,8 @@ public class SetTurnType : MonoBehaviour
         }
         else if(_index == 1)
         {
-            snapTurn.enabled = true;
             continuousTurn.enabled = false;
+            snapTurn.enabled = true;
         }
     }
 }
