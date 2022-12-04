@@ -168,6 +168,9 @@ public class Player : MonoBehaviour
     {
         get { return m_RunButton; }
     }
+    // 20221203 양우석 : 델리게이트로 받아와야 함
+    [SerializeField] private EnemyManager m_EnemyManager = null;
+
 
     private bool mb_IsGameOver = false;
 
@@ -294,5 +297,10 @@ public class Player : MonoBehaviour
         }
 
         // 스텝 소리 출력
+    }
+
+    private void HeartBeat()
+    {
+        float beatSound = 1f / Vector3.Distance(m_EnemyManager.NearZombie.transform.position, transform.position);
     }
 }

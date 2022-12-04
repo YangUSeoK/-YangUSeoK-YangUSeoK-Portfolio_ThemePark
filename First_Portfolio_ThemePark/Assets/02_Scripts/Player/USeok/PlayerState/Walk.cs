@@ -21,6 +21,7 @@ public class Walk : PlayerState
             m_Player.SetState(m_Player.SlowWalk);
         }
 
+        // Run 버튼 누르면 SetState(Run)
         if (m_Player.RunButton.action.WasPressedThisFrame())
         {
             m_Player.SetState(m_Player.Run);
