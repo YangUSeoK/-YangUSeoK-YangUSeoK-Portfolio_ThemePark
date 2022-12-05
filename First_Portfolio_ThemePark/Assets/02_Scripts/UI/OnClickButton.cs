@@ -9,7 +9,7 @@ public class OnClickButton : MonoBehaviour
     public GameObject mOptionBtn;
     public GameObject mGameOver;
     public GameObject mGameClear;
-    
+    public GameObject mTutorialUI;
     public void StartGame()
     {
         mMenu.SetActive(false); 
