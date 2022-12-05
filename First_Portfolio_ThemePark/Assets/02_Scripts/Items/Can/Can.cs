@@ -6,6 +6,7 @@ public class Can : Item
 {
     EItemType eItemtype = EItemType.Can;
     [SerializeField] LayerMask m_ListenerLayer;
+    
     public override void Action()
     {
         // 캔이 충돌했을때 실행할 함수내용
