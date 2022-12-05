@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4963116184881619501}
   - component: {fileID: 4785272796032196564}
   - component: {fileID: 1272276020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ZombieDog
   m_TagString: Untagged
   m_Icon: {fileID: 0}

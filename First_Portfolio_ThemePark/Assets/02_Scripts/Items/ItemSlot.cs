@@ -42,6 +42,7 @@ public class ItemSlot : MonoBehaviour
         }
         if (other.CompareTag("RHAND") || other.CompareTag("LHAND"))
         {
+            GetComponent<MeshRenderer>().enabled = true;
             if (m_Hand == null)
             {
                 m_Hand = other.gameObject;
@@ -60,6 +61,7 @@ public class ItemSlot : MonoBehaviour
         }
         if (other.CompareTag("RHAND") || other.CompareTag("LHAND"))
         {
+            GetComponent<MeshRenderer>().enabled = false;
             if (m_Hand != null)
             {
                 m_Hand = null;
