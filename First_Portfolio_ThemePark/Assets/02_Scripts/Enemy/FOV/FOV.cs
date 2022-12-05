@@ -8,8 +8,9 @@ public class FOV : MonoBehaviour
     // 에디터용
     public float m_Angle = 120f;
     public float m_Range = 10f;
-    
-    private float mheight = 1.7f;
+
+    private float mHeight = 1.7f;
+    private float mHalfHeight; 
 
     protected int m_PlayerLayer = 0;
     public int PlayerLayer
@@ -50,7 +51,9 @@ public class FOV : MonoBehaviour
         m_LightLayer = 1 << LayerMask.NameToLayer("LIGHT");
         m_FlashLayer = 1 << LayerMask.NameToLayer("FLASH");
 
-        m_LayerMask = ~((1 << m_PlayerLayer) | (1 << m_ObstacleLayer) | (1 << m_LightLayer) | (1<<m_FlashLayer));
+        m_LayerMask = ~((1 << m_PlayerLayer) | (1 << m_ObstacleLayer) | (1 << m_LightLayer) | (1 << m_FlashLayer));
+
+        mHalfHeight = mHeight * 0.5f;
     }
 
     public bool IsInFOV(float _detectRange, float _angle, int _layerMask)
@@ -65,7 +68,7 @@ public class FOV : MonoBehaviour
         if (colls.Length == 1)
         {
             // A - B 벡터 >> B에서 A를 바라보는 방향 + 정규화
-            Vector3 dir = (colls[0].transform.position - transform.position ).normalized;
+            Vector3 dir = (colls[0].transform.position - transform.position).normalized;
 
             // 내가 본 전방방향에서 방금 구한 dir방향의 각도가 120도 범위 안에 있으면
             if (Vector3.Angle(transform.forward, dir) < _angle * 0.5f)
@@ -85,9 +88,18 @@ public class FOV : MonoBehaviour
 
         // 20221114 양우석 : 레이쏘는 위치 좀비에따라 보정해야 함
         // 20221202 양우석 : 직접보는 레이는 offset 없앴음
-        if (Physics.Raycast(transform.position, dir, out hitInfo, _detectRange, m_LayerMask))
+        if (Physics.Raycast(transform.position + (Vector3.up * mHalfHeight), dir, out hitInfo, _detectRange, m_LayerMask))
         {
             isLook = hitInfo.collider.tag == _targetTr.tag;
+        }
+
+        // 20221203 양우석 : 아래쪽에 하나, 위쪽에 하나 레이 두개 쏨
+        if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, m_LayerMask))
+        {
+            if (!isLook)
+            {
+                isLook = hitInfo.collider.tag == _targetTr.tag;
+            }
         }
         return isLook;
     }
@@ -104,11 +116,23 @@ public class FOV : MonoBehaviour
             float rayAngle = ((_angle / 2) + (stepAngleSize * i)) - _angle;
             Vector3 dir = DirFromAngle(rayAngle);
 
-            Debug.DrawLine(transform.position + (Vector3.up * mheight), transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHeight), transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHalfHeight), transform.position + (dir * _detectRange), Color.green);
 
 
             RaycastHit hitInfo;                     // 높이보정 offset
-            if (Physics.Raycast(transform.position + (Vector3.up * mheight), dir, out hitInfo, _detectRange, _layerMask))
+            if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, _layerMask))
+            {
+                isInDirectFOV = hitInfo.collider.CompareTag(_tag);
+                if (isInDirectFOV)
+                {
+                    _collPos = hitInfo.point;
+                    break;
+                }
+            }
+
+            // 20221203 양우석 : 아래쪽에 하나, 위쪽에 하나 레이 두개 쏨
+            if (Physics.Raycast(transform.position + (Vector3.up * mHalfHeight), dir, out hitInfo, _detectRange, _layerMask))
             {
                 isInDirectFOV = hitInfo.collider.CompareTag(_tag);
                 if (isInDirectFOV)
@@ -133,11 +157,23 @@ public class FOV : MonoBehaviour
             float rayAngle = ((_angle / 2) + (stepAngleSize * i)) - _angle;
             Vector3 dir = DirFromAngle(rayAngle);
 
-            Debug.DrawLine(transform.position + (Vector3.up * mheight), transform.position + (dir * _detectRange), Color.green);
-
+            Debug.DrawLine(transform.position + (Vector3.up * mHeight), transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHeight * 0.5f), transform.position + (dir * _detectRange), Color.green);
 
             RaycastHit hitInfo;                     // 높이보정 offset
-            if (Physics.Raycast(transform.position + (Vector3.up * mheight), dir, out hitInfo, _detectRange, _layerMask))
+            if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, _layerMask))
+            {
+                isInDirectFOV = hitInfo.collider.CompareTag(_tag);
+                if (isInDirectFOV)
+                {
+                    _collPos = hitInfo.point;
+                    _flash = hitInfo.transform.parent;
+                    break;
+                }
+            }
+
+            // 20221203 양우석 : 아래쪽에 하나, 위쪽에 하나 레이 두개 쏨
+            if (Physics.Raycast(transform.position + (Vector3.up * mHalfHeight), dir, out hitInfo, _detectRange, _layerMask))
             {
                 isInDirectFOV = hitInfo.collider.CompareTag(_tag);
                 if (isInDirectFOV)

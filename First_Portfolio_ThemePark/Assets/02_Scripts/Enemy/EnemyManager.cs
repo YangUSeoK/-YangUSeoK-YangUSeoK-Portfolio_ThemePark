@@ -17,6 +17,12 @@ public class EnemyManager : MonoBehaviour
         get { return m_PlayerTr; }
         set { m_PlayerTr = value; }
     }
+    private Transform m_NearZombie = null;
+    public Transform NearZombie
+    {
+        get { return m_NearZombie; }
+    }
+
     private SlaughterFactory[] m_Factorys = null;
     private Enemy[] m_Enemys = null;
     private List<Enemy_Slaughter> m_SlaughterList = null;
@@ -81,6 +87,18 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    private void FindNearZombie()
+    {
+        m_NearZombie = m_Enemys[0].transform;
+        for(int i = 0; i < m_Enemys.Length-1; ++i)
+        {
+            if(Vector3.Distance(m_NearZombie.transform.position, m_PlayerTr.position) >=
+                Vector3.Distance(m_Enemys[i+1].transform.position, m_PlayerTr.position))
+            {
+                m_NearZombie = m_Enemys[i + 1].transform;
+            }
+        }
+    }
 
 #region Delegate_Callback
 
