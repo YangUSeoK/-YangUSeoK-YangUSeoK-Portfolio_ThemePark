@@ -7,7 +7,7 @@ public class VolumeLight : MonoBehaviour
 {
     private Light m_Light = null;
 
-    // 20221115 ¾ç¿ì¼® : Á»ºñ°¡ º®¿¡ ºÎµúÈù À§Ä¡¸¦ ¾Ë±âÀ§ÇØ ¸¸µë
+    // 20221115 ï¿½ï¿½ì¼® : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private List<Vector3> m_WallPosList = null;
     public List<Vector3> WallPosList
     {
@@ -17,10 +17,10 @@ public class VolumeLight : MonoBehaviour
     private List<Vector3> m_LightVertList = null;
     private List<Vector3> m_SmallCircleVertList = null;
 
-    // ·¹ÀÌ¸¦ ÂÉ°³´Â ºñÀ². Å¬¼ö·Ï Àß°Ô ÂÉ°µ´Ù
+    // ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½É°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½É°ï¿½ï¿½ï¿½
     [SerializeField] private int m_SubDivision = 100;
 
-    // Mesh »ý¼º°ü·Ã. 20221106 ¾ç¿ì¼® : ³ªÁß¿¡ Å¬·¡½º ÂÉ°¶ ¼öµµ ÀÖÀ½.  => ÇÔ¼ö¸¸ ÂÉ°ºÀ½
+    // Mesh ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. 20221106 ï¿½ï¿½ì¼® : ï¿½ï¿½ï¿½ß¿ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½É°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.  => ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½É°ï¿½ï¿½ï¿½
     private Mesh mLightMesh = null;
     private MeshCollider m_MeshCollider = null;
 
@@ -29,13 +29,13 @@ public class VolumeLight : MonoBehaviour
         mLightMesh = new Mesh();
         m_Light = GetComponent<Light>();
         mLightMesh.name = "LightMesh";
-        GetComponentInChildren<MeshFilter>().mesh = mLightMesh; // µ¿ÀûÇÒ´çÇÑ ¸Å½¬¸¦ ¸Å½¬ÇÊÅÍ¿¡ ºÙÀÎ´Ù.
+        GetComponentInChildren<MeshFilter>().mesh = mLightMesh; // ï¿½ï¿½ï¿½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ ï¿½Å½ï¿½ï¿½ï¿½ ï¿½Å½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.
         m_MeshCollider = GetComponentInChildren<MeshCollider>();
-        m_MeshCollider.sharedMesh = mLightMesh; // ¸Å½¬ÄÝ¶óÀÌ´õ¿¡ »ç¿ëµÉ ¸Å½¬¸¦ ºÙÀÎ´Ù.
+        m_MeshCollider.sharedMesh = mLightMesh; // ï¿½Å½ï¿½ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.
 
-        m_LightVertList = new List<Vector3>(3 * m_SubDivision * 2); // ·¹ÀÌ¸¦ ½ò ¿øÀÇ °³¼ö´Â Á¤ÇØÁ® ÀÖÀ¸¹Ç·Î, ±× Å©±â¸¸Å­À» µ¿ÀûÇÒ´çÇØµÐ´Ù.(ÃÖÀûÈ­)
+        m_LightVertList = new List<Vector3>(3 * m_SubDivision * 2); // ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½, ï¿½ï¿½ Å©ï¿½â¸¸Å­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò´ï¿½ï¿½ØµÐ´ï¿½.(ï¿½ï¿½ï¿½ï¿½È­)
         m_SmallCircleVertList = new List<Vector3>(3 * m_SubDivision);
-        m_WallPosList = new List<Vector3>(3 * m_SubDivision * 2);   // Vector3 = float x 3 => int * 3 * ±âÁØ¿øÀÇ Á¡ °³¼ö
+        m_WallPosList = new List<Vector3>(3 * m_SubDivision * 2);   // Vector3 = float x 3 => int * 3 * ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private void LateUpdate()
@@ -46,7 +46,7 @@ public class VolumeLight : MonoBehaviour
 
     private void DrawCone()
     {
-        float n = 1f / (m_SubDivision); // ¹Ýº¹¹®¿¡¼­ ¾²ÀÏ°Å¶ó¼­ ³ª´°¼ÀÀ» ¹Ì¸® °è»êÇØµÐ´Ù. (ÃÖÀûÈ­)
+        float n = 1f / (m_SubDivision); // ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°Å¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ØµÐ´ï¿½. (ï¿½ï¿½ï¿½ï¿½È­)
         float radius = Mathf.Tan((m_Light.spotAngle * 0.5f) * Mathf.Deg2Rad);
         float length = m_Light.range / Mathf.Cos(m_Light.spotAngle * 0.5f * Mathf.Deg2Rad);
         float smallLength = m_Light.range / Mathf.Cos(m_Light.spotAngle * 0.5f * 0.5f * Mathf.Deg2Rad);
@@ -60,15 +60,15 @@ public class VolumeLight : MonoBehaviour
         m_WallPosList.Clear();
         for (int i = 0; i < m_SubDivision; ++i)
         {
-            float ratio = ((float)i) * n;            // ¿øÀ» ºñÀ²·Î ³ª´®
-            float theta = (Mathf.PI * 2f) * ratio;   // ¿øÁÖ * ºñÀ² = °¢µµ
+            float ratio = ((float)i) * n;            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            float theta = (Mathf.PI * 2f) * ratio;   // ï¿½ï¿½ï¿½ï¿½ * ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½
             float x = Mathf.Cos(theta) * radius;
             float y = Mathf.Sin(theta) * radius;
 
-            origCircleVert = new Vector3(x, y, 1); //>> (0,0,1)À» Áß½ÉÀ¸·Î xyÆò¸é¿¡ ÆòÇàÇÑ ¿øÀÇ ÁÂÇ¥
+            origCircleVert = new Vector3(x, y, 1); //>> (0,0,1)ï¿½ï¿½ ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ xyï¿½ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥
             origSmallCircleVert = new Vector3(x * 0.5f, y * 0.5f, 1);
 
-            // È¸ÀüÇà·ÄÀ» ÅëÇØ È¸Àü½ÃÅ²´Ù.
+            // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½.
             Quaternion rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
             Matrix4x4 rotMatrix = Matrix4x4.Rotate(rotation);
 
@@ -79,41 +79,41 @@ public class VolumeLight : MonoBehaviour
             //Debug.DrawLine(transform.position, CirclePointPos * length, Color.green);
 
 
-            // È¸ÀüµÈ °¢°¢ÀÇ Á¡ À§Ä¡¸¦ ÇâÇØ length ±æÀÌ¸¸Å­ ·¹ÀÌ¸¦ ½ð´Ù. 
+            // È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ length ï¿½ï¿½ï¿½Ì¸ï¿½Å­ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½. 
             Vector3 raycastPoint = SetRaycastPoint(newCircleVert, length);
             m_LightVertList.Add(raycastPoint);
             Vector3 raycastSmallPoint = SetRaycastPoint(newSmallCircleVert, smallLength);
             m_SmallCircleVertList.Add(raycastSmallPoint);
         }
 
-        m_LightVertList.Add(m_LightVertList[0]);    // ¿ø·¡ ¿øÀÇ ³¡Á¡
-        m_LightVertList.Add(transform.position);    // ÀÛÀº ¿øÀÇ ½ÃÀÛÁ¡ = ÇÃ·¡½Ã À§Ä¡
-        m_LightVertList.AddRange(m_SmallCircleVertList);    // ÀÛÀº ¿ø Ãß°¡
-        m_LightVertList.Add(m_SmallCircleVertList[0]);  // ÀÛÀº¿øÀÇ ³¡Á¡
+        m_LightVertList.Add(m_LightVertList[0]);    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        m_LightVertList.Add(transform.position);    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+        m_LightVertList.AddRange(m_SmallCircleVertList);    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½
+        m_LightVertList.Add(m_SmallCircleVertList[0]);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
 
-    // Vertex ¸®½ºÆ®¸¦ ¹Þ¾Æ¼­ ¸Þ½¬¸¦ ¸¸µé¾îÁØ´Ù.
+    // Vertex ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
     private void BuildMesh(List<Vector3> _lightVertList)
     {
-        // +1 ÇØÁÖ´Â ÀÌÀ¯ : ¸Ç Ã³À½ ½ÃÀÛÁ¡ °³¼ö¸¦ Ãß°¡ÇØÁà¾ß ÇÑ´Ù.
+        // +1 ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
         int vertexCnt = _lightVertList.Count + 1;
         Vector3[] vertices = new Vector3[vertexCnt];
 
 
-        // »ï°¢Çü °³¼ö : vertexCnt-2
-        // »ï°¢Çü ²ÀÁöÁ¡ÀÇ ¼ö : »ï°¢Çü °³¼ö * 3
+        // ï¿½ï°¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : vertexCnt-2
+        // ï¿½ï°¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï°¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ * 3
         int[] triangles = new int[(vertexCnt - 2) * 3];
 
-        // À¯´ÏÆ¼ ¸Þ½Ã´Â ·ÎÄÃÁÂÇ¥°¡ ±âÁØÀÌ´Ù.
+        // ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Þ½Ã´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
         vertices[0] = Vector3.zero;
 
         for (int i = 0; i < vertexCnt - 1; ++i)
         {
-            // InverseTransformPoint : ¿ùµåÁÂÇ¥ -> ·ÎÄÃÁÂÇ¥ À§Ä¡ ¹Þ¾Æ¿À±â.
+            // InverseTransformPoint : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¥ ï¿½ï¿½Ä¡ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½.
             vertices[i + 1] = transform.InverseTransformPoint(_lightVertList[i]);
 
-            // ¹è¿­¸ÊÇÎ
+            // ï¿½è¿­ï¿½ï¿½ï¿½ï¿½
             if (i < vertexCnt - 2)
             {
                 triangles[i * 3] = 0;
@@ -125,20 +125,20 @@ public class VolumeLight : MonoBehaviour
         mLightMesh.Clear();
         mLightMesh.vertices = vertices;
         mLightMesh.triangles = triangles;
-        mLightMesh.RecalculateNormals();    // ³ë¸» ´Þ¾ÆÁÖ±â
+        mLightMesh.RecalculateNormals();    // ï¿½ë¸» ï¿½Þ¾ï¿½ï¿½Ö±ï¿½
 
-        // ÄÝ¶óÀÌ´õ´Â aabb tree¸¦ »ç¿ëÇÏ±â ¶§¹®¿¡, ¸Þ½¬°¡ º¯°æµÇ¸é ´Ù½Ã ºôµåÇØÁÖ¾î¾ß ÇÑ´Ù.
+        // ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ aabb treeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ ï¿½Ñ´ï¿½.
         m_MeshCollider.enabled = false;
         m_MeshCollider.enabled = true;
     }
 
 
-    // 20221109 ¾ç¿ì¼® : ¿øÇü¿¡ ¸Â°Ô ÇÔ¼ö ¼öÁ¤. ¹æÇâº¤ÅÍ¿Í ±æÀÌ¸¦ ¹Þ¾Æ¿Í¼­ ·¹ÀÌ¸¦ ½î°í,
-    // Ãæµ¹Á¤º¸¸¦ RaycastInfo ±¸Á¶Ã¼¿¡ ÀúÀåÇÑ´Ù.
-    // 20221113 ¾ç¿ì¼® : »ý°¢ÇØº¸´Ï±î isHit À» ¾µ ÇÊ¿ä°¡ ¾ø¾î¼­ Áö¿üÀ½.
-    // Á¡ ÇÏ³ª¸¶´Ù ±¸Á¶Ã¼ µ¿ÀûÇÒ´çÇÏ°í °¡ºñÁöÄÝ·ºÅÍ µ¹¸®´Â°Å °³¿¡¹Ù½ê¹Ù
+    // 20221109 ï¿½ï¿½ì¼® : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½âº¤ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Þ¾Æ¿Í¼ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½,
+    // ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ RaycastInfo ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+    // 20221113 ï¿½ï¿½ì¼® : ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½Ï±ï¿½ isHit ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+    // ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½Ò´ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù½ï¿½ï¿½
 
-    // ¹æÇâº¤ÅÍ¿Í ±æÀÌ¸¦ ¹Þ¾Æ¿Í¼­ ·¹ÀÌ¸¦ ½î°í point¸¦ ¹ÝÈ¯ÇÑ´Ù.
+    // ï¿½ï¿½ï¿½âº¤ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Þ¾Æ¿Í¼ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ pointï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
     private Vector3 SetRaycastPoint(Vector3 _dir, float _length)
     {
         RaycastHit hitInfo;
@@ -153,14 +153,14 @@ public class VolumeLight : MonoBehaviour
         }
     }
 
-    // °¢µµ¸¦ ¼öÄ¡·Î ÀÔ·Â¹ÞÀ¸¸é ³» ÇöÀç °¢µµ¿¡¼­ ±×¸¸Å­ È¸ÀüÇÑ ¹æÇâÀÇ ¹æÇâº¤ÅÍ¸¦ ¹ÝÈ¯ÇÑ´Ù. : ±âÁØº¤ÅÍ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ô·Â¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½Å­ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½âº¤ï¿½Í¸ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½. : ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½
     private Vector3 DirFromDegree(float _angleDegree, float _verticalAngleDegree)
     {
         _angleDegree += transform.eulerAngles.y;
         _verticalAngleDegree += transform.eulerAngles.x;
 
 
-        // 20221108 ¾ç¿ì¼® : À§¾Æ·¡±îÁö ´Ù ±¸ÇÒ ¼ö ÀÖµµ·Ï ¼öÁ¤
+        // 20221108 ï¿½ï¿½ì¼® : ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         return new Vector3(Mathf.Cos((-_angleDegree + 90f) * Mathf.Deg2Rad),
                             Mathf.Tan(-_verticalAngleDegree * Mathf.Deg2Rad),
                             Mathf.Sin((-_angleDegree + 90f) * Mathf.Deg2Rad)).normalized;

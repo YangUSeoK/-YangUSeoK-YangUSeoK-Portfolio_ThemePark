@@ -10,7 +10,7 @@ public class ScreenLightCtrl : MonoBehaviour
 
     private void Update()
     {
-        ScreenLight.intensity = slider.value;
+        ScreenLight.intensity = 1-slider.value;
         if(ScreenLight.intensity<=0.1f)
         {
             ScreenLight.intensity = 0.11f;

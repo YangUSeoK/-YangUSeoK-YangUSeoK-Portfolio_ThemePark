@@ -9,7 +9,7 @@ public class FOV : MonoBehaviour
     public float m_Angle = 120f;
     public float m_Range = 10f;
 
-    private float mHeight = 1.7f;
+    private float mHeight = 1.4f;
     private float mHalfHeight; 
 
     protected int m_PlayerLayer = 0;
@@ -116,8 +116,8 @@ public class FOV : MonoBehaviour
             float rayAngle = ((_angle / 2) + (stepAngleSize * i)) - _angle;
             Vector3 dir = DirFromAngle(rayAngle);
 
-            Debug.DrawLine(transform.position + (Vector3.up * mHeight), transform.position + (dir * _detectRange), Color.green);
-            Debug.DrawLine(transform.position + (Vector3.up * mHalfHeight), transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHeight), transform.position + (Vector3.up * mHeight) + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHalfHeight), transform.position + (Vector3.up * mHalfHeight) + (dir * _detectRange), Color.green);
 
 
             RaycastHit hitInfo;                     // 높이보정 offset
@@ -157,8 +157,8 @@ public class FOV : MonoBehaviour
             float rayAngle = ((_angle / 2) + (stepAngleSize * i)) - _angle;
             Vector3 dir = DirFromAngle(rayAngle);
 
-            Debug.DrawLine(transform.position + (Vector3.up * mHeight), transform.position + (dir * _detectRange), Color.green);
-            Debug.DrawLine(transform.position + (Vector3.up * mHeight * 0.5f), transform.position + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHeight), transform.position + (Vector3.up * mHeight) + (dir * _detectRange), Color.green);
+            Debug.DrawLine(transform.position + (Vector3.up * mHeight * 0.5f), transform.position + (Vector3.up * mHeight * 0.5f) + (dir * _detectRange), Color.green);
 
             RaycastHit hitInfo;                     // 높이보정 offset
             if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, _layerMask))

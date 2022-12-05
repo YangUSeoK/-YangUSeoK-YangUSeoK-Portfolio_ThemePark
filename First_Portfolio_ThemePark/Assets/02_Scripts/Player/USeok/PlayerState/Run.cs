@@ -20,7 +20,7 @@ public class Run : PlayerState
         // ¾É±â => SetState(Squat)
         if (m_Player.GetComponent<CharacterController>().height <= m_Player.SitDownHeight)
         {
-            //  m_Player.SetState(m_Player.Squat);
+            m_Player.SetState(m_Player.Squat);
         }
     }
 

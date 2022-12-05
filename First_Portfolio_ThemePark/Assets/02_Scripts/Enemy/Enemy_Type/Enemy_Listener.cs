@@ -7,8 +7,10 @@ public class Enemy_Listener : Enemy
    
     #region EnemyState
     private Idle_Listener m_Idle;
+    [SerializeField] private AudioSource idleListenerSE;
     public Idle_Listener Idle
     {
+        //idleListenerSE.Play();
         get { return m_Idle; }
         
     }

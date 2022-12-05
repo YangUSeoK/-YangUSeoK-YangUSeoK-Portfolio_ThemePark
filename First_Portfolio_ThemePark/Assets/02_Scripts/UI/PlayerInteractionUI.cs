@@ -4,33 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerInteractionUI : MonoBehaviour
-{//22 11 29 김준우
-    public Image mItemPos;
-    private ICatch[] mGrabbableItem;
+{//22 12 02 김준우
+    Item[] mGrabbale;
+    GrabbaleUI[] mGrabbaleImage;
 
-    void Start()
+    private void Start()
     {
-        mItemPos.enabled = false;
-        mGrabbableItem = FindObjectsOfType<ICatch>();
-    }
-
-    void Update()
-    {
-        for(int mCnt=0; mCnt<mGrabbableItem.Length; mCnt++)//221130 김준우
+        mGrabbale = FindObjectsOfType<Item>();//아이템 컴포넌트 있는 오브젝트 찾기
+        mGrabbaleImage = new GrabbaleUI[mGrabbale.Length];
+        for(int i=0;i<mGrabbale.Length; i++)
         {
-            if(mGrabbableItem[mCnt].GetComponent<Item>().mbUICatch==false)
+            mGrabbaleImage[i] = mGrabbale[i].GetComponentInChildren<GrabbaleUI>();
+        }
+    }
+    private void Update()
+    {
+        for(int mCnt=0;mCnt<mGrabbale.Length; mCnt++)
+        {
+            if(mGrabbale[mCnt].GetComponent<Rigidbody>().isKinematic==true)//리지드바디 키네마틱 검사
             {
-                Instantiate(mItemPos);
-                mItemPos.transform.SetParent(mGrabbableItem[mCnt].transform);
-                mItemPos.transform.position = mGrabbableItem[mCnt].transform.position + Vector3.up;
-                mItemPos.enabled = true;//이거 필요한가?
-                mGrabbableItem[mCnt].GetComponent<Item>().mbUICatch = true;
+                mGrabbaleImage[mCnt].gameObject.SetActive(false);//잡고있으면 UI제거
             }
-            //if(mGrabbableItem[mCnt].GetComponent<Item>().mbIsHanded == true ||
-            //    mGrabbableItem[mCnt].GetComponent<Item>().mbIsInPocket == true)//쥐고 있거나 인벤토리에 있을경우
-            //{
-            //    this.mItemPos.enabled= false;
-            //}
+            else
+            {
+                mGrabbaleImage[mCnt].gameObject.SetActive(true);//UI 활성화
+            }
         }
     }
 }
