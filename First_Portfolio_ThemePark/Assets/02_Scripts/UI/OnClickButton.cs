@@ -9,7 +9,11 @@ public class OnClickButton : MonoBehaviour
     public GameObject mOptionBtn;
     public GameObject mGameOver;
     public GameObject mGameClear;
-    public GameObject mTutorialUI;
+
+    [Header("튜토리얼(물음표) UI")]
+    public GameObject[] mTutorialUI;
+    private int mTutorialCnt = 0;
+
     public void StartGame()
     {
         mMenu.SetActive(false); 
@@ -39,5 +43,47 @@ public class OnClickButton : MonoBehaviour
     public void QuitMenu()
     {
         mMenu.SetActive(false);
+    }
+    public void GoTutorial()
+    {
+        mMenu.SetActive(false);
+        mTutorialUI[0].SetActive(true);
+    }
+    public void TutorialGotoMenu()
+    {
+        for (int i = 0; i < mTutorialUI.Length; i++)
+        {
+            mTutorialUI[i].SetActive(false);
+        }
+        mMenu.SetActive(true);
+    }
+    public void TutorialGoRight()
+    {
+        Debug.Log("aaa");
+        if(mTutorialCnt<mTutorialUI.Length-1)
+        {
+            mTutorialUI[mTutorialCnt].SetActive(false);
+            ++mTutorialCnt;
+            if (mTutorialCnt == mTutorialUI.Length)
+            {
+                mTutorialCnt = 0;
+            }
+            mTutorialUI[mTutorialCnt].SetActive(true);
+        }
+    }
+    public void TutorialGoLeft()
+    {
+        if (mTutorialCnt < mTutorialUI.Length)
+        {
+            mTutorialUI[mTutorialCnt].SetActive(false);
+            //Debug.Log($"마이너스 전{ mTutorialCnt}");
+            --mTutorialCnt;
+            //Debug.Log($"마이너스 후{ mTutorialCnt}");
+            if (mTutorialCnt < 0)
+            {
+                mTutorialCnt = mTutorialUI.Length-1;
+            }
+            mTutorialUI[mTutorialCnt].SetActive(true);
+        }
     }
 }
