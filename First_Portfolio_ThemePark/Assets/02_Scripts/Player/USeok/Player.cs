@@ -288,15 +288,18 @@ public class Player : MonoBehaviour
 
     private IEnumerator StepSoundCoroutine()
     {
-        yield return m_CurStepIntervalWs;
-        // 매 상황 입장마다 만들어주기
-        Collider[] colls = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
-        for (int i = 0; i < colls.Length; ++i)
+        while (true)
         {
-            colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_CurStepSoundLevel);
-        }
+            yield return m_CurStepIntervalWs;
+            // 매 상황 입장마다 만들어주기
+            Collider[] colls = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
+            for (int i = 0; i < colls.Length; ++i)
+            {
+                colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_CurStepSoundLevel);
+            }
 
-        // 스텝 소리 출력
+            // 스텝 소리 출력
+        }
     }
 
     private void HeartBeat()
