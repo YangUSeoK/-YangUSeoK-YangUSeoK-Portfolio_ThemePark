@@ -9,7 +9,7 @@ public class Bottle : Item
     [SerializeField] float m_Power = 0f;
     [SerializeField] LayerMask m_ListenerLayer;
     private Vector3 m_HitPos;
-
+    
     public override void Action()
     {
         // 병이 충돌했을때 실행할 내용

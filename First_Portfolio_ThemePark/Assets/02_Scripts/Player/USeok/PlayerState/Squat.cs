@@ -12,7 +12,7 @@ public class Squat : PlayerState
 
     public override void CheckState()
     {
-        Debug.Log(m_Player.GetComponent<CharacterController>().height);
+        //Debug.Log(m_Player.GetComponent<CharacterController>().height);
         // ¼­±â
         if (m_Player.GetComponent<CharacterController>().height >= m_Player.WakeUpHeight)
         {
