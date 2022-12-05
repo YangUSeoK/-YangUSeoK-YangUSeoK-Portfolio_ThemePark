@@ -5,35 +5,32 @@ using UnityEngine;
 public class ZombieDog : MonoBehaviour
 {
     Animator animator;
+    AudioSource audio;
     public bool IsBark = false;
+    float mTimer = 0f;
     void Start()
     {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        // 소리를 10초동안 짖는다.
+        if (IsBark == true)
         {
-            StartCoroutine(BarkDelay());
-        }
+            mTimer += Time.deltaTime;
+            while (mTimer < 1f)
+            {
+                float delay = Random.Range(0, 3);
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StopCoroutine(BarkDelay());
-        }
-    }
-
-    IEnumerator BarkDelay()
-    {
-        animator.SetTrigger("IsBark");
-
-        while (true)
-        {
-            float delay = Random.Range(0, 3);
-
-            animator.SetFloat("RandomBark", delay);
-            yield return new WaitForSeconds(1f);
+                animator.SetFloat("RandomBark", delay);
+                if (delay != 0f)
+                {
+                    audio.Play();
+                }
+            }
+            mTimer = 0f;
         }
     }
 }

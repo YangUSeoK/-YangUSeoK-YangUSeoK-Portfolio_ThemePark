@@ -20,12 +20,14 @@ public class Patrol_Slaughter : EnemyState
        // Debug.Log("Patrol Enter!");
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
         m_Enemy.Anim.SetTrigger("IsPatrol");
+        m_Enemy.Audio[0].Play();
         (m_Enemy as Enemy_Slaughter).EnterPatrolCallback();
     }
 
     public override void ExitState()
     {
-       // Debug.Log("Patrol Exit!");
+        // Debug.Log("Patrol Exit!");
+        m_Enemy.Audio[0].Stop();
     }
 
     public override void Action()

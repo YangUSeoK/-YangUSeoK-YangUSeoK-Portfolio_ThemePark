@@ -6,9 +6,23 @@ public class Alert_Stalker : EnemyState
 {
     public Alert_Stalker(Enemy _enemy) : base("Alert", _enemy) { }
 
+    float mTimer = 0f;
+
     public override void Action()
     {
         // 소리를 10초동안 짖는다.
+        mTimer += Time.deltaTime;
+        while (mTimer < 1f)
+        {
+            float delay = Random.Range(0, 3);
+
+            m_Enemy.Anim.SetFloat("RandomBark", delay);
+            if (delay != 0f)
+            {
+                m_Enemy.Audio[0].Play();
+            }
+        }
+        mTimer = 0f;
     }
 
     public override void CheckState()

@@ -83,9 +83,18 @@ public class Enemy_Listener : Enemy
                 m_PlayerTr = _targetTr;
             }
 
-            SetState(m_Concentration);
+            if (m_CurState == m_Idle)
+            {
+                SetState(m_Concentration);
+            }
+            else if (m_CurState == m_TraceTarget)
+            {
+                SetState(m_TraceTarget);
+            }
+            else if (m_CurState == m_Concentration)
+            {
+                SetState(m_TraceTarget);
+            }
         }
-
     }
-
 }
