@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class ItemSlot : MonoBehaviour
 {
     [SerializeField] private GameObject m_Player = null;
-   
-    
+
+
     [SerializeField]
     private GameObject m_Item = null; // 디버그용
     public GameObject Item
@@ -27,10 +27,7 @@ public class ItemSlot : MonoBehaviour
     [SerializeField]
     private GameObject m_Hand = null; // 디버그용
 
-    private void Update()
-    {
-        
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,7 +40,7 @@ public class ItemSlot : MonoBehaviour
                 m_HandItem = other.gameObject;
             }
         }
-        if (other.CompareTag("HAND"))
+        if (other.CompareTag("RHAND") || other.CompareTag("LHAND"))
         {
             if (m_Hand == null)
             {
@@ -61,9 +58,9 @@ public class ItemSlot : MonoBehaviour
                 m_HandItem = null;
             }
         }
-        else if (other.CompareTag("HAND"))
+        if (other.CompareTag("RHAND") || other.CompareTag("LHAND"))
         {
-            if(m_Hand != null)
+            if (m_Hand != null)
             {
                 m_Hand = null;
             }
@@ -72,11 +69,18 @@ public class ItemSlot : MonoBehaviour
 
     public void PopItem()
     {
-        Debug.Log("PoP");
-        m_Item.SetActive(true);
-        m_Item.transform.position = m_Hand.transform.position;
-        m_Item.transform.SetParent(null);
-        m_Item = null;
+        if (m_Item != null)
+        {
+            Debug.Log("PoP");
+            m_Item.SetActive(true);
+            m_Item.transform.position = m_Hand.transform.position;
+            //m_Item.transform.SetParent(null, false);
+            m_Item = null;
+        }
+        else
+        {
+            Debug.Log("아이템이 없습니다");
+        }
     }
 
     public void PushItem()
@@ -85,7 +89,7 @@ public class ItemSlot : MonoBehaviour
         if (m_Item == null)
         {
             m_Item = m_HandItem;
-            m_Item.transform.SetParent(transform, false);
+            //m_Item.transform.SetParent(transform, false);
             m_Item.SetActive(false);
         }
         else

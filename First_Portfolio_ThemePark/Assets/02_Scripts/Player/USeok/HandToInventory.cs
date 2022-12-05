@@ -31,40 +31,44 @@ public class HandToInventory : MonoBehaviour
         {
             m_GrabbedObject = null;
         }
-
-        if (m_Inventory != null)
-        {
-            if (m_GribButton.action.WasPressedThisFrame()) 
-            {
-                m_Inventory.GetComponent<ItemSlot>().PopItem();
-            }
-            else if (m_GribButton.action.WasReleasedThisFrame())
-            {
-                m_Inventory.GetComponent<ItemSlot>().PushItem();
-            }
-        }
-
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("INVEN"))
         {
-            if(m_Inventory == null)
+            if (m_GribButton.action.WasPressedThisFrame())
             {
-                m_Inventory = other.gameObject;
+                other.GetComponent<ItemSlot>().PopItem();
             }
-        }   
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("INVEN"))
-        {
-            if(m_Inventory != null)
+            if (m_GribButton.action.WasReleasedThisFrame())
             {
-                m_Inventory = null;
+                other.GetComponent<ItemSlot>().PushItem();
             }
         }
     }
+
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("INVEN"))
+    //    {
+    //        if(m_Inventory == null)
+    //        {
+    //            m_Inventory = other.gameObject;
+    //        }
+    //    }   
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("INVEN"))
+    //    {
+    //        if(m_Inventory != null)
+    //        {
+    //            m_Inventory = null;
+    //        }
+    //    }
+    //}
 }

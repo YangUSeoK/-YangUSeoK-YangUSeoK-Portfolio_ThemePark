@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &529036924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529036925}
+  m_Layer: 14
+  m_Name: LeftAttachPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &529036925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529036924}
+  m_LocalRotation: {x: 0.31016186, y: -0.051131785, z: 0.0051131435, w: 0.949294}
+  m_LocalPosition: {x: 0.0197, y: -0.0163, z: 0.0249}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2782256744521351988}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 36.114, y: -6.675, z: -1.561}
 --- !u!1 &1404900055
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1547790307}
   m_Layer: 14
-  m_Name: AttachPoint
+  m_Name: RightAttachPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,14 +152,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547790306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0, z: -0.0288}
+  m_LocalRotation: {x: -0.38426343, y: 0.022141255, z: -0.05091067, w: -0.92155284}
+  m_LocalPosition: {x: -0.025, y: -0.0147, z: 0.0317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2782256744521351988}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 134.725, y: -180.137, z: 186.267}
 --- !u!1 &1623780301798808981
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,14 +186,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623780301798808981}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.023238799, y: 0.9971197, z: -0.05033862, w: 0.051752236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1629227839095601241}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.9, y: 174.18, z: 2.37}
 --- !u!33 &1655149471482687943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -386,7 +417,7 @@ GameObject:
   - component: {fileID: 4899624495914013271}
   - component: {fileID: 845253878}
   - component: {fileID: 1007104755}
-  - component: {fileID: 800715968}
+  - component: {fileID: 689056095}
   m_Layer: 14
   m_Name: Flashlight 1
   m_TagString: FLASH
@@ -403,12 +434,13 @@ Transform:
   m_GameObject: {fileID: 2782256744521351987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1629227839095601241}
   - {fileID: 1547790307}
   - {fileID: 3418207537697773298}
+  - {fileID: 529036925}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -662,7 +694,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &800715968
+--- !u!114 &689056095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -671,7 +703,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2782256744521351987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2771ab8b5fb355549a39fcbbc530fa46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -788,7 +820,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 1547790307}
+  m_AttachTransform: {fileID: 0}
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1
@@ -825,6 +857,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  leftAttachTransform: {fileID: 529036925}
+  rightAttachTransform: {fileID: 1547790307}
 --- !u!1001 &6370014724288440347
 PrefabInstance:
   m_ObjectHideFlags: 0
