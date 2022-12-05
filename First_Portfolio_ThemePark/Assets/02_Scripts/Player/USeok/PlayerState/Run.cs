@@ -22,6 +22,11 @@ public class Run : PlayerState
         {
             m_Player.SetState(m_Player.Squat);
         }
+
+        if (m_Player.MoveAxis.action.ReadValue<Vector2>().y < 0.6f)
+        {
+            m_Player.SetState(m_Player.SlowWalk);
+        }
     }
 
     public override void EnterState()
@@ -29,11 +34,11 @@ public class Run : PlayerState
         Debug.Log("Run Enter");
         m_Player.CurSpeed = m_Player.RunSpeed;
         m_Player.CurStepInterval = m_Player.RunStepInterval;
-        m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);
+        //m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);
         m_Player.CurStepSoundRange = m_Player.RunSoundRange;
         m_Player.CurStepSoundLevel = m_Player.RunSoundLevel;
+        m_Player.SetStepSound(1f, 0.7f);
 
-        m_Player.StepSound(); new System.NotImplementedException();
     }
 
     public override void ExitState()

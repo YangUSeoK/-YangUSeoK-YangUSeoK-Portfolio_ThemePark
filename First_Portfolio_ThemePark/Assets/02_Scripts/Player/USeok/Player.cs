@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -127,18 +128,18 @@ public class Player : MonoBehaviour
 
     [Space]
     [Header("Step Interval")]
-    [SerializeField] private float m_CurStepInterval = 5f;
+    [SerializeField] private float m_CurStepInterval = 0.6f;
     public float CurStepInterval
     {
         get { return m_CurStepInterval; }
         set { m_CurStepInterval = value; }
     }
-    [SerializeField] private float m_WalkStepInterval = 3f;
+    [SerializeField] private float m_WalkStepInterval = 0.6f;
     public float WalkStepInterval
     {
         get { return m_WalkStepInterval; }
     }
-    [SerializeField] private float m_RunStepInterval = 5f;
+    [SerializeField] private float m_RunStepInterval = 0.3f;
     public float RunStepInterval
     {
         get { return m_RunStepInterval; }
@@ -148,7 +149,7 @@ public class Player : MonoBehaviour
     {
         get { return m_SlowWalkStepInterval; }
     }
-    [SerializeField] private float m_SquatStepInterval = 0f;
+    [SerializeField] private float m_SquatStepInterval = float.MaxValue;
     public float SquatStepInterval
     {
         get { return m_SquatStepInterval; }
@@ -174,10 +175,10 @@ public class Player : MonoBehaviour
 
     private bool mb_IsGameOver = false;
 
-    private AudioSource m_Audio = null;
-    public AudioSource Audio
+    private AudioSource[] m_Audios = null;
+    public AudioSource[] Audios
     {
-        get { return m_Audio; }
+        get { return m_Audios; }
     }
 
     private PlayerState m_CurState = null;
@@ -218,12 +219,15 @@ public class Player : MonoBehaviour
         get { return m_WakeUpHeight; }
     }
 
+    private int mStepIdx = 0;
+    private float mTimer = 0f;
+    
     
     #endregion
 
     private void Awake()
     {
-        m_Audio = GetComponent<AudioSource>();
+        m_Audios = GetComponents<AudioSource>();
         m_Inven = GetComponent<Inven>();
         m_MoveProvider = GetComponent<ActionBasedContinuousMoveProvider>();
 
@@ -237,6 +241,7 @@ public class Player : MonoBehaviour
     {
         m_CurState = m_Walk;
         SetState(m_Walk);
+        //StartCoroutine(StepSoundCoroutine());
     }
 
     private void Update()
@@ -245,7 +250,19 @@ public class Player : MonoBehaviour
         {
             m_CurState.CheckState();
             m_CurState.Action();
+
+            // 20221205  발소리 코루틴 대신 Update에서 하는걸로 수정
+           // if (m_CurState != m_Squat)
+            {
+                mTimer += Time.deltaTime;
+                if (mTimer >= m_CurStepInterval)
+                {
+                    StepSound();
+                    mTimer = 0f;
+                }
+            }
         }
+
 
     }
 
@@ -278,27 +295,37 @@ public class Player : MonoBehaviour
 
     public void StepSound()
     {
-        StartCoroutine(StepSoundCoroutine());
-    }
-
-    public void StopSound()
-    {
-        StopCoroutine(StepSoundCoroutine());
-    }
-
-    private IEnumerator StepSoundCoroutine()
-    {
-        while (true)
+        
+        // 매 상황 입장마다 만들어주기
+        Collider[] colls = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
+        for (int i = 0; i < colls.Length; ++i)
         {
-            yield return m_CurStepIntervalWs;
-            // 매 상황 입장마다 만들어주기
-            Collider[] colls = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
-            for (int i = 0; i < colls.Length; ++i)
-            {
-                colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_CurStepSoundLevel);
-            }
+            colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_CurStepSoundLevel);
+        }
 
-            // 스텝 소리 출력
+        // 스텝 소리 출력
+        if (mStepIdx == 0)
+        {
+            Debug.Log("왼쪽");
+            // 왼쪽소리
+            m_Audios[mStepIdx].PlayOneShot(m_Audios[mStepIdx].clip);
+            mStepIdx = 1;
+        }
+        else if (mStepIdx == 1)
+        {
+            Debug.Log("오른쪽");
+            // 오른쪽 소리
+            m_Audios[mStepIdx].PlayOneShot(m_Audios[mStepIdx].clip);
+            mStepIdx = 0;
+        }
+    }
+
+    public void SetStepSound(float _volume, float _pitch)
+    {
+        for(int i = 0; i < m_Audios.Length; ++i)
+        {
+            m_Audios[i].volume = _volume;
+            m_Audios[i].pitch = _pitch;
         }
     }
 

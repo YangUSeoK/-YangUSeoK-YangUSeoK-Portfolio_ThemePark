@@ -14,7 +14,7 @@ public class Walk : PlayerState
     public override void CheckState()
     {
         // Axis 0.95 юлго => SetState(SlowWalk)
-        Debug.Log(m_Player.MoveAxis.action.ReadValue<Vector2>());
+        //Debug.Log(m_Player.MoveAxis.action.ReadValue<Vector2>());
 
         if(m_Player.MoveAxis.action.ReadValue<Vector2>().y < 0.8f)
         {
@@ -39,16 +39,15 @@ public class Walk : PlayerState
         Debug.Log("Walk Enter");
         m_Player.CurSpeed = m_Player.WalkSpeed;
         m_Player.CurStepInterval = m_Player.WalkStepInterval;
-        m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);
+        //m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);
         m_Player.CurStepSoundRange = m_Player.WalkSoundRange;
         m_Player.CurStepSoundLevel = m_Player.WalkSoundLevel;
 
-        m_Player.StepSound();
+        m_Player.SetStepSound(0.6f, 0.6f);
     }
 
     public override void ExitState()
     {
         Debug.Log("Walk Exit");
-        m_Player.StopSound();
     }
 }

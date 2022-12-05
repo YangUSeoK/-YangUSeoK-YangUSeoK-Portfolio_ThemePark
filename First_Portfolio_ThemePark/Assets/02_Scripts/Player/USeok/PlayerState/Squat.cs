@@ -26,16 +26,14 @@ public class Squat : PlayerState
 
         m_Player.CurSpeed = m_Player.SquatSpeed;
         m_Player.CurStepInterval = m_Player.SquatStepInterval;
-        m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);
+        //m_Player.CurStepIntervalWs = new WaitForSeconds(m_Player.CurStepInterval);
         m_Player.CurStepSoundRange = m_Player.SquatSoundRange;
         m_Player.CurStepSoundLevel = m_Player.SquatSoundLevel;
 
-        m_Player.StepSound();
     }
 
     public override void ExitState()
     {
         Debug.Log("Squat Enter");
-        m_Player.StopSound();
     }
 }
