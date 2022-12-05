@@ -69,7 +69,7 @@ MonoBehaviour:
   mbUICatch: 0
   m_ListenerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
 --- !u!82 &2113512938630163046
 AudioSource:
   m_ObjectHideFlags: 0

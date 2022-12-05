@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3968961237247767096}
   - component: {fileID: 3968961238512212453}
-  - component: {fileID: 3968961238512212450}
+  - component: {fileID: 2553074853905757046}
   - component: {fileID: 4963116184881619501}
   - component: {fileID: 4785272796032196564}
-  - component: {fileID: 1272276019}
   - component: {fileID: 1272276020}
   m_Layer: 0
   m_Name: ZombieDog
@@ -59,7 +58,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3968961238512212450
+--- !u!114 &2553074853905757046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,10 +67,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3968961237247929880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef176d107bcf8a48a06e1ce21df4dd4, type: 3}
+  m_Script: {fileID: 11500000, guid: a773a57d7927bc144aff37db21899c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsBark: 0
+  m_PatrolSpeed: 5
+  m_ConcentrationSpeed: 1
+  m_TraceSpeed: 8
+  m_PlayerTr: {fileID: 0}
+  m_FindSpeed: 0
+  m_TraceRange: 10
+  m_FindRange: 4
+  m_AlertRange: 50
+  m_GrowlingRange: 30
+  m_SniffTime: 2.5
+  m_AlertTime: 10
 --- !u!195 &4963116184881619501
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -107,120 +116,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1, z: 1.5}
   m_Center: {x: 0, y: 0.55, z: 0}
---- !u!82 &1272276019
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3968961237247929880}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2c67590d7f1ad5a4794bd5cce6db1e41, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.77
-  m_Pitch: 0.62
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 50
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.02
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.2991735
-      value: 0.5103555
-      inSlope: -1.0204083
-      outSlope: -1.0204083
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.63434005
-      value: 0.15423675
-      inSlope: -0.5824557
-      outSlope: -0.5824557
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1.0204082
-      outSlope: -1.0204082
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!82 &1272276020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -231,11 +126,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e656282b1c9ff9c49a63c015e097b4d1, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: eb35b59c8c8072e42bbca8b9971ec391, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

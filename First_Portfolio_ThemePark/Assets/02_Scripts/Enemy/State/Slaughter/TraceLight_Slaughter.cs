@@ -23,6 +23,7 @@ public class TraceLight_Slaughter : EnemyState
         }
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
         m_Enemy.Agent.destination = (m_Enemy as Enemy_Slaughter).LightPos;
+        m_Enemy.Audio[1].Play();
     }
 
     public override void Action()

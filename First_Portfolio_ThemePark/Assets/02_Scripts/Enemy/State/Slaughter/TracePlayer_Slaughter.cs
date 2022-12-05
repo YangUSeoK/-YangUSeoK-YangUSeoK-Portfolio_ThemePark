@@ -28,6 +28,7 @@ public class TracePlayer_Slaughter : EnemyState
         (m_Enemy as Enemy_Slaughter).CallNearZombie();
 
         // BGM ¹Ù²Ù±â
+        m_Enemy.Audio[3].Play();
         (m_Enemy as Enemy_Slaughter).EnterTracePlayerCallback();
     }
 
