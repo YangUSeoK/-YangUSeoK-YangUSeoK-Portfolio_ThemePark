@@ -60,7 +60,7 @@ public class OnClickButton : MonoBehaviour
     public void TutorialGoRight()
     {
         Debug.Log("aaa");
-        if(mTutorialCnt<mTutorialUI.Length-1)
+        if(mTutorialCnt<mTutorialUI.Length)
         {
             mTutorialUI[mTutorialCnt].SetActive(false);
             ++mTutorialCnt;
