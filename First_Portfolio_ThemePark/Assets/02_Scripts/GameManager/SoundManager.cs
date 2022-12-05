@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     public AudioSource bgSound;
-    
+
     public AudioClip[] bglist;
 
     private void Awake()
