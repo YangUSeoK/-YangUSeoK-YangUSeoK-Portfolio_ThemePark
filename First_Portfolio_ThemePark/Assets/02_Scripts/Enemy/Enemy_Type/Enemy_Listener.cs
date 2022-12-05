@@ -82,8 +82,10 @@ public class Enemy_Listener : Enemy
             {
                 m_PlayerTr = _targetTr;
             }
-            SetState(m_TraceTarget);
+
+            SetState(m_Concentration);
         }
 
     }
+
 }

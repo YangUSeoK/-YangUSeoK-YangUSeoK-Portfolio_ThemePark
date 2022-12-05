@@ -19,6 +19,7 @@ public abstract class EnemyState
 
     protected Enemy m_Enemy;
     protected NavMeshAgent m_Agent;
+    
 
 
     public abstract void EnterState();
