@@ -16,7 +16,7 @@ public class Walk : PlayerState
         // Axis 0.95 ÀÌÇÏ => SetState(SlowWalk)
         Debug.Log(m_Player.MoveAxis.action.ReadValue<Vector2>());
 
-        if(m_Player.MoveAxis.action.ReadValue<Vector2>().y < 0.6f)
+        if(m_Player.MoveAxis.action.ReadValue<Vector2>().y < 0.8f)
         {
             m_Player.SetState(m_Player.SlowWalk);
         }
@@ -30,7 +30,7 @@ public class Walk : PlayerState
         // ¾É±â => SetState(Squat)
         if (m_Player.GetComponent<CharacterController>().height <= m_Player.SitDownHeight)
         {
-            //m_Player.SetState(m_Player.Squat);
+            m_Player.SetState(m_Player.Squat);
         }
     }
 

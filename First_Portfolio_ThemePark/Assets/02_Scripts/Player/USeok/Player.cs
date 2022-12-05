@@ -206,13 +206,13 @@ public class Player : MonoBehaviour
         set { m_CurStepIntervalWs = value; }
     }
 
-    private float m_SitDownHeight = 0.8f;
+    private float m_SitDownHeight = 1.2f;
     public float SitDownHeight
     {
         get { return m_SitDownHeight; }
     }
 
-    private float m_WakeUpHeight = 1.2f;
+    private float m_WakeUpHeight = 1.4f;
     public float WakeUpHeight
     {
         get { return m_WakeUpHeight; }

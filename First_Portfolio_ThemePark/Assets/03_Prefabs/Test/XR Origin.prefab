@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &945126165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945126166}
+  m_Layer: 0
+  m_Name: MiniMapPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945126166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945126165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 677428804561932478}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1912449256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1912449257}
+  m_Layer: 0
+  m_Name: MenuPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1912449257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912449256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25, y: 0, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 677428805748502142}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &677428804331737049
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +80,7 @@ GameObject:
   - component: {fileID: 677428804331737041}
   - component: {fileID: 677428804331737040}
   - component: {fileID: 677428804331737047}
+  - component: {fileID: 1896893429}
   m_Layer: 7
   m_Name: XR Origin
   m_TagString: PLAYER
@@ -153,7 +216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677428804331737049}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 919e39492806b334982b6b84c90dd927, type: 3}
   m_Name: 
@@ -191,7 +254,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677428804331737049}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2213c36610e3b1c4bbf886810ed9db12, type: 3}
   m_Name: 
@@ -238,8 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LocomotionProvider: {fileID: 677428804331737042}
-  m_MinHeight: 0
-  m_MaxHeight: Infinity
+  m_MinHeight: 0.2
+  m_MaxHeight: 2
 --- !u!114 &677428804331737047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +319,62 @@ MonoBehaviour:
   rightGrabRay: {fileID: 677428806124762257}
   leftDirectGrab: {fileID: 677428805748502141}
   rightDirectGrab: {fileID: 677428804561932477}
+--- !u!114 &1896893429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677428804331737049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c6f5e77768d2a49a6f123371ea6fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WalkSpeed: 3
+  m_RunSpeed: 5
+  m_SlowSpeed: 2
+  m_SquatSpeed: 1
+  m_CurStepSoundRange: 5
+  m_WalkSoundRange: 3
+  m_RunSoundRange: 5
+  m_SlowWalkSoundRange: 1
+  m_SquatSoundRange: 0
+  m_CurStepSoundLevel: 5
+  m_WalkSoundLevel: 3
+  m_RunSoundLevel: 5
+  m_SlowWalkSoundLevel: 1
+  m_SquatSoundLevel: 0
+  m_CurStepInterval: 5
+  m_WalkStepInterval: 3
+  m_RunStepInterval: 5
+  m_SlowWalkStepInterval: 1
+  m_SquatStepInterval: 0
+  m_MoveAxis:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Axis
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 92188c9b-c95b-43f4-839b-e2e8f7b5ff74
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RunButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Run Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 84723847-b3e5-4921-8066-f301a81b3de4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 3236764367098717896, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_EnemyManager: {fileID: 0}
 --- !u!1 &677428804561932473
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,9 +387,10 @@ GameObject:
   - component: {fileID: 677428804561932479}
   - component: {fileID: 677428804561932477}
   - component: {fileID: 677428804561932476}
+  - component: {fileID: 230161342}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: HAND
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,6 +408,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5156481966359788880}
+  - {fileID: 945126166}
   m_Father: {fileID: 677428806253756225}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -548,6 +669,33 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &230161342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677428804561932473}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ebc05956b16834f8184a20b5ffba32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DirectGrab: {fileID: 677428804561932477}
+  m_GrabbedObject: {fileID: 0}
+  m_GribButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grib Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 56c99e35-652a-4fd4-ba95-bbcc76c4a2be
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4241915783211188427, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_Inventory: {fileID: 0}
 --- !u!1 &677428805231006739
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,9 +882,10 @@ GameObject:
   - component: {fileID: 677428805748502143}
   - component: {fileID: 677428805748502141}
   - component: {fileID: 677428805748502140}
+  - component: {fileID: 1226920824}
   m_Layer: 0
   m_Name: LeftHand
-  m_TagString: Untagged
+  m_TagString: HAND
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,6 +903,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 640214455338046040}
+  - {fileID: 1912449257}
   m_Father: {fileID: 677428806253756225}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1014,6 +1164,33 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1226920824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677428805748502137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ebc05956b16834f8184a20b5ffba32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DirectGrab: {fileID: 677428805748502141}
+  m_GrabbedObject: {fileID: 0}
+  m_GribButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grib Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3ad96056-afd1-40df-bb75-304eb0750253
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5939707709041252288, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_Inventory: {fileID: 0}
 --- !u!1 &677428805930036972
 GameObject:
   m_ObjectHideFlags: 0

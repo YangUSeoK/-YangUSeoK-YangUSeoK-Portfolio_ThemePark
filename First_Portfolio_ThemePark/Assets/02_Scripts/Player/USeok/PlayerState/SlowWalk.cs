@@ -14,7 +14,7 @@ public class SlowWalk : PlayerState
     public override void CheckState()
     {
         // °È±â
-        if (m_Player.MoveAxis.action.ReadValue<Vector2>().y >= 0.9f)
+        if (m_Player.MoveAxis.action.ReadValue<Vector2>().y >= 0.95f)
         {
             m_Player.SetState(m_Player.Walk);
         }
@@ -22,7 +22,7 @@ public class SlowWalk : PlayerState
         //¾É±â
         if (m_Player.GetComponent<CharacterController>().height <= m_Player.SitDownHeight)
         {
-            //m_Player.SetState(m_Player.Squat);
+            m_Player.SetState(m_Player.Squat);
         }
     }
 
