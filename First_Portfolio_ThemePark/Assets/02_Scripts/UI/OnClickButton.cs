@@ -59,15 +59,16 @@ public class OnClickButton : MonoBehaviour
     }
     public void TutorialGoRight()
     {
-        if(mTutorialCnt<mTutorialUI.Length)
+        Debug.Log("aaa");
+        if(mTutorialCnt<mTutorialUI.Length-1)
         {
             mTutorialUI[mTutorialCnt].SetActive(false);
             ++mTutorialCnt;
+            if (mTutorialCnt == mTutorialUI.Length)
+            {
+                mTutorialCnt = 0;
+            }
             mTutorialUI[mTutorialCnt].SetActive(true);
-        }
-        else if(mTutorialCnt>=mTutorialUI.Length)
-        {
-            mTutorialCnt = 0;
         }
     }
     public void TutorialGoLeft()
@@ -75,12 +76,14 @@ public class OnClickButton : MonoBehaviour
         if (mTutorialCnt < mTutorialUI.Length)
         {
             mTutorialUI[mTutorialCnt].SetActive(false);
+            //Debug.Log($"마이너스 전{ mTutorialCnt}");
             --mTutorialCnt;
+            //Debug.Log($"마이너스 후{ mTutorialCnt}");
+            if (mTutorialCnt < 0)
+            {
+                mTutorialCnt = mTutorialUI.Length-1;
+            }
             mTutorialUI[mTutorialCnt].SetActive(true);
-        }
-        else if (mTutorialCnt <= mTutorialUI.Length)
-        {
-            mTutorialCnt = mTutorialUI.Length;
         }
     }
 }
