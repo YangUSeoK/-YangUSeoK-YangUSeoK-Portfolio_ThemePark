@@ -12,13 +12,13 @@ public abstract class Item : ICatch
         Bottle = 2,
         Can = 4,
         Rock = 8
-    }   
+    }
     protected Rigidbody m_Rigid;
     protected AudioSource[] m_ItemAudio;
     [SerializeField] protected bool mbIsHanded = false;
     protected bool mbIsInPocket = false;
     protected float m_Speed;
-    [HideInInspector]public bool mbUICatch=false;
+    [HideInInspector] public bool mbUICatch = false;
 
     void Awake()
     {
@@ -60,7 +60,7 @@ public abstract class Item : ICatch
     {
         mbIsHanded = _isGrabed;
     }
-
+   
     public void SetIsInPocket(bool _isInPocket)
     {
         mbIsInPocket = _isInPocket;

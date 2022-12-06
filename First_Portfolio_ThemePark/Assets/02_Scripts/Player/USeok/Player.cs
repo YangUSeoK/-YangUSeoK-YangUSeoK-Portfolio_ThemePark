@@ -157,8 +157,9 @@ public class Player : MonoBehaviour
 
 
     #endregion
-
     #region Member_variable
+    [Space]
+    [Header("Member_Variable")]
     [SerializeField] private InputActionProperty m_MoveAxis;
     public InputActionProperty MoveAxis
     {
@@ -181,6 +182,18 @@ public class Player : MonoBehaviour
         get { return m_Audios; }
     }
 
+    [SerializeField] private AudioSource m_HeartBeat = null;
+
+    private enum EAudioClipName
+    {
+        RightStepSound = 0,
+        LeftStepSound,
+        HeartBeat,
+
+        Length
+    }
+
+
     private PlayerState m_CurState = null;
     public PlayerState CurState
     {
@@ -199,7 +212,7 @@ public class Player : MonoBehaviour
         get { return m_MoveProvider; }
     }
 
-    
+
 
     private WaitForSeconds m_CurStepIntervalWs;
     public WaitForSeconds CurStepIntervalWs
@@ -221,8 +234,8 @@ public class Player : MonoBehaviour
 
     private int mStepIdx = 0;
     private float mTimer = 0f;
-    
-    
+
+
     #endregion
 
     private void Awake()
@@ -252,7 +265,7 @@ public class Player : MonoBehaviour
             m_CurState.Action();
 
             // 20221205  발소리 코루틴 대신 Update에서 하는걸로 수정
-           // if (m_CurState != m_Squat)
+            // if (m_CurState != m_Squat)
             {
                 mTimer += Time.deltaTime;
                 if (mTimer >= m_CurStepInterval)
@@ -261,9 +274,9 @@ public class Player : MonoBehaviour
                     mTimer = 0f;
                 }
             }
+            SetReverb();
+            SetHeartBeat();
         }
-
-
     }
 
     public void SetState(PlayerState _state)
@@ -278,7 +291,7 @@ public class Player : MonoBehaviour
 
     public void InputRun()
     {
-        if(m_CurState != m_Squat)
+        if (m_CurState != m_Squat)
         {
             SetState(m_Run);
         }
@@ -286,21 +299,18 @@ public class Player : MonoBehaviour
 
     public void OutRun()
     {
-        if(m_CurState == m_Run)
+        if (m_CurState == m_Run)
         {
             SetState(m_Walk);
         }
-
     }
 
     public void StepSound()
     {
-        
-        // 매 상황 입장마다 만들어주기
-        Collider[] colls = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
-        for (int i = 0; i < colls.Length; ++i)
+        Collider[] nearListener = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
+        for (int i = 0; i < nearListener.Length; ++i)
         {
-            colls[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_CurStepSoundLevel);
+            nearListener[i].gameObject.GetComponent<Enemy_Listener>().Listen(transform, transform.position, m_CurStepSoundLevel);
         }
 
         // 스텝 소리 출력
@@ -322,15 +332,49 @@ public class Player : MonoBehaviour
 
     public void SetStepSound(float _volume, float _pitch)
     {
-        for(int i = 0; i < m_Audios.Length; ++i)
+        for (int i = 0; i < 2; ++i)
         {
             m_Audios[i].volume = _volume;
             m_Audios[i].pitch = _pitch;
         }
     }
 
-    private void HeartBeat()
+    private void SetHeartBeat()
     {
-        float beatSound = 1f / Vector3.Distance(m_EnemyManager.NearZombie.transform.position, transform.position);
+        float distance = Vector3.Distance(m_EnemyManager.NearZombie.transform.position, transform.position);
+        float beatSound = 0f;
+        float pitch = 0f;
+
+
+        if (distance <= 8f)
+        {
+            beatSound = Mathf.Clamp(3f / distance, 0f, 1f);
+        }
+        else
+        {
+            beatSound = 0f;
+        }
+
+        pitch = Mathf.Clamp(0.7f + (1.5f / distance), 0.7f, 1.3f);
+        m_HeartBeat.volume = beatSound;
+        m_HeartBeat.pitch = pitch;
     }
+
+    private void SetReverb()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position + Vector3.up, -Vector3.up, out hitInfo, 1f))
+        {
+            if (hitInfo.transform.CompareTag("REVERBZONE"))
+            {
+                GetComponent<AudioReverbFilter>().enabled = true;
+            }
+            else
+            {
+                GetComponent<AudioReverbFilter>().enabled = false;
+            }
+        }
+
+    }
+
 }
