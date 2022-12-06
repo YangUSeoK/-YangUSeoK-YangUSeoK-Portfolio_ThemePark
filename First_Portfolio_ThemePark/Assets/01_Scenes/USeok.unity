@@ -1699,7 +1699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4625971922666777318, guid: bafbf3a2ec4cbb249983d999e2a9e4d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.794346
+      value: 10.25
       objectReference: {fileID: 0}
     - target: {fileID: 4625971922666777318, guid: bafbf3a2ec4cbb249983d999e2a9e4d4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1707,7 +1707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4625971922666777318, guid: bafbf3a2ec4cbb249983d999e2a9e4d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22240114
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 4625971922666777318, guid: bafbf3a2ec4cbb249983d999e2a9e4d4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4050,6 +4050,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1887299157, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887299157, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1896893429, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
       propertyPath: m_EnemyManager
       value: 
