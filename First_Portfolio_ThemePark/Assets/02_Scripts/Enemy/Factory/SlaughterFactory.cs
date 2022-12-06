@@ -145,7 +145,6 @@ public class SlaughterFactory : MonoBehaviour
 
     private void EnterTracePlayerCallback()
     {
-        Debug.Log("2");
         enterTracePlayerDelegate?.Invoke();
     }
 
@@ -163,7 +162,7 @@ public class SlaughterFactory : MonoBehaviour
             }
         }
 
-        Debug.Log(cnt);
+        Debug.Log($"Trace 좀비 수 : {cnt}");
         if(cnt == 0)
         {
             Debug.Log("모든좀비 Exit TracePlayer");

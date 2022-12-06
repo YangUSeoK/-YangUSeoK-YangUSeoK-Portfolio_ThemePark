@@ -17,17 +17,18 @@ public class Patrol_Slaughter : EnemyState
 
     public override void EnterState()
     {
-       // Debug.Log("Patrol Enter!");
+        Debug.Log($"{m_Enemy.name} Patrol Enter!");
         m_Enemy.Agent.speed = m_Enemy.PatrolSpeed;
-        m_Enemy.Anim.SetTrigger("IsPatrol");
+        m_Enemy.Anim.SetBool("IsPatrol",true);
         m_Enemy.Audio[0].Play();
         (m_Enemy as Enemy_Slaughter).EnterPatrolCallback();
     }
 
     public override void ExitState()
     {
-        // Debug.Log("Patrol Exit!");
+        Debug.Log($"{m_Enemy.name} Patrol Exit!");
         m_Enemy.Audio[0].Stop();
+        m_Enemy.Anim.SetBool("IsPatrol", false);
     }
 
     public override void Action()

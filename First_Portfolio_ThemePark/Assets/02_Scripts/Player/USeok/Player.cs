@@ -275,6 +275,10 @@ public class Player : MonoBehaviour
             SetReverb();
             SetHeartBeat();
         }
+        else
+        {
+            StopAllSound();
+        }
     }
     #region State
     public void SetState(PlayerState _state)
@@ -345,7 +349,7 @@ public class Player : MonoBehaviour
         float beatSound = 0f;
         float pitch = 0f;
 
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance <= 8f)
         {
             beatSound = Mathf.Clamp(3f / distance, 0f, 1f);
@@ -370,6 +374,18 @@ public class Player : MonoBehaviour
                 GetComponent<AudioReverbFilter>().enabled = false;
             }
         }
+    }
+
+    private void StopAllSound()
+    {
+        // 발소리 정지
+        for (int i = 0; i < m_Audios.Length; ++i)
+        {
+            m_Audios[i].Stop();
+        }
+
+        // 심장소리 정지
+        m_HeartBeat.Stop();
     }
     #endregion
 }

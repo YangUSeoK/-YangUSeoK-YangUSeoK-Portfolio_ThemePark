@@ -12,22 +12,21 @@ public class Concentration_Slaughter : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Slaughter : Concentration Enter!");
+        Debug.Log($"{m_Enemy.name} Concentration Enter!");
         Debug.Log("주위를 살펴본다.");
         m_Enemy.Agent.speed = m_Enemy.ConcentrationSpeed;
 
         m_Timer = 0f;
-        m_Enemy.Anim.SetTrigger("IsConcentration");
+        m_Enemy.Anim.SetBool("IsConcentration",true);
 
-        // BGM 바꾸기
-        m_Enemy.Audio[2].Play();
-        (m_Enemy as Enemy_Slaughter).ExitTracePlayerCallback();
+        
     }
 
     public override void ExitState()
     {
-        Debug.Log("Concentration Exit!");
+        Debug.Log($"{m_Enemy.name} Concentration Exit!");
         m_Enemy.Audio[2].Stop();
+        m_Enemy.Anim.SetBool("IsConcentration", false);
     }
 
     public override void Action()
@@ -72,6 +71,6 @@ public class Concentration_Slaughter : EnemyState
         {
             (m_Enemy as Enemy_Slaughter).SetState((m_Enemy as Enemy_Slaughter).Patrol);
         }
-        Debug.Log($"Concentration : {m_Timer}");
+        //Debug.Log($"Concentration : {m_Timer}");
     }
 }

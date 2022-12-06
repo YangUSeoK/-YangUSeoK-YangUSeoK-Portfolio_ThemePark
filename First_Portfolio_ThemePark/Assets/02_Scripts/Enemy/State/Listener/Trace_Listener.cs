@@ -11,7 +11,7 @@ public class Trace_Listener : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Trace 입장!");
+        Debug.Log($"{m_Enemy.name} Trace 입장!");
         m_Enemy.Agent.speed = m_Enemy.TraceSpeed;
         m_Enemy.Agent.destination = (m_Enemy as Enemy_Listener).SoundPos;
         currPos = m_Enemy.Agent.destination;
@@ -21,7 +21,7 @@ public class Trace_Listener : EnemyState
 
     public override void ExitState()
     {
-        Debug.Log("Trace 퇴장!");
+        Debug.Log($"{m_Enemy.name} Trace 퇴장!");
         m_Enemy.Anim.SetBool("IsTraceSound", false);
         // 소리지르고 주변 둘러보기 애니메이션
 

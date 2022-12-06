@@ -33,8 +33,8 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         m_Enemys = GetComponentsInChildren<Enemy>();
-        //m_Factorys = GetComponentsInChildren<SlaughterFactory>();
-        //m_Listeners = GetComponentsInChildren<Enemy_Listener>();
+        m_Factorys = GetComponentsInChildren<SlaughterFactory>();
+        m_Listeners = GetComponentsInChildren<Enemy_Listener>();
         //m_Stalkers = GetComponentsInChildren<Enemy_Stalker>();
         //m_CCTVManager = GetComponentInChildren<CCTVManager>();
 
@@ -102,7 +102,6 @@ public class EnemyManager : MonoBehaviour
                 m_NearZombie = m_Enemys[i + 1].transform;
             }
         }
-        //Debug.Log($"플레이어와의 거리 : {Vector3.Distance(m_PlayerTr.position, m_NearZombie.transform.position)}");
     }
 
 #region Delegate_Callback
@@ -130,7 +129,13 @@ public class EnemyManager : MonoBehaviour
 
     private void IsAttack()
     {
+        Debug.Log("EnemyManager : Player DIe");
         attackDelegate?.Invoke();
+        for(int i = 0; i < m_Enemys.Length; ++i)
+        {
+            m_Enemys[i].Agent.isStopped = true;
+            m_Enemys[i].Anim.SetBool("IsAttack", true);
+        }
     }
 
     public void SetDelegate(VoidVoidDelegate _allZombieEnterPatrolCallback, VoidVoidDelegate _enterTracePlayerCallback,
