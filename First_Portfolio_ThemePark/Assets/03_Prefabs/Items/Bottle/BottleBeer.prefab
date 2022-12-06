@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Power: 20
   m_ListenerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
 --- !u!82 &9099844042806380105
 AudioSource:
   m_ObjectHideFlags: 0
@@ -160,9 +160,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 25
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
