@@ -26,6 +26,12 @@ public class Enemy_Listener : Enemy
     {
         get { return m_Concentration; }
     }
+    
+    private LookAround_Listener m_LookAround;
+    public LookAround_Listener LookAround
+    {
+        get { return m_LookAround; }
+    }
 
     private Attack m_Attack;
     public Attack Attack
@@ -66,6 +72,7 @@ public class Enemy_Listener : Enemy
         m_Idle = new Idle_Listener(this);
         m_TraceTarget = new Trace_Listener(this);
         m_Concentration = new Concentration_Listener(this);
+        m_LookAround = new LookAround_Listener(this);
         m_Attack = new Attack(this);
     }
 
@@ -89,11 +96,9 @@ public class Enemy_Listener : Enemy
             {
                 SetState(m_Concentration);
             }
-            else if (m_CurState == m_TraceTarget)
-            {
-                SetState(m_TraceTarget);
-            }
-            else if (m_CurState == m_Concentration)
+
+            //else if (m_CurState == m_TraceTarget || m_CurState == m_Concentration )
+            else
             {
                 SetState(m_TraceTarget);
             }

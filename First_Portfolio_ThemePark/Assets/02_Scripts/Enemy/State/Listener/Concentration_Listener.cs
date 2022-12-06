@@ -11,15 +11,15 @@ public class Concentration_Listener : EnemyState
     public override void EnterState()
     {
         Debug.Log("Concentration ÀÔÀå!");
-        //m_Enemy.Audio[0].Stop();
-        //m_Enemy.Anim.SetTrigger("IsTraceSound");
-        //m_Enemy.Audio[1].Play();
+        m_Enemy.Anim.SetBool("IsConcentration",true);
+        m_Enemy.Audio[1].Play();
         timer = 0f;
     }
 
     public override void ExitState()
     {
         Debug.Log("Concentration ÅğÀå!");
+        m_Enemy.Anim.SetBool("IsConcentration", false);
     }
 
     public override void Action()
@@ -33,7 +33,7 @@ public class Concentration_Listener : EnemyState
         
         timer += Time.deltaTime;
 
-        if (timer >= 2.8f)
+        if (timer >= 2.3f)
         {
             m_Enemy.SetState((m_Enemy as Enemy_Listener).TraceTarget);
         }
