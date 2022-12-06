@@ -74,7 +74,7 @@ public class OnClickButton : MonoBehaviour
     public void TutorialGoLeft()
     {
         if (mTutorialCnt < mTutorialUI.Length)
-        {
+        { 
             mTutorialUI[mTutorialCnt].SetActive(false);
             //Debug.Log($"마이너스 전{ mTutorialCnt}");
             --mTutorialCnt;
