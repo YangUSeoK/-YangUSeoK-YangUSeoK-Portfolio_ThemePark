@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         m_EnemyManager = GetComponentInChildren<EnemyManager>();
         m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
-        m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
+        //m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
         SetEnemyManager();
         
         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         m_EnemyManager.IsGameOver();
         m_UIManager.IsGameOver();
         m_SoundManager.IsGameOver();
-        //m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
+        m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
 
         // 씬전환 -> 메인타이틀로
     }
