@@ -2461,7 +2461,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7211923268282347539}
-  m_RootOrder: 153
+  m_RootOrder: 152
   m_LocalEulerAnglesHint: {x: 178.945, y: 131.724, z: 0.46099854}
 --- !u!65 &129274026
 BoxCollider:
@@ -21451,6 +21451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMenu: {fileID: 0}
   mOptionBtn: {fileID: 0}
+  mGameOver: {fileID: 0}
+  mGameClear: {fileID: 0}
+  mTutorialUI: []
 --- !u!4 &2072453612
 Transform:
   m_ObjectHideFlags: 0
