@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         // 타임스케일 0으로 
         // 씬전환 -> 메인타이틀로
         // 타임스케일 정상화
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     private void GameClear()//221201 김준우

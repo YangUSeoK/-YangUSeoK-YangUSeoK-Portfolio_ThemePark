@@ -30,6 +30,8 @@ public class TracePlayer_Slaughter : EnemyState
         // BGM ¹Ù²Ù±â
         m_Enemy.Audio[3].Play();
         (m_Enemy as Enemy_Slaughter).EnterTracePlayerCallback();
+
+        m_Enemy.Mr.material.color = Color.red;
     }
 
     public override void ExitState()

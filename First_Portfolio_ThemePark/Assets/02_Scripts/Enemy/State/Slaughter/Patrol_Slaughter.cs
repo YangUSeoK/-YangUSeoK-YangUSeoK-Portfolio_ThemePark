@@ -22,6 +22,7 @@ public class Patrol_Slaughter : EnemyState
         m_Enemy.Anim.SetBool("IsPatrol",true);
         m_Enemy.Audio[0].Play();
         (m_Enemy as Enemy_Slaughter).EnterPatrolCallback();
+        m_Enemy.Mr.material.color = Color.white;
     }
 
     public override void ExitState()

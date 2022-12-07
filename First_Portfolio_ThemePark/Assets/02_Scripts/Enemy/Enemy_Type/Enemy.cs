@@ -64,6 +64,14 @@ public abstract class Enemy : MonoBehaviour
     }
     #endregion
 
+    // 디버그, 영상촬영용
+    [SerializeField] private MeshRenderer m_Mr = null;
+    public MeshRenderer Mr
+    {
+        get { return m_Mr; }
+    }
+
+
     protected virtual void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();

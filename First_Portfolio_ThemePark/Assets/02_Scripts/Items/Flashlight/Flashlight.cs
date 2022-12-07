@@ -19,12 +19,6 @@ public class Flashlight : Item, IInteraction
         m_Lens = GetComponentInChildren<Renderer>().materials;
     }
 
-    //void Update()
-    //{
-        
-    //    Action();
-    //}
-
     public override void Action()
     {
         //targetDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out bool secondaryButtonValue);
@@ -59,4 +53,9 @@ public class Flashlight : Item, IInteraction
             m_Lens[1].SetColor("_EmissionColor", Color.black);
         }
     } 
+
+    public bool GetIsHanded()
+    {
+        return mbIsHanded;
+    }
 }

@@ -20,6 +20,12 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer m_LHandRenderer = null;
     [SerializeField] private SkinnedMeshRenderer m_RHandRenderer = null;
 
+    private bool mb_IsMinimapOpen = false;
+    public bool IsMinimapOpen
+    {
+        set { mb_IsMinimapOpen = value; }
+    }
+
     private float spawnDistance = 1f;
 
     private void Update()
@@ -42,7 +48,7 @@ public class GameMenuManager : MonoBehaviour
 
 
 
-        if (m_ShowMiniMapButton.action.WasPressedThisFrame())
+        if (mb_IsMinimapOpen && m_ShowMiniMapButton.action.WasPressedThisFrame())
         {
             m_MiniMap.SetActive(!m_MiniMap.activeSelf);
             if (m_RHandRenderer.enabled)

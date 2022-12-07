@@ -12,6 +12,7 @@ public class Attack : EnemyState
         m_Enemy.Anim.SetTrigger("IsAttack");
         // 공격 델리게이트 호출
         m_Enemy.IsAttack();
+        m_Enemy.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
     }
 
     public override void ExitState()

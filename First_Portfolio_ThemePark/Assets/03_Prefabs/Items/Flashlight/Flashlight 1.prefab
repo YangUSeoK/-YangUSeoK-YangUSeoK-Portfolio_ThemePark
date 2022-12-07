@@ -224,6 +224,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: ff650073054ab3145b5c0279ce4b7a42, type: 2}
   - {fileID: 2100000, guid: ff650073054ab3145b5c0279ce4b7a42, type: 2}
+  - {fileID: 2100000, guid: 3dbc34d1f52a6924586cb5776b1a2b0b, type: 2}
   - {fileID: 2100000, guid: 174ca498363747e43abe90b2f66d8a6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -418,6 +419,7 @@ GameObject:
   - component: {fileID: 845253878}
   - component: {fileID: 1007104755}
   - component: {fileID: 689056095}
+  - component: {fileID: 1178349304}
   m_Layer: 14
   m_Name: Flashlight 1
   m_TagString: FLASH
@@ -859,6 +861,23 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   leftAttachTransform: {fileID: 529036925}
   rightAttachTransform: {fileID: 1547790307}
+--- !u!114 &1178349304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782256744521351987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9733e293ba65e34c9a71fd943ed41f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ModelRenderer: {fileID: 1646544706656799593}
+  m_Glass: {fileID: 2100000, guid: ff650073054ab3145b5c0279ce4b7a42, type: 2}
+  m_RimLight: {fileID: 2100000, guid: 3dbc34d1f52a6924586cb5776b1a2b0b, type: 2}
+  m_Standard: {fileID: 2100000, guid: 174ca498363747e43abe90b2f66d8a6a, type: 2}
+  m_Materials: []
 --- !u!1001 &6370014724288440347
 PrefabInstance:
   m_ObjectHideFlags: 0

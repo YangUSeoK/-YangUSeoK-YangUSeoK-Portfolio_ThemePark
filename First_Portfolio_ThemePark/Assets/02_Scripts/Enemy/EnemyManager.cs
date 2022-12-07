@@ -32,22 +32,21 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        m_Enemys = GetComponentsInChildren<Enemy>();
+        m_SlaughterList = new List<Enemy_Slaughter>();
         m_Factorys = GetComponentsInChildren<SlaughterFactory>();
         m_Listeners = GetComponentsInChildren<Enemy_Listener>();
         m_Stalkers = GetComponentsInChildren<Enemy_Stalker>();
         m_CCTVManager = GetComponentInChildren<CCTVManager>();
 
-
         // CCTV가 플레이어 발견했을 때 콜백 설정
         m_CCTVManager.SetDelegate(CCTVDetectCallback);
+        SetFactorys();
 
-
-        // 모든 좀비들 IsAttack 델리게이트 콜백 설정
-        for (int i = 0; i < m_Enemys.Length; ++i)
-        {
-            m_Enemys[i].SetDelegate(IsAttack);
-        }
+        
+    }
+    private void Start()
+    {
+        Invoke("SetEnemys", 1f);
     }
 
     private void Update()
@@ -55,11 +54,22 @@ public class EnemyManager : MonoBehaviour
         FindNearZombie();
     }
 
-    // Factory에서 Slaughter 받아오는 델리게이트.
-    // 슬러터 생성 후에 리스트 받아와야해서 콜백으로 받아옴
+    private void SetEnemys()
+    {
+        for (int i = 0; i < m_Factorys.Length; ++i)
+        {
+            m_Factorys[i].SetActiveZombies();
+        }
+        m_Enemys = GetComponentsInChildren<Enemy>();
+        // 모든 좀비들 IsAttack 델리게이트 콜백 설정
+        for (int i = 0; i < m_Enemys.Length; ++i)
+        {
+            m_Enemys[i].SetDelegate(IsAttack);
+        }
+    }
+    
     public void SetFactorys()
     {
-        Debug.Log(PlayerTr.name);
         for (int i = 0; i < m_Factorys.Length; ++i)
         {
             m_Factorys[i].PlayerTr = m_PlayerTr;
@@ -82,27 +92,51 @@ public class EnemyManager : MonoBehaviour
     private void CCTVDetectCallback(Transform _targetTr)
     {
         float callRange = 50f;
-        for (int i = 0; i < m_SlaughterList.Count; ++i)
+        for (int i = 0; i < m_Factorys.Length; ++i)
         {
-            if (Vector3.Distance(_targetTr.position, m_SlaughterList[i].transform.position) <= callRange)
+            for (int j = 0; j < m_Factorys[i].SlaughterList.Count; ++j)
             {
-                m_SlaughterList[i].SetState(m_SlaughterList[i].TracePlayer);
+                if (Vector3.Distance(_targetTr.position, m_Factorys[i].SlaughterList[j].transform.position) <= callRange)
+                {
+                    if (m_Factorys[i].SlaughterList[j].gameObject.activeSelf)
+                    {
+                        m_Factorys[i].SlaughterList[j].SetState(m_SlaughterList[i].TracePlayer);
+                    }
+                }
             }
         }
     }
+
+    public void CallNearZombie(Transform _targetTr, float _callRange)
+    {
+        CCTVDetectCallback(_targetTr);
+
+        Collider[] listener = Physics.OverlapSphere(transform.position, _callRange, 1 << LayerMask.NameToLayer("LISTENER"));
+
+        if (listener.Length != 0)
+        {
+            for (int i = 0; i < listener.Length; ++i)
+            {
+                listener[i].transform.GetComponent<Enemy_Listener>().Listen(_targetTr, _targetTr.position, 100f);
+            }
+        }
+    }
+
 
     private void FindNearZombie()
     {
         m_NearZombie = m_Enemys[0].transform;
         for(int i = 0; i < m_Enemys.Length-1; ++i)
         {
-            if(Vector3.Distance(m_NearZombie.transform.position, m_PlayerTr.position) >=
-                Vector3.Distance(m_Enemys[i+1].transform.position, m_PlayerTr.position))
+            if (m_Enemys[i].gameObject.activeSelf)
             {
-                m_NearZombie = m_Enemys[i + 1].transform;
+                if (Vector3.Distance(m_NearZombie.transform.position, m_PlayerTr.position) >=
+                    Vector3.Distance(m_Enemys[i + 1].transform.position, m_PlayerTr.position))
+                {
+                    m_NearZombie = m_Enemys[i + 1].transform;
+                }
             }
         }
-        //Debug.Log($"플레이어와의 거리 : {Vector3.Distance(m_PlayerTr.position, m_NearZombie.transform.position)}");
     }
 
 #region Delegate_Callback
@@ -110,7 +144,7 @@ public class EnemyManager : MonoBehaviour
     // Factory에서 좀비들 다 완성되면 리스트를 받음.
     private void InitSlaughterListCallback(List<Enemy_Slaughter> _slaughterList)
     {
-        m_SlaughterList = _slaughterList;
+        m_SlaughterList.AddRange(_slaughterList);
     }
 
     private void AllZombieEnterPatrolCallback()

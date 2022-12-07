@@ -11,9 +11,15 @@ public class Key : MonoBehaviour
         joint = GetComponent<FixedJoint>();
     }
 
-    public void DeleteJoint()
+    public void Grabbed()
     {
         Destroy(joint);
+        GetComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().materials[1];
     }
 
+    public void UnGrabbed()
+    {
+        Debug.Log(GetComponent<MeshRenderer>().materials[0].name);
+        GetComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().materials[0];
+    }
 }

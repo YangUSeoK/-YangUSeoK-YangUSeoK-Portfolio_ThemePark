@@ -13,6 +13,9 @@ public class LookAround_Listener : EnemyState
         Debug.Log($"{m_Enemy.name} LookAround ¿‘¿Â!");
         m_Enemy.Anim.SetBool("IsLookAround", true);
         timer = 0f;
+
+
+        m_Enemy.Mr.material.color = Color.blue;
     }
 
     public override void ExitState()

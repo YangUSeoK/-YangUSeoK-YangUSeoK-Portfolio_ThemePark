@@ -17,6 +17,8 @@ public class Trace_Listener : EnemyState
         currPos = m_Enemy.Agent.destination;
         m_Enemy.Anim.SetBool("IsTraceSound", true);
         m_Enemy.Audio[2].Play();
+
+        m_Enemy.Mr.material.color = Color.red;
     }
 
     public override void ExitState()

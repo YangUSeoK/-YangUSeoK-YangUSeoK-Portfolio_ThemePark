@@ -19,6 +19,7 @@ public class Concentration_Slaughter : EnemyState
         m_Timer = 0f;
         m_Enemy.Anim.SetBool("IsConcentration",true);
 
+        m_Enemy.Mr.material.color = Color.green;
         
     }
 

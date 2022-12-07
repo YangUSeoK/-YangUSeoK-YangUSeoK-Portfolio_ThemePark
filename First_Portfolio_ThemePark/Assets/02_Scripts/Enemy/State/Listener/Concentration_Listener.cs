@@ -14,6 +14,10 @@ public class Concentration_Listener : EnemyState
         m_Enemy.Anim.SetBool("IsConcentration",true);
         m_Enemy.Audio[1].Play();
         timer = 0f;
+
+
+        m_Enemy.Mr.material.color = Color.green;
+
     }
 
     public override void ExitState()

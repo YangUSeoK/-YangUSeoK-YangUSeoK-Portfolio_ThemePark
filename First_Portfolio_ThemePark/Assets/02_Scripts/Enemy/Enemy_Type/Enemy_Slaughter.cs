@@ -126,6 +126,9 @@ public class Enemy_Slaughter : Enemy
     }
     #endregion
 
+    
+
+
     protected override void Awake()
     {
         base.Awake();
