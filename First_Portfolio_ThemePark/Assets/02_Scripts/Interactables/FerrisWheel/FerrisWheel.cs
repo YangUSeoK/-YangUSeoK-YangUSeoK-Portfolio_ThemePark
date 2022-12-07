@@ -28,7 +28,7 @@ public class FerrisWheel : MonoBehaviour
 
     void Update()
     {
-        if (m_WheelButton.mbIsPressed == true)
-            m_WheelRotate.RotateWheel(m_RotSpeed);
+        //if (m_WheelButton.mbIsPressed == true)
+        m_WheelRotate.RotateWheel(m_RotSpeed);
     }
 }

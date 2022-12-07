@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WheelButton : MonoBehaviour
@@ -37,6 +38,17 @@ public class WheelButton : MonoBehaviour
             m_ButtonAudio.PlayOneShot(m_ButtonAudio.clip);
             mbIsPressed = !mbIsPressed;
             Debug.Log("Button Pressed!");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag != "Button")
+        {
+            Vector3 otherPos = other.transform.position;
+            otherPos.x = transform.position.x;
+            otherPos.z = transform.position.z;
+            transform.position = otherPos;
         }
     }
 

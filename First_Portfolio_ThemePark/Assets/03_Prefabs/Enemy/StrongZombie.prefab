@@ -2245,9 +2245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdc42e918ced7d4b9edf085cd1e6bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PatrolSpeed: 2
+  m_PatrolSpeed: 1
   m_ConcentrationSpeed: 0
-  m_TraceSpeed: 8
+  m_TraceSpeed: 2.5
   m_PlayerTr: {fileID: 0}
   m_PatrolDetectRange: 20
   m_PatrolPlayerDetectRange: 10

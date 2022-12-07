@@ -17,7 +17,7 @@ public class OnClickButton : MonoBehaviour
     public void StartGame()
     {
         mMenu.SetActive(false); 
-        SceneManager.LoadSceneAsync("Silent_Escape");
+        SceneManager.LoadSceneAsync("SW_TestScene");
     }
     public void GoToOptions()
     {
