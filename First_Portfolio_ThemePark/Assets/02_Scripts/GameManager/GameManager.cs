@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
     {
         get { return mbIsGameOver; }
     }
-    private EnemyManager m_EnemyManager = null;
     private SoundManager m_SoundManager = null;
     private UIManager m_UIManager = null;
+
+    [SerializeField] private EnemyManager m_EnemyManager = null;
     [SerializeField] private Transform m_PlayerTr = null;
+    
 
 
     private void Awake()
@@ -38,10 +40,9 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        m_EnemyManager = GetComponentInChildren<EnemyManager>();
         m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
-        //m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
+        m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
         SetEnemyManager();
         
         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
