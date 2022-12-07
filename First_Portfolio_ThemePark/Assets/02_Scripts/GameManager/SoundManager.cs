@@ -79,6 +79,11 @@ public class SoundManager : MonoBehaviour
         Debug.Log("GameOver");
     }
     #endregion
+
+    public void IsGameClear()
+    {
+        Debug.Log("GameClear!");
+    }
 }
 
 

@@ -4635,6 +4635,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1896893429, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
+      propertyPath: m_RunSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896893429, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
+      propertyPath: m_SlowSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896893429, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
+      propertyPath: m_WalkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896893429, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
+      propertyPath: m_SquatSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896893429, guid: 8fc3d0098cc86d34c91ec4ae1bab8e7a, type: 3}
       propertyPath: m_EnemyManager
       value: 
       objectReference: {fileID: 1502497001}

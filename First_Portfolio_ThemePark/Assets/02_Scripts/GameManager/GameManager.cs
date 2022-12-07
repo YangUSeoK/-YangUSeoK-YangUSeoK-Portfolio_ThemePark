@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -76,13 +77,19 @@ public class GameManager : MonoBehaviour
         m_SoundManager.IsGameOver();
         m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
 
+        // 타임스케일 0으로 
         // 씬전환 -> 메인타이틀로
+        // 타임스케일 정상화
+        Time.timeScale = 0f;
     }
 
     private void GameClear()//221201 김준우
     {
         //조건식
-
+        mbIsGameOver = true;
+        m_EnemyManager.IsGameOver();
+        m_UIManager.IsGameClear();
+        m_SoundManager.IsGameClear();
     }
     #endregion
 
