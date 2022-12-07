@@ -1,0 +1,19 @@
+diff a/First_Portfolio_ThemePark/Assets/02_Scripts/GameManager/GameManager.cs b/First_Portfolio_ThemePark/Assets/02_Scripts/GameManager/GameManager.cs	(rejected hunks)
+@@ -40,7 +40,7 @@
+         m_EnemyManager = GetComponentInChildren<EnemyManager>();
+         m_SoundManager = GetComponentInChildren<SoundManager>();
+         m_UIManager = GetComponentInChildren<UIManager>();
+-        m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
++        //m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
+         SetEnemyManager();
+         
+         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
+@@ -74,7 +74,7 @@
+         m_EnemyManager.IsGameOver();
+         m_UIManager.IsGameOver();
+         m_SoundManager.IsGameOver();
+-        //m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
++        m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
+ 
+         // ����ȯ -> ����Ÿ��Ʋ��
+     }
