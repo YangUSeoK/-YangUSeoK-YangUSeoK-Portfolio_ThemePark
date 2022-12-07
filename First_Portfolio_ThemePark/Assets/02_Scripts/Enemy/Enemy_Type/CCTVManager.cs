@@ -39,7 +39,18 @@ public class CCTVManager : MonoBehaviour
 
     private void DetectCallback(Transform _tr)
     {
+        Debug.Log("CCTV 매니저 콜백받음");
         cctvDetectCallbackDelegate?.Invoke(_tr);
+
+        // 전체 가로등 불빛 시뻘겋게
+
+
+        // 경고음이 출력중이 아닐때 경고음 출력
+        AudioSource audio = GetComponent<AudioSource>();
+        if (!audio.isPlaying)
+        {
+            audio.PlayOneShot(audio.clip);
+        }
     }
 
     private void TurnOnNextCCTV()

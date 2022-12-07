@@ -33,7 +33,7 @@ public class Find_Stalker : EnemyState
     {
         Debug.Log("Dog : 냄새가 난다!");
         m_Enemy.Agent.speed = (m_Enemy as Enemy_Stalker).FindSpeed;
-        m_Enemy.Anim.SetTrigger("IsFind");
+        m_Enemy.Anim.SetBool("IsFind", true);
 
         // 달리는 소리 설정
         // 그로울링 소리 설정(소리 빠르게 등등)
@@ -41,6 +41,7 @@ public class Find_Stalker : EnemyState
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Find Exit");
+        m_Enemy.Anim.SetBool("IsFind", false);
     }
 }
