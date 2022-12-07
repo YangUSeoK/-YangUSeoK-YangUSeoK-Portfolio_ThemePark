@@ -48,7 +48,8 @@ public class WheelButton : MonoBehaviour
             Vector3 otherPos = other.transform.position;
             otherPos.x = transform.position.x;
             otherPos.z = transform.position.z;
-            transform.position = otherPos;
+            transform.position = otherPos + Vector3.down * 0.2f;
+            // 콜라이더가 닿은 순간의 타겟의 위치와 자신의 위치의 차만큼 더하면 될듯
         }
     }
 
