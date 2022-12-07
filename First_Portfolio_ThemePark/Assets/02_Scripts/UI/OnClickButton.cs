@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class OnClickButton : MonoBehaviour
 {
@@ -10,12 +12,23 @@ public class OnClickButton : MonoBehaviour
     public GameObject mGameOver;
     public GameObject mGameClear;
 
+    [Header("씬전환시 이미지 관련")]
+    public Image mImage;
+    public TMP_Text mTMP;
+
     [Header("튜토리얼(물음표) UI")]
     public GameObject[] mTutorialUI;
     private int mTutorialCnt = 0;
 
+    private void Start()
+    {
+        mImage.CrossFadeAlpha(0f, 3f, true);
+        mTMP.CrossFadeAlpha(0f, 3f, true);
+    }
+
     public void StartGame()
     {
+        LoadingSceneImage();
         mMenu.SetActive(false); 
         SceneManager.LoadSceneAsync("Silent_Escape");
     }
@@ -85,5 +98,10 @@ public class OnClickButton : MonoBehaviour
             }
             mTutorialUI[mTutorialCnt].SetActive(true);
         }
+    }
+    private void LoadingSceneImage()
+    {
+        mImage.CrossFadeAlpha(1f, 2f, true);
+        mTMP.CrossFadeAlpha(1f, 2f, true);
     }
 }
