@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1575344995157102000}
   m_LocalRotation: {x: 0.5012549, y: -0.4987419, z: -0.4987419, w: -0.5012549}
   m_LocalPosition: {x: 7.3, y: 0.05940033, z: -18}
-  m_LocalScale: {x: 0.021397023, y: 0.021397023, z: 0.021397019}
+  m_LocalScale: {x: 0.021397019, y: 0.021397023, z: 0.02139701}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8308298159154996598}
@@ -144,7 +144,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.9339623, g: 0.8472408, b: 0.7885814, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 0.7
   m_Range: 15
   m_SpotAngle: 80.6344
   m_InnerSpotAngle: 7
@@ -238,9 +238,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.9339623, g: 0.8472408, b: 0.7885814, a: 1}
-  m_Intensity: 3
-  m_Range: 20
-  m_SpotAngle: 25
+  m_Intensity: 7.61
+  m_Range: 1.4587028
+  m_SpotAngle: 35.935875
   m_InnerSpotAngle: 2
   m_CookieSize: 10
   m_Shadows:
