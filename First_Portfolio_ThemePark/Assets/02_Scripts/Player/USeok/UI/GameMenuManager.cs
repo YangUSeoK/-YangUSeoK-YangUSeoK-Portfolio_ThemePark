@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject m_Menu = null;
     [SerializeField] private GameObject m_MiniMap = null;
     [SerializeField] private GameObject m_Tutorial = null;
-    
+    [SerializeField] private Transform m_FinishUI = null;
+    [SerializeField] private GameObject m_StartFadeInUI = null;
+
     [SerializeField] private InputActionProperty m_ShowMenuButton;
     [SerializeField] private InputActionProperty m_ShowMiniMapButton;
 
@@ -29,6 +33,16 @@ public class GameMenuManager : MonoBehaviour
     }
 
     private float spawnDistance = 1f;
+
+    private void Start()
+    {
+        m_StartFadeInUI.transform.position = m_TutorialMiniMapPos.position;
+        m_StartFadeInUI.transform.LookAt(new Vector3(m_Head.position.x, m_Head.position.y, m_Head.position.z));
+        m_StartFadeInUI.transform.forward *= -1;
+
+
+        m_StartFadeInUI.GetComponentInChildren<Image>().CrossFadeAlpha(0f, 2f, false);
+    }
 
     private void Update()
     {
@@ -70,7 +84,16 @@ public class GameMenuManager : MonoBehaviour
         m_Tutorial.transform.position = m_TutorialMiniMapPos.position;
         m_Tutorial.transform.LookAt(new Vector3(m_Head.position.x, m_Head.position.y, m_Head.position.z));
         m_Tutorial.transform.forward *= -1;
+
+        m_FinishUI.position = m_TutorialMiniMapPos.position;
+        m_FinishUI.LookAt(new Vector3(m_Head.position.x, m_Head.position.y, m_Head.position.z));
+        m_FinishUI.forward *= -1f;
+
+
+
     }
+
+    
 
     
 }

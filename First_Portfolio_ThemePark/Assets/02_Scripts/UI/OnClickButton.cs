@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class OnClickButton : MonoBehaviour
 {
@@ -23,11 +24,19 @@ public class OnClickButton : MonoBehaviour
     [Header("¸Ê Æ©Åä¸®¾ó UI")]
     public GameObject mMiniMapTutorial;
 
+    private void Start()
+    {
+        mImage.CrossFadeAlpha(0f, 0f, true);
+        mTMP.CrossFadeAlpha(0f, 0f, true);
+    }
+
     public void StartGame()
     {
         LoadingSceneImage();
-        mMenu.SetActive(false); 
-        SceneManager.LoadSceneAsync("SW_TestScene");
+        mMenu.SetActive(false);
+
+        StartCoroutine(LoadSceneCoroutine());
+        
     }
     public void GoToOptions()
     {
@@ -102,9 +111,13 @@ public class OnClickButton : MonoBehaviour
     }
     private void LoadingSceneImage()
     {
-        mImage.CrossFadeAlpha(0f,0f,true);
-        mTMP.CrossFadeAlpha(0f,0f,true);
-        mImage.CrossFadeAlpha(1f, 3f, true);
-        mTMP.CrossFadeAlpha(1f, 3f, true);
+        mImage.CrossFadeAlpha(1f, 2f, false);
+        mTMP.CrossFadeAlpha(1f, 2f, false);
+    }
+
+    private IEnumerator LoadSceneCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadSceneAsync("SW_TestScene");
     }
 }

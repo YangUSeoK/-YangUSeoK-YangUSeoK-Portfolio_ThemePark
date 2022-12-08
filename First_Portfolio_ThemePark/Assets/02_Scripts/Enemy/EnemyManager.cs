@@ -82,7 +82,10 @@ public class EnemyManager : MonoBehaviour
         // 모든 슬러터 정지
         for (int i = 0; i < m_SlaughterList.Count; ++i)
         {
-            m_SlaughterList[i].Agent.isStopped = true;
+            if (m_SlaughterList[i].gameObject.activeSelf)
+            {
+                m_SlaughterList[i].Agent.isStopped = true;
+            }
         }
 
         // CCTV매니저에서 IsGameOver 호출

@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     }
     private SoundManager m_SoundManager = null;
     private UIManager m_UIManager = null;
+    private OnClickButton m_ClickButton = null;
+    [SerializeField] private GameMenuManager m_GameMenuManager = null;
 
     [SerializeField] private EnemyManager m_EnemyManager = null;
     [SerializeField] private Transform m_PlayerTr = null;
@@ -79,7 +81,9 @@ public class GameManager : MonoBehaviour
         m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
 
         // 타임스케일 0으로 
+        Time.timeScale= 0f;
         // 씬전환 -> 메인타이틀로
+        m_ClickButton.GetOutGameScene();
         // 타임스케일 정상화
         //Time.timeScale = 0f;
     }

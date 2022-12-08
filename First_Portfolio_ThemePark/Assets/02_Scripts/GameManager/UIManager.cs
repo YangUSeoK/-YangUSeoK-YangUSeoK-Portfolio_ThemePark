@@ -12,10 +12,12 @@ public class UIManager : MonoBehaviour
     {
         // 게임오버 UI 띄워주기
         //2022 12 01 김준우
+        Debug.Log("IsGameOver");
         mGameOver.SetActive(true);
     }
     public void IsGameClear()
     {
+        Debug.Log("IsGameClear");
         mGameClear.SetActive(true);
     }
 

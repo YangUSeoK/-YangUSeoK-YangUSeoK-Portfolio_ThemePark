@@ -481,11 +481,6 @@ GameObject:
   - component: {fileID: 8089386226501193671}
   - component: {fileID: 8564153254388791230}
   - component: {fileID: 8889829007569078394}
-  - component: {fileID: 8583443451916351885}
-  - component: {fileID: 3377449324249013373}
-  - component: {fileID: 1261533744611926509}
-  - component: {fileID: 7577367316716933889}
-  - component: {fileID: 5905365271679339424}
   m_Layer: 0
   m_Name: Cylinder029
   m_TagString: Untagged
@@ -612,72 +607,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &8583443451916351885
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &3377449324249013373
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &1261533744611926509
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &7577367316716933889
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833987
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,11 +620,6 @@ GameObject:
   - component: {fileID: 7393761769904504483}
   - component: {fileID: 1190039636814092517}
   - component: {fileID: 2705355575280650491}
-  - component: {fileID: 7584497851114767905}
-  - component: {fileID: 596926379407137411}
-  - component: {fileID: 4962710880005883956}
-  - component: {fileID: 4042500042597717660}
-  - component: {fileID: 5852231890944063091}
   m_Layer: 0
   m_Name: Cylinder030
   m_TagString: Untagged
@@ -822,72 +746,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &7584497851114767905
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &596926379407137411
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &4962710880005883956
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &4042500042597717660
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5852231890944063091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833989
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,11 +759,6 @@ GameObject:
   - component: {fileID: 1701638546201601423}
   - component: {fileID: 1019057075649892784}
   - component: {fileID: 3165371881098701083}
-  - component: {fileID: 6283895039415669305}
-  - component: {fileID: 7555180916623139890}
-  - component: {fileID: 5579080027519612983}
-  - component: {fileID: 7933915310169031797}
-  - component: {fileID: 5905365271679339428}
   m_Layer: 0
   m_Name: Cylinder031
   m_TagString: Untagged
@@ -1032,72 +885,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &6283895039415669305
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833989}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &7555180916623139890
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833989}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &5579080027519612983
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833989}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &7933915310169031797
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833989}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,11 +898,6 @@ GameObject:
   - component: {fileID: 4572785885049105067}
   - component: {fileID: 7412300732166663445}
   - component: {fileID: 8982989882267533432}
-  - component: {fileID: 3560275076258410924}
-  - component: {fileID: 2663943659889525123}
-  - component: {fileID: 709536100199437716}
-  - component: {fileID: 179087199988872585}
-  - component: {fileID: 5905365271679339430}
   m_Layer: 0
   m_Name: Cylinder032
   m_TagString: Untagged
@@ -1242,72 +1024,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &3560275076258410924
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &2663943659889525123
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &709536100199437716
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &179087199988872585
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,11 +1037,6 @@ GameObject:
   - component: {fileID: 2589232760278110452}
   - component: {fileID: 2726431979555933899}
   - component: {fileID: 8710739146514928898}
-  - component: {fileID: 4252847385035600791}
-  - component: {fileID: 7667969909851498187}
-  - component: {fileID: 3689416443522338575}
-  - component: {fileID: 8800859441387388409}
-  - component: {fileID: 5905365271679339432}
   m_Layer: 0
   m_Name: Cylinder025
   m_TagString: Untagged
@@ -1452,72 +1163,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &4252847385035600791
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &7667969909851498187
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &3689416443522338575
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &8800859441387388409
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,11 +1176,6 @@ GameObject:
   - component: {fileID: 4498066662852870525}
   - component: {fileID: 7794622212334203629}
   - component: {fileID: 6954191726758310211}
-  - component: {fileID: 6430899105488043706}
-  - component: {fileID: 8217099384784441073}
-  - component: {fileID: 1878624924951970492}
-  - component: {fileID: 5747956006623856455}
-  - component: {fileID: 5905365271679339434}
   m_Layer: 0
   m_Name: Cylinder026
   m_TagString: Untagged
@@ -1662,72 +1302,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &6430899105488043706
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &8217099384784441073
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &1878624924951970492
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &5747956006623856455
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,11 +1315,6 @@ GameObject:
   - component: {fileID: 1555371139650285207}
   - component: {fileID: 8321300440553496773}
   - component: {fileID: 2818788497873879062}
-  - component: {fileID: 7097213219565674832}
-  - component: {fileID: 6514754211313213275}
-  - component: {fileID: 6074664087654650037}
-  - component: {fileID: 1221271563596162630}
-  - component: {fileID: 5905365271679339436}
   m_Layer: 0
   m_Name: Cylinder027
   m_TagString: Untagged
@@ -1872,72 +1441,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &7097213219565674832
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833997}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &6514754211313213275
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833997}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &6074664087654650037
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833997}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &1221271563596162630
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833997}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679833999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,11 +1454,6 @@ GameObject:
   - component: {fileID: 8304784099274690164}
   - component: {fileID: 5787953563420701307}
   - component: {fileID: 7762892124437451116}
-  - component: {fileID: 3843941115189241518}
-  - component: {fileID: 3891086135407887131}
-  - component: {fileID: 2099164161655309682}
-  - component: {fileID: 3339021099398622389}
-  - component: {fileID: 5905365271679339438}
   m_Layer: 0
   m_Name: Cylinder028
   m_TagString: Untagged
@@ -2082,72 +1580,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &3843941115189241518
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833999}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &3891086135407887131
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833999}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &2099164161655309682
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833999}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &3339021099398622389
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833999}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679833999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,11 +1593,6 @@ GameObject:
   - component: {fileID: 3838849122369054109}
   - component: {fileID: 7577776938025039271}
   - component: {fileID: 8486785867107746223}
-  - component: {fileID: 6417994015666782469}
-  - component: {fileID: 8041954113727183053}
-  - component: {fileID: 6569986002727193596}
-  - component: {fileID: 8566373348043781229}
-  - component: {fileID: 5905365271679339440}
   m_Layer: 0
   m_Name: Cylinder004
   m_TagString: Untagged
@@ -2292,72 +1719,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &6417994015666782469
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &8041954113727183053
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &6569986002727193596
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &8566373348043781229
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,11 +1732,6 @@ GameObject:
   - component: {fileID: 5888786085682131461}
   - component: {fileID: 3224345308704228846}
   - component: {fileID: 1080697177259981595}
-  - component: {fileID: 3842708533480293500}
-  - component: {fileID: 5493422572401128902}
-  - component: {fileID: 8074274680628292371}
-  - component: {fileID: 5018902605311434467}
-  - component: {fileID: 5905365271679339442}
   m_Layer: 0
   m_Name: Cylinder005
   m_TagString: Untagged
@@ -2502,72 +1858,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &3842708533480293500
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834003}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &5493422572401128902
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834003}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &8074274680628292371
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834003}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &5018902605311434467
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834003}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,11 +1871,6 @@ GameObject:
   - component: {fileID: 3225636710099218606}
   - component: {fileID: 4552298119714343310}
   - component: {fileID: 7181659081315648825}
-  - component: {fileID: 3505234201953494156}
-  - component: {fileID: 6152257531752226041}
-  - component: {fileID: 1356260939749930609}
-  - component: {fileID: 5483367825817284434}
-  - component: {fileID: 5905365271679339444}
   m_Layer: 0
   m_Name: Cylinder023
   m_TagString: Untagged
@@ -2712,72 +1997,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &3505234201953494156
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &6152257531752226041
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &1356260939749930609
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &5483367825817284434
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834005}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,11 +2010,6 @@ GameObject:
   - component: {fileID: 772447931001660366}
   - component: {fileID: 7846250572667789330}
   - component: {fileID: 5956987034905229613}
-  - component: {fileID: 7272453554137881670}
-  - component: {fileID: 8793692027987479923}
-  - component: {fileID: 8863234422106354677}
-  - component: {fileID: 7733590846664501418}
-  - component: {fileID: 5905365271679339446}
   m_Layer: 0
   m_Name: Cylinder024
   m_TagString: Untagged
@@ -2922,72 +2136,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &7272453554137881670
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &8793692027987479923
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &8863234422106354677
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &7733590846664501418
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834011
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,11 +2149,6 @@ GameObject:
   - component: {fileID: 5348723599481660402}
   - component: {fileID: 5269366552063593399}
   - component: {fileID: 7993602195752538372}
-  - component: {fileID: 1447548731920815648}
-  - component: {fileID: 6959200401820213763}
-  - component: {fileID: 9135456786547090533}
-  - component: {fileID: 8005659921122462034}
-  - component: {fileID: 6526094968794593119}
   m_Layer: 0
   m_Name: Cylinder001
   m_TagString: Untagged
@@ -3132,72 +2275,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &1447548731920815648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834011}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &6959200401820213763
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834011}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &9135456786547090533
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834011}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &8005659921122462034
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834011}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &6526094968794593119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,11 +2288,6 @@ GameObject:
   - component: {fileID: 1384639614495481404}
   - component: {fileID: 2490533888457227851}
   - component: {fileID: 6944068385228809582}
-  - component: {fileID: 1593710885848771061}
-  - component: {fileID: 5419808192044971208}
-  - component: {fileID: 3174871463914783603}
-  - component: {fileID: 385307140065142618}
-  - component: {fileID: 5905365271679339452}
   m_Layer: 0
   m_Name: Cylinder002
   m_TagString: Untagged
@@ -3342,72 +2414,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &1593710885848771061
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &5419808192044971208
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &3174871463914783603
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &385307140065142618
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,11 +2427,6 @@ GameObject:
   - component: {fileID: 8889699191730209178}
   - component: {fileID: 6902541237452326276}
   - component: {fileID: 2771933548806931301}
-  - component: {fileID: 6694177286403487803}
-  - component: {fileID: 5397828358837266776}
-  - component: {fileID: 8140595182890506932}
-  - component: {fileID: 2672355697139055626}
-  - component: {fileID: 5905365271679339454}
   m_Layer: 0
   m_Name: Cylinder003
   m_TagString: Untagged
@@ -3552,72 +2553,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &6694177286403487803
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &5397828358837266776
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &8140595182890506932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &2672355697139055626
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,11 +2566,6 @@ GameObject:
   - component: {fileID: 4760450400938352596}
   - component: {fileID: 7778789255209812962}
   - component: {fileID: 7286226276796900921}
-  - component: {fileID: 2369478551481513181}
-  - component: {fileID: 5287235836022740609}
-  - component: {fileID: 7613926836594723690}
-  - component: {fileID: 5828844745184419370}
-  - component: {fileID: 5905365271679339416}
   m_Layer: 0
   m_Name: Cylinder033
   m_TagString: Untagged
@@ -3762,72 +2692,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &2369478551481513181
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834105}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &5287235836022740609
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834105}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &7613926836594723690
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834105}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &5828844745184419370
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834105}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &5905365271679834107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3841,11 +2705,6 @@ GameObject:
   - component: {fileID: 7335168577848179760}
   - component: {fileID: 7337644602104122181}
   - component: {fileID: 2850000483939125866}
-  - component: {fileID: 6273566787430295237}
-  - component: {fileID: 5897832021986557938}
-  - component: {fileID: 132553796923567240}
-  - component: {fileID: 4681245107092240732}
-  - component: {fileID: 5905365271679339418}
   m_Layer: 0
   m_Name: Cylinder034
   m_TagString: Untagged
@@ -3972,72 +2831,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &6273566787430295237
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834107}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: 11.34, z: 36.112324}
---- !u!65 &5897832021986557938
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834107}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 6, z: 41.855293}
-  m_Center: {x: 0, y: -10.6, z: 36.112324}
---- !u!65 &132553796923567240
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834107}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 16.15}
---- !u!65 &4681245107092240732
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834107}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 30.812065, y: 33.524548, z: 2.9}
-  m_Center: {x: 0, y: 0.000000044703484, z: 49.3}
---- !u!114 &5905365271679339418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905365271679834107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4de4774aec6ba4e94e6751625693a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Colliders: []
-  Player: {fileID: 0}
 --- !u!1 &6903530617852035950
 GameObject:
   m_ObjectHideFlags: 0
@@ -4308,8 +3101,8 @@ Transform:
   m_GameObject: {fileID: 8286830314040236492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6631224112393260696}
   m_Father: {fileID: 0}
@@ -4327,4 +3120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2abf0d67966cc42aa05b23b9ee61fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotSpeed: 5
+  m_RotSpeed: 0
+  m_WheelButton: {fileID: 0}

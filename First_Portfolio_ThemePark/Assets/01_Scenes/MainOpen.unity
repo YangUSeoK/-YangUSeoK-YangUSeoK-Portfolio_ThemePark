@@ -4381,7 +4381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1325547977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4586,6 +4586,7 @@ MonoBehaviour:
   mImage: {fileID: 2133771725}
   mTMP: {fileID: 902717661}
   mTutorialUI: []
+  mMiniMapTutorial: {fileID: 0}
 --- !u!4 &1768537907
 Transform:
   m_ObjectHideFlags: 0
