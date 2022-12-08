@@ -42,29 +42,28 @@ public class TraceLight_Slaughter : EnemyState
         RaycastHit hitInfo;
         int layerMask = ((m_Enemy as Enemy_Slaughter).FOV.ObstacleLayer) | ((m_Enemy as Enemy_Slaughter).FOV.PlayerLayer);
         //| ~(1 << (m_Enemy as Enemy_Slaughter).FOV.LightLayer);
-        
 
-        // 플레이어를 직접 본다면
-        if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up) * 1.4f, m_Enemy.PlayerTr.position - m_Enemy.transform.position,
-            out hitInfo, 100f, layerMask))
+        // 플레이어가 탐지범위 안이라면
+        if (Vector3.Angle(m_Enemy.transform.forward, m_Enemy.PlayerTr.position - m_Enemy.transform.position)
+            <= (m_Enemy as Enemy_Slaughter).TraceDetectAngle * 0.5f)
         {
-            Debug.Log(hitInfo.transform.name);
-            // 가로막는게 없고 플레이어가 손전등을 들고있다면 => TracePlayer
-            // 20221116 양우석:  플레이어랑 거리 실제로 맞춰보고 수정해야 함.
-            // 20221128 양우석 : 빛을 본 좀비가 다른위치의 플레이어를 바로 쫓아오는거 수정해야 함
-            if (hitInfo.collider.CompareTag("PLAYER"))
+            // 플레이어를 직접 본다면
+            if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up) * 1.4f, m_Enemy.PlayerTr.position - m_Enemy.transform.position,
+                out hitInfo, 100f, layerMask) && hitInfo.collider.CompareTag("PLAYER"))
             {
+                // 가로막는게 없고 플레이어가 손전등을 들고있다면 => TracePlayer
+                // 20221116 양우석:  플레이어랑 거리 실제로 맞춰보고 수정해야 함.
+                // 20221128 양우석 : 빛을 본 좀비가 다른위치의 플레이어를 바로 쫓아오는거 수정해야 함
+
                 Debug.Log("가로막는게 없어서 쩨꼈다!!");
                 m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
                 return;
             }
-        }
-        else if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up) * 0.7f, m_Enemy.PlayerTr.position - m_Enemy.transform.position,
-                out hitInfo, 100f, layerMask))
-        {
-            Debug.Log($"TraceLight 무릎레이져 : {hitInfo.transform.name}");
-            if (hitInfo.collider.CompareTag("PLAYER"))
+            else if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up) * 0.7f, m_Enemy.PlayerTr.position - m_Enemy.transform.position,
+                    out hitInfo, 100f, layerMask) && hitInfo.collider.CompareTag("PLAYER"))
             {
+                Debug.Log($"TraceLight 무릎레이져 : {hitInfo.transform.name}");
+
                 m_Enemy.SetState((m_Enemy as Enemy_Slaughter).TracePlayer);
                 return;
             }

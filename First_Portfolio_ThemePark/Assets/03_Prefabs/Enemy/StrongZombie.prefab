@@ -1486,7 +1486,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27e1a67bb83c8b24aa3635cf9e259c33, type: 2}
+  - {fileID: 2100000, guid: 1edc65a7f1bf2da41ae33db324b2cbc6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2138,7 +2138,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27e1a67bb83c8b24aa3635cf9e259c33, type: 2}
+  - {fileID: 2100000, guid: 1edc65a7f1bf2da41ae33db324b2cbc6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2353,9 +2353,9 @@ MonoBehaviour:
   m_ConcentrationDetectRange: 15
   m_TraceDetectRange: 17
   m_AttackRange: 1
-  m_PatrolDetectAngle: 120
-  m_AlertDetectAngle: 270
-  m_TraceDetectAngle: 180
+  m_PatrolDetectAngle: 90
+  m_AlertDetectAngle: 120
+  m_TraceDetectAngle: 150
   m_FlashTr: {fileID: 0}
 --- !u!195 &8915026554653739058
 NavMeshAgent:
