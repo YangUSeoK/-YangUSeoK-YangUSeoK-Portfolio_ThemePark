@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2371455121149618170}
   - component: {fileID: 5180582709940547296}
   - component: {fileID: 6962437009951540099}
+  - component: {fileID: 192705779}
   m_Layer: 14
   m_Name: Can
   m_TagString: ITEM
@@ -98,8 +99,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 45dabcdd54d2a5e49b14b0ce338b2e96, type: 2}
-  - {fileID: 2100000, guid: a6becdd854b84534a93deb1cadf059fc, type: 2}
+  - {fileID: 2100000, guid: f2f2825227dfa574ca6cd25e521ec173, type: 2}
+  - {fileID: 2100000, guid: f2f2825227dfa574ca6cd25e521ec173, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,10 +307,10 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: SetIsGrabed
-        m_Mode: 6
+      - m_Target: {fileID: 192705779}
+        m_TargetAssemblyTypeName: SetItemRimColor, Assembly-CSharp
+        m_MethodName: SetOffRimLight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -321,10 +322,10 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: SetIsGrabed
-        m_Mode: 6
+      - m_Target: {fileID: 192705779}
+        m_TargetAssemblyTypeName: SetItemRimColor, Assembly-CSharp
+        m_MethodName: SetOnRimLight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -403,3 +404,17 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &192705779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2356291210753062155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf59358fd42ba53449aed9c8bbf04b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RimColor: {r: 1, g: 1, b: 1, a: 0}
+  RimPower: 3
