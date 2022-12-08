@@ -20,7 +20,13 @@ public class GameManager : MonoBehaviour
     {
         get { return mbIsGameOver; }
     }
-    private SoundManager m_SoundManager = null;
+
+    private bool mbIsGameClear = false;
+    public bool IsGameClear
+    {
+        get { return mbIsGameClear; }
+    }
+
     private UIManager m_UIManager = null;
     private OnClickButton m_ClickButton = null;
     [SerializeField] private GameMenuManager m_GameMenuManager = null;
@@ -42,7 +48,6 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
         SetEnemyManager();
@@ -61,23 +66,22 @@ public class GameManager : MonoBehaviour
     #region Enemy_State_Callback
     private void AllZombieEnterPatrolCallback()
     {
-        m_SoundManager.SetPatrolBGM();
+        SoundManager.instance.SetPatrolBGM();
     }
     private void EnterTracePlayerCallback()
     {
-        Debug.Log("4");
-        m_SoundManager.SetTracePlayerBGM();
+        SoundManager.instance.SetTracePlayerBGM();
     }
     private void AllZombieExitTracePlayerCallback()
     {
-        m_SoundManager.FadeOutTracePlayerBGM();
+        SoundManager.instance.FadeOutTracePlayerBGM();
     }
     private void GameOver()
     {
         mbIsGameOver = true;
-        m_EnemyManager.IsGameOver();
+        m_EnemyManager.AllStop();
         m_UIManager.IsGameOver();
-        m_SoundManager.IsGameOver();
+        SoundManager.instance.IsGameOver();
         m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
 
         // 타임스케일 0으로 
@@ -88,13 +92,13 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0f;
     }
 
-    private void GameClear()//221201 김준우
+    public void GameClear()//221201 김준우
     {
         //조건식
-        mbIsGameOver = true;
-        m_EnemyManager.IsGameOver();
+        mbIsGameClear = true;
+        m_EnemyManager.AllStop();
         m_UIManager.IsGameClear();
-        m_SoundManager.IsGameClear();
+        SoundManager.instance.IsGameClear();
     }
     #endregion
 

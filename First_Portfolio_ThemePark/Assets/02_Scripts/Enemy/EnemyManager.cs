@@ -77,7 +77,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void IsGameOver()
+    public void AllStop()
     {
         // 모든 슬러터 정지
         for (int i = 0; i < m_SlaughterList.Count; ++i)
