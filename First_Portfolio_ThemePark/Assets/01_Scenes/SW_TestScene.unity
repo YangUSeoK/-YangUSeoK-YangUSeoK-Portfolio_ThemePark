@@ -27343,6 +27343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mGameOver: {fileID: 1546655630}
   mGameClear: {fileID: 1664625320}
+  mGameOverText: {fileID: 0}
+  mGameOverImage: {fileID: 0}
 --- !u!1 &1811035769
 GameObject:
   m_ObjectHideFlags: 0
