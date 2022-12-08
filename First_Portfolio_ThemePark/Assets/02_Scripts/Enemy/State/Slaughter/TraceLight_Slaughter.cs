@@ -42,7 +42,6 @@ public class TraceLight_Slaughter : EnemyState
         RaycastHit hitInfo;
         int layerMask = ((m_Enemy as Enemy_Slaughter).FOV.ObstacleLayer) | ((m_Enemy as Enemy_Slaughter).FOV.PlayerLayer);
         //| ~(1 << (m_Enemy as Enemy_Slaughter).FOV.LightLayer);
-        
 
         // 플레이어를 직접 본다면
         if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up) * 1.4f, m_Enemy.PlayerTr.position - m_Enemy.transform.position,

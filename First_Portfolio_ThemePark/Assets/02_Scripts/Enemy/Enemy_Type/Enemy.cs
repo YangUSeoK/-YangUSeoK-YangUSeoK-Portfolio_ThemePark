@@ -9,7 +9,6 @@ public abstract class Enemy : MonoBehaviour
     public delegate void VoidVoidDelegate();
     private VoidVoidDelegate attackDelegate = null;
 
-
     #region Inspector
     [Header("Speed")]
     [SerializeField] protected float m_PatrolSpeed = 5f;
@@ -71,7 +70,6 @@ public abstract class Enemy : MonoBehaviour
         get { return m_Mr; }
     }
 
-
     protected virtual void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
@@ -88,13 +86,15 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    // 매 프레임 상태를 체크하고, 상태에 맞는 액션을 수행한다.
     protected void Update()
     {
         m_CurState.CheckState();
         m_CurState.Action();
     }
 
-    // State��
+    // State 전환 시 호출. 현재 상태의 ExitState를 실행 후
+    // 다음 State로 전환. 그리고 EnterState를 실행한다.
     public void SetState(EnemyState _state)
     {
         if (m_CurState != null)
