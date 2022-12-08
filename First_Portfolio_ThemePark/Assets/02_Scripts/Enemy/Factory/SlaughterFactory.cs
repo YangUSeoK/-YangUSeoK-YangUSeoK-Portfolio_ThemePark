@@ -17,7 +17,7 @@ public class SlaughterFactory : MonoBehaviour
     {
         get { return mSlaughterList; }
     }
-    private Flag[] m_Flags = null;
+    [SerializeField] private Flag[] m_Flags = null;
     [SerializeField] private SpawnPoint[] m_SpawnPoints = null;
     private bool mIsActive = false;
 

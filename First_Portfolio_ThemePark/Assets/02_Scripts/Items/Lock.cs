@@ -11,6 +11,7 @@ public class Lock : MonoBehaviour
     [SerializeField] EnemyManager m_EnemyManager = null;
     [SerializeField] Transform m_PlayerTr = null;
     [SerializeField] SlaughterFactory[] m_ZombieGroups = null;
+    [SerializeField] JailDoor m_Door = null;
 
     [Space]
     [Header("Timer")]
@@ -73,7 +74,7 @@ public class Lock : MonoBehaviour
                 {
                     Debug.Log("탈출");
                     // 문열기 애니메이션 넣어야 함
-
+                    StartCoroutine(m_Door.OpenDoor());
 
                     m_LockHead.transform.localPosition = new Vector3(0.0245f, 0.07f, 0f);
                     m_LockHead.transform.localRotation = Quaternion.Euler(0f, 45f, 0f);

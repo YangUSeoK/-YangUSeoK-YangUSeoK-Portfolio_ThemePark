@@ -9,7 +9,7 @@ public class Flashlight : Item, IInteraction
 {
     EItemType eItemtype = EItemType.Flashlight;
     [SerializeField] GameObject m_Light;
-    private Material[] m_Lens;
+    [SerializeField] private Material[] m_Lens;
     private Color m_LensColor = new Color(0.75f, 0.75f, 0.75f);
     private bool mbIsOn = false;
 

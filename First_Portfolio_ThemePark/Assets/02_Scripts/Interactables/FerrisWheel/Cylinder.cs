@@ -14,7 +14,7 @@ public class Cylinder : MonoBehaviour
 
     private void Update()
     {
-        TrunColl();
+        //TrunColl();
     }
 
     void TrunColl()
@@ -46,23 +46,23 @@ public class Cylinder : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision coll)
-    {
-        if (coll.gameObject.TryGetComponent<Rigidbody>(out var rigid) == true)
-        {
-            coll.transform.SetParent(transform);
-            //coll.transform.localPosition = coll.transform.position;
-            //coll.rigidbody.isKinematic = true;
-        }
-    }
+    //private void OnCollisionEnter(Collision coll)
+    //{
+    //    if (coll.gameObject.TryGetComponent<Rigidbody>(out var rigid) == true)
+    //    {
+    //        coll.transform.SetParent(transform);
+    //        //coll.transform.localPosition = coll.transform.position;
+    //        //coll.rigidbody.isKinematic = true;
+    //    }
+    //}
 
-    private void OnCollisionExit(Collision coll)
-    {
-        if (coll.gameObject.TryGetComponent<Rigidbody>(out var rigid) == true)
-        {
-            //coll.transform.parent = null;
-            coll.transform.SetParent(null);
-            //coll.rigidbody.isKinematic = false;
-        }
-    }
+    //private void OnCollisionExit(Collision coll)
+    //{
+    //    if (coll.gameObject.TryGetComponent<Rigidbody>(out var rigid) == true)
+    //    {
+    //        //coll.transform.parent = null;
+    //        coll.transform.SetParent(null);
+    //        //coll.rigidbody.isKinematic = false;
+    //    }
+    //}
 }

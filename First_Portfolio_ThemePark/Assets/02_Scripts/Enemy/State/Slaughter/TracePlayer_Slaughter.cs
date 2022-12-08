@@ -55,7 +55,7 @@ public class TracePlayer_Slaughter : EnemyState
         if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up * 0.7f), m_Enemy.PlayerTr.position - m_Enemy.transform.position,
             out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask))
         {
-            Debug.Log($" TracePlayer 무릎레이져 맞은놈 : {hitInfo.transform.name}");
+            Debug.Log($" TracePlayer 무릎레이져 맞은놈 : {m_Enemy.transform.name} / {hitInfo.transform.name}");
             if (hitInfo.collider.CompareTag("PLAYER"))
             {
                 Debug.Log("플레이어 직관");
@@ -66,7 +66,7 @@ public class TracePlayer_Slaughter : EnemyState
         else if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up * 1.4f), m_Enemy.PlayerTr.position - m_Enemy.transform.position,
                 out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask))
         {
-            Debug.Log($" TracePlayer 눈레이져 맞은놈 : {hitInfo.transform.name}");
+            Debug.Log($" TracePlayer 눈레이져 맞은놈 : {m_Enemy.transform.name} / {hitInfo.transform.name}");
             if (hitInfo.collider.CompareTag("PLAYER"))
             {
                 Debug.Log("플레이어 직관 눈");

@@ -13,7 +13,6 @@ public class FerrisWheel : MonoBehaviour
     void Start()
     {
         m_WheelRotate = GetComponentInChildren<Rotate>();
-        //m_WheelButton = GetComponentInChildren<WheelButton>();
         m_Cylinders = GetComponentsInChildren<Cylinder>();
         m_Player = GameObject.FindGameObjectWithTag("PLAYER").transform;
 

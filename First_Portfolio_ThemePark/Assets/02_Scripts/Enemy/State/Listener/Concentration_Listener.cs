@@ -12,7 +12,7 @@ public class Concentration_Listener : EnemyState
     {
         Debug.Log($"{m_Enemy.name} Concentration ¿‘¿Â!");
         m_Enemy.Anim.SetBool("IsConcentration",true);
-        m_Enemy.Audio[1].Play();
+        m_Enemy.Audio[1].PlayOneShot(m_Enemy.Audio[1].clip);
         timer = 0f;
 
 

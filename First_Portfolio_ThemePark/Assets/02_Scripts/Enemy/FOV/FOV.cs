@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // 원뿔 범위 앞에 플레이어가 걸렸는지 확인하는 스크립트
 public class FOV : MonoBehaviour
@@ -10,7 +11,7 @@ public class FOV : MonoBehaviour
     public float m_Range = 10f;
 
     private float mHeight = 1.4f;
-    private float mHalfHeight; 
+    private float mHalfHeight;
 
     protected int m_PlayerLayer = 0;
     public int PlayerLayer
@@ -43,6 +44,12 @@ public class FOV : MonoBehaviour
     }
 
     protected Transform m_TargetTr = null;
+    protected Enemy m_Enemy;
+
+    protected void Awake()
+    {
+        m_Enemy = GetComponent<Enemy>();
+    }
 
     protected virtual void Start()
     {
@@ -62,19 +69,20 @@ public class FOV : MonoBehaviour
         // Enemy의 포지션에서부터 viewRange 만큼 구체를 
         // 그려서 그 중에 playerLayer 가 있으면 colls 배열에 추가
         Collider[] colls = new Collider[1];
-        Physics.OverlapSphereNonAlloc(transform.position, _detectRange, colls, _layerMask);
+        Physics.OverlapSphereNonAlloc(transform.position,100f /*_detectRange*/, colls, _layerMask);
+        
 
         // 플레이어 레이어가 검출되었을 때
-        if (colls.Length == 1)
+        if (colls[0] != null)
         {
-            // A - B 벡터 >> B에서 A를 바라보는 방향 + 정규화
             Vector3 dir = (colls[0].transform.position - transform.position).normalized;
-
+                
             // 내가 본 전방방향에서 방금 구한 dir방향의 각도가 120도 범위 안에 있으면
-            if (Vector3.Angle(transform.forward, dir) < _angle * 0.5f)
+            if(Vector3.Angle(transform.forward, dir) <= _angle * 0.5f)
             {
                 isInFOV = true;
             }
+            //Debug.Log($"플레이어랑 좀비사이 각도 :{transform.position} / {Vector3.Angle(transform.forward, dir)} / {isInFOV}");
         }
         return isInFOV;
     }
@@ -90,16 +98,23 @@ public class FOV : MonoBehaviour
         // 20221202 양우석 : 직접보는 레이는 offset 없앴음
         if (Physics.Raycast(transform.position + (Vector3.up * mHalfHeight), dir, out hitInfo, _detectRange, m_LayerMask))
         {
-            isLook = hitInfo.collider.tag == _targetTr.tag;
+            Debug.Log($" FOV IsLookDirect / 밑에레이져 맞은놈 : {hitInfo.transform.name}");
+            isLook = hitInfo.collider.CompareTag(_targetTr.tag);
         }
 
         // 20221203 양우석 : 아래쪽에 하나, 위쪽에 하나 레이 두개 쏨
-        if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, m_LayerMask))
+        if (!isLook)
         {
-            if (!isLook)
+            if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, m_LayerMask))
             {
-                isLook = hitInfo.collider.tag == _targetTr.tag;
+                Debug.Log($" FOV IsLookDirect / 위에레이져 맞은놈 : {hitInfo.transform.name}");
+                isLook = hitInfo.collider.CompareTag(_targetTr.tag);
             }
+        }
+
+        if (isLook)
+        {
+            Debug.Log($"레이 쏜놈 : {transform.name}");
         }
         return isLook;
     }
