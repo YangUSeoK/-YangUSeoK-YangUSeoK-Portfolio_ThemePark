@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class OnClickButton : MonoBehaviour
 {
@@ -10,12 +12,20 @@ public class OnClickButton : MonoBehaviour
     public GameObject mGameOver;
     public GameObject mGameClear;
 
+    [Header("¾À ÀüÈ¯½Ã ¾ÏÀü")]
+    public Image mImage;
+    public TMP_Text mTMP;
+
     [Header("Æ©Åä¸®¾ó(¹°À½Ç¥) UI")]
     public GameObject[] mTutorialUI;
     private int mTutorialCnt = 0;
 
+    [Header("¸Ê Æ©Åä¸®¾ó UI")]
+    public GameObject mMiniMapTutorial;
+
     public void StartGame()
     {
+        LoadingSceneImage();
         mMenu.SetActive(false); 
         SceneManager.LoadSceneAsync("SW_TestScene");
     }
@@ -59,7 +69,7 @@ public class OnClickButton : MonoBehaviour
     }
     public void TutorialGoRight()
     {
-        Debug.Log("aaa");
+        //Debug.Log("aaa");
         if(mTutorialCnt<mTutorialUI.Length)
         {
             mTutorialUI[mTutorialCnt].SetActive(false);
@@ -85,5 +95,16 @@ public class OnClickButton : MonoBehaviour
             }
             mTutorialUI[mTutorialCnt].SetActive(true);
         }
+    }
+    public void TutorialGoOut()
+    {
+        mMiniMapTutorial.SetActive(false);
+    }
+    private void LoadingSceneImage()
+    {
+        mImage.CrossFadeAlpha(0f,0f,true);
+        mTMP.CrossFadeAlpha(0f,0f,true);
+        mImage.CrossFadeAlpha(1f, 3f, true);
+        mTMP.CrossFadeAlpha(1f, 3f, true);
     }
 }
