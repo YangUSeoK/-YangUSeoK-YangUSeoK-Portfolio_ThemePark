@@ -420,7 +420,8 @@ GameObject:
   - component: {fileID: 1007104755}
   - component: {fileID: 689056095}
   - component: {fileID: 1178349304}
-  m_Layer: 14
+  - component: {fileID: -8929902860635953884}
+  m_Layer: 8
   m_Name: Flashlight 1
   m_TagString: FLASH
   m_Icon: {fileID: 0}
@@ -750,6 +751,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: -8929902860635953884}
+        m_TargetAssemblyTypeName: SetItemRimColor, Assembly-CSharp
+        m_MethodName: SetOffRimLight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
@@ -757,6 +770,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
         m_MethodName: SetIsGrabed
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -8929902860635953884}
+        m_TargetAssemblyTypeName: SetItemRimColor, Assembly-CSharp
+        m_MethodName: SetOnRimLight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -878,3 +903,17 @@ MonoBehaviour:
   m_RimLight: {fileID: 2100000, guid: 3dbc34d1f52a6924586cb5776b1a2b0b, type: 2}
   m_Standard: {fileID: 2100000, guid: 174ca498363747e43abe90b2f66d8a6a, type: 2}
   m_Materials: []
+--- !u!114 &-8929902860635953884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782256744521351987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf59358fd42ba53449aed9c8bbf04b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RimColor: {r: 0, g: 0.5, b: 0.0271554, a: 0}
+  RimPower: 3
