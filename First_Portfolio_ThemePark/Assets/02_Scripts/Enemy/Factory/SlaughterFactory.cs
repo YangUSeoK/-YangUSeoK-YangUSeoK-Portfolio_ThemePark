@@ -73,6 +73,7 @@ public class SlaughterFactory : MonoBehaviour
 
     public void SetActiveZombies()
     {
+        Debug.Log($"이름 : {transform.name} 액티브완료");
         for (int i = 0; i < mSlaughterList.Count; ++i)
         {
             mSlaughterList[i].gameObject.SetActive(true);

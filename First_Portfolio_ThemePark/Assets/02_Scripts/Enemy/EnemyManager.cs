@@ -94,6 +94,7 @@ public class EnemyManager : MonoBehaviour
 
     private void CCTVDetectCallback(Transform _targetTr)
     {
+        Debug.Log("주변 슬러터 소환");
         float callRange = 50f;
         for (int i = 0; i < m_Factorys.Length; ++i)
         {
@@ -104,6 +105,7 @@ public class EnemyManager : MonoBehaviour
                     if (m_Factorys[i].SlaughterList[j].gameObject.activeSelf)
                     {
                         m_Factorys[i].SlaughterList[j].SetState(m_SlaughterList[i].TracePlayer);
+                        Debug.Log($"{i}번째 팩토리 {j}좀비 소환완료 ");
                     }
                 }
             }

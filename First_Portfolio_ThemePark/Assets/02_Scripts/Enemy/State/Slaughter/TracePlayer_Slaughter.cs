@@ -56,7 +56,7 @@ public class TracePlayer_Slaughter : EnemyState
             out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask) 
             && hitInfo.collider.CompareTag("PLAYER"))
         {
-            Debug.Log($" TracePlayer ¹«¸­·¹ÀÌÁ® ¸ÂÀº³ð : {m_Enemy.transform.name} / {hitInfo.transform.name}");
+            //Debug.Log($" TracePlayer ¹«¸­·¹ÀÌÁ® ¸ÂÀº³ð : {m_Enemy.transform.name} / {hitInfo.transform.name}");
 
             mbIsLookPlayer = true;
             m_PlayerPos = hitInfo.transform.position;
@@ -65,7 +65,7 @@ public class TracePlayer_Slaughter : EnemyState
                 out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask) 
                 && hitInfo.collider.CompareTag("PLAYER"))
         {
-            Debug.Log($" TracePlayer ´«·¹ÀÌÁ® ¸ÂÀº³ð : {m_Enemy.transform.name} / {hitInfo.transform.name}");
+            //Debug.Log($" TracePlayer ´«·¹ÀÌÁ® ¸ÂÀº³ð : {m_Enemy.transform.name} / {hitInfo.transform.name}");
                 mbIsLookPlayer = true;
                 m_PlayerPos = hitInfo.transform.position;
         }
@@ -73,7 +73,7 @@ public class TracePlayer_Slaughter : EnemyState
         {
             mbIsLookPlayer = false;
         }
-        Debug.Log(mbIsLookPlayer);
+        //Debug.Log(mbIsLookPlayer);
         m_Enemy.Agent.destination = m_PlayerPos;
     }
 

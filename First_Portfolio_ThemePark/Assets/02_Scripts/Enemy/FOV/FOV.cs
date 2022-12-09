@@ -69,16 +69,16 @@ public class FOV : MonoBehaviour
         // Enemy의 포지션에서부터 viewRange 만큼 구체를 
         // 그려서 그 중에 playerLayer 가 있으면 colls 배열에 추가
         Collider[] colls = new Collider[1];
-        Physics.OverlapSphereNonAlloc(transform.position,100f /*_detectRange*/, colls, _layerMask);
-        
+        Physics.OverlapSphereNonAlloc(transform.position, 100f /*_detectRange*/, colls, _layerMask);
+
 
         // 플레이어 레이어가 검출되었을 때
         if (colls[0] != null)
         {
             Vector3 dir = (colls[0].transform.position - transform.position).normalized;
-                
+
             // 내가 본 전방방향에서 방금 구한 dir방향의 각도가 120도 범위 안에 있으면
-            if(Vector3.Angle(transform.forward, dir) <= _angle * 0.5f)
+            if (Vector3.Angle(transform.forward, dir) <= _angle * 0.5f)
             {
                 isInFOV = true;
             }
@@ -98,7 +98,7 @@ public class FOV : MonoBehaviour
         // 20221202 양우석 : 직접보는 레이는 offset 없앴음
         if (Physics.Raycast(transform.position + (Vector3.up * mHalfHeight), dir, out hitInfo, _detectRange, m_LayerMask))
         {
-            Debug.Log($" FOV IsLookDirect / 밑에레이져 맞은놈 : {hitInfo.transform.name}");
+            //Debug.Log($" FOV IsLookDirect / 밑에레이져 맞은놈 : {hitInfo.transform.name}");
             isLook = hitInfo.collider.CompareTag(_targetTr.tag);
         }
 
@@ -107,7 +107,7 @@ public class FOV : MonoBehaviour
         {
             if (Physics.Raycast(transform.position + (Vector3.up * mHeight), dir, out hitInfo, _detectRange, m_LayerMask))
             {
-                Debug.Log($" FOV IsLookDirect / 위에레이져 맞은놈 : {hitInfo.transform.name}");
+                //Debug.Log($" FOV IsLookDirect / 위에레이져 맞은놈 : {hitInfo.transform.name}");
                 isLook = hitInfo.collider.CompareTag(_targetTr.tag);
             }
         }

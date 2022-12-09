@@ -6,7 +6,7 @@ public class GameClear : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PLAYER")
+        if (other.CompareTag("PLAYER"))
         {
             GameManager.Instance.GameClear();
         }
