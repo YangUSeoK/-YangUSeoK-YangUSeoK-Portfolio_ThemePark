@@ -5,24 +5,23 @@ using UnityEngine;
 public class SlaughterFactory : MonoBehaviour
 {
     public delegate void VoidSlaughterListDelegate(List<Enemy_Slaughter> _slaughterList);
-    private VoidSlaughterListDelegate initSlaughterListDelegate = null;
-
     public delegate void VoidVoidDelegate();
+    private VoidSlaughterListDelegate initDelegate = null;
     private VoidVoidDelegate checkAllZombieEnterPatrolDelegate = null;
     private VoidVoidDelegate enterTracePlayerDelegate = null;
     private VoidVoidDelegate checkAllZombieExitTracePlayerDelegate = null;
 
     // 게임매니저가 플레이어 먹여줘야함
-    private List<Enemy_Slaughter> mSlaughterList = null;  
+    private List<Enemy_Slaughter> mSlaughterList = null;
     public List<Enemy_Slaughter> SlaughterList
     {
         get { return mSlaughterList; }
     }
-    private Flag[] m_Flags = null;
-    private SpawnPoint[] m_SpawnPoints = null;
+    [SerializeField] private Flag[] m_Flags = null;
+    [SerializeField] private SpawnPoint[] m_SpawnPoints = null;
     private bool mIsActive = false;
-    
-    [SerializeField] private Transform m_PlayerTr = null;   // 디버그
+
+    private Transform m_PlayerTr = null;   // 디버그
     public Transform PlayerTr
     {
         set { m_PlayerTr = value; }
@@ -31,41 +30,64 @@ public class SlaughterFactory : MonoBehaviour
     [SerializeField] private float m_SpawnRange = 30f;
     [SerializeField] private float m_UnspawnRange = 60f;
 
+    private bool mb_IsUnlocking = false; // 디버그
+    public bool IsUnlcking
+    {
+        set { mb_IsUnlocking = value; }
+    }
+
+    private void Awake()
+    {
+        mSlaughterList = new List<Enemy_Slaughter>();
+        m_Flags = GetComponentsInChildren<Flag>();
+        m_SpawnPoints = GetComponentsInChildren<SpawnPoint>();
+    }
 
     private void Start()
     {
-        mSlaughterList = new List<Enemy_Slaughter>();
-        m_Flags = GetComponentInChildren<FlagManager>().Flags;
-        m_SpawnPoints = GetComponentInChildren<SpawnPointManager>().SpawnPoints;
-
-        for (int i = 0; i < m_SpawnPoints.Length; ++i)
+        for(int i = 0; i < m_SpawnPoints.Length; ++i)
         {
             InstantiateZombie(m_SpawnPoints[i].transform.position);
         }
-        initSlaughterListDelegate?.Invoke(mSlaughterList);
+        initDelegate?.Invoke(mSlaughterList);
     }
+
 
     private void Update()
     {
-        // 현재 스폰이 안 되있는 상태고 플레이어가 일정 거리안으로 들어오면 SetActive(true)
-        if (!mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) <= m_SpawnRange)
+        if (!mb_IsUnlocking)
         {
-            for (int i = 0; i < mSlaughterList.Count; ++i)
+            // 현재 스폰이 안 되있는 상태고 플레이어가 일정 거리안으로 들어오면 SetActive(true)
+            if (!mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) <= m_SpawnRange)
             {
-                mSlaughterList[i].gameObject.SetActive(true);
-                mIsActive = true;
+                SetActiveZombies();
+            }
+
+            // 현재 스폰 되있는 상태고 플레이어가 일정 거리 이상으로 멀어지면 SetActive(false)
+            if (mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) >= m_UnspawnRange)
+            {
+                SetUnActiveZombies();
             }
         }
+    }
 
-        // 현재 스폰 되있는 상태고 플레이어가 일정 거리 이상으로 멀어지면 SetActive(false)
-        if(mIsActive && Vector3.Distance(m_PlayerTr.position, transform.position) >= m_UnspawnRange)
+    public void SetActiveZombies()
+    {
+        Debug.Log($"이름 : {transform.name} 액티브완료");
+        for (int i = 0; i < mSlaughterList.Count; ++i)
         {
-            for(int i = 0; i < mSlaughterList.Count; ++i)
-            {
-                mSlaughterList[i].SetState(mSlaughterList[i].Patrol);
-                mSlaughterList[i].gameObject.SetActive(false);
-                mIsActive = false;
-            }
+            mSlaughterList[i].gameObject.SetActive(true);
+            mIsActive = true;
+        }
+    }
+
+    public void SetUnActiveZombies()
+    {
+        for (int i = 0; i < mSlaughterList.Count; ++i)
+        {
+            mSlaughterList[i].SetState(mSlaughterList[i].Patrol);
+            mSlaughterList[i].gameObject.SetActive(false);
+            mIsActive = false;
         }
     }
 
@@ -81,7 +103,7 @@ public class SlaughterFactory : MonoBehaviour
         enemy.gameObject.SetActive(false);
     }
 
-    
+
     private void SetTracePlayerToNearZombie(Enemy_Slaughter _caller)
     {
         StartCoroutine(SetTracePlayerToNearZombieCoroutine(_caller));
@@ -126,7 +148,7 @@ public class SlaughterFactory : MonoBehaviour
     {
         Debug.Log("좀비 Enter Patrol");
         int cnt = 0;
-        for(int i = 0; i < mSlaughterList.Count; ++i) 
+        for (int i = 0; i < mSlaughterList.Count; ++i)
         {
             if (mSlaughterList[i].CurState != mSlaughterList[i].Patrol)
             {
@@ -145,7 +167,6 @@ public class SlaughterFactory : MonoBehaviour
 
     private void EnterTracePlayerCallback()
     {
-        Debug.Log("2");
         enterTracePlayerDelegate?.Invoke();
     }
 
@@ -154,17 +175,17 @@ public class SlaughterFactory : MonoBehaviour
         Debug.Log("좀비 Exit TracePlayer");
         int cnt = 0;
 
-        for(int i= 0; i < mSlaughterList.Count; ++i)
+        for (int i = 0; i < mSlaughterList.Count; ++i)
         {
-            if(mSlaughterList[i].CurState == mSlaughterList[i].TracePlayer)
+            if (mSlaughterList[i].CurState == mSlaughterList[i].TracePlayer)
             {
                 ++cnt;
                 Debug.Log("cnt up");
             }
         }
 
-        Debug.Log(cnt);
-        if(cnt == 0)
+        Debug.Log($"Trace 좀비 수 : {cnt}");
+        if (cnt == 0)
         {
             Debug.Log("모든좀비 Exit TracePlayer");
             // 전투브금 볼륨을 FadeOut
@@ -172,11 +193,11 @@ public class SlaughterFactory : MonoBehaviour
         }
     }
 
-    public void SetDelegate(VoidSlaughterListDelegate _initSlaughterListCallback, VoidVoidDelegate _checkAllZombieEnterPatrolCallback,
+    public void SetDelegate(VoidSlaughterListDelegate _initCallback,  VoidVoidDelegate _checkAllZombieEnterPatrolCallback,
                             VoidVoidDelegate _enterTracePlayerCallback, VoidVoidDelegate _checkAllZombieExitTracePlayerCallback)
     {
         Debug.Log("팩토리 셋델리");
-        initSlaughterListDelegate = _initSlaughterListCallback;
+        initDelegate = _initCallback;
         checkAllZombieEnterPatrolDelegate = _checkAllZombieEnterPatrolCallback;
         enterTracePlayerDelegate = _enterTracePlayerCallback;
         checkAllZombieExitTracePlayerDelegate = _checkAllZombieExitTracePlayerCallback;

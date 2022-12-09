@@ -10,9 +10,9 @@ public class Attack : EnemyState
     {
         Debug.Log("Attack 입장!");
         m_Enemy.Anim.SetTrigger("IsAttack");
-
         // 공격 델리게이트 호출
         m_Enemy.IsAttack();
+        m_Enemy.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
     }
 
     public override void ExitState()
@@ -22,11 +22,9 @@ public class Attack : EnemyState
 
     public override void Action()
     {
-        Debug.Log("Attack 물리업뎃!");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Attack 업뎃!");
     }
 }

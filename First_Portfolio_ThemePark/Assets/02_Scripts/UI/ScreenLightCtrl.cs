@@ -7,14 +7,11 @@ public class ScreenLightCtrl : MonoBehaviour
 {
     public Slider slider;
     public Light ScreenLight;
+    private float mIntensity = 0f;
 
-    private void Update()
+    public void UpdateIntensity()
     {
-        ScreenLight.intensity = 1-slider.value;
-        if(ScreenLight.intensity<=0.1f)
-        {
-            ScreenLight.intensity = 0.11f;
-        }    
+        mIntensity = Mathf.Clamp(slider.value, 0.1f, 0.6f);
+        ScreenLight.intensity = mIntensity;
     }
-
 }

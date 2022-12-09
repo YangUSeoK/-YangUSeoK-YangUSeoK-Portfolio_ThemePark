@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
-    public AudioSource bgSound;
+    private AudioSource bgSound;
 
     public AudioClip[] bglist;
 
@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     {
         if (instance == null)
         {
+            bgSound = GetComponent<AudioSource>();
             instance = this;
             DontDestroyOnLoad(instance);
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -33,11 +34,12 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void SFXPlay(string sfxName, AudioClip clip)
+    public void SFXPlay(string sfxName, AudioClip clip, float pitch = 1f)
     {
         GameObject go = new GameObject(sfxName + "Sound");
         AudioSource audiosource = go.AddComponent<AudioSource>();
         audiosource.clip = clip;
+        audiosource.pitch = pitch;
         audiosource.Play();
         Destroy(go, clip.length);
     }
@@ -45,7 +47,7 @@ public class SoundManager : MonoBehaviour
     {
         bgSound.clip = clip;
         bgSound.loop = true;
-        bgSound.volume = 0.1f;
+        bgSound.volume = 0.5f;
         bgSound.Play();
     }
 
@@ -61,25 +63,41 @@ public class SoundManager : MonoBehaviour
     {
         // if(TracePlayer ����� �ƴ϶��)
         // TracePlayer ���·� ��� �ٲ�
+        bgSound.Stop();
+        SFXPlay("TracePlayer", bglist[3]);
         Debug.Log("SetTracePlayerBGM");
     }
 
     public void FadeOutTracePlayerBGM()
     {
         // TracePlayer���� ������ ���� ���̵�ƿ�
+        bgSound.Play();
         Debug.Log("ExitTracePlayerBGM");
     }
 
     // ���ӿ��� �� ȣ���
     public void IsGameOver()
     {
+        bgSound.Stop();
         //bgm.Stop();
+        SFXPlay("GameOver", bglist[2], 0.5f);
+        
 
         // ���ӿ��� ��� ���
         Debug.Log("GameOver");
     }
     #endregion
+
+    public void IsGameClear()
+    {
+        bgSound.Stop();
+        SFXPlay("GameClear", bglist[4]);
+        Debug.Log("GameClear!");
+    }
 }
+
+
+
 
 
 

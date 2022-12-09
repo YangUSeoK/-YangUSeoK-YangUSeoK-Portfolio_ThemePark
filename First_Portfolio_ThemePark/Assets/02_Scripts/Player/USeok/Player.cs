@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
         get { return m_Squat; }
     }
     #endregion
-
     #region Inspector
     [Space]
     [Header("Speed")]
@@ -76,17 +75,17 @@ public class Player : MonoBehaviour
         get { return m_CurStepSoundRange; }
         set { m_CurStepSoundRange = value; }
     }
-    [SerializeField] private float m_WalkSoundRange = 3f;
+    [SerializeField] private float m_WalkSoundRange = 6.5f;
     public float WalkSoundRange
     {
         get { return m_WalkSoundRange; }
     }
-    [SerializeField] private float m_RunSoundRange = 5f;
+    [SerializeField] private float m_RunSoundRange = 10f;
     public float RunSoundRange
     {
         get { return m_RunSoundRange; }
     }
-    [SerializeField] private float m_SlowWalkSoundRange = 1f;
+    [SerializeField] private float m_SlowWalkSoundRange = 4f;
     public float SlowWalkSoundRange
     {
         get { return m_SlowWalkSoundRange; }
@@ -254,7 +253,6 @@ public class Player : MonoBehaviour
     {
         m_CurState = m_Walk;
         SetState(m_Walk);
-        //StartCoroutine(StepSoundCoroutine());
     }
 
     private void Update()
@@ -277,8 +275,12 @@ public class Player : MonoBehaviour
             SetReverb();
             SetHeartBeat();
         }
+        else
+        {
+            StopAllSound();
+        }
     }
-
+    #region State
     public void SetState(PlayerState _state)
     {
         if (m_CurState != null)
@@ -304,7 +306,9 @@ public class Player : MonoBehaviour
             SetState(m_Walk);
         }
     }
+    #endregion
 
+    #region Sound
     public void StepSound()
     {
         Collider[] nearListener = Physics.OverlapSphere(transform.position, m_CurStepSoundRange, 1 << LayerMask.NameToLayer("LISTENER"));
@@ -345,17 +349,13 @@ public class Player : MonoBehaviour
         float beatSound = 0f;
         float pitch = 0f;
 
-
+        //Debug.Log(distance);
         if (distance <= 8f)
         {
             beatSound = Mathf.Clamp(3f / distance, 0f, 1f);
         }
-        else
-        {
-            beatSound = 0f;
-        }
-
-        pitch = Mathf.Clamp(0.7f + (1.5f / distance), 0.7f, 1.3f);
+        
+        pitch = Mathf.Clamp(0.7f + (2f / distance), 0.7f, 1.4f);
         m_HeartBeat.volume = beatSound;
         m_HeartBeat.pitch = pitch;
     }
@@ -374,7 +374,18 @@ public class Player : MonoBehaviour
                 GetComponent<AudioReverbFilter>().enabled = false;
             }
         }
-
     }
 
+    private void StopAllSound()
+    {
+        // 발소리 정지
+        for (int i = 0; i < m_Audios.Length; ++i)
+        {
+            m_Audios[i].Stop();
+        }
+
+        // 심장소리 정지
+        m_HeartBeat.Stop();
+    }
+    #endregion
 }

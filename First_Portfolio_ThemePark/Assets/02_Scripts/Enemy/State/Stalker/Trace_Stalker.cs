@@ -31,7 +31,7 @@ public class Trace_Stalker : EnemyState
         m_Enemy.Agent.destination = m_Enemy.PlayerTr.position;
         m_Enemy.Agent.speed = (m_Enemy as Enemy_Stalker).TraceSpeed;
 
-        m_Enemy.Anim.SetTrigger("IsTrace");
+        m_Enemy.Anim.SetBool("IsTrace", true);
 
         // 걷는 소리 설정
         // 그로울링 소리 설정
@@ -40,5 +40,6 @@ public class Trace_Stalker : EnemyState
     public override void ExitState()
     {
         Debug.Log("Dog : Trace Exit!");
+        m_Enemy.Anim.SetBool("IsTrace", false);
     }
 }

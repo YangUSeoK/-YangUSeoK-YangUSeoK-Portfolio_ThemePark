@@ -10,27 +10,28 @@ public class Concentration_Listener : EnemyState
     private float timer = 0f;
     public override void EnterState()
     {
-        Debug.Log("Concentration ÀÔÀå!");
+        Debug.Log($"{m_Enemy.name} Concentration ÀÔÀå!");
         m_Enemy.Anim.SetBool("IsConcentration",true);
-        m_Enemy.Audio[1].Play();
+        m_Enemy.Audio[1].PlayOneShot(m_Enemy.Audio[1].clip);
         timer = 0f;
+
+
+        m_Enemy.Mr.material.color = Color.green;
+
     }
 
     public override void ExitState()
     {
-        Debug.Log("Concentration ÅðÀå!");
+        Debug.Log($"{m_Enemy.name} Concentration ÅðÀå!");
         m_Enemy.Anim.SetBool("IsConcentration", false);
     }
 
     public override void Action()
     {
-        Debug.Log("Concentration ¾×¼Ç!");
     }
 
     public override void CheckState()
     {
-        Debug.Log("Concentration ¾÷µ«!");
-        
         timer += Time.deltaTime;
 
         if (timer >= 2.3f)

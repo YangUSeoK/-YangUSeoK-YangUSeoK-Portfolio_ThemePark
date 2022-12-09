@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class JailDoor : MonoBehaviour
 {
-    [SerializeField] bool mbIsStart = false;
-    Rigidbody m_DoorRigid;
+    //Rigidbody m_DoorRigid;
+    Collider m_DoorCollider;
+    Animation m_DoorAnim;
+    bool mbIsOpen = false;
 
     void Start()
     {
-        m_DoorRigid = GetComponent<Rigidbody>();
+        //m_DoorRigid = GetComponent<Rigidbody>();
+        m_DoorCollider = GetComponent<Collider>();
+        m_DoorAnim = GetComponent<Animation>();
     }
 
-    void Update()
+    public IEnumerator OpenDoor()
     {
-        m_DoorRigid.isKinematic = !mbIsStart;
+        if (mbIsOpen == false)
+        {
+            m_DoorCollider.enabled = false;
+            m_DoorAnim.Play("DoorAnim");
+
+            yield return new WaitForSeconds(m_DoorAnim.clip.length);
+
+            m_DoorAnim.Stop();
+            m_DoorCollider.enabled = true;
+            mbIsOpen = true;
+        }
+        yield return null;
     }
 }

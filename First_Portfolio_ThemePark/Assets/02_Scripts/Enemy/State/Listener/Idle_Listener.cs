@@ -9,16 +9,19 @@ public class Idle_Listener : EnemyState
  
     public override void EnterState()
     {
-        Debug.Log("Idle ÀÔÀå!");
+        Debug.Log($"{m_Enemy.name} Idle ÀÔÀå!");
         m_Enemy.Agent.speed = 0f;
         m_Enemy.Anim.SetBool("IsIdle", true);
         m_Enemy.Audio[0].Play();
         (m_Enemy as Enemy_Listener).CurVolumeLv = 0f;
+
+        m_Enemy.Mr.material.color = Color.white;
+
     }
 
     public override void ExitState()
     {
-        Debug.Log("Idle ÅðÀå!");
+        Debug.Log($"{m_Enemy.name} Idle ÅðÀå!");
         m_Enemy.Anim.SetBool("IsIdle", false);
         m_Enemy.Audio[0].Stop();
     }

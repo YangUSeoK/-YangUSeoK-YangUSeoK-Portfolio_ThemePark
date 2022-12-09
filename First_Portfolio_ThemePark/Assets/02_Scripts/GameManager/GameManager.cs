@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,10 +20,20 @@ public class GameManager : MonoBehaviour
     {
         get { return mbIsGameOver; }
     }
-    private EnemyManager m_EnemyManager = null;
-    private SoundManager m_SoundManager = null;
+
+    private bool mbIsGameClear = false;
+    public bool IsGameClear
+    {
+        get { return mbIsGameClear; }
+    }
+
     private UIManager m_UIManager = null;
+    private OnClickButton m_ClickButton = null;
+    [SerializeField] private GameMenuManager m_GameMenuManager = null;
+
+    [SerializeField] private EnemyManager m_EnemyManager = null;
     [SerializeField] private Transform m_PlayerTr = null;
+    
 
 
     private void Awake()
@@ -37,8 +48,6 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        m_EnemyManager = GetComponentInChildren<EnemyManager>();
-        m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
         SetEnemyManager();
@@ -57,32 +66,39 @@ public class GameManager : MonoBehaviour
     #region Enemy_State_Callback
     private void AllZombieEnterPatrolCallback()
     {
-        m_SoundManager.SetPatrolBGM();
+        SoundManager.instance.SetPatrolBGM();
     }
     private void EnterTracePlayerCallback()
     {
-        Debug.Log("4");
-        m_SoundManager.SetTracePlayerBGM();
+        SoundManager.instance.SetTracePlayerBGM();
     }
     private void AllZombieExitTracePlayerCallback()
     {
-        m_SoundManager.FadeOutTracePlayerBGM();
+        SoundManager.instance.FadeOutTracePlayerBGM();
     }
     private void GameOver()
     {
         mbIsGameOver = true;
-        m_EnemyManager.IsGameOver();
+        m_EnemyManager.AllStop();
         m_UIManager.IsGameOver();
-        m_SoundManager.IsGameOver();
-        //m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
+        SoundManager.instance.IsGameOver();
+        m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
 
+        // 타임스케일 0으로 
+        Time.timeScale= 0f;
         // 씬전환 -> 메인타이틀로
+        m_ClickButton.GetOutGameScene();
+        // 타임스케일 정상화
+        //Time.timeScale = 0f;
     }
 
-    private void GameClear()//221201 김준우
+    public void GameClear()//221201 김준우
     {
         //조건식
-
+        mbIsGameClear = true;
+        m_EnemyManager.AllStop();
+        m_UIManager.IsGameClear();
+        SoundManager.instance.IsGameClear();
     }
     #endregion
 

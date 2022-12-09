@@ -9,7 +9,7 @@ public class Flashlight : Item, IInteraction
 {
     EItemType eItemtype = EItemType.Flashlight;
     [SerializeField] GameObject m_Light;
-    private Material[] m_Lens;
+    [SerializeField] private Material[] m_Lens;
     private Color m_LensColor = new Color(0.75f, 0.75f, 0.75f);
     private bool mbIsOn = false;
 
@@ -18,12 +18,6 @@ public class Flashlight : Item, IInteraction
         m_Light.SetActive(mbIsOn);
         m_Lens = GetComponentInChildren<Renderer>().materials;
     }
-
-    //void Update()
-    //{
-        
-    //    Action();
-    //}
 
     public override void Action()
     {
@@ -59,4 +53,9 @@ public class Flashlight : Item, IInteraction
             m_Lens[1].SetColor("_EmissionColor", Color.black);
         }
     } 
+
+    public bool GetIsHanded()
+    {
+        return mbIsHanded;
+    }
 }

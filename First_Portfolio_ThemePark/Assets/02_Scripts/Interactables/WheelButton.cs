@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WheelButton : MonoBehaviour
@@ -10,6 +11,7 @@ public class WheelButton : MonoBehaviour
     private Vector3 m_InitPos;
     private bool mbIsPressing = false;
     private AudioSource m_ButtonAudio;
+    private Vector3 m_targetPos;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class WheelButton : MonoBehaviour
 
         if (transform.position.y > m_InitPos.y)
             transform.position = m_InitPos;
+
     }
     private void OnCollisionEnter(Collision coll)
     {
@@ -37,6 +40,28 @@ public class WheelButton : MonoBehaviour
             m_ButtonAudio.PlayOneShot(m_ButtonAudio.clip);
             mbIsPressed = !mbIsPressed;
             Debug.Log("Button Pressed!");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag != "BUTTON")
+        {
+            Vector3 otherPos = other.transform.position;
+            otherPos.x = transform.position.x;
+            otherPos.z = transform.position.z;
+            transform.position = /*transform.position + */otherPos;
+            //mbIsPressing = true;
+            // 콜라이더가 닿은 순간의 타겟의 위치와 자신의 위치의 차만큼 더하면 될듯
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag != "BUTTON")
+        {
+            transform.position = m_InitPos;
+            mbIsPressing = false;
         }
     }
 

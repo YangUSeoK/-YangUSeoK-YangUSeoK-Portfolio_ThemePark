@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a773a57d7927bc144aff37db21899c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PatrolSpeed: 5
+  m_PatrolSpeed: 0.5
   m_ConcentrationSpeed: 1
-  m_TraceSpeed: 8
+  m_TraceSpeed: 2
   m_PlayerTr: {fileID: 0}
   m_FindSpeed: 0
   m_TraceRange: 10

@@ -31,6 +31,9 @@ public class CCTV : MonoBehaviour
         get { return m_RedLight; }
     }
 
+    [SerializeField] private Transform m_Head = null;
+
+
     // Ray 관련
     private Light m_Light = null;
     [SerializeField] private float m_RayToPlayerDistance = 100f;
@@ -68,7 +71,7 @@ public class CCTV : MonoBehaviour
     // 플레이어 발견 -> 플레이어 바라봄 -> 플레이어위치로 레이 쏨 -> 장애물 뒤에 안숨으면 x초 후 경보발령
     private IEnumerator DetectPlayerCoroutine(Transform _targetTr)
     {
-        transform.LookAt(_targetTr.position);
+        m_Head.transform.LookAt(_targetTr.position);
         WaitForSeconds ws001 = new WaitForSeconds(0.01f);
         float timer = 0;
 
@@ -87,7 +90,7 @@ public class CCTV : MonoBehaviour
                     //{
                     //    m_TargetTr = hitInfo.transform;
                     //}
-                    transform.LookAt(_targetTr.position);
+                    m_Head.transform.LookAt(_targetTr.position);
 
                     // 시간초 세기
                     timer += 0.01f;
