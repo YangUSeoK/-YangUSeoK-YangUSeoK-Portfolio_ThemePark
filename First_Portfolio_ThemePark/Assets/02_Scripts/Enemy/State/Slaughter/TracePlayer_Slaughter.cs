@@ -7,8 +7,8 @@ public class TracePlayer_Slaughter : EnemyState
 {
     public TracePlayer_Slaughter(Enemy _enemy) : base("TracePlayer", _enemy) { }
 
-    
-    
+
+
     private Vector3 m_PlayerPos = Vector3.zero; // 마지막으로 본 플레이어 위치 저장변수
     private bool mbIsLookPlayer = false;
     private float m_Timer = 0f;
@@ -22,7 +22,7 @@ public class TracePlayer_Slaughter : EnemyState
         m_Enemy.Agent.destination = m_PlayerPos;
 
         m_Timer = 0f;
-        m_Enemy.Anim.SetBool("IsTracePlayer",true);
+        m_Enemy.Anim.SetBool("IsTracePlayer", true);
 
         // 주변 좀비 부르는 함수
         (m_Enemy as Enemy_Slaughter).CallNearZombie();
@@ -47,37 +47,33 @@ public class TracePlayer_Slaughter : EnemyState
     public override void Action()
     {
         // 플레이어에게 레이를 쏴서 위치정보 업데이트 받음
-        RaycastHit hitInfo;       
+        RaycastHit hitInfo;
         int layerMask = ((m_Enemy as Enemy_Slaughter).FOV.PlayerLayer | (m_Enemy as Enemy_Slaughter).FOV.ObstacleLayer);
 
         Debug.DrawLine(m_Enemy.transform.position, m_Enemy.PlayerTr.position, Color.blue);
 
         if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up * 0.7f), m_Enemy.PlayerTr.position - m_Enemy.transform.position,
-            out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask))
+            out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask) 
+            && hitInfo.collider.CompareTag("PLAYER"))
         {
-            Debug.Log($" TracePlayer 무릎레이져 맞은놈 : {m_Enemy.transform.name} / {hitInfo.transform.name}");
-            if (hitInfo.collider.CompareTag("PLAYER"))
-            {
-                Debug.Log("플레이어 직관");
-                mbIsLookPlayer = true;
-                m_PlayerPos = hitInfo.transform.position;
-            }
+            //Debug.Log($" TracePlayer 무릎레이져 맞은놈 : {m_Enemy.transform.name} / {hitInfo.transform.name}");
+
+            mbIsLookPlayer = true;
+            m_PlayerPos = hitInfo.transform.position;
         }
         else if (Physics.Raycast(m_Enemy.transform.position + (Vector3.up * 1.4f), m_Enemy.PlayerTr.position - m_Enemy.transform.position,
-                out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask))
+                out hitInfo, (m_Enemy as Enemy_Slaughter).TraceDetectRange + 30f, layerMask) 
+                && hitInfo.collider.CompareTag("PLAYER"))
         {
-            Debug.Log($" TracePlayer 눈레이져 맞은놈 : {m_Enemy.transform.name} / {hitInfo.transform.name}");
-            if (hitInfo.collider.CompareTag("PLAYER"))
-            {
-                Debug.Log("플레이어 직관 눈");
+            //Debug.Log($" TracePlayer 눈레이져 맞은놈 : {m_Enemy.transform.name} / {hitInfo.transform.name}");
                 mbIsLookPlayer = true;
                 m_PlayerPos = hitInfo.transform.position;
-            }
         }
         else
         {
             mbIsLookPlayer = false;
         }
+        //Debug.Log(mbIsLookPlayer);
         m_Enemy.Agent.destination = m_PlayerPos;
     }
 

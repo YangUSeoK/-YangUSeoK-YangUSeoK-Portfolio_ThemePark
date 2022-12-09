@@ -26,8 +26,15 @@ public class OnClickButton : MonoBehaviour
 
     private void Start()
     {
-        mImage.CrossFadeAlpha(0f, 0f, true);
-        mTMP.CrossFadeAlpha(0f, 0f, true);
+        if (mImage != null)
+        {
+            mImage.CrossFadeAlpha(0f, 0f, true);
+        }
+
+        if (mTMP != null)
+        {
+            mTMP.CrossFadeAlpha(0f, 0f, true);
+        }
     }
 
     public void StartGame()
@@ -36,7 +43,7 @@ public class OnClickButton : MonoBehaviour
         mMenu.SetActive(false);
 
         StartCoroutine(LoadSceneCoroutine());
-        
+
     }
     public void GoToOptions()
     {
@@ -79,7 +86,7 @@ public class OnClickButton : MonoBehaviour
     public void TutorialGoRight()
     {
         //Debug.Log("aaa");
-        if(mTutorialCnt<mTutorialUI.Length)
+        if (mTutorialCnt < mTutorialUI.Length)
         {
             mTutorialUI[mTutorialCnt].SetActive(false);
             ++mTutorialCnt;
@@ -93,14 +100,14 @@ public class OnClickButton : MonoBehaviour
     public void TutorialGoLeft()
     {
         if (mTutorialCnt < mTutorialUI.Length)
-        { 
+        {
             mTutorialUI[mTutorialCnt].SetActive(false);
             //Debug.Log($"마이너스 전{ mTutorialCnt}");
             --mTutorialCnt;
             //Debug.Log($"마이너스 후{ mTutorialCnt}");
             if (mTutorialCnt < 0)
             {
-                mTutorialCnt = mTutorialUI.Length-1;
+                mTutorialCnt = mTutorialUI.Length - 1;
             }
             mTutorialUI[mTutorialCnt].SetActive(true);
         }
@@ -111,10 +118,15 @@ public class OnClickButton : MonoBehaviour
     }
     private void LoadingSceneImage()
     {
-        mImage.CrossFadeAlpha(1f, 2f, false);
-        mTMP.CrossFadeAlpha(1f, 2f, false);
+        if (mImage != null)
+        {
+            mImage.CrossFadeAlpha(1f, 2f, false);
+        }
+        if (mTMP != null)
+        {
+            mTMP.CrossFadeAlpha(1f, 2f, false);
+        }
     }
-
     private IEnumerator LoadSceneCoroutine()
     {
         yield return new WaitForSeconds(3f);

@@ -6,7 +6,7 @@ Shader "Custom/StrongZombie_Emission"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _BumpMap("NormalMap",2D) = "bump" {}
         _RimColor ("RimColor", Color) = (1,1,1,1)
-        _RimPower("RimPower", Range(1,20)) = 3
+        _RimPower("RimPower", Range(1,100)) = 3
         _Glossiness("Smoothness", Range(0,1)) = 0.5
         _Metallic("Metallic", Range(0,1)) = 0.0
     }

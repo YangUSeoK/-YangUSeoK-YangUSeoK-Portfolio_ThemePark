@@ -56,10 +56,11 @@ public class Lock : MonoBehaviour
                 if (!mbIsCallZombie && mUnlockTimer >= m_CallZombieTime)
                 {
                     Debug.Log("자물쇠 : 좀비 소환");
+                    mbIsCallZombie = true;
 
                     // 좀비 소환 => 소환할 좀비(슬러터) 관리하는 ZombiGroup 인스팩터에 넣으면 됨.
                     // 리스너는 그냥 소리듣고 알아서 옴
-                    for(int i = 0; i < m_ZombieGroups.Length; ++i)
+                    for (int i = 0; i < m_ZombieGroups.Length; ++i)
                     {
                         m_ZombieGroups[i].IsUnlcking = true;
                         m_ZombieGroups[i].SetActiveZombies();
@@ -67,7 +68,7 @@ public class Lock : MonoBehaviour
 
                     // 근처 50 범위 내 모든 좀비 부름
                     m_EnemyManager.CallNearZombie(m_PlayerTr, 50f);
-                    mbIsCallZombie = true;
+                    StartCoroutine(CallListenerCoroutine());
                 }
 
                 if (!mbIsUnlock && mUnlockTimer >= 8)
@@ -78,6 +79,7 @@ public class Lock : MonoBehaviour
 
                     m_LockHead.transform.localPosition = new Vector3(0.0245f, 0.07f, 0f);
                     m_LockHead.transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
+                    mbIsUnlock = true;
                 }
             }
             prePos = other.transform.position;
@@ -111,6 +113,22 @@ public class Lock : MonoBehaviour
             m_DirectionalLight.intensity += (0.002f * sign);
 
             yield return null;
+        }
+    }
+
+    private IEnumerator CallListenerCoroutine()
+    {
+        while (true)
+        {
+            Collider[] listener = Physics.OverlapSphere(transform.position, 50, 1 << LayerMask.NameToLayer("LISTENER"));
+            if (listener.Length != 0)
+            {
+                for (int i = 0; i < listener.Length; ++i)
+                {
+                    listener[i].transform.GetComponent<Enemy_Listener>().Listen(m_PlayerTr, m_PlayerTr.position, 100f);
+                }
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
