@@ -127,7 +127,6 @@ public class OnClickButton : MonoBehaviour
             mTMP.CrossFadeAlpha(1f, 2f, false);
         }
     }
-
     private IEnumerator LoadSceneCoroutine()
     {
         yield return new WaitForSeconds(3f);
