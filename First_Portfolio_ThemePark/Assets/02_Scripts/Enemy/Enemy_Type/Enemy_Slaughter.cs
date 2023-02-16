@@ -104,7 +104,7 @@ public class Enemy_Slaughter : Enemy
         get { return m_FOV; }
     }
 
-    [SerializeField] private Transform m_FlashTr = null;
+    private Transform m_FlashTr = null;
     public Transform FlashTr
     {
         get { return m_FlashTr; }

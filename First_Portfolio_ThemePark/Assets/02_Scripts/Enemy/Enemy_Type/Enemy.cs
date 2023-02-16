@@ -31,7 +31,7 @@ public abstract class Enemy : MonoBehaviour
     #endregion
 
     #region Member_variable
-    [SerializeField] protected Transform m_PlayerTr = null;  //디버그
+    protected Transform m_PlayerTr = null;  //디버그
     public Transform PlayerTr
     {
         get { return m_PlayerTr; }
