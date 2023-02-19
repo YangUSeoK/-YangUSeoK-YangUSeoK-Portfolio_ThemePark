@@ -26,9 +26,10 @@ Shader "Custom/ItemSlotShader"
             o.Emission = float3(0, 1, 0);   // Emission을 기본초록색으로 설정
 
             float rim = saturate(dot(o.Normal, IN.viewDir));
-
-            rim = pow(1 - rim, 3);                // 내적값을 가지고 알파값을 설정한다.
-            o.Alpha = rim * abs(sin(_Time.y));    // 반복주기를 빠르게 주기 위하여 절대값 사용
+            rim = pow(1 - rim, 3);       
+            
+            // 반복주기를 빠르게 주기 위하여 절대값 사용
+            o.Alpha = rim * abs(sin(_Time.y));    
         }
 
 

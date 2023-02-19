@@ -93,7 +93,7 @@ public class EnemyManager : MonoBehaviour
         m_CCTVManager.IsGameOver();
     }
 
-    private void CCTVDetectCallback(Transform _targetTr)
+    public void CCTVDetectCallback(Transform _targetTr)
     {
         float callRange = 50f;
         for (int i = 0; i < m_Factorys.Length; ++i)

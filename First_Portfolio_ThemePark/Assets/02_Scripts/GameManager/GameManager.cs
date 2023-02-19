@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemyManager m_EnemyManager = null;
     [SerializeField] private Transform m_PlayerTr = null;
+    [SerializeField] private CCTVManager m_CCTVManager = null;
     
 
 
@@ -44,18 +45,25 @@ public class GameManager : MonoBehaviour
 
         m_GameMenuManager = GetComponentInChildren<GameMenuManager>();
         m_EnemyManager = GetComponentInChildren<EnemyManager>();
+        m_CCTVManager = GetComponentInChildren<CCTVManager>();
         m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
         SetEnemyManager();
         
         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
+        m_CCTVManager.SetDelegate(CCTVDetectCallback);
 
     }
    private void SetEnemyManager()
     {
         m_EnemyManager.PlayerTr = m_PlayerTr;
         m_EnemyManager.SetFactorys();
+    }
+
+    private void CCTVDetectCallback(Transform _tr)
+    {
+        m_EnemyManager.CCTVDetectCallback(_tr);
     }
     
 

@@ -103,7 +103,7 @@ public class SlaughterFactory : MonoBehaviour
     }
 
 
-    private void SetTracePlayerToNearZombie(Enemy_Slaughter _caller)
+    public void SetTracePlayerToNearZombie(Enemy_Slaughter _caller)
     {
         StartCoroutine(SetTracePlayerToNearZombieCoroutine(_caller));
     }
