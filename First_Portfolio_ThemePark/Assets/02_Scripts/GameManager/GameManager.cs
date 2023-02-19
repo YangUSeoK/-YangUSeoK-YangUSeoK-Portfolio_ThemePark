@@ -20,19 +20,14 @@ public class GameManager : MonoBehaviour
     {
         get { return mbIsGameOver; }
     }
-
-    private bool mbIsGameClear = false;
-    public bool IsGameClear
-    {
-        get { return mbIsGameClear; }
-    }
-
+    private SoundManager m_SoundManager = null;
     private UIManager m_UIManager = null;
     private OnClickButton m_ClickButton = null;
     [SerializeField] private GameMenuManager m_GameMenuManager = null;
 
     [SerializeField] private EnemyManager m_EnemyManager = null;
     [SerializeField] private Transform m_PlayerTr = null;
+    [SerializeField] private CCTVManager m_CCTVManager = null;
     
 
 
@@ -48,11 +43,16 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+        m_GameMenuManager = GetComponentInChildren<GameMenuManager>();
+        m_EnemyManager = GetComponentInChildren<EnemyManager>();
+        m_CCTVManager = GetComponentInChildren<CCTVManager>();
+        m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;
         SetEnemyManager();
         
         m_EnemyManager.SetDelegate(AllZombieEnterPatrolCallback, EnterTracePlayerCallback, AllZombieExitTracePlayerCallback, GameOver);
+        m_CCTVManager.SetDelegate(CCTVDetectCallback);
 
     }
    private void SetEnemyManager()
@@ -60,28 +60,34 @@ public class GameManager : MonoBehaviour
         m_EnemyManager.PlayerTr = m_PlayerTr;
         m_EnemyManager.SetFactorys();
     }
+
+    private void CCTVDetectCallback(Transform _tr)
+    {
+        m_EnemyManager.CCTVDetectCallback(_tr);
+    }
     
 
 
     #region Enemy_State_Callback
     private void AllZombieEnterPatrolCallback()
     {
-        SoundManager.instance.SetPatrolBGM();
+        m_SoundManager.SetPatrolBGM();
     }
     private void EnterTracePlayerCallback()
     {
-        SoundManager.instance.SetTracePlayerBGM();
+        Debug.Log("4");
+        m_SoundManager.SetTracePlayerBGM();
     }
     private void AllZombieExitTracePlayerCallback()
     {
-        SoundManager.instance.FadeOutTracePlayerBGM();
+        m_SoundManager.FadeOutTracePlayerBGM();
     }
     private void GameOver()
     {
         mbIsGameOver = true;
-        m_EnemyManager.AllStop();
+        m_EnemyManager.IsGameOver();
         m_UIManager.IsGameOver();
-        SoundManager.instance.IsGameOver();
+        m_SoundManager.IsGameOver();
         m_PlayerTr.GetComponent<PlayerCtrl>().IsGameOver();
 
         // 타임스케일 0으로 
@@ -92,13 +98,13 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0f;
     }
 
-    public void GameClear()//221201 김준우
+    private void GameClear()//221201 김준우
     {
         //조건식
-        mbIsGameClear = true;
-        m_EnemyManager.AllStop();
+        mbIsGameOver = true;
+        m_EnemyManager.IsGameOver();
         m_UIManager.IsGameClear();
-        SoundManager.instance.IsGameClear();
+        m_SoundManager.IsGameClear();
     }
     #endregion
 
