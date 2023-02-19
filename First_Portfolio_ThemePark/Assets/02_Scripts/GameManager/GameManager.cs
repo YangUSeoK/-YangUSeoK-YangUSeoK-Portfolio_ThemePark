@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+        m_GameMenuManager = GetComponentInChildren<GameMenuManager>();
+        m_EnemyManager = GetComponentInChildren<EnemyManager>();
         m_SoundManager = GetComponentInChildren<SoundManager>();
         m_UIManager = GetComponentInChildren<UIManager>();
         m_PlayerTr = GameObject.FindGameObjectWithTag("PLAYER").transform;

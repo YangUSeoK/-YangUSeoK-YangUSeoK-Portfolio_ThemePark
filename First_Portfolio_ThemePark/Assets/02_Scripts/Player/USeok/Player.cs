@@ -273,7 +273,7 @@ public class Player : MonoBehaviour
                 }
             }
             SetReverb();
-            SetHeartBeat();
+            //SetHeartBeat();
         }
         else
         {

@@ -37,9 +37,10 @@ public class EnemyManager : MonoBehaviour
         m_Listeners = GetComponentsInChildren<Enemy_Listener>();
         m_Stalkers = GetComponentsInChildren<Enemy_Stalker>();
         m_CCTVManager = GetComponentInChildren<CCTVManager>();
+        m_Enemys = GetComponentsInChildren<Enemy>();
 
         // CCTV가 플레이어 발견했을 때 콜백 설정
-        m_CCTVManager.SetDelegate(CCTVDetectCallback);
+        //m_CCTVManager.SetDelegate(CCTVDetectCallback);
         SetFactorys();
 
         
@@ -60,7 +61,7 @@ public class EnemyManager : MonoBehaviour
         {
             m_Factorys[i].SetActiveZombies();
         }
-        m_Enemys = GetComponentsInChildren<Enemy>();
+
         // 모든 좀비들 IsAttack 델리게이트 콜백 설정
         for (int i = 0; i < m_Enemys.Length; ++i)
         {
@@ -129,7 +130,10 @@ public class EnemyManager : MonoBehaviour
     private void FindNearZombie()
     {
         m_NearZombie = m_Enemys[0].transform;
-        for(int i = 0; i < m_Enemys.Length-1; ++i)
+
+        if (m_Enemys.Length == 1) return;
+
+        for(int i = 0; i < m_Enemys.Length -1; ++i)
         {
             if (m_Enemys[i].gameObject.activeSelf)
             {
